@@ -13,12 +13,12 @@ Compiled from: 4 skill evaluations (design-system, accessibility, visual-design,
 
 | # | Issue | Source | Affected Files |
 |---|---|---|---|
-| C1 | **Theme override ordering** — In Time Management, the `<style id="theme-override">` is BEFORE the main CSS, making all overrides (colors, fonts) completely ineffective. Same issue in Interview Skills. | Gemini, Our audit | `Hilary's Project/index.html:13-40`, `Interview-Skills/index.html:15-33` |
+| C1 | **Theme override ordering** — In Time Management, the `<style id="theme-override">` is BEFORE the main CSS, making all overrides (colors, fonts) completely ineffective. Same issue in Interview Skills. | Gemini, Our audit | `lesson-time-management/index.html:13-40`, `Interview-Skills/index.html:15-33` |
 | C2 | **Zero ARIA attributes** — No roles, states, or properties on any interactive element across all lessons. No `aria-expanded`, no `role="progressbar"`, no live regions for slide changes. | Accessibility audit | All lesson `index.html` files |
 | C3 | **Navigation elements are `<span>` not `<button>`** — Prev/next nav, sidebar items not keyboard-focusable. Mouse-only controls in an education context. | Gemini, Accessibility audit | All lessons: nav-hint spans, sidebar chapter-headers |
 | C4 | **No `prefers-reduced-motion`** — 17+ animations including 2 infinite pulsing effects and 100-element confetti. No fallback for users with vestibular disorders. | Accessibility audit | All lesson `index.html` files, `template.html` |
 | C5 | **Color contrast failures** — Gold on white (2.04:1), green on white (2.66:1), white on green (2.66:1), sidebar semi-transparent text (~2.0:1). All fail WCAG AA. | Visual design audit | All lessons using `.gold`, `.accent` text classes |
-| C6 | **Off-brand colors in Time Management** — `--accent: #EA580C` (orange), `--primary: #4C1D95` (violet), `--dark: #2E1065`. Not in approved 11-color palette. | Our audit, Phase 1 findings | `Hilary's Project/index.html` |
+| C6 | **Off-brand colors in Time Management** — `--accent: #EA580C` (orange), `--primary: #4C1D95` (violet), `--dark: #2E1065`. Not in approved 11-color palette. | Our audit, Phase 1 findings | `lesson-time-management/index.html` |
 | C7 | **Off-brand colors in Interview Skills** — `--mauve: #a7253f`, `--royal: #00133f` used correctly, but also has `#dc2626` (red) in WIPPEA badge and completely different CSS architecture. | Our audit | `Interview-Skills/index.html` |
 
 ### HIGH — Fix in current sprint
@@ -30,9 +30,9 @@ Compiled from: 4 skill evaluations (design-system, accessibility, visual-design,
 | H3 | **Off-palette hex values in template** — `#FF6B6B` (red) in confetti JS, `#E0E0E0`, `#F4F8FB`, `#EEF2F6` in CSS. Template violates its own color rules. | Design system audit | `template.html` |
 | H4 | **No skip link** — No mechanism to bypass sidebar navigation. Violates WCAG 2.4.1. | Accessibility audit | All lessons, `template.html` |
 | H5 | **No focus management on slide change** — Focus stays on hidden elements when advancing slides. Keyboard users lose their place. | Accessibility audit | All lessons JS |
-| H6 | **5 Cs flip cards inaccessible** — Hover-only interaction, no keyboard handler, no tabindex, screen readers read front and back simultaneously. | Accessibility audit | `Employee_Accountability.v2.5/index.html` |
+| H6 | **5 Cs flip cards inaccessible** — Hover-only interaction, no keyboard handler, no tabindex, screen readers read front and back simultaneously. | Accessibility audit | `lesson-employee-accountability/index.html` |
 | H7 | **AudioContext created unguarded** — If AudioContext is unavailable/restricted, script init fails and breaks slide logic. | Gemini review | All lessons JS |
-| H8 | **Duplicate video URL** — "Big Rocks of Time" (line 1457) and "Atomic Habits" (line 1845) both point to `AtoVhZOWQZU`. Likely accidental. | Gemini review | `Hilary's Project/index.html` |
+| H8 | **Duplicate video URL** — "Big Rocks of Time" (line 1457) and "Atomic Habits" (line 1845) both point to `AtoVhZOWQZU`. Likely accidental. | Gemini review | `lesson-time-management/index.html` |
 
 ### MEDIUM — Fix in next sprint
 
@@ -42,7 +42,7 @@ Compiled from: 4 skill evaluations (design-system, accessibility, visual-design,
 | M2 | **Sub-1rem text sizes** — `smart-content p` (0.95rem), `danger-card-back p` (0.85rem), `matrix-label` (0.8rem) unreadable at 15+ feet on projector. | Visual design audit | `template.html`, all lessons |
 | M3 | **No spacing tokens** — Padding/gap values are arbitrary literals. Template and Employee Accountability already diverge on component spacing. | Design system, Visual design | `template.html`, all lessons |
 | M4 | **Video placeholder CSS duplicated** — 30 lines must be copy-pasted into every theme-override block. Should be in main CSS. | Design system audit | `AGENT_THEMING_GUIDELINES.md`, all lessons |
-| M5 | **Template vs. Employee Accountability sizing divergence** — Takeaways: 1.35rem vs 1.75rem, smart-content h4: 1.15rem vs 1.25rem. Template is less legible. | Visual design audit | `template.html` vs `Employee_Accountability.v2.5/index.html` |
+| M5 | **Template vs. Employee Accountability sizing divergence** — Takeaways: 1.35rem vs 1.75rem, smart-content h4: 1.15rem vs 1.25rem. Template is less legible. | Visual design audit | `template.html` vs `lesson-employee-accountability/index.html` |
 | M6 | **No lesson registry** — No manifest tracking which variant, font pairing, and component mix each lesson uses. At 18 lessons, manual review is unsustainable. | Design system audit | Missing file |
 | M7 | **Component library needs 3-4 additions** — process-flow, comparison-columns, stat-highlight, callout-box variants needed to avoid repetition at 18 lessons. | Design system audit | `components.md` |
 | M8 | **Font override selector list incomplete** — Example in AGENT_THEMING_GUIDELINES.md misses `area-card h4`, `closing-box h2`, `slide-section::after`, `big-statement h2`, `danger-card h4`. | Design system audit | `AGENT_THEMING_GUIDELINES.md` |
