@@ -71,3 +71,4 @@ See `SPOKES-Agent-Execution-Spec.md` for full gate criteria and severity/SLA pol
 - `docs/repo-standards.md` (naming and structure policy)
 - `docs/release-checklist.md` (release quality checklist)
 - `README-dashboard.md` (dashboard acceptance criteria + ownership model)
+- `docs/final-product-definition.md` (authoritative final product target)
