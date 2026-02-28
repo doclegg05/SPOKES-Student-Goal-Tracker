@@ -44,7 +44,7 @@ Each lesson ships as a **single self-contained `index.html`** with:
 - WCAG-aligned accessibility baseline
 - WIPPEA structural adherence
 - brand-compliant color usage (canonical palette only)
-- minimum 3 qualifying interactions
+- 4 required qualifying interactions (+ optional 5th where it adds clear value)
 - validated links/resources
 
 ## Quality Gates

@@ -35,9 +35,13 @@ Use this checklist before merging or publishing any lesson.
 
 ## 5) Interactive Engagement (Gate 5)
 
-- [ ] Minimum 3 qualifying interactions implemented
+- [ ] 4 required interactions implemented: tabs, accordion, checkpoint prompt, scenario simulator
+- [ ] Optional 5th interaction included only when instructionally valuable
 - [ ] Interactions are truly interactive (not decorative only)
 - [ ] Interactions are keyboard-usable
+- [ ] Interactions support instructor-led facilitation (no auto-grading/right-wrong engine by default)
+- [ ] Instructor prompt panel toggle present on each interaction card (View Prompt/Hide Prompt)
+- [ ] Instructor prompt panel hidden by default
 - [ ] Next/Prev controls not counted toward minimum interactions
 
 ## 6) Stability & QA Evidence

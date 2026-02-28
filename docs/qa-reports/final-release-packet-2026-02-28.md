@@ -26,21 +26,21 @@ All three lessons have completed migration, palette remediation, qualifying inte
 - [x] Canonical palette compliance
 - [x] Local link integrity
 - [x] WIPPEA progression present
-- [x] 3+ qualifying interactions present (tabs, accordion, checkpoint)
+- [x] 4 required interactions present (tabs, accordion, checkpoint prompt, scenario simulator)
 - [x] Keyboard-usable controls for interaction pack
 
 ### Lesson: Time Management
 - [x] Canonical palette compliance
 - [x] Local link integrity
 - [x] WIPPEA progression present
-- [x] 3+ qualifying interactions present (tabs, accordion, checkpoint)
+- [x] 4 required interactions present (tabs, accordion, checkpoint prompt, scenario simulator)
 - [x] Keyboard-usable controls for interaction pack
 
 ### Lesson: Employee Accountability
 - [x] Canonical palette compliance
 - [x] Local link integrity
 - [x] WIPPEA progression manually confirmed
-- [x] 3+ qualifying interactions present (tabs, accordion, checkpoint)
+- [x] 4 required interactions present (tabs, accordion, checkpoint prompt, scenario simulator)
 - [x] Keyboard-usable controls for interaction pack
 
 ## Release Decision

@@ -46,9 +46,11 @@ Evidence:
 
 ## Gate 5 — Interactive Engagement
 
-- [ ] At least 3 qualifying interactions
+- [ ] 4 required interactions present (tabs, accordion, checkpoint prompt, scenario simulator)
 - [ ] Interactions functionally interactive
 - [ ] Interactions keyboard-usable
+- [ ] Instructor prompt panel exists on each interaction (View Prompt/Hide Prompt, hidden by default)
+- [ ] Interactions remain instructor-led (no auto-grading/right-wrong engine by default)
 
 Evidence:
 
