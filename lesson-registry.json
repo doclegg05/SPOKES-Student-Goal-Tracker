@@ -21,34 +21,6 @@
       "id": "lesson-time-management",
       "title": "Time Management",
       "path": "lesson-time-management/index.html",
-      "status": "planned",
-      "variant": null,
-      "fontPair": {
-        "heading": null,
-        "body": null,
-        "approved": false
-      },
-      "colorSchema": {
-        "approved": false,
-        "approvalRef": null
-      },
-      "interactions": {
-        "minimumRequired": 3,
-        "implemented": 0
-      },
-      "qualityGates": {
-        "accessibility": "pending",
-        "multimodal": "pending",
-        "wippea": "pending",
-        "brand": "pending",
-        "engagement": "pending"
-      },
-      "notes": "Canonical folder created; migrate legacy lesson content into this path."
-    },
-    {
-      "id": "lesson-interview-skills",
-      "title": "Interview Skills",
-      "path": "Interview-Skills/index.html",
       "status": "in-progress",
       "variant": null,
       "fontPair": {
@@ -71,13 +43,13 @@
         "brand": "pending",
         "engagement": "pending"
       },
-      "notes": "Teacher resources folder standardized to Teacher-Resources."
+      "notes": "Canonical path + placeholder index active; awaiting source content migration."
     },
     {
-      "id": "lesson-employee-accountability",
-      "title": "Employee Accountability",
-      "path": "lesson-employee-accountability/index.html",
-      "status": "planned",
+      "id": "lesson-interview-skills",
+      "title": "Interview Skills",
+      "path": "Interview-Skills/index.html",
+      "status": "qa",
       "variant": null,
       "fontPair": {
         "heading": null,
@@ -99,7 +71,35 @@
         "brand": "pending",
         "engagement": "pending"
       },
-      "notes": "Canonical folder created; migrate legacy lesson content into this path."
+      "notes": "Folder standards applied; Gate QA report stub created."
+    },
+    {
+      "id": "lesson-employee-accountability",
+      "title": "Employee Accountability",
+      "path": "lesson-employee-accountability/index.html",
+      "status": "in-progress",
+      "variant": null,
+      "fontPair": {
+        "heading": null,
+        "body": null,
+        "approved": false
+      },
+      "colorSchema": {
+        "approved": false,
+        "approvalRef": null
+      },
+      "interactions": {
+        "minimumRequired": 3,
+        "implemented": 0
+      },
+      "qualityGates": {
+        "accessibility": "pending",
+        "multimodal": "pending",
+        "wippea": "pending",
+        "brand": "pending",
+        "engagement": "pending"
+      },
+      "notes": "Canonical path + placeholder index active; awaiting source content migration."
     }
   ]
 }

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time Management | SPOKES</title>
+  <style>
+    :root {
+      --spokes-blue: #007baf;
+      --spokes-green: #37b550;
+      --spokes-navy: #004071;
+      --spokes-white: #FFFFFF;
+      --spokes-light: #EDF3F7;
+      --spokes-gray: #60636b;
+      --spokes-gold: #d3b257;
+      --spokes-deep: #00133f;
+    }
+    body { margin: 0; font-family: Arial, sans-serif; background: var(--spokes-light); color: var(--spokes-deep); }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 2rem 1rem; }
+    .card { background: var(--spokes-white); border-left: 6px solid var(--spokes-blue); border-radius: 10px; padding: 1.25rem; box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+    h1 { margin: 0 0 .5rem; color: var(--spokes-navy); }
+    .status { display:inline-block; margin:.5rem 0 1rem; padding:.2rem .55rem; border-radius:999px; background: var(--spokes-gold); color: #00133f; font-weight:700; font-size:.85rem; }
+    a { color: var(--spokes-blue); font-weight: 700; }
+    .next { margin-top:1rem; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card" aria-labelledby="lesson-title">
+      <h1 id="lesson-title">Time Management (Migration Target)</h1>
+      <p class="status">Status: In migration planning</p>
+      <p>This canonical lesson path is active and linked from the dashboard. Content migration from legacy sources is pending source asset recovery.</p>
+      <div class="next">
+        <p>See:</p>
+        <ul>
+          <li><a href="../lesson-registry.json">lesson-registry.json</a></li>
+          <li><a href="../docs/migration-status.md">docs/migration-status.md</a></li>
+          <li><a href="../docs/qa-reports/lesson-time-management.md">QA report stub</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
