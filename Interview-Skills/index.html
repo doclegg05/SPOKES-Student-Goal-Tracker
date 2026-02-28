@@ -3267,11 +3267,14 @@
           if (!chapters[chapter]) chapters[chapter] = [];
           const h1 = slide.querySelector("h1");
           const h2 = slide.querySelector("h2");
+          const activityHeading = slide.querySelector(".activity-slide-heading");
           let title = h1
             ? h1.textContent
             : h2
               ? h2.textContent
-              : "Slide " + (index + 1);
+              : activityHeading
+                ? activityHeading.textContent
+                : "Slide " + (index + 1);
           title = title.replace(/\s+/g, " ").trim();
           chapters[chapter].push({ index, title });
         });
