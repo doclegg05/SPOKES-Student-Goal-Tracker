@@ -13,13 +13,13 @@ Status: Source migrated; QA in progress.
 
 ## Static audit snapshot (2026-02-28)
 
-- Off-palette hex values in CSS/style contexts: **10**
+- Off-palette hex values in CSS/style contexts: **0**
 - Broken local links: **0** (fixed `GET_YOUR_PRIORITIES_STRAIGHT_FOR_THE_DAY_1.pdf` path)
 
 ## Gate status (preliminary)
 
 - Gate 2 (local resource integrity): **Pass (preliminary)**
-- Gate 4 (brand palette): **Fail (off-palette colors present)**
+- Gate 4 (brand palette): **Pass (post-remediation static scan)**
 - Gate 1, 3, 5: **Pending manual/functional validation**
 
 ## Next actions

@@ -40,7 +40,7 @@
         "accessibility": "pending",
         "multimodal": "preliminary-pass",
         "wippea": "pending",
-        "brand": "fail",
+        "brand": "preliminary-pass",
         "engagement": "pending"
       },
       "notes": "Source content recovered from Hilary-s-Project repo and migrated into canonical path; ready for Gate 1-5 QA."
@@ -68,7 +68,7 @@
         "accessibility": "pending",
         "multimodal": "preliminary-pass",
         "wippea": "pending",
-        "brand": "fail",
+        "brand": "preliminary-pass",
         "engagement": "pending"
       },
       "notes": "Folder standards applied; Gate QA report stub created."
@@ -96,7 +96,7 @@
         "accessibility": "pending",
         "multimodal": "preliminary-pass",
         "wippea": "pending",
-        "brand": "fail",
+        "brand": "preliminary-pass",
         "engagement": "pending"
       },
       "notes": "Source content recovered from Employee-Accountability repo and migrated into canonical path; ready for Gate 1-5 QA."
