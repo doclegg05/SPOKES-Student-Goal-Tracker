@@ -2,8 +2,6 @@
 
 Status: Source migrated; QA in progress.
 
-Use `../qa-evidence-template.md` to complete this report.
-
 ## Migration update
 
 - Canonical path populated from: `Employee-Accountability/`
@@ -13,7 +11,19 @@ Use `../qa-evidence-template.md` to complete this report.
   - `resources/` and `Handouts/` PDFs
   - `Employee_Accountability_Context.md`
 
-## Current known items
+## Static audit snapshot (2026-02-28)
 
-- Full Gate 1-5 verification still pending (device matrix + accessibility + interaction checks).
-- Legacy references in planning docs were previously corrected to canonical pathing.
+- Off-palette hex values in CSS/style contexts: **27**
+- Broken local links: **0**
+
+## Gate status (preliminary)
+
+- Gate 2 (local resource integrity): **Pass (preliminary)**
+- Gate 4 (brand palette): **Fail (off-palette colors present)**
+- Gate 1, 3, 5: **Pending manual/functional validation**
+
+## Next actions
+
+1. Normalize color variables to canonical 11-color palette.
+2. Re-check component contrast pairings.
+3. Run full device + keyboard + interaction QA.
