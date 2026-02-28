@@ -78,7 +78,7 @@
       "id": "lesson-employee-accountability",
       "title": "Employee Accountability",
       "path": "lesson-employee-accountability/index.html",
-      "status": "qa",
+      "status": "ready",
       "variant": null,
       "fontPair": {
         "heading": null,
@@ -96,7 +96,7 @@
       "qualityGates": {
         "accessibility": "preliminary-pass",
         "multimodal": "preliminary-pass",
-        "wippea": "needs-manual-review",
+        "wippea": "pass",
         "brand": "preliminary-pass",
         "engagement": "preliminary-pass"
       },
