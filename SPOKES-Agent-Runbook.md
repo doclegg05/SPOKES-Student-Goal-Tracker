@@ -56,9 +56,10 @@ Output:
    - Embed YouTube if URL exists.
    - Use placeholder if URL is missing.
 6. Add interactive elements per lesson requirements:
-   - Minimum 3 qualifying interactions per lesson.
-   - Qualifying interactions: flip cards, clickable matrix, tabs/accordions, step reveal, quiz/checkpoint.
-   - If these component types appear, they must be functionally interactive and keyboard-usable.
+   - Minimum 4 required qualifying interactions per lesson (tabs, accordion, checkpoint prompt, scenario simulator); optional 5th only when it adds clear value.
+   - Required interactions: tabs, accordion, checkpoint prompt (non-graded), scenario decision simulator.
+   - Optional 5th interaction only when it adds clear instructional value.
+   - Interactions must be functionally interactive, keyboard-usable, and designed for instructor-led facilitation.
    - Next/prev navigation does not count toward this minimum.
 7. Add validated download links.
 
@@ -117,6 +118,10 @@ Each lesson must include:
    - No horizontal scrolling/panning at any required viewport.
 8. Keyboard navigation checks.
 9. WIPPEA stage compliance notes.
+10. Interaction-facilitation evidence:
+   - Instructor prompt panel present on each interaction card.
+   - View Prompt/Hide Prompt toggle works.
+   - Prompt panel is hidden by default.
 
 ---
 
