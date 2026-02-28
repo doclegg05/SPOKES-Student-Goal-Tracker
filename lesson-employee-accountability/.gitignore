@@ -1,0 +1,6 @@
+# Python generation scripts
+generate_*.py
+
+# Root-level PDF and DOCX files (only resources/ PDFs are tracked)
+/*.pdf
+/*.docx
