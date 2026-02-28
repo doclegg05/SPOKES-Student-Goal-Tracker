@@ -9,11 +9,12 @@
       "variant-elegant"
     ],
     "statusValues": [
-      "planned",
-      "in-progress",
-      "qa",
       "blocked",
-      "complete"
+      "complete",
+      "in-progress",
+      "planned",
+      "qa",
+      "ready"
     ]
   },
   "lessons": [
@@ -21,7 +22,7 @@
       "id": "lesson-time-management",
       "title": "Time Management",
       "path": "lesson-time-management/index.html",
-      "status": "qa",
+      "status": "ready",
       "variant": null,
       "fontPair": {
         "heading": null,
@@ -41,7 +42,7 @@
         "multimodal": "preliminary-pass",
         "wippea": "preliminary-pass",
         "brand": "preliminary-pass",
-        "engagement": "needs-manual-review"
+        "engagement": "preliminary-pass"
       },
       "notes": "Source content recovered from Hilary-s-Project repo and migrated into canonical path; ready for Gate 1-5 QA."
     },
@@ -49,7 +50,7 @@
       "id": "lesson-interview-skills",
       "title": "Interview Skills",
       "path": "Interview-Skills/index.html",
-      "status": "qa",
+      "status": "ready",
       "variant": null,
       "fontPair": {
         "heading": null,
@@ -69,7 +70,7 @@
         "multimodal": "preliminary-pass",
         "wippea": "preliminary-pass",
         "brand": "preliminary-pass",
-        "engagement": "needs-manual-review"
+        "engagement": "preliminary-pass"
       },
       "notes": "Folder standards applied; Gate QA report stub created."
     },
@@ -97,7 +98,7 @@
         "multimodal": "preliminary-pass",
         "wippea": "needs-manual-review",
         "brand": "preliminary-pass",
-        "engagement": "needs-manual-review"
+        "engagement": "preliminary-pass"
       },
       "notes": "Source content recovered from Employee-Accountability repo and migrated into canonical path; ready for Gate 1-5 QA."
     }

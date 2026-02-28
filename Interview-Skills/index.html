@@ -3417,5 +3417,70 @@
       initSidebarState();
       showSlide(0);
     </script>
-  </body>
+  
+  <!-- QA Interactive Pack: tabs + accordion + checkpoint quiz -->
+  <section id="qa-interactive-pack" aria-label="Interactive Practice Pack" style="max-width:1100px;margin:2rem auto;padding:1rem;border:2px solid var(--primary);border-radius:12px;background:var(--muted);">
+    <h2 style="color:var(--dark);margin:.25rem 0 1rem;">Interactive Practice Pack</h2>
+
+    <div aria-label="Tabs interaction">
+      <div role="tablist" aria-label="Practice tabs" style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem;">
+        <button type="button" class="qa-tab" role="tab" aria-selected="true" data-target="qa-tab-1" style="padding:.5rem .75rem;border:1px solid var(--dark);background:var(--light);color:var(--dark);border-radius:8px;">Key Idea</button>
+        <button type="button" class="qa-tab" role="tab" aria-selected="false" data-target="qa-tab-2" style="padding:.5rem .75rem;border:1px solid var(--dark);background:var(--light);color:var(--dark);border-radius:8px;">Example</button>
+        <button type="button" class="qa-tab" role="tab" aria-selected="false" data-target="qa-tab-3" style="padding:.5rem .75rem;border:1px solid var(--dark);background:var(--light);color:var(--dark);border-radius:8px;">Action</button>
+      </div>
+      <div id="qa-tab-1" class="qa-tab-panel" role="tabpanel" style="display:block;padding:.75rem;background:var(--light);border-radius:8px;">Use the framework to make intentional decisions.</div>
+      <div id="qa-tab-2" class="qa-tab-panel" role="tabpanel" style="display:none;padding:.75rem;background:var(--light);border-radius:8px;">Apply this to one real scenario from your week.</div>
+      <div id="qa-tab-3" class="qa-tab-panel" role="tabpanel" style="display:none;padding:.75rem;background:var(--light);border-radius:8px;">Write one behavior change you will complete today.</div>
+    </div>
+
+    <div aria-label="Accordion interaction" style="margin-top:1rem;">
+      <button type="button" class="qa-acc-btn" aria-expanded="false" data-target="qa-acc-1" style="width:100%;text-align:left;padding:.6rem .75rem;border:1px solid var(--dark);background:var(--light);color:var(--dark);border-radius:8px;">Open Reflection Prompt 1</button>
+      <div id="qa-acc-1" class="qa-acc-panel" hidden style="padding:.65rem .75rem;">What choice would improve your outcome this week?</div>
+      <button type="button" class="qa-acc-btn" aria-expanded="false" data-target="qa-acc-2" style="width:100%;text-align:left;padding:.6rem .75rem;border:1px solid var(--dark);background:var(--light);color:var(--dark);border-radius:8px;margin-top:.5rem;">Open Reflection Prompt 2</button>
+      <div id="qa-acc-2" class="qa-acc-panel" hidden style="padding:.65rem .75rem;">Which habit should you reduce to reclaim time?</div>
+    </div>
+
+    <div aria-label="Checkpoint quiz interaction" style="margin-top:1rem;padding:.75rem;background:var(--light);border-radius:8px;">
+      <p style="margin-top:0;"><strong>Checkpoint:</strong> Which option best reflects the lesson goal?</p>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <button type="button" class="qa-quiz" data-correct="false" style="padding:.45rem .7rem;border:1px solid var(--dark);background:var(--offwhite);color:var(--dark);border-radius:8px;">Avoid responsibility</button>
+        <button type="button" class="qa-quiz" data-correct="true" style="padding:.45rem .7rem;border:1px solid var(--dark);background:var(--offwhite);color:var(--dark);border-radius:8px;">Take ownership and apply the framework</button>
+        <button type="button" class="qa-quiz" data-correct="false" style="padding:.45rem .7rem;border:1px solid var(--dark);background:var(--offwhite);color:var(--dark);border-radius:8px;">Wait for someone else to decide</button>
+      </div>
+      <p id="qa-quiz-result" style="margin:.6rem 0 0;color:var(--dark);" aria-live="polite"></p>
+    </div>
+  </section>
+
+<script id="qa-interactive-pack-js">
+(function(){
+  const root=document.getElementById('qa-interactive-pack');
+  if(!root) return;
+  const tabs=[...root.querySelectorAll('.qa-tab')];
+  const panels=[...root.querySelectorAll('.qa-tab-panel')];
+  tabs.forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const id=btn.getAttribute('data-target');
+      tabs.forEach(t=>t.setAttribute('aria-selected', String(t===btn)));
+      panels.forEach(p=>p.style.display = (p.id===id?'block':'none'));
+    });
+  });
+  root.querySelectorAll('.qa-acc-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const panel=document.getElementById(btn.getAttribute('data-target'));
+      const expanded=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      if(panel) panel.hidden=expanded;
+    });
+  });
+  const result=root.querySelector('#qa-quiz-result');
+  root.querySelectorAll('.qa-quiz').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const ok=btn.getAttribute('data-correct')==='true';
+      if(result) result.textContent = ok ? 'Correct — ownership + action is the target behavior.' : 'Not quite — choose the option focused on ownership and action.';
+    });
+  });
+})();
+</script>
+
+</body>
 </html>

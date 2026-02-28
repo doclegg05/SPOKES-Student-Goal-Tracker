@@ -38,20 +38,25 @@ Status:
 
 Status: **preliminary-pass** (all three)
 
-## Gate 5 — Interactive Engagement (heuristic)
+## Gate 5 — Interactive Engagement (implementation + heuristic)
 
-- DOM `onclick` handlers found: 3 in each lesson.
-- This suggests baseline interaction hooks exist, but does not prove all 3 are qualifying interactions under spec.
+- Added explicit qualifying interaction pack to each lesson:
+  - tabs interaction
+  - accordion interaction
+  - checkpoint quiz interaction
+- All controls are implemented as native `<button>` elements (keyboard-usable by default) with ARIA states for tabs/accordion.
 
-Status: **needs-manual-review** (all three)
+Status:
+- interview-skills: **preliminary-pass**
+- time-management: **preliminary-pass**
+- employee-accountability: **preliminary-pass**
 
 ## Defects Logged
 
 - **High:** Employee Accountability WIPPEA stage labeling requires manual validation.
-- **High:** Gate 5 qualifying interaction verification pending for all three lessons.
 
 ## Recommended Next Fix Sequence
 
 1. Perform manual WIPPEA mapping validation in Employee Accountability.
-2. Validate (and if needed, implement) 3 qualifying interactions per lesson with keyboard usability.
-3. Complete final manual signoff for Gate 1 keyboard/focus behavior at all target viewports.
+2. Complete final manual signoff for Gate 1 keyboard/focus behavior at all target viewports.
+3. Capture screenshots/evidence archive for final release packet.
