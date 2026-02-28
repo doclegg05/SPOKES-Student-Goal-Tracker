@@ -37,11 +37,11 @@
         "implemented": 3
       },
       "qualityGates": {
-        "accessibility": "pending",
+        "accessibility": "preliminary-pass",
         "multimodal": "preliminary-pass",
-        "wippea": "pending",
+        "wippea": "preliminary-pass",
         "brand": "preliminary-pass",
-        "engagement": "pending"
+        "engagement": "needs-manual-review"
       },
       "notes": "Source content recovered from Hilary-s-Project repo and migrated into canonical path; ready for Gate 1-5 QA."
     },
@@ -65,11 +65,11 @@
         "implemented": 0
       },
       "qualityGates": {
-        "accessibility": "pending",
+        "accessibility": "preliminary-pass",
         "multimodal": "preliminary-pass",
-        "wippea": "pending",
+        "wippea": "preliminary-pass",
         "brand": "preliminary-pass",
-        "engagement": "pending"
+        "engagement": "needs-manual-review"
       },
       "notes": "Folder standards applied; Gate QA report stub created."
     },
@@ -93,11 +93,11 @@
         "implemented": 3
       },
       "qualityGates": {
-        "accessibility": "pending",
+        "accessibility": "preliminary-pass",
         "multimodal": "preliminary-pass",
-        "wippea": "pending",
+        "wippea": "needs-manual-review",
         "brand": "preliminary-pass",
-        "engagement": "pending"
+        "engagement": "needs-manual-review"
       },
       "notes": "Source content recovered from Employee-Accountability repo and migrated into canonical path; ready for Gate 1-5 QA."
     }
