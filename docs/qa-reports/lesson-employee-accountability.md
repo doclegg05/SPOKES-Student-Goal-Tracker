@@ -1,10 +1,19 @@
 # QA Report — lesson-employee-accountability
 
-Status: Stub created for overnight prep.
+Status: Source migrated; QA in progress.
 
 Use `../qa-evidence-template.md` to complete this report.
 
+## Migration update
+
+- Canonical path populated from: `Employee-Accountability/`
+- Files migrated:
+  - `index.html`
+  - `SPOKES-Logo.png`
+  - `resources/` and `Handouts/` PDFs
+  - `Employee_Accountability_Context.md`
+
 ## Current known items
 
-- Legacy source content not yet recovered.
-- Accessibility and interaction issues referenced in master action plan.
+- Full Gate 1-5 verification still pending (device matrix + accessibility + interaction checks).
+- Legacy references in planning docs were previously corrected to canonical pathing.

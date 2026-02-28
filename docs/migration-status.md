@@ -1,6 +1,6 @@
 # Lesson Migration Status
 
-Date: 2026-02-27
+Date: 2026-02-28
 
 ## Completed
 
@@ -11,15 +11,16 @@ Date: 2026-02-27
 - Placeholder `index.html` pages created so links resolve and do not 404.
 - Lesson registry + release checklist + standards docs created.
 - Teacher resources folder naming standardized in Interview Skills.
+- Employee Accountability source content recovered from `Employee-Accountability` repo and migrated into canonical folder.
 
 ## In Progress
 
-- Full content migration into canonical lesson folders.
+- Time Management source recovery + migration.
 - Gate-by-gate QA evidence capture for all three active lessons.
 
 ## Blocked / Requires Input
 
-- Legacy lesson content for Time Management and Employee Accountability was referenced as gitlink entries (submodule-style pointers) with no local files.
+- Legacy lesson content for Time Management was referenced as gitlink entries (submodule-style pointers) with no local files.
 - Source files must be recovered from one of the following:
   1. Original source repository/branch containing real lesson files
   2. Archived local copy
@@ -27,7 +28,7 @@ Date: 2026-02-27
 
 ## Next Actions
 
-1. Recover source content for Time Management + Employee Accountability.
+1. Recover source content for Time Management.
 2. Migrate assets to canonical lesson folders:
    - `index.html`
    - `SPOKES-Logo.png`
