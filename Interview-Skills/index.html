@@ -1367,6 +1367,36 @@
         border-bottom: none;
       }
 
+      /* Compact variant used for long question-list slide so all content fits without vertical scrolling */
+      .slide-questions-compact .slide-subtitle {
+        margin-bottom: 0.6rem;
+      }
+
+      .slide-questions-compact .elegant-list {
+        gap: 0.55rem;
+        justify-content: flex-start;
+        flex: 0 0 auto;
+      }
+
+      .slide-questions-compact .elegant-item {
+        gap: 1rem;
+        padding-bottom: 0.55rem;
+      }
+
+      .slide-questions-compact .elegant-num {
+        font-size: 3.8rem;
+        width: 56px;
+      }
+
+      .slide-questions-compact .elegant-body {
+        padding-top: 0.35rem;
+      }
+
+      .slide-questions-compact .elegant-title {
+        font-size: 1.16rem;
+        line-height: 1.25;
+      }
+
       /* ================================================================
        LAYOUT 7 — ACCORDION STACK
        ================================================================ */
@@ -2821,7 +2851,7 @@
         </section>
 
         <!-- Slide 24 — Questions to Ask (Numbered Elegant List) -->
-        <section class="slide" data-chapter="5">
+        <section class="slide slide-questions-compact" data-chapter="5">
           <h2>Questions to Ask the Interviewer</h2>
           <p class="slide-subtitle">
             Always come prepared with thoughtful questions — it shows genuine
