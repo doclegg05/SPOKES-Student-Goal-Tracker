@@ -11,9 +11,10 @@ Purpose: Single operational source for planning, building, QA, and release decis
 If documents conflict, use this precedence:
 
 1. This file (`SPOKES-Agent-Execution-Spec.md`)
-2. `SPOKES Builder/brand-palette.md`
-3. `SPOKES Builder/build-process.md`
-4. `SPOKES-Master-Action-Plan.md`
+2. `docs/final-product-definition.md` (final product behavior/experience intent)
+3. `SPOKES Builder/brand-palette.md`
+4. `SPOKES Builder/build-process.md`
+5. `SPOKES-Master-Action-Plan.md`
 
 ---
 
