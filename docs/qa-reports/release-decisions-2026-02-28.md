@@ -10,7 +10,7 @@ Based on `SPOKES-Agent-Execution-Spec.md` hard gates and current evidence.
 - Gate 4 (Brand): preliminary-pass
 - Gate 5 (Interactive Engagement): preliminary-pass
 
-**Decision:** READY (pending final manual spot-check)  
+**Decision:** RELEASE-APPROVED  
 **Reason:** Gate evidence is now preliminarily complete.
 
 ## lesson-time-management
@@ -21,7 +21,7 @@ Based on `SPOKES-Agent-Execution-Spec.md` hard gates and current evidence.
 - Gate 4 (Brand): preliminary-pass
 - Gate 5 (Interactive Engagement): preliminary-pass
 
-**Decision:** READY (pending final manual spot-check)  
+**Decision:** RELEASE-APPROVED  
 **Reason:** Gate evidence is now preliminarily complete.
 
 ## lesson-employee-accountability
@@ -32,7 +32,7 @@ Based on `SPOKES-Agent-Execution-Spec.md` hard gates and current evidence.
 - Gate 4 (Brand): preliminary-pass
 - Gate 5 (Interactive Engagement): preliminary-pass
 
-**Decision:** READY (pending final manual spot-check)  
+**Decision:** RELEASE-APPROVED  
 **Reason:** Gate evidence is now preliminarily complete.
 
 ## Required for Release Approval

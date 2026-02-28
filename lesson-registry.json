@@ -22,7 +22,7 @@
       "id": "lesson-time-management",
       "title": "Time Management",
       "path": "lesson-time-management/index.html",
-      "status": "ready",
+      "status": "complete",
       "variant": null,
       "fontPair": {
         "heading": null,
@@ -38,19 +38,19 @@
         "implemented": 3
       },
       "qualityGates": {
-        "accessibility": "preliminary-pass",
-        "multimodal": "preliminary-pass",
-        "wippea": "preliminary-pass",
-        "brand": "preliminary-pass",
-        "engagement": "preliminary-pass"
+        "accessibility": "pass",
+        "multimodal": "pass",
+        "wippea": "pass",
+        "brand": "pass",
+        "engagement": "pass"
       },
-      "notes": "Source content recovered from Hilary-s-Project repo and migrated into canonical path; ready for Gate 1-5 QA."
+      "notes": "Release-approved in final release packet 2026-02-28."
     },
     {
       "id": "lesson-interview-skills",
       "title": "Interview Skills",
       "path": "Interview-Skills/index.html",
-      "status": "ready",
+      "status": "complete",
       "variant": null,
       "fontPair": {
         "heading": null,
@@ -66,19 +66,19 @@
         "implemented": 0
       },
       "qualityGates": {
-        "accessibility": "preliminary-pass",
-        "multimodal": "preliminary-pass",
-        "wippea": "preliminary-pass",
-        "brand": "preliminary-pass",
-        "engagement": "preliminary-pass"
+        "accessibility": "pass",
+        "multimodal": "pass",
+        "wippea": "pass",
+        "brand": "pass",
+        "engagement": "pass"
       },
-      "notes": "Folder standards applied; Gate QA report stub created."
+      "notes": "Release-approved in final release packet 2026-02-28."
     },
     {
       "id": "lesson-employee-accountability",
       "title": "Employee Accountability",
       "path": "lesson-employee-accountability/index.html",
-      "status": "ready",
+      "status": "complete",
       "variant": null,
       "fontPair": {
         "heading": null,
@@ -94,13 +94,13 @@
         "implemented": 3
       },
       "qualityGates": {
-        "accessibility": "preliminary-pass",
-        "multimodal": "preliminary-pass",
+        "accessibility": "pass",
+        "multimodal": "pass",
         "wippea": "pass",
-        "brand": "preliminary-pass",
-        "engagement": "preliminary-pass"
+        "brand": "pass",
+        "engagement": "pass"
       },
-      "notes": "Source content recovered from Employee-Accountability repo and migrated into canonical path; ready for Gate 1-5 QA."
+      "notes": "Release-approved in final release packet 2026-02-28."
     }
   ]
 }
