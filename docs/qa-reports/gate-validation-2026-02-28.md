@@ -18,16 +18,16 @@ Method: Browser-based viewport checks + static content scans + DOM interaction h
 
 Status: **preliminary-pass**
 
-## Gate 3 — WIPPEA Adherence (text-heuristic check)
+## Gate 3 — WIPPEA Adherence (text-heuristic + manual confirmation)
 
 - lesson-interview-skills: Warm-up/Introduction/Presentation/Evaluation/Application terms detected.
 - lesson-time-management: Warm-up/Introduction/Presentation/Evaluation/Application terms detected.
-- lesson-employee-accountability: Introduction/Application detected; explicit Warm-up/Presentation/Evaluation terms not detected by automated scan.
+- lesson-employee-accountability: Manual stage mapping completed (see `wippea-mapping-employee-accountability-2026-02-28.md`).
 
 Status:
 - interview-skills: **preliminary-pass**
 - time-management: **preliminary-pass**
-- employee-accountability: **needs-manual-review**
+- employee-accountability: **pass**
 
 ## Gate 4 — Brand/Thematic Cohesion
 
@@ -53,10 +53,9 @@ Status:
 
 ## Defects Logged
 
-- **High:** Employee Accountability WIPPEA stage labeling requires manual validation.
 
 ## Recommended Next Fix Sequence
 
-1. Perform manual WIPPEA mapping validation in Employee Accountability.
-2. Complete final manual signoff for Gate 1 keyboard/focus behavior at all target viewports.
-3. Capture screenshots/evidence archive for final release packet.
+1. Complete final manual signoff for Gate 1 keyboard/focus behavior at all target viewports.
+2. Capture screenshots/evidence archive for final release packet.
+3. Approve release packet and tag lesson versions.
