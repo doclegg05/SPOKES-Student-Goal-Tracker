@@ -21,7 +21,7 @@
       "id": "lesson-time-management",
       "title": "Time Management",
       "path": "lesson-time-management/index.html",
-      "status": "in-progress",
+      "status": "qa",
       "variant": null,
       "fontPair": {
         "heading": null,
@@ -34,7 +34,7 @@
       },
       "interactions": {
         "minimumRequired": 3,
-        "implemented": 0
+        "implemented": 3
       },
       "qualityGates": {
         "accessibility": "pending",
@@ -43,7 +43,7 @@
         "brand": "pending",
         "engagement": "pending"
       },
-      "notes": "Canonical path active; source content still pending recovery."
+      "notes": "Source content recovered from Hilary-s-Project repo and migrated into canonical path; ready for Gate 1-5 QA."
     },
     {
       "id": "lesson-interview-skills",
