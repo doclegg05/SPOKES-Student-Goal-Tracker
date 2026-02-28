@@ -1,0 +1,105 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-02-27",
+  "rules": {
+    "allowedVariants": [
+      "variant-classic",
+      "variant-modern",
+      "variant-bold",
+      "variant-elegant"
+    ],
+    "statusValues": [
+      "planned",
+      "in-progress",
+      "qa",
+      "blocked",
+      "complete"
+    ]
+  },
+  "lessons": [
+    {
+      "id": "lesson-time-management",
+      "title": "Time Management",
+      "path": "lesson-time-management/index.html",
+      "status": "planned",
+      "variant": null,
+      "fontPair": {
+        "heading": null,
+        "body": null,
+        "approved": false
+      },
+      "colorSchema": {
+        "approved": false,
+        "approvalRef": null
+      },
+      "interactions": {
+        "minimumRequired": 3,
+        "implemented": 0
+      },
+      "qualityGates": {
+        "accessibility": "pending",
+        "multimodal": "pending",
+        "wippea": "pending",
+        "brand": "pending",
+        "engagement": "pending"
+      },
+      "notes": "Canonical folder created; migrate legacy lesson content into this path."
+    },
+    {
+      "id": "lesson-interview-skills",
+      "title": "Interview Skills",
+      "path": "Interview-Skills/index.html",
+      "status": "in-progress",
+      "variant": null,
+      "fontPair": {
+        "heading": null,
+        "body": null,
+        "approved": false
+      },
+      "colorSchema": {
+        "approved": false,
+        "approvalRef": null
+      },
+      "interactions": {
+        "minimumRequired": 3,
+        "implemented": 0
+      },
+      "qualityGates": {
+        "accessibility": "pending",
+        "multimodal": "pending",
+        "wippea": "pending",
+        "brand": "pending",
+        "engagement": "pending"
+      },
+      "notes": "Teacher resources folder standardized to Teacher-Resources."
+    },
+    {
+      "id": "lesson-employee-accountability",
+      "title": "Employee Accountability",
+      "path": "lesson-employee-accountability/index.html",
+      "status": "planned",
+      "variant": null,
+      "fontPair": {
+        "heading": null,
+        "body": null,
+        "approved": false
+      },
+      "colorSchema": {
+        "approved": false,
+        "approvalRef": null
+      },
+      "interactions": {
+        "minimumRequired": 3,
+        "implemented": 0
+      },
+      "qualityGates": {
+        "accessibility": "pending",
+        "multimodal": "pending",
+        "wippea": "pending",
+        "brand": "pending",
+        "engagement": "pending"
+      },
+      "notes": "Canonical folder created; migrate legacy lesson content into this path."
+    }
+  ]
+}

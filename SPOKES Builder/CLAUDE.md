@@ -121,7 +121,7 @@ Lesson-Name/
   index.html
   SPOKES-Logo.png
   Handouts/           (student PDFs)
-  Teacher Resource/   (teacher guides)
+  Teacher-Resources/  (teacher guides)
   .claude/launch.json
   .gitignore
 ```

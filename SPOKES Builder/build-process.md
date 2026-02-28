@@ -179,7 +179,7 @@ New-Lesson-Project/
     Pre_Post_Test.pdf
     Rubric.pdf
     ...
-  Teacher Resource/       <-- Teacher-facing materials
+  Teacher-Resources/      <-- Teacher-facing materials
     Teachers Guide.pdf
     Talking Points.pdf
     ...

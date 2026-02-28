@@ -32,14 +32,14 @@
 **Dependencies:** Access to the source PowerPoint (`NEW_TIME_MANAGEMENT_MODULE.pptx`) and the brand-compliant Employee Accountability lesson as reference.
 
 **Work items:**
-- Audit `Hilary's Project/index.html` against the 8-phase verification checklist from `build-process.md`
+- Audit `lesson-time-management/index.html` against the 8-phase verification checklist from `build-process.md`
 - Run brand color compliance check: search for any hex color not in the 11-color palette
 - Verify WIPPEA chapter structure (sequential `data-chapter`, section dividers present)
 - Check that `<style id="theme-override">` is placed AFTER the main CSS block
 - Confirm video placeholder slides use the standard placeholder pattern (no broken iframes)
 - Verify sidebar auto-population, slide counter, keyboard navigation, confetti on closing slide
 - Fix all identified issues
-- Rename project folder from "Hilary's Project" to a standard name (e.g., `Time-Management`)
+- Standardize lesson folder naming (completed for Time Management as `lesson-time-management`; continue applying to all lessons)
 - Convert any `.docx` handouts to `.pdf` format
 - Re-run verification checklist, confirm zero issues
 
