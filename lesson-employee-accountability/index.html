@@ -23,13 +23,19 @@
       --gray: #60636b;
       --red: #a7253f;
       --green: #37b550;
+      --offwhite: #d1d3d4;
+    }
+
+    html {
+      overflow-x: hidden;
     }
 
     body {
       font-family: 'Outfit', sans-serif;
       background: var(--dark);
       color: var(--dark);
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
       height: 100vh;
     }
 
@@ -119,7 +125,7 @@
     }
 
     .chapter-item.active > .chapter-header {
-      background: rgba(76,184,72,0.2);
+      background: rgba(55,181,80,0.2);
       color: var(--light);
       border-left-color: var(--accent);
     }
@@ -162,7 +168,7 @@
     }
 
     .slide-item.active {
-      background: rgba(76,184,72,0.3);
+      background: rgba(55,181,80,0.3);
       color: var(--light);
     }
 
@@ -1173,6 +1179,8 @@
       cursor: pointer;
       transition: all 0.2s ease;
       user-select: none;
+      border: none;
+      line-height: 1;
     }
 
     .key-icon:hover {
@@ -1182,6 +1190,11 @@
 
     .key-icon:active {
       transform: scale(0.95);
+    }
+
+    .key-icon:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
     }
 
     /* Section Slide */
@@ -1417,6 +1430,15 @@
         right: 0.5rem;
       }
     }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1429,13 +1451,13 @@
       </ul>
       <div class="resources-section">
         <div class="resources-title">Resources</div>
-        <a href="resources/Employee_Accountability_Module_Lesson_Plan_4.7.pdf" target="_blank" class="resource-link">Lesson Plan</a>
-        <a href="resources/Employee_Accountability_Rubric.pdf" target="_blank" class="resource-link">Grading Rubric</a>
-        <a href="resources/Handout_1_Habits_of_Mind.pdf" target="_blank" class="resource-link">Habits of Mind</a>
-        <a href="resources/Handout_2_Self_Reflection.pdf" target="_blank" class="resource-link">Self-Reflection</a>
-        <a href="resources/Handout_3_Workplace_Scenarios.v2.pdf" target="_blank" class="resource-link">Scenarios</a>
-        <a href="resources/Handout_4_SMART_Goal.pdf" target="_blank" class="resource-link">SMART Goals</a>
-        <a href="resources/Handout_5_Career_Planning.pdf" target="_blank" class="resource-link">Career Planning</a>
+        <a href="resources/Employee_Accountability_Module_Lesson_Plan_4.7.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">Lesson Plan</a>
+        <a href="resources/Employee_Accountability_Rubric.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">Grading Rubric</a>
+        <a href="resources/Handout_1_Habits_of_Mind.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">Habits of Mind</a>
+        <a href="resources/Handout_2_Self_Reflection.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">Self-Reflection</a>
+        <a href="resources/Handout_3_Workplace_Scenarios.v2.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">Scenarios</a>
+        <a href="resources/Handout_4_SMART_Goal.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">SMART Goals</a>
+        <a href="resources/Handout_5_Career_Planning.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">Career Planning</a>
       </div>
       <div class="slide-counter">
         Slide <span id="currentSlide">1</span> of <span id="totalSlides">22</span>
@@ -1571,7 +1593,7 @@
         <h2>"What keeps us from being accountable isn't just what we <span class="highlight">do</span>—it's how we <span class="accent">think</span>."</h2>
         <div class="download-resource">
           <span class="download-prompt">Instructor Resource Available</span>
-          <a href="resources/Handout_1_Habits_of_Mind.pdf" target="_blank" class="download-btn">Habits of Mind Worksheet</a>
+          <a href="resources/Handout_1_Habits_of_Mind.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">Habits of Mind Worksheet</a>
         </div>
       </section>
 
@@ -1587,7 +1609,7 @@
         </div>
         <div class="download-resource">
           <span class="download-prompt">Instructor Resource Available</span>
-          <a href="resources/Handout_2_Self_Reflection.pdf" target="_blank" class="download-btn">Self-Reflection Worksheet</a>
+          <a href="resources/Handout_2_Self_Reflection.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">Self-Reflection Worksheet</a>
         </div>
       </section>
 
@@ -1877,7 +1899,7 @@
         <h2>Let's look at <span class="accent">two examples</span> from the workplace</h2>
         <div class="download-resource">
           <span class="download-prompt">Instructor Resource Available</span>
-          <a href="resources/Handout_3_Workplace_Scenarios.v2.pdf" target="_blank" class="download-btn">Scenarios Worksheet</a>
+          <a href="resources/Handout_3_Workplace_Scenarios.v2.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">Scenarios Worksheet</a>
         </div>
       </section>
 
@@ -1965,7 +1987,7 @@
         </div>
         <div class="download-resource">
           <span class="download-prompt">Instructor Resource Available</span>
-          <a href="resources/Handout_4_SMART_Goal.pdf" target="_blank" class="download-btn">SMART Goals Worksheet</a>
+          <a href="resources/Handout_4_SMART_Goal.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">SMART Goals Worksheet</a>
         </div>
       </section>
 
@@ -2000,7 +2022,7 @@
         </div>
         <div class="download-resource">
           <span class="download-prompt">Instructor Resource Available</span>
-          <a href="resources/Handout_5_Career_Planning.pdf" target="_blank" class="download-btn">Career Planning Worksheet</a>
+          <a href="resources/Handout_5_Career_Planning.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">Career Planning Worksheet</a>
         </div>
       </section>
 
@@ -2017,9 +2039,9 @@
 
       <!-- Navigation Hint -->
       <div class="nav-hint">
-        <span class="key-icon" id="prevBtn" onclick="prevSlide()">←</span>
+        <button type="button" class="key-icon" id="prevBtn" onclick="prevSlide()" aria-label="Previous slide">←</button>
         <span>to navigate</span>
-        <span class="key-icon" id="nextBtn" onclick="nextSlide()">→</span>
+        <button type="button" class="key-icon" id="nextBtn" onclick="nextSlide()" aria-label="Next slide">→</button>
       </div>
 
       <!-- Branding Logo -->
@@ -2225,7 +2247,7 @@
     function triggerConfetti() {
       const container = document.getElementById('confettiContainer');
       container.innerHTML = '';
-      const colors = ['#37b550', '#007baf', '#FFD700', '#a7253f', '#FFFFFF'];
+      const colors = ['#37b550', '#007baf', '#d3b257', '#a7253f', '#FFFFFF'];
 
       for (let i = 0; i < 100; i++) {
         const confetti = document.createElement('div');
@@ -2250,14 +2272,28 @@
       showSlide(currentIndex - 1);
     }
 
+    function isFormField(target) {
+      if (!target) return false;
+      return Boolean(target.closest("input, textarea, select, [contenteditable='true']"));
+    }
+
+    function isInteractiveTarget(target) {
+      if (!target) return false;
+      return Boolean(target.closest("button, a, input, textarea, select, summary, [role='button'], [role='tab'], [role='checkbox'], [role='radio']"));
+    }
+
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowRight' || e.key === ' ') {
+      if (isFormField(e.target)) return;
+      if (e.key === 'ArrowRight') {
         e.preventDefault();
         nextSlide();
       } else if (e.key === 'ArrowLeft') {
         e.preventDefault();
         prevSlide();
+      } else if ((e.key === ' ' || e.key === 'Spacebar') && !isInteractiveTarget(e.target)) {
+        e.preventDefault();
+        nextSlide();
       }
     });
 
@@ -2300,26 +2336,53 @@
   <section id="qa-interactive-pack" aria-label="Interactive Practice Pack" style="max-width:1100px;margin:2rem auto;padding:1rem;border:2px solid var(--primary);border-radius:12px;background:var(--muted);">
     <h2 style="color:var(--dark);margin:.25rem 0 1rem;">Interactive Practice Pack</h2>
 
-    <div aria-label="Tabs interaction">
-      <div role="tablist" aria-label="Practice tabs" style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.75rem;">
-        <button type="button" class="qa-tab" role="tab" aria-selected="true" data-target="qa-tab-1" style="padding:.5rem .75rem;border:1px solid var(--dark);background:var(--light);color:var(--dark);border-radius:8px;">Key Idea</button>
-        <button type="button" class="qa-tab" role="tab" aria-selected="false" data-target="qa-tab-2" style="padding:.5rem .75rem;border:1px solid var(--dark);background:var(--light);color:var(--dark);border-radius:8px;">Example</button>
-        <button type="button" class="qa-tab" role="tab" aria-selected="false" data-target="qa-tab-3" style="padding:.5rem .75rem;border:1px solid var(--dark);background:var(--light);color:var(--dark);border-radius:8px;">Action</button>
+    <div class="qa-card" style="margin-top:1rem;padding:.75rem;background:var(--light);border-radius:8px;border:1px solid var(--offwhite);" aria-label="Tabs interaction">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.75rem;flex-wrap:wrap;">
+        <h3 style="margin:0;color:var(--dark);font-size:1.05rem;">Tabs Interaction</h3>
+        <button type="button" class="qa-prompt-toggle" data-target="qa-prompt-tabs" aria-expanded="false" style="padding:.35rem .6rem;border:1px solid var(--dark);background:var(--muted);color:var(--dark);border-radius:6px;">View Prompt</button>
       </div>
-      <div id="qa-tab-1" class="qa-tab-panel" role="tabpanel" style="display:block;padding:.75rem;background:var(--light);border-radius:8px;">Use the framework to make intentional decisions.</div>
-      <div id="qa-tab-2" class="qa-tab-panel" role="tabpanel" style="display:none;padding:.75rem;background:var(--light);border-radius:8px;">Apply this to one real scenario from your week.</div>
-      <div id="qa-tab-3" class="qa-tab-panel" role="tabpanel" style="display:none;padding:.75rem;background:var(--light);border-radius:8px;">Write one behavior change you will complete today.</div>
+      <div id="qa-prompt-tabs" class="qa-prompt-panel" hidden style="margin-top:.55rem;padding:.65rem .75rem;background:var(--muted);border-left:4px solid var(--primary);border-radius:6px;">
+        <p style="margin:.2rem 0;"><strong>Prompt:</strong> Which tab best matches your current challenge and why?</p>
+        <p style="margin:.2rem 0;"><strong>Discussion:</strong> Compare how different choices change outcomes.</p>
+        <p style="margin:.2rem 0;"><strong>Debrief:</strong> Name one action you will apply this week.</p>
+      </div>
+      <div role="tablist" aria-label="Practice tabs" style="display:flex;gap:.5rem;flex-wrap:wrap;margin:.75rem 0;">
+        <button type="button" class="qa-tab" id="qa-tab-btn-1" role="tab" aria-controls="qa-tab-1" aria-selected="true" tabindex="0" data-target="qa-tab-1" style="padding:.5rem .75rem;border:1px solid var(--dark);background:var(--light);color:var(--dark);border-radius:8px;">Key Idea</button>
+        <button type="button" class="qa-tab" id="qa-tab-btn-2" role="tab" aria-controls="qa-tab-2" aria-selected="false" tabindex="-1" data-target="qa-tab-2" style="padding:.5rem .75rem;border:1px solid var(--dark);background:var(--light);color:var(--dark);border-radius:8px;">Example</button>
+        <button type="button" class="qa-tab" id="qa-tab-btn-3" role="tab" aria-controls="qa-tab-3" aria-selected="false" tabindex="-1" data-target="qa-tab-3" style="padding:.5rem .75rem;border:1px solid var(--dark);background:var(--light);color:var(--dark);border-radius:8px;">Action</button>
+      </div>
+      <div id="qa-tab-1" class="qa-tab-panel" role="tabpanel" aria-labelledby="qa-tab-btn-1" style="display:block;padding:.75rem;background:var(--light);border-radius:8px;">Use the framework to make intentional decisions.</div>
+      <div id="qa-tab-2" class="qa-tab-panel" role="tabpanel" aria-labelledby="qa-tab-btn-2" style="display:none;padding:.75rem;background:var(--light);border-radius:8px;">Apply this to one real scenario from your week.</div>
+      <div id="qa-tab-3" class="qa-tab-panel" role="tabpanel" aria-labelledby="qa-tab-btn-3" style="display:none;padding:.75rem;background:var(--light);border-radius:8px;">Write one behavior change you will complete today.</div>
     </div>
 
-    <div aria-label="Accordion interaction" style="margin-top:1rem;">
-      <button type="button" class="qa-acc-btn" aria-expanded="false" data-target="qa-acc-1" style="width:100%;text-align:left;padding:.6rem .75rem;border:1px solid var(--dark);background:var(--light);color:var(--dark);border-radius:8px;">Open Reflection Prompt 1</button>
+    <div class="qa-card" style="margin-top:1rem;padding:.75rem;background:var(--light);border-radius:8px;border:1px solid var(--offwhite);" aria-label="Accordion interaction">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.75rem;flex-wrap:wrap;">
+        <h3 style="margin:0;color:var(--dark);font-size:1.05rem;">Accordion Interaction</h3>
+        <button type="button" class="qa-prompt-toggle" data-target="qa-prompt-accordion" aria-expanded="false" style="padding:.35rem .6rem;border:1px solid var(--dark);background:var(--muted);color:var(--dark);border-radius:6px;">View Prompt</button>
+      </div>
+      <div id="qa-prompt-accordion" class="qa-prompt-panel" hidden style="margin-top:.55rem;padding:.65rem .75rem;background:var(--muted);border-left:4px solid var(--primary);border-radius:6px;">
+        <p style="margin:.2rem 0;"><strong>Prompt:</strong> Open one reflection and explain your choice to a partner.</p>
+        <p style="margin:.2rem 0;"><strong>Discussion:</strong> Highlight patterns students notice across responses.</p>
+        <p style="margin:.2rem 0;"><strong>Debrief:</strong> Capture one behavior each student can practice next.</p>
+      </div>
+      <button type="button" class="qa-acc-btn" aria-expanded="false" data-target="qa-acc-1" style="width:100%;text-align:left;padding:.6rem .75rem;border:1px solid var(--dark);background:var(--light);color:var(--dark);border-radius:8px;margin-top:.75rem;">Open Reflection Prompt 1</button>
       <div id="qa-acc-1" class="qa-acc-panel" hidden style="padding:.65rem .75rem;">What choice would improve your outcome this week?</div>
       <button type="button" class="qa-acc-btn" aria-expanded="false" data-target="qa-acc-2" style="width:100%;text-align:left;padding:.6rem .75rem;border:1px solid var(--dark);background:var(--light);color:var(--dark);border-radius:8px;margin-top:.5rem;">Open Reflection Prompt 2</button>
       <div id="qa-acc-2" class="qa-acc-panel" hidden style="padding:.65rem .75rem;">Which habit should you reduce to reclaim time?</div>
     </div>
 
-    <div aria-label="Checkpoint quiz interaction" style="margin-top:1rem;padding:.75rem;background:var(--light);border-radius:8px;">
-      <p style="margin-top:0;"><strong>Checkpoint:</strong> Which option best reflects the lesson goal?</p>
+    <div class="qa-card" style="margin-top:1rem;padding:.75rem;background:var(--light);border-radius:8px;border:1px solid var(--offwhite);" aria-label="Checkpoint quiz interaction">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.75rem;flex-wrap:wrap;">
+        <h3 style="margin:0;color:var(--dark);font-size:1.05rem;">Checkpoint Prompt</h3>
+        <button type="button" class="qa-prompt-toggle" data-target="qa-prompt-checkpoint" aria-expanded="false" style="padding:.35rem .6rem;border:1px solid var(--dark);background:var(--muted);color:var(--dark);border-radius:6px;">View Prompt</button>
+      </div>
+      <div id="qa-prompt-checkpoint" class="qa-prompt-panel" hidden style="margin-top:.55rem;padding:.65rem .75rem;background:var(--muted);border-left:4px solid var(--primary);border-radius:6px;">
+        <p style="margin:.2rem 0;"><strong>Prompt:</strong> Vote, then defend your choice with evidence from the lesson.</p>
+        <p style="margin:.2rem 0;"><strong>Discussion:</strong> Invite one alternate perspective before revealing feedback.</p>
+        <p style="margin:.2rem 0;"><strong>Debrief:</strong> Reinforce ownership + action as the target behavior.</p>
+      </div>
+      <p style="margin-top:.75rem;"><strong>Checkpoint:</strong> Which option best reflects the lesson goal?</p>
       <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
         <button type="button" class="qa-quiz" data-correct="false" style="padding:.45rem .7rem;border:1px solid var(--dark);background:var(--offwhite);color:var(--dark);border-radius:8px;">Avoid responsibility</button>
         <button type="button" class="qa-quiz" data-correct="true" style="padding:.45rem .7rem;border:1px solid var(--dark);background:var(--offwhite);color:var(--dark);border-radius:8px;">Take ownership and apply the framework</button>
@@ -2335,16 +2398,39 @@
   if(!root) return;
   const tabs=[...root.querySelectorAll('.qa-tab')];
   const panels=[...root.querySelectorAll('.qa-tab-panel')];
-  tabs.forEach(btn=>{
+  const activateTab=(btn)=>{
+    const id=btn.getAttribute('data-target');
+    tabs.forEach(t=>{
+      const active=t===btn;
+      t.setAttribute('aria-selected', String(active));
+      t.setAttribute('tabindex', active ? '0' : '-1');
+    });
+    panels.forEach(p=>p.style.display = (p.id===id?'block':'none'));
+  };
+  tabs.forEach((btn,index)=>{
+    btn.addEventListener('click',()=>activateTab(btn));
+    btn.addEventListener('keydown',(e)=>{
+      if(e.key!=='ArrowRight' && e.key!=='ArrowLeft') return;
+      e.preventDefault();
+      const nextIndex = e.key==='ArrowRight'
+        ? (index+1)%tabs.length
+        : (index-1+tabs.length)%tabs.length;
+      activateTab(tabs[nextIndex]);
+      tabs[nextIndex].focus();
+    });
+  });
+  root.querySelectorAll('.qa-prompt-toggle').forEach(btn=>{
     btn.addEventListener('click',()=>{
-      const id=btn.getAttribute('data-target');
-      tabs.forEach(t=>t.setAttribute('aria-selected', String(t===btn)));
-      panels.forEach(p=>p.style.display = (p.id===id?'block':'none'));
+      const panel=root.querySelector('#'+btn.getAttribute('data-target'));
+      const expanded=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.textContent = expanded ? 'View Prompt' : 'Hide Prompt';
+      if(panel) panel.hidden=expanded;
     });
   });
   root.querySelectorAll('.qa-acc-btn').forEach(btn=>{
     btn.addEventListener('click',()=>{
-      const panel=document.getElementById(btn.getAttribute('data-target'));
+      const panel=root.querySelector('#'+btn.getAttribute('data-target'));
       const expanded=btn.getAttribute('aria-expanded')==='true';
       btn.setAttribute('aria-expanded', String(!expanded));
       if(panel) panel.hidden=expanded;

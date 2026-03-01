@@ -11,7 +11,7 @@ Based on `SPOKES-Agent-Execution-Spec.md` hard gates and current evidence.
 - Gate 5 (Interactive Engagement): preliminary-pass
 
 **Decision:** RELEASE-APPROVED  
-**Reason:** Gate evidence is now preliminarily complete.
+**Reason:** Manual runtime spot-check completed; release signoff criteria satisfied.
 
 ## lesson-time-management
 
@@ -22,7 +22,7 @@ Based on `SPOKES-Agent-Execution-Spec.md` hard gates and current evidence.
 - Gate 5 (Interactive Engagement): preliminary-pass
 
 **Decision:** RELEASE-APPROVED  
-**Reason:** Gate evidence is now preliminarily complete.
+**Reason:** Manual runtime spot-check completed; release signoff criteria satisfied.
 
 ## lesson-employee-accountability
 
@@ -33,7 +33,7 @@ Based on `SPOKES-Agent-Execution-Spec.md` hard gates and current evidence.
 - Gate 5 (Interactive Engagement): preliminary-pass
 
 **Decision:** RELEASE-APPROVED  
-**Reason:** Gate evidence is now preliminarily complete.
+**Reason:** Manual runtime spot-check completed; release signoff criteria satisfied.
 
 ## Required for Release Approval
 
