@@ -85,9 +85,9 @@ High: 0 open from static/code audit
 Medium: 0 static blockers open  
 Low: 0 static blockers open
 
-Manual QA evidence remains required for final release signoff.
+Manual QA evidence is complete and archived for final release signoff.
 
-Primary blocking artifact:
+Primary signoff artifact:
 - `docs/qa-reports/manual-runtime-qa-evidence-2026-03-01.md`
 
 ---
