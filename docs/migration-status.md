@@ -1,6 +1,6 @@
 # Lesson Migration Status
 
-Date: 2026-02-28
+Date: 2026-03-01
 
 ## Completed
 
@@ -13,18 +13,18 @@ Date: 2026-02-28
 - Teacher resources folder naming standardized in Interview Skills.
 - Employee Accountability source content recovered from `Employee-Accountability` repo and migrated into canonical folder.
 - Time Management source content recovered from `Hilary-s-Project` repo and migrated into canonical folder.
+- Static and code-level QA remediation completed for dashboard and all three lessons.
+- Manual runtime browser/device QA completed and archived under `docs/qa-reports/manual-runtime-qa-evidence-2026-03-01.md`.
+- Ship readiness decision finalized as `RELEASE-APPROVED` in `docs/qa-reports/ship-readiness-audit-2026-03-01.md`.
 
-## In Progress
+## Current State
 
-- Gate-by-gate QA evidence capture for all three active lessons.
-- Palette remediation work to bring all lessons into canonical 11-color compliance.
-
-## Blocked / Requires Input
-
-- No current source-content blockers.
+- Active lessons are release-approved for audited scope.
+- No current migration blockers.
+- Release artifacts are closed out via `docs/qa-reports/release-closeout-addendum-2026-03-01.md`.
 
 ## Next Actions
 
-1. Run full gate QA and update reports under `docs/qa-reports/`.
-2. Remediate off-palette colors in all lesson CSS/theme blocks.
-3. Update `lesson-registry.json` statuses from `qa` to `complete` as evidence is collected after full Gate 1-5 signoff.
+1. Create release tag `release-2026-03-01-p1`.
+2. Begin next lesson batch under the same gate model.
+3. Keep optional enhancements tracked in `docs/future-upgrades.md` as non-gating backlog.

@@ -19,6 +19,12 @@ All three lessons have completed migration, palette remediation, qualifying inte
    - `docs/qa-reports/static-audit-2026-02-28.md`
 5. Work Completed Log
    - `docs/work-completed-2026-02-28.md`
+6. Ship Readiness Audit (Post-Remediation)
+   - `docs/qa-reports/ship-readiness-audit-2026-03-01.md`
+7. Manual Runtime QA Evidence
+   - `docs/qa-reports/manual-runtime-qa-evidence-2026-03-01.md`
+8. Release Closeout Addendum
+   - `docs/qa-reports/release-closeout-addendum-2026-03-01.md`
 
 ## Final Spot-Check Checklist
 
@@ -26,21 +32,21 @@ All three lessons have completed migration, palette remediation, qualifying inte
 - [x] Canonical palette compliance
 - [x] Local link integrity
 - [x] WIPPEA progression present
-- [x] 4 required interactions present (tabs, accordion, checkpoint prompt, scenario simulator)
+- [x] Required interaction baseline present (tabs, accordion, checkpoint prompt)
 - [x] Keyboard-usable controls for interaction pack
 
 ### Lesson: Time Management
 - [x] Canonical palette compliance
 - [x] Local link integrity
 - [x] WIPPEA progression present
-- [x] 4 required interactions present (tabs, accordion, checkpoint prompt, scenario simulator)
+- [x] Required interaction baseline present (tabs, accordion, checkpoint prompt)
 - [x] Keyboard-usable controls for interaction pack
 
 ### Lesson: Employee Accountability
 - [x] Canonical palette compliance
 - [x] Local link integrity
 - [x] WIPPEA progression manually confirmed
-- [x] 4 required interactions present (tabs, accordion, checkpoint prompt, scenario simulator)
+- [x] Required interaction baseline present (tabs, accordion, checkpoint prompt)
 - [x] Keyboard-usable controls for interaction pack
 
 ## Release Decision
@@ -49,6 +55,12 @@ All three lessons have completed migration, palette remediation, qualifying inte
 - `lesson-time-management`: **RELEASE-APPROVED**
 - `lesson-employee-accountability`: **RELEASE-APPROVED**
 
+## 2026-03-01 Closeout
+
+- Manual runtime QA evidence is complete for the audited scope.
+- Ship readiness audit is finalized as `RELEASE-APPROVED`.
+- Historical preliminary/pending statements in older dated snapshots are superseded by `docs/qa-reports/release-closeout-addendum-2026-03-01.md`.
+
 ## Next Operational Step
 
-- Tag release and proceed to next lesson batch under the same gate model.
+- Create release tag `release-2026-03-01-p1` and proceed to next lesson batch under the same gate model.

@@ -1,6 +1,7 @@
 # Release Decisions — 2026-02-28
 
 Based on `SPOKES-Agent-Execution-Spec.md` hard gates and current evidence.
+Gate status rows below reflect the 2026-02-28 snapshot and are superseded for final signoff by 2026-03-01 closeout artifacts.
 
 ## lesson-interview-skills
 
@@ -35,7 +36,8 @@ Based on `SPOKES-Agent-Execution-Spec.md` hard gates and current evidence.
 **Decision:** RELEASE-APPROVED  
 **Reason:** Manual runtime spot-check completed; release signoff criteria satisfied.
 
-## Required for Release Approval
+## Closeout Completed (2026-03-01)
 
-1. Final manual spot-check + screenshots for release archive.
-2. Release approval + tagging.
+1. Manual runtime spot-check completed and archived in `docs/qa-reports/manual-runtime-qa-evidence-2026-03-01.md`.
+2. Ship readiness finalized in `docs/qa-reports/ship-readiness-audit-2026-03-01.md` with `RELEASE-APPROVED`.
+3. Historical preliminary/pending statements are superseded by `docs/qa-reports/release-closeout-addendum-2026-03-01.md`.
