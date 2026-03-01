@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "lastUpdated": "2026-02-28",
+  "lastUpdated": "2026-03-01",
   "rules": {
     "allowedVariants": [
       "variant-classic",
@@ -44,7 +44,7 @@
         "brand": "pass",
         "engagement": "pass"
       },
-      "notes": "Release-approved in final release packet 2026-02-28."
+      "notes": "Release-approved 2026-03-01; see manual-runtime-qa-evidence-2026-03-01.md, ship-readiness-audit-2026-03-01.md, and release-closeout-addendum-2026-03-01.md."
     },
     {
       "id": "lesson-interview-skills",
@@ -63,7 +63,7 @@
       },
       "interactions": {
         "minimumRequired": 3,
-        "implemented": 0
+        "implemented": 3
       },
       "qualityGates": {
         "accessibility": "pass",
@@ -72,7 +72,7 @@
         "brand": "pass",
         "engagement": "pass"
       },
-      "notes": "Release-approved in final release packet 2026-02-28."
+      "notes": "Release-approved 2026-03-01; see manual-runtime-qa-evidence-2026-03-01.md, ship-readiness-audit-2026-03-01.md, and release-closeout-addendum-2026-03-01.md."
     },
     {
       "id": "lesson-employee-accountability",
@@ -100,7 +100,7 @@
         "brand": "pass",
         "engagement": "pass"
       },
-      "notes": "Release-approved in final release packet 2026-02-28."
+      "notes": "Release-approved 2026-03-01; see manual-runtime-qa-evidence-2026-03-01.md, ship-readiness-audit-2026-03-01.md, and release-closeout-addendum-2026-03-01.md."
     }
   ]
 }
