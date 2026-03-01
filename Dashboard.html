@@ -13,11 +13,11 @@
             --brand-primary: #007baf;
             --brand-accent: #37b550;
             --brand-dark: #004071;
-            --brand-light: #f8fafc;
+            --brand-light: #EDF3F7;
             --brand-gold: #d3b257;
-            --bg-color: #f1f5f9;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
+            --bg-color: #EDF3F7;
+            --text-main: #004071;
+            --text-muted: #60636b;
         }
 
         * {
@@ -131,8 +131,8 @@
         }
 
         /* Specific module top borders */
-        .module-card.theme-interview { border-top-color: #1A365D; }
-        .module-card.theme-time { border-top-color: #EA580C; }
+        .module-card.theme-interview { border-top-color: #00133f; }
+        .module-card.theme-time { border-top-color: #a7253f; }
         .module-card.theme-accountability { border-top-color: var(--brand-accent); }
 
         .card-header {
@@ -154,9 +154,9 @@
             color: var(--brand-primary);
         }
 
-        .theme-interview .card-icon { background: rgba(26, 54, 93, 0.1); color: #1A365D; }
-        .theme-time .card-icon { background: rgba(234, 88, 12, 0.1); color: #EA580C; }
-        .theme-accountability .card-icon { background: rgba(55, 181, 80, 0.1); color: var(--brand-accent); }
+        .theme-interview .card-icon { background: rgba(0, 19, 63, 0.1); color: #00133f; }
+        .theme-time .card-icon { background: rgba(167, 37, 63, 0.1); color: #a7253f; }
+        .theme-accountability .card-icon { background: rgba(55, 181, 80, 0.1); color: #004071; }
 
         .module-name {
             font-family: 'DM Serif Display', serif;
@@ -167,8 +167,8 @@
             color: var(--brand-dark);
         }
 
-        .theme-interview .module-name { color: #1A365D; }
-        .theme-time .module-name { color: #2E1065; }
+        .theme-interview .module-name { color: #00133f; }
+        .theme-time .module-name { color: #a7253f; }
 
         .module-desc {
             color: var(--text-muted);
@@ -180,7 +180,7 @@
         .card-footer {
             padding: 1.25rem 2rem;
             background: var(--brand-light);
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid #d1d3d4;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -189,12 +189,12 @@
             transition: background 0.3s ease;
         }
 
-        .theme-interview .card-footer { color: #2B6CB0; }
-        .theme-time .card-footer { color: #EA580C; }
-        .theme-accountability .card-footer { color: var(--brand-accent); }
+        .theme-interview .card-footer { color: #00133f; }
+        .theme-time .card-footer { color: #a7253f; }
+        .theme-accountability .card-footer { color: #004071; }
 
         .module-card:hover .card-footer {
-            background: #e2e8f0;
+            background: #d1d3d4;
         }
 
         .arrow-icon {
@@ -220,7 +220,16 @@
 
         .status-ready {
             background: rgba(55, 181, 80, 0.1);
-            color: #278539;
+            color: #004071;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
         }
 
         /* Footer */
