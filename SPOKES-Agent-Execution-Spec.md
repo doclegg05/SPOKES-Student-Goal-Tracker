@@ -52,9 +52,9 @@ If documents conflict, use this precedence:
    - Fast-follow Phase 2 begins when the first three current project lessons are finalized.
    - At that trigger point, open Phase 2 items must be scheduled and tracked under SLA.
 13. Interactive minimum:
-   - Each lesson must include 4 required qualifying interactive elements (+ optional 5th when instructionally valuable).
-   - Required interaction blueprint: tabs, accordion, checkpoint prompt (non-graded), scenario decision simulator.
-   - Optional 5th interaction allowed only when instructionally valuable for that lesson.
+   - Each lesson must include 3 required qualifying interactive elements (+ optional 4th+ when instructionally valuable).
+   - Required interaction blueprint: tabs, accordion, checkpoint prompt (non-graded).
+   - Optional 4th+ interactions are allowed only when instructionally valuable for that lesson and may follow candidates in `docs/future-upgrades.md`.
    - Interactions must be functionally interactive (not decorative only), keyboard-usable, and instructor-led (no auto-grading/right-wrong engine by default).
 14. Device QA matrix (locked):
    - Mobile phone: 360x800 (portrait)
@@ -115,8 +115,8 @@ Phase 2 fast-follow:
 
 ### Gate 5: Interactive Engagement (Retention)
 
-- Lesson must include 4 required interactions: tabs, accordion, checkpoint prompt (non-graded), scenario decision simulator.
-- Optional 5th interaction is permitted only when it adds clear instructional value.
+- Lesson must include 3 required interactions: tabs, accordion, checkpoint prompt (non-graded).
+- Optional 4th+ interaction is permitted only when it adds clear instructional value.
 - Interactions must be truly interactive, keyboard-usable, and instructor-led in facilitation intent (no auto-grading/right-wrong engine by default).
 - Instructor prompt panel is required on each interaction card (View Prompt/Hide Prompt), hidden by default.
 - Navigation controls alone (next/prev) do not satisfy this gate.
