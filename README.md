@@ -44,7 +44,7 @@ Each lesson ships as a **single self-contained `index.html`** with:
 - WCAG-aligned accessibility baseline
 - WIPPEA structural adherence
 - brand-compliant color usage (canonical palette only)
-- 4 required qualifying interactions (+ optional 5th where it adds clear value)
+- 3 required qualifying interactions (+ optional 4th+ where it adds clear value)
 - validated links/resources
 
 ## Quality Gates
@@ -70,5 +70,6 @@ See `SPOKES-Agent-Execution-Spec.md` for full gate criteria and severity/SLA pol
 - `lesson-registry.json` (variant/font/component tracking per lesson)
 - `docs/repo-standards.md` (naming and structure policy)
 - `docs/release-checklist.md` (release quality checklist)
+- `docs/future-upgrades.md` (deferred optional enhancements backlog)
 - `README-dashboard.md` (dashboard acceptance criteria + ownership model)
 - `docs/final-product-definition.md` (authoritative final product target)

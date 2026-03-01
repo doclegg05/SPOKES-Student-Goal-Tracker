@@ -1,7 +1,7 @@
 # Final Product Definition (Authoritative)
 
 Status: Authoritative
-Effective Date: 2026-02-28
+Effective Date: 2026-03-01
 Owner: Britt
 
 This document defines the exact target state for SPOKES lesson deliverables and interaction design. If any document conflicts with this one on final-product behavior, this document governs final-product intent while `SPOKES-Agent-Execution-Spec.md` remains governing for gate policy and release controls.
@@ -42,15 +42,15 @@ This document defines the exact target state for SPOKES lesson deliverables and 
 
 Each lesson must include:
 
-### Required (4 interactions)
+### Required (3 interactions)
 1. Tabs interaction (standard)
 2. Accordion interaction (standard)
 3. Checkpoint prompt interaction (standard, non-graded)
-4. Scenario decision simulator (custom default)
 
-### Optional (5th interaction)
-- Add only if it provides clear instructional value for that specific lesson
-- Do not add filler interactions to hit volume
+### Optional (4th+ interactions)
+- Add only if it provides clear instructional value for that specific lesson.
+- Candidate upgrades are tracked in `docs/future-upgrades.md`.
+- Do not add filler interactions to hit volume.
 
 ---
 
@@ -80,7 +80,7 @@ Facilitation mode support:
 1. Canonical 11-color SPOKES palette only
 2. WCAG 2.2 AA baseline compliance per execution spec
 3. WIPPEA sequence integrity
-4. 4 required interactions implemented and keyboard-usable
+4. 3 required interactions implemented and keyboard-usable
 5. Instructor prompt panel behavior exactly as defined here
 
 ---
