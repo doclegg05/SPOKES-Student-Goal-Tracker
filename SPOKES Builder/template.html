@@ -1,0 +1,1746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- TEMPLATE: Replace the title below with "{{LESSON_TITLE}} — SPOKES" -->
+  <title>{{LESSON_TITLE}} — SPOKES</title>
+  <style>
+    /* ================================================================
+       SPOKES DESIGN SYSTEM — DO NOT MODIFY THIS CSS
+       This entire <style> block is the SPOKES brand standard.
+       Copy it verbatim into every new lesson.
+       ================================================================ */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #007baf;
+      --accent: #37b550;
+      --dark: #004071;
+      --light: #FFFFFF;
+      --muted: #EDF3F7;
+      --gray: #60636b;
+      --gold: #d3b257;
+      --royal: #00133f;
+      --mauve: #a7253f;
+      --offwhite: #d1d3d4;
+      --muted-gold: #ad8806;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--dark);
+      color: var(--dark);
+      overflow: hidden;
+      height: 100vh;
+    }
+
+    /* Layout */
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 280px;
+      background: var(--dark);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      transition: margin-left 0.3s ease, opacity 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .sidebar.collapsed {
+      margin-left: -280px;
+    }
+
+    .sidebar-toggle {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 300;
+      background: var(--dark);
+      color: var(--light);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .sidebar-toggle:hover {
+      background: var(--primary);
+      transform: scale(1.05);
+    }
+
+    .sidebar-toggle:active {
+      transform: scale(0.95);
+    }
+
+    .sidebar-title {
+      color: var(--gold);
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid rgba(255,255,255,0.1);
+    }
+
+    .chapter-list {
+      list-style: none;
+      flex: 1;
+    }
+
+    .chapter-item {
+      margin-bottom: 0.25rem;
+    }
+
+    .chapter-header {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .chapter-header:hover {
+      background: rgba(255,255,255,0.1);
+      color: var(--light);
+    }
+
+    .chapter-item.active > .chapter-header {
+      background: rgba(0,123,175,0.25);
+      color: var(--light);
+      border-left-color: var(--gold);
+    }
+
+    .chapter-arrow {
+      font-size: 0.7rem;
+      transition: transform 0.3s ease;
+    }
+
+    .chapter-item.expanded .chapter-arrow {
+      transform: rotate(90deg);
+    }
+
+    .wippea-badge {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .wippea-badge.w { background: var(--gold); color: var(--dark); }
+    .wippea-badge.i { background: var(--primary); color: var(--light); }
+    .wippea-badge.p { background: var(--accent); color: var(--light); }
+    .wippea-badge.e { background: var(--gold); color: var(--dark); }
+    .wippea-badge.a { background: var(--dark); color: var(--gold); border: 1px solid var(--gold); }
+
+    .slide-list {
+      list-style: none;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding-left: 1rem;
+    }
+
+    .chapter-item.expanded .slide-list {
+      max-height: 500px;
+    }
+
+    .slide-item {
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      white-space: normal;
+      word-wrap: break-word;
+    }
+
+    .slide-item:hover {
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8);
+    }
+
+    .slide-item.active {
+      background: rgba(211,178,87,0.3);
+      color: var(--light);
+    }
+
+    .slide-counter {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.875rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Resources Section */
+    .resources-section {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .resources-title {
+      color: var(--gold);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.75rem;
+    }
+
+    .resource-link {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      margin-bottom: 0.25rem;
+    }
+
+    .resource-link:hover {
+      background: rgba(255,255,255,0.1);
+      color: var(--light);
+    }
+
+    .resource-link:active {
+      background: rgba(255,255,255,0.2);
+      transform: scale(0.97);
+    }
+
+    .resource-link::before {
+      content: "\2193 ";
+      opacity: 0.6;
+    }
+
+    /* Download Button */
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: var(--light);
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-top: 1.5rem;
+      cursor: pointer;
+    }
+
+    .download-btn:hover {
+      background: #2e9a44;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(55, 181, 80, 0.4);
+    }
+
+    .download-btn:active {
+      transform: translateY(0px) scale(0.97);
+      box-shadow: none;
+    }
+
+    .download-btn::before {
+      content: "\2193";
+      font-size: 1.2rem;
+    }
+
+    /* Video Button */
+    .video-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--gold);
+      color: var(--dark);
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-top: 1.5rem;
+      cursor: pointer;
+    }
+
+    .video-btn:hover {
+      background: #c4a34b;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(211, 178, 87, 0.4);
+    }
+
+    .video-btn:active {
+      transform: translateY(0px) scale(0.97);
+      box-shadow: none;
+    }
+
+    .video-btn::before {
+      content: "\25B6";
+      font-size: 1rem;
+    }
+
+    /* Download Resource Container */
+    .download-resource {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding: 1rem 1.5rem;
+      background: rgba(0, 123, 175, 0.06);
+      border-radius: 12px;
+      border: 1px solid rgba(0, 123, 175, 0.1);
+      align-self: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .download-prompt {
+      font-size: 0.9rem;
+      color: var(--gray);
+      font-style: italic;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .download-resource .download-btn,
+    .download-resource .video-btn {
+      margin-top: 0;
+      font-size: 0.95rem;
+      padding: 0.6rem 1.2rem;
+    }
+
+    /* Main Content */
+    .main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--light);
+      position: relative;
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 10px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--gold) 100%);
+      transition: width 0.3s ease;
+      z-index: 200;
+      box-shadow: 0 2px 8px rgba(0, 123, 175, 0.5);
+    }
+
+    /* Branding Logo */
+    .branding-logo {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      max-width: 80px;
+      height: auto;
+      opacity: 1;
+      z-index: 100;
+      padding: 0.5rem;
+      border-radius: 6px;
+      background: var(--light);
+    }
+
+    /* Slides */
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      padding: 4rem 5rem;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    .slide.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow-y: auto;
+    }
+
+    .slide.active::before,
+    .slide.active::after {
+      content: '';
+      flex: 1 0 0px;
+      min-height: 1rem;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Staggered content animations */
+    .slide.active h2 { animation: fadeUp 0.5s ease-out both; }
+
+    .slide.active .card,
+    .slide.active .takeaway-item,
+    .slide.active .smart-row,
+    .slide.active .principle-item,
+    .slide.active .area-card,
+    .slide.active .matrix-cell,
+    .slide.active .danger-card { animation: fadeUp 0.5s ease-out both; }
+
+    .slide.active .card:nth-child(1),
+    .slide.active .takeaway-item:nth-child(1),
+    .slide.active .smart-row:nth-child(1),
+    .slide.active .danger-card:nth-child(1),
+    .slide.active .matrix-cell:nth-child(1),
+    .slide.active .area-card:nth-child(1) { animation-delay: 0.1s; }
+
+    .slide.active .card:nth-child(2),
+    .slide.active .takeaway-item:nth-child(2),
+    .slide.active .smart-row:nth-child(2),
+    .slide.active .danger-card:nth-child(2),
+    .slide.active .matrix-cell:nth-child(2),
+    .slide.active .area-card:nth-child(2) { animation-delay: 0.2s; }
+
+    .slide.active .card:nth-child(3),
+    .slide.active .takeaway-item:nth-child(3),
+    .slide.active .smart-row:nth-child(3),
+    .slide.active .danger-card:nth-child(3),
+    .slide.active .matrix-cell:nth-child(3),
+    .slide.active .area-card:nth-child(3) { animation-delay: 0.3s; }
+
+    .slide.active .card:nth-child(4),
+    .slide.active .takeaway-item:nth-child(4),
+    .slide.active .smart-row:nth-child(4),
+    .slide.active .danger-card:nth-child(4),
+    .slide.active .matrix-cell:nth-child(4) { animation-delay: 0.4s; }
+
+    .slide.active .card:nth-child(5),
+    .slide.active .takeaway-item:nth-child(5),
+    .slide.active .smart-row:nth-child(5),
+    .slide.active .danger-card:nth-child(5) { animation-delay: 0.5s; }
+
+    .slide.active .takeaway-item:nth-child(6) { animation-delay: 0.6s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Card hover effects */
+    .card,
+    .area-card,
+    .danger-card,
+    .matrix-cell { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+
+    .card:hover,
+    .area-card:hover,
+    .danger-card:hover,
+    .matrix-cell:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .matrix-cell.do-first:hover,
+    .matrix-cell.schedule:hover,
+    .matrix-cell.delegate:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      filter: brightness(1.12);
+    }
+
+    /* Title Slide */
+    .slide-title {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+      overflow: hidden;
+      padding-top: 2rem;
+      padding-bottom: 1rem;
+    }
+    .slide-title.active::before { flex: 0.7; }
+    .slide-title.active::after { flex: 1; }
+
+    .slide-title.active .logo { animation: dropIn 0.8s ease-out both; }
+    .slide-title.active h1 { animation: zoomIn 0.8s ease-out 0.3s both; }
+    .slide-title.active .divider { animation: expandWidth 0.6s ease-out 0.7s both; }
+    .slide-title.active .subtitle { animation: fadeUp 0.8s ease-out 1s both; }
+
+    @keyframes dropIn {
+      from { opacity: 0; transform: translateY(-100px) scale(0.5); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.5); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes expandWidth {
+      from { width: 0; opacity: 0; }
+      to { width: 120px; opacity: 1; }
+    }
+
+    .slide-title h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 5rem;
+      color: var(--light);
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .slide-title .subtitle {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 3rem;
+    }
+
+    .slide-title .divider {
+      width: 120px;
+      height: 5px;
+      background: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .slide-title .logo {
+      max-width: 280px;
+      height: auto;
+      margin-bottom: 2rem;
+      background: var(--light);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .slide-title .copyright {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 1rem;
+    }
+
+    /* Hide corner branding on title and closing slides */
+    .slide-title.active ~ .branding-logo,
+    .slide-closing.active ~ .branding-logo {
+      display: none;
+    }
+
+    /* Content Slides */
+    .slide h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+    }
+
+    .slide h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.5rem;
+      color: var(--dark);
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .slide p {
+      font-size: 2rem;
+      line-height: 1.6;
+      color: var(--gray);
+    }
+
+    .slide .highlight {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .slide .accent {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .slide .gold {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      flex: 1;
+    }
+
+    .card {
+      background: var(--muted);
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      border-left: 6px solid var(--accent);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .card.gold-border { border-left-color: var(--gold); }
+
+    .card h4 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.75rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .card p {
+      font-size: 1.5rem;
+      color: var(--gray);
+    }
+
+    /* Takeaways / Numbered Items */
+    .takeaways {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .takeaway-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .takeaway-num {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--light);
+      flex-shrink: 0;
+      transform: scale(0);
+      transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .slide.active .takeaway-num { transform: scale(1); }
+    .slide.active .takeaway-item:nth-child(1) .takeaway-num { transition-delay: 0.2s; }
+    .slide.active .takeaway-item:nth-child(2) .takeaway-num { transition-delay: 0.4s; }
+    .slide.active .takeaway-item:nth-child(3) .takeaway-num { transition-delay: 0.6s; }
+    .slide.active .takeaway-item:nth-child(4) .takeaway-num { transition-delay: 0.8s; }
+    .slide.active .takeaway-item:nth-child(5) .takeaway-num { transition-delay: 1.0s; }
+    .slide.active .takeaway-item:nth-child(6) .takeaway-num { transition-delay: 1.2s; }
+
+    .takeaway-num.alt { background: var(--gold); color: var(--dark); }
+
+    .takeaway-item p { font-size: 1.35rem; }
+
+    /* SMART Goals / Letter+Content Rows */
+    .smart-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .smart-row {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .smart-letter {
+      width: 44px;
+      height: 44px;
+      background: var(--primary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--light);
+      flex-shrink: 0;
+    }
+
+    .smart-letter.alt { background: var(--gold); color: var(--dark); }
+
+    .smart-content {
+      flex: 1;
+      background: var(--muted);
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+    }
+
+    .smart-content h4 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      color: var(--primary);
+      margin-bottom: 0;
+      font-weight: 400;
+    }
+
+    .smart-content p { font-size: 0.95rem; }
+
+    /* Eisenhower Matrix */
+    .matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      flex: 1;
+    }
+
+    .matrix-cell {
+      padding: 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .matrix-cell.do-first {
+      background: var(--primary);
+      color: var(--light);
+    }
+
+    .matrix-cell.schedule {
+      background: var(--accent);
+      color: var(--light);
+    }
+
+    .matrix-cell.delegate {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    .matrix-cell.eliminate {
+      background: var(--muted);
+      color: var(--gray);
+      border: 2px solid #E0E0E0;
+    }
+
+    .matrix-cell .matrix-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0.8;
+    }
+
+    .matrix-cell .matrix-action {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      font-weight: 400;
+    }
+
+    .matrix-cell .matrix-desc {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* Danger Cards (flip) */
+    .dangers-grid {
+      display: flex;
+      gap: 1.5rem;
+      flex: 1;
+      align-items: center;
+    }
+
+    .danger-card {
+      flex: 1;
+      perspective: 1000px;
+      cursor: pointer;
+      height: 200px;
+      min-width: 110px;
+    }
+
+    .danger-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .danger-card:hover .danger-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .danger-card-front, .danger-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      padding: 1.25rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .danger-card-front {
+      background: var(--dark);
+      color: var(--light);
+    }
+
+    .danger-card-back {
+      background: var(--gold);
+      color: var(--dark);
+      transform: rotateY(180deg);
+    }
+
+    .danger-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .danger-card-front h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .danger-card-back p {
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .danger-card-back h4 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    /* Area Cards (3 column) */
+    .areas-grid {
+      display: flex;
+      gap: 2rem;
+      flex: 1;
+    }
+
+    .area-card {
+      flex: 1;
+      background: var(--primary);
+      border-radius: 16px;
+      padding: 2rem;
+      color: var(--light);
+    }
+
+    .area-card.gold-card { background: var(--gold); color: var(--dark); }
+
+    .area-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .area-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin: 0 auto 1rem;
+    }
+
+    .area-card.gold-card .area-icon { background: var(--dark); color: var(--gold); }
+
+    .area-card h4 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+
+    .area-card ul { list-style: none; }
+
+    .area-card li {
+      font-size: 1.25rem;
+      padding: 0.5rem 0;
+      color: rgba(255,255,255,0.85);
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .area-card.gold-card li { color: var(--dark); }
+
+    .area-card li::before {
+      content: "\2022";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    .area-card.gold-card li::before { color: var(--dark); }
+
+    /* Big Statement */
+    .big-statement {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(ellipse at 50% 40%, var(--muted) 0%, #FFFFFF 60%);
+    }
+
+    .big-statement h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 4.5rem;
+      font-weight: 400;
+      line-height: 1.3;
+      max-width: 900px;
+    }
+
+    .big-statement p {
+      max-width: 700px;
+    }
+
+    /* Video Embed Slides */
+    .slide-video {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(170deg, #F4F8FB 0%, #FFFFFF 50%, #EEF2F6 100%);
+    }
+
+    .slide-video {
+      padding: 2rem 3rem;
+    }
+    .slide-video h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .slide-video.active .video-container {
+      animation: fadeUp 0.6s ease-out 0.3s both;
+    }
+
+    /* Activity Callout */
+    .activity-box {
+      background: rgba(211, 178, 87, 0.1);
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      margin-top: 2rem;
+      align-self: stretch;
+    }
+
+    .activity-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .activity-box p {
+      font-size: 1.25rem;
+      color: var(--dark);
+    }
+
+    /* Content with side visual */
+    .split-layout {
+      display: flex;
+      gap: 4rem;
+      flex: 1;
+      align-items: center;
+    }
+
+    .split-text { flex: 1; }
+    .split-visual {
+      flex: 0 0 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .visual-circle {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light);
+      font-size: 5rem;
+    }
+
+    /* Content list */
+    .content-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .content-list li {
+      font-size: 1.5rem;
+      padding: 0.6rem 0;
+      padding-left: 2rem;
+      position: relative;
+      color: var(--gray);
+    }
+
+    .content-list li::before {
+      content: "\2192";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .content-list.danger li::before {
+      content: "\26A0";
+      color: var(--gold);
+    }
+
+    /* Background Variation */
+    .slide:not(.slide-title):not(.slide-section):not(.slide-closing):not(.big-statement) {
+      background: linear-gradient(170deg, #F4F8FB 0%, #FFFFFF 50%, #EEF2F6 100%);
+    }
+
+    /* Key Takeaways */
+    .takeaway-item p { font-size: 1.35rem; }
+
+    /* Section Slide */
+    .slide-section {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: var(--primary);
+      overflow: hidden;
+      padding-top: 2rem;
+      padding-bottom: 1rem;
+    }
+    .slide-section.active::before { flex: 0; min-height: 0; }
+
+    .slide-section.active { animation: sectionSlideIn 0.6s ease-out; }
+    .slide-section.active .chapter-label { animation: fadeDown 0.5s ease-out 0.2s both; }
+    .slide-section.active h2 { animation: scaleIn 0.6s ease-out 0.4s both; }
+    .slide-section.active .divider { animation: expandWidth 0.5s ease-out 0.7s both; }
+
+    @keyframes sectionSlideIn {
+      from { opacity: 0; background: var(--dark); }
+      to { opacity: 1; background: var(--primary); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .slide-section .chapter-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .slide-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 4rem;
+      color: var(--light);
+      font-weight: 400;
+      position: relative;
+      z-index: 2;
+    }
+
+    .slide-section .divider {
+      width: 100px;
+      height: 5px;
+      background: var(--gold);
+      margin-top: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .slide-section::after {
+      content: attr(data-chapter-num);
+      position: absolute;
+      font-family: 'DM Serif Display', serif;
+      font-size: 28rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.04);
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      line-height: 1;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .slide-section[data-chapter-num="W"] { background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%); }
+    .slide-section[data-chapter-num="I"] { background: linear-gradient(225deg, var(--dark) 0%, var(--royal) 100%); }
+    .slide-section[data-chapter-num="P1"] { background: linear-gradient(160deg, var(--primary) 0%, var(--royal) 100%); }
+    .slide-section[data-chapter-num="P2"] { background: linear-gradient(200deg, var(--dark) 0%, var(--primary) 100%); }
+    .slide-section[data-chapter-num="P3"] { background: linear-gradient(145deg, var(--royal) 0%, var(--primary) 100%); }
+    .slide-section[data-chapter-num="E"] { background: linear-gradient(190deg, var(--primary) 0%, var(--dark) 100%); }
+    .slide-section[data-chapter-num="A"] { background: linear-gradient(170deg, var(--royal) 0%, var(--dark) 100%); }
+
+    /* Closing Slide */
+    .slide-closing {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide-closing.active .closing-box { animation: celebrateIn 0.8s ease-out both; }
+
+    @keyframes celebrateIn {
+      from { opacity: 0; transform: scale(0.5) rotate(-5deg); }
+      to { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+
+    .confetti-container {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px; height: 10px;
+      top: -10px;
+      animation: confettiFall 4s ease-in-out forwards;
+    }
+
+    @keyframes confettiFall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+
+    .closing-box {
+      background: rgba(255,255,255,0.1);
+      padding: 4rem 5rem;
+      border-radius: 20px;
+      max-width: 800px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .closing-box p {
+      font-size: 1.75rem;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.6;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    .closing-box .divider {
+      width: 80px;
+      height: 4px;
+      background: var(--gold);
+      margin: 0 auto 2rem;
+    }
+
+    .closing-box h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3.5rem;
+      color: var(--light);
+      font-weight: 400;
+    }
+
+    /* Navigation Hint */
+    .nav-hint {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--gray);
+      font-size: 0.8rem;
+      background: rgba(255,255,255,0.9);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+    }
+
+    .key-icon {
+      background: var(--muted);
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      font-family: monospace;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .key-icon:hover {
+      background: var(--primary);
+      color: var(--light);
+    }
+
+    .key-icon:active { transform: scale(0.95); }
+
+    /* ===== Mobile Responsiveness ===== */
+    @media (max-width: 768px) {
+      .sidebar { margin-left: -280px; }
+      .sidebar-toggle { display: flex; }
+      .slide { padding: 2rem 1.5rem; }
+      .slide h1 { font-size: 2.5rem; }
+      .slide h2 { font-size: 1.8rem; }
+      .cards-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .matrix-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .dangers-grid { flex-wrap: wrap; gap: 1rem; }
+      .danger-card { min-width: 120px; height: 180px; }
+      .split-layout { flex-direction: column; gap: 1.5rem; }
+      .split-visual { flex: 0 0 auto; }
+      .visual-circle { width: 150px; height: 150px; font-size: 3rem; }
+      .areas-grid { flex-direction: column; }
+      .branding-logo { max-width: 50px; bottom: 0.75rem; right: 0.75rem; }
+      .nav-hint { bottom: 1rem; font-size: 0.8rem; }
+      .slide-title h1 { font-size: 3rem; }
+      .logo { max-width: 150px; }
+      .download-resource { flex-direction: column; align-items: flex-start; }
+      .slide-video h2 { font-size: 1.6rem; margin-bottom: 1.5rem; }
+      .video-container { max-width: 100%; }
+    }
+
+    @media (max-width: 480px) {
+      .slide { padding: 1.5rem 1rem; }
+      .slide h1 { font-size: 2rem; }
+      .slide h2 { font-size: 1.4rem; }
+      .slide-title h1 { font-size: 2.2rem; }
+      .dangers-grid { flex-direction: column; }
+      .danger-card { height: 160px; }
+      .big-statement h2 { font-size: 2rem; }
+      .branding-logo { max-width: 40px; bottom: 0.5rem; right: 0.5rem; }
+      .slide-video h2 { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar — Auto-built by JavaScript from slide data-chapter attributes -->
+    <nav class="sidebar">
+      <div class="sidebar-title">WIPPEA Lesson</div>
+      <ul class="chapter-list" id="chapterList">
+        <!-- Dynamically populated by buildSidebar() -->
+      </ul>
+
+      <!-- TEMPLATE: Add resource links for this lesson's downloadable PDFs -->
+      <div class="resources-section">
+        <div class="resources-title">Resources</div>
+        <!-- <a href="Handouts/{{FILENAME}}.pdf" target="_blank" class="resource-link">{{Display Name}}</a> -->
+      </div>
+
+      <div class="slide-counter">
+        Slide <span id="currentSlide">1</span> of <span id="totalSlides">0</span>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
+      <!-- Sidebar Toggle -->
+      <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()" title="Toggle sidebar">&#171;</button>
+
+      <!-- ======================== -->
+      <!-- W — WARM-UP             -->
+      <!-- ======================== -->
+
+      <!-- SLIDE TYPE: Title (always first slide, always chapter 1) -->
+      <section class="slide slide-title active" data-chapter="1">
+        <img src="SPOKES-Logo.png" alt="SPOKES — Strategic Planning in Occupational Knowledge for Employment and Success — Skills for Life" class="logo">
+        <h1>{{LESSON_TITLE}}</h1>
+        <div class="divider"></div>
+        <p class="subtitle">{{SUBTITLE}}</p>
+        <p class="copyright">Copyright &copy; 2026 WV Adult Basic Education</p>
+      </section>
+
+      <!-- SLIDE TYPE: Standard content with takeaways (Warm-Up activity) -->
+      <section class="slide" data-chapter="1">
+        <h2>{{Warm-Up Activity Title}}</h2>
+        <p style="font-size: 1.5rem; color: var(--gray); margin-top: -1.5rem; margin-bottom: 2rem;">{{Subtitle}}</p>
+        <div class="takeaways">
+          <div class="takeaway-item">
+            <div class="takeaway-num alt">1</div>
+            <p>{{Step 1 instruction}}</p>
+          </div>
+          <div class="takeaway-item">
+            <div class="takeaway-num alt">2</div>
+            <p>{{Step 2 instruction}}</p>
+          </div>
+          <div class="takeaway-item">
+            <div class="takeaway-num alt">3</div>
+            <p>{{Step 3 instruction}}</p>
+          </div>
+        </div>
+        <!-- Optional: download resource for warm-up worksheet -->
+        <div class="download-resource">
+          <span class="download-prompt">Instructor Resource Available</span>
+          <a href="Handouts/{{filename}}.pdf" target="_blank" class="download-btn">{{Button Label}}</a>
+        </div>
+      </section>
+
+      <!-- ======================== -->
+      <!-- I — INTRODUCTION        -->
+      <!-- ======================== -->
+
+      <!-- SLIDE TYPE: Section divider (one per chapter) -->
+      <section class="slide slide-section" data-chapter="2" data-chapter-num="I">
+        <p class="chapter-label">Introduction</p>
+        <h2>{{Chapter Title}}</h2>
+        <div class="divider"></div>
+      </section>
+
+      <!-- SLIDE TYPE: Standard content with cards-grid -->
+      <section class="slide" data-chapter="2">
+        <h2>{{Slide Title}}</h2>
+        <p style="font-size: 1.4rem; color: var(--gray); margin-top: -1.5rem; margin-bottom: 2rem;">{{Optional subtitle}}</p>
+        <div class="cards-grid">
+          <div class="card">
+            <h4>{{Card Title}}</h4>
+            <p>{{Card description}}</p>
+          </div>
+          <div class="card gold-border">
+            <h4>{{Card Title}}</h4>
+            <p>{{Card description}}</p>
+          </div>
+          <!-- Add more cards as needed (2-6 cards) -->
+        </div>
+      </section>
+
+      <!-- SLIDE TYPE: Big statement (key takeaway / transition) -->
+      <section class="slide big-statement" data-chapter="2">
+        <h2>{{Big impactful statement with <span class="accent">colored</span> words}}</h2>
+      </section>
+
+      <!-- ======================== -->
+      <!-- P — PRESENTATION 1      -->
+      <!-- ======================== -->
+
+      <section class="slide slide-section" data-chapter="3" data-chapter-num="P1">
+        <p class="chapter-label">Presentation</p>
+        <h2>{{Chapter Title}}</h2>
+        <div class="divider"></div>
+      </section>
+
+      <!-- SLIDE TYPE: Standard content with split-layout -->
+      <section class="slide" data-chapter="3">
+        <h2>{{Slide Title}}</h2>
+        <div class="split-layout">
+          <div class="split-text">
+            <p style="font-size: 1.6rem; margin-bottom: 1.5rem;">{{Main text with <span class="highlight">highlighted words</span>}}</p>
+            <p style="font-size: 1.6rem;">{{Supporting text}}</p>
+          </div>
+          <div class="split-visual">
+            <div class="visual-circle">&#9733;</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SLIDE TYPE: Video embed -->
+      <section class="slide slide-video" data-chapter="3">
+        <h2>Watch: {{Video Title}}</h2>
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/{{VIDEO_ID}}"
+            title="{{Video Title}}"
+            frameborder="0"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </section>
+
+      <!-- ======================== -->
+      <!-- P — PRESENTATION 2      -->
+      <!-- ======================== -->
+
+      <section class="slide slide-section" data-chapter="4" data-chapter-num="P2">
+        <p class="chapter-label">Presentation</p>
+        <h2>{{Chapter Title}}</h2>
+        <div class="divider"></div>
+      </section>
+
+      <!-- Add content slides for chapter 4 here -->
+
+      <!-- ======================== -->
+      <!-- P — PRESENTATION 3      -->
+      <!-- ======================== -->
+
+      <section class="slide slide-section" data-chapter="5" data-chapter-num="P3">
+        <p class="chapter-label">Presentation</p>
+        <h2>{{Chapter Title}}</h2>
+        <div class="divider"></div>
+      </section>
+
+      <!-- Add content slides for chapter 5 here -->
+
+      <!-- ======================== -->
+      <!-- E — EVALUATION          -->
+      <!-- ======================== -->
+
+      <section class="slide slide-section" data-chapter="6" data-chapter-num="E">
+        <p class="chapter-label">Evaluation</p>
+        <h2>{{Evaluation Title}}</h2>
+        <div class="divider"></div>
+      </section>
+
+      <!-- Evaluation content slide (exit ticket, quiz, etc.) -->
+      <section class="slide" data-chapter="6">
+        <h2>Exit Ticket</h2>
+        <div class="takeaways">
+          <div class="takeaway-item">
+            <div class="takeaway-num">1</div>
+            <p>{{Question 1}}</p>
+          </div>
+          <div class="takeaway-item">
+            <div class="takeaway-num alt">2</div>
+            <p>{{Question 2}}</p>
+          </div>
+          <div class="takeaway-item">
+            <div class="takeaway-num">3</div>
+            <p>{{Question 3}}</p>
+          </div>
+        </div>
+        <div class="download-resource">
+          <span class="download-prompt">Instructor Resource Available</span>
+          <a href="Handouts/{{test_filename}}.pdf" target="_blank" class="download-btn">Pre/Post Test</a>
+          <a href="Handouts/{{rubric_filename}}.pdf" target="_blank" class="download-btn">Rubric</a>
+        </div>
+      </section>
+
+      <!-- ======================== -->
+      <!-- A — APPLICATION         -->
+      <!-- ======================== -->
+
+      <section class="slide slide-section" data-chapter="7" data-chapter-num="A">
+        <p class="chapter-label">Application</p>
+        <h2>{{Application Title}}</h2>
+        <div class="divider"></div>
+      </section>
+
+      <!-- Application activity slide -->
+      <section class="slide" data-chapter="7">
+        <h2>{{Activity Title}}</h2>
+        <p style="font-size: 1.1rem; color: var(--gray); margin-top: -1.5rem; margin-bottom: 1.5rem;">{{Instructions}}</p>
+        <div class="takeaways">
+          <div class="takeaway-item">
+            <div class="takeaway-num">1</div>
+            <p>{{Discussion question 1}}</p>
+          </div>
+          <!-- Add more questions as needed -->
+        </div>
+      </section>
+
+      <!-- SLIDE TYPE: Closing (always last slide) -->
+      <section class="slide slide-closing" data-chapter="7" id="closingSlide">
+        <div class="confetti-container" id="confettiContainer"></div>
+        <div class="closing-box">
+          <h3 style="color: var(--gold); font-size: 1.5rem; margin-bottom: 1.5rem;">Congratulations, you have completed this lesson!</h3>
+          <p>"{{Inspirational closing quote}}"</p>
+          <div class="divider"></div>
+          <h2>{{Closing statement}}</h2>
+        </div>
+      </section>
+
+      <!-- Navigation Hint -->
+      <div class="nav-hint">
+        <span class="key-icon" id="prevBtn" onclick="prevSlide()">&#8592;</span>
+        <span>to navigate</span>
+        <span class="key-icon" id="nextBtn" onclick="nextSlide()">&#8594;</span>
+      </div>
+
+      <!-- Branding Logo -->
+      <img src="SPOKES-Logo.png" alt="SPOKES" class="branding-logo">
+
+      <!-- Progress Bar -->
+      <div class="progress-bar" id="progressBar"></div>
+
+    </main>
+  </div>
+
+  <script>
+    /* ================================================================
+       SPOKES NAVIGATION ENGINE — DO NOT MODIFY THIS JAVASCRIPT
+       This entire <script> block is the SPOKES standard.
+       Copy it verbatim into every new lesson.
+       The ONLY thing you change is the chapterNames object below.
+       ================================================================ */
+
+    // Slide Navigation
+    const slides = document.querySelectorAll('.slide');
+    const chapterListEl = document.getElementById('chapterList');
+    const currentSlideEl = document.getElementById('currentSlide');
+    const totalSlidesEl = document.getElementById('totalSlides');
+    const progressBar = document.getElementById('progressBar');
+
+    let currentIndex = 0;
+    let sidebarCollapsed = false;
+    const sidebarEl = document.querySelector('.sidebar');
+    const sidebarToggleBtn = document.getElementById('sidebarToggle');
+    totalSlidesEl.textContent = slides.length;
+
+    function toggleSidebar() {
+      sidebarCollapsed = !sidebarCollapsed;
+      sidebarEl.classList.toggle('collapsed', sidebarCollapsed);
+      sidebarToggleBtn.innerHTML = sidebarCollapsed ? '&#187;' : '&#171;';
+    }
+
+    // Sound effects
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playClickSound() {
+      const oscillator = audioCtx.createOscillator();
+      const gainNode = audioCtx.createGain();
+      oscillator.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+      oscillator.frequency.value = 800;
+      oscillator.type = 'sine';
+      gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+      oscillator.start(audioCtx.currentTime);
+      oscillator.stop(audioCtx.currentTime + 0.1);
+    }
+
+    function playSuccessSound() {
+      const notes = [523, 659, 784];
+      notes.forEach((freq, i) => {
+        setTimeout(() => {
+          const oscillator = audioCtx.createOscillator();
+          const gainNode = audioCtx.createGain();
+          oscillator.connect(gainNode);
+          gainNode.connect(audioCtx.destination);
+          oscillator.frequency.value = freq;
+          oscillator.type = 'sine';
+          gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+          gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+          oscillator.start(audioCtx.currentTime);
+          oscillator.stop(audioCtx.currentTime + 0.3);
+        }, i * 150);
+      });
+    }
+
+    /* ================================================================
+       TEMPLATE: Update the chapter names below for your lesson.
+       - Keys 1-7 correspond to data-chapter="1" through data-chapter="7"
+       - badge values: w=Warm-Up, i=Introduction, p=Presentation, e=Evaluation, a=Application
+       ================================================================ */
+    const chapterNames = {
+      '1': { name: 'Warm-Up', badge: 'w' },
+      '2': { name: 'Introduction', badge: 'i' },
+      '3': { name: '{{P1 Chapter Name}}', badge: 'p' },
+      '4': { name: '{{P2 Chapter Name}}', badge: 'p' },
+      '5': { name: '{{P3 Chapter Name}}', badge: 'p' },
+      '6': { name: 'Evaluation', badge: 'e' },
+      '7': { name: 'Application', badge: 'a' }
+    };
+
+    const wippeaLabels = { w: 'W', i: 'I', p: 'P', e: 'E', a: 'A' };
+
+    function buildSidebar() {
+      const chapters = {};
+
+      slides.forEach((slide, index) => {
+        const chapter = slide.dataset.chapter;
+        if (!chapters[chapter]) chapters[chapter] = [];
+        const h1 = slide.querySelector('h1');
+        const h2 = slide.querySelector('h2');
+        let title = h1 ? h1.textContent : (h2 ? h2.textContent : 'Slide ' + (index + 1));
+        title = title.replace(/\s+/g, ' ').trim();
+        chapters[chapter].push({ index, title });
+      });
+
+      let html = '';
+      Object.keys(chapters).forEach(chapterNum => {
+        const chapterSlides = chapters[chapterNum];
+        const info = chapterNames[chapterNum] || { name: 'Chapter ' + chapterNum, badge: 'p' };
+        const badgeLetter = wippeaLabels[info.badge] || 'P';
+
+        html += '<li class="chapter-item" data-chapter="' + chapterNum + '">' +
+          '<div class="chapter-header">' +
+            '<span class="chapter-arrow">&#9654;</span>' +
+            '<span class="wippea-badge ' + info.badge + '">' + badgeLetter + '</span>' +
+            '<span>' + info.name + '</span>' +
+          '</div>' +
+          '<ul class="slide-list">';
+
+        chapterSlides.forEach(s => {
+          html += '<li class="slide-item" data-slide="' + s.index + '">' + s.title + '</li>';
+        });
+
+        html += '</ul></li>';
+      });
+
+      chapterListEl.innerHTML = html;
+
+      document.querySelectorAll('.chapter-header').forEach(header => {
+        header.addEventListener('click', () => {
+          const chapterItem = header.parentElement;
+          const wasExpanded = chapterItem.classList.contains('expanded');
+          document.querySelectorAll('.chapter-item').forEach(item => item.classList.remove('expanded'));
+          if (!wasExpanded) chapterItem.classList.add('expanded');
+          const chapter = chapterItem.dataset.chapter;
+          const targetIndex = Array.from(slides).findIndex(slide => slide.dataset.chapter === chapter);
+          if (targetIndex !== -1) showSlide(targetIndex);
+        });
+      });
+
+      document.querySelectorAll('.slide-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+          e.stopPropagation();
+          showSlide(parseInt(item.dataset.slide));
+        });
+      });
+    }
+
+    function showSlide(index) {
+      if (index < 0) index = 0;
+      if (index >= slides.length) index = slides.length - 1;
+      currentIndex = index;
+
+      slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+
+      const currentChapter = slides[index].dataset.chapter;
+      document.querySelectorAll('.chapter-item').forEach(item => {
+        const isActive = item.dataset.chapter === currentChapter;
+        item.classList.toggle('active', isActive);
+        if (isActive) item.classList.add('expanded');
+      });
+
+      document.querySelectorAll('.slide-item').forEach(item => {
+        item.classList.toggle('active', parseInt(item.dataset.slide) === index);
+      });
+
+      currentSlideEl.textContent = index + 1;
+      progressBar.style.width = ((index + 1) / slides.length) * 100 + '%';
+
+      // Handle branding logo visibility
+      const brandingLogo = document.querySelector('.branding-logo');
+      if (slides[index].classList.contains('slide-title') || slides[index].classList.contains('slide-closing')) {
+        brandingLogo.style.display = 'none';
+      } else {
+        brandingLogo.style.display = 'block';
+      }
+
+      if (slides[index].classList.contains('slide-closing')) {
+        triggerConfetti();
+        playSuccessSound();
+      }
+    }
+
+    function triggerConfetti() {
+      const container = document.getElementById('confettiContainer');
+      container.innerHTML = '';
+      const colors = ['#37b550', '#007baf', '#d3b257', '#FF6B6B', '#FFFFFF'];
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDelay = Math.random() * 2 + 's';
+        confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        const size = Math.random() * 10 + 5;
+        confetti.style.width = size + 'px';
+        confetti.style.height = size + 'px';
+        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+        container.appendChild(confetti);
+      }
+    }
+
+    function nextSlide() { showSlide(currentIndex + 1); }
+    function prevSlide() { showSlide(currentIndex - 1); }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); nextSlide(); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); prevSlide(); }
+    });
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
+    document.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 50) { diff > 0 ? nextSlide() : prevSlide(); }
+    });
+
+    // Auto-collapse sidebar on small screens
+    function initSidebarState() {
+      if (window.innerWidth <= 768) {
+        sidebarCollapsed = true;
+        sidebarEl.classList.add('collapsed');
+        sidebarToggleBtn.innerHTML = '&#187;';
+      }
+    }
+
+    // Initialize
+    buildSidebar();
+    initSidebarState();
+    showSlide(0);
+  </script>
+</body>
+</html>

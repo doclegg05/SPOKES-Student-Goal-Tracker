@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPOKES Employability Skills Curriculum</title>
+    <!-- Modern Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-primary: #007baf;
+            --brand-accent: #37b550;
+            --brand-dark: #004071;
+            --brand-light: #EDF3F7;
+            --brand-gold: #d3b257;
+            --bg-color: #EDF3F7;
+            --text-main: #004071;
+            --text-muted: #60636b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Hero Header */
+        header {
+            background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand-primary) 100%);
+            color: white;
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100%;
+            background-image: radial-gradient(circle at 20% 150%, rgba(255,255,255,0.1) 0%, transparent 50%),
+                              radial-gradient(circle at 80% -50%, rgba(55, 181, 80, 0.2) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .spokes-logo-frame {
+            width: clamp(250px, 38vw, 420px);
+            aspect-ratio: 3 / 2;
+            margin: 0 auto 1.25rem;
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 0.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.28);
+        }
+
+        .spokes-logo {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.2));
+        }
+
+        .eyebrow {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--brand-gold);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Dashboard Grid */
+        main {
+            flex: 1;
+            max-width: 1200px;
+            margin: -3rem auto 4rem;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 10;
+            width: 100%;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 2rem;
+        }
+
+        /* Module Cards */
+        .module-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid transparent;
+            border-top: 5px solid var(--brand-primary);
+            position: relative;
+            opacity: 0;
+            transform: translateY(18px) scale(0.985);
+            animation: card-reveal 700ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .module-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Specific module top borders */
+        .module-card.theme-interview {
+            border-top-color: #00133f;
+            border-color: #d6e0fa;
+            background: linear-gradient(180deg, #ffffff 0%, #f2f6ff 100%);
+        }
+        .module-card.theme-time {
+            border-top-color: #a7253f;
+            border-color: #f2d6dc;
+            background: linear-gradient(180deg, #ffffff 0%, #fff4f6 100%);
+        }
+        .module-card.theme-accountability {
+            border-top-color: var(--brand-accent);
+            border-color: #d7f0dd;
+            background: linear-gradient(180deg, #ffffff 0%, #f1fbf4 100%);
+        }
+
+        .module-card:nth-child(1) { animation-delay: 100ms; }
+        .module-card:nth-child(2) { animation-delay: 180ms; }
+        .module-card:nth-child(3) { animation-delay: 260ms; }
+
+        .card-header {
+            padding: 2rem 2rem 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+        }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+            background: rgba(0, 123, 175, 0.1);
+            color: var(--brand-primary);
+        }
+
+        .card-icon svg {
+            width: 30px;
+            height: 30px;
+            stroke: currentColor;
+            stroke-width: 1.85;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .theme-interview .card-icon { background: rgba(0, 19, 63, 0.1); color: #00133f; }
+        .theme-time .card-icon { background: rgba(167, 37, 63, 0.1); color: #a7253f; }
+        .theme-accountability .card-icon { background: rgba(55, 181, 80, 0.1); color: #004071; }
+
+        .module-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.75rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            padding: 0 2rem;
+            color: var(--brand-dark);
+        }
+
+        .theme-interview .module-name { color: #00133f; }
+        .theme-time .module-name { color: #a7253f; }
+
+        .module-desc {
+            color: var(--text-muted);
+            padding: 0 2rem 2rem;
+            font-size: 1rem;
+            flex-grow: 1;
+        }
+
+        .card-footer {
+            padding: 1.25rem 2rem;
+            background: transparent;
+            border-top: 1px solid rgba(96, 99, 107, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .launch-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.58rem 1rem;
+            border-radius: 999px;
+            font-size: 0.93rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
+            color: #ffffff;
+            background: var(--brand-primary);
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+
+        .theme-interview .launch-cta { background: #00133f; }
+        .theme-time .launch-cta { background: #a7253f; }
+        .theme-accountability .launch-cta { background: #0e8a35; }
+
+        .module-card:hover .card-footer {
+            border-top-color: rgba(96, 99, 107, 0.35);
+        }
+
+        .module-card:hover .launch-cta {
+            transform: translateX(2px);
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+        }
+
+        .arrow-icon {
+            font-size: 1.25rem;
+            line-height: 1;
+            transition: transform 0.25s ease;
+        }
+
+        .module-card:hover .launch-cta .arrow-icon {
+            transform: translateX(5px);
+        }
+
+        .module-card:focus-visible {
+            outline: 3px solid var(--brand-gold);
+            outline-offset: 4px;
+            transform: translateY(-5px);
+            box-shadow: 0 18px 36px rgba(0, 0, 0, 0.16);
+        }
+
+        .module-card:focus-visible .launch-cta {
+            box-shadow: 0 0 0 3px rgba(211, 178, 87, 0.45);
+        }
+
+        /* Status Badge */
+        .status-badge {
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            background: rgba(0,0,0,0.05);
+            color: var(--text-muted);
+        }
+
+        .status-ready {
+            background: rgba(55, 181, 80, 0.1);
+            color: #004071;
+        }
+
+        @keyframes card-reveal {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+
+            .module-card {
+                opacity: 1 !important;
+                transform: none !important;
+                animation: none !important;
+            }
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        @media (max-width: 1100px) {
+            .dashboard-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            header { padding: 4rem 1.5rem 3rem; }
+            main { margin-top: -2rem; }
+            .dashboard-grid { grid-template-columns: 1fr; gap: 1.25rem; }
+            .spokes-logo-frame { width: clamp(200px, 70vw, 300px); margin-bottom: 1rem; border-radius: 12px; padding: 0.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <div class="spokes-logo-frame">
+                <img src="Interview-Skills/SPOKES-Logo.png" alt="SPOKES logo" class="spokes-logo">
+            </div>
+            <span class="eyebrow">Interactive Hub</span>
+            <h1>Employability Skills Curriculum</h1>
+            <p class="subtitle">Select a module below to launch the interactive presentation and access associated instructional materials.</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="dashboard-grid">
+            
+            <!-- Interview Skills -->
+            <a href="Interview-Skills/index.html" class="module-card theme-interview">
+                <div class="card-header">
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" focusable="false">
+                            <rect x="3" y="7" width="18" height="13" rx="2"></rect>
+                            <path d="M9 7V5a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path>
+                            <path d="M3 12h18"></path>
+                            <path d="M10 12v2h4v-2"></path>
+                        </svg>
+                    </div>
+                    <div class="status-badge status-ready">Ready</div>
+                </div>
+                <h3 class="module-name">Interview Skills</h3>
+                <p class="module-desc">Master the techniques for successful job interviews, from preparation and professional presentation to effectively answering behavioral questions.</p>
+                <div class="card-footer">
+                    <span class="launch-cta">Launch Module <span class="arrow-icon">→</span></span>
+                </div>
+            </a>
+
+            <!-- Time Management -->
+            <a href="lesson-time-management/index.html" class="module-card theme-time">
+                <div class="card-header">
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" focusable="false">
+                            <circle cx="12" cy="12" r="8"></circle>
+                            <path d="M12 8v4l3 2"></path>
+                            <path d="M9 3h6"></path>
+                        </svg>
+                    </div>
+                    <div class="status-badge status-ready">Ready</div>
+                </div>
+                <h3 class="module-name">Time Management</h3>
+                <p class="module-desc">Learn how to prioritize tasks, set SMART goals, and utilize tools like the Eisenhower Matrix to overcome procrastination and boost productivity.</p>
+                <div class="card-footer">
+                    <span class="launch-cta">Launch Module <span class="arrow-icon">→</span></span>
+                </div>
+            </a>
+
+            <!-- Employee Accountability -->
+            <a href="lesson-employee-accountability/index.html" class="module-card theme-accountability">
+                <div class="card-header">
+                    <div class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" focusable="false">
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <path d="m8.5 12 2.2 2.2 4.8-4.8"></path>
+                        </svg>
+                    </div>
+                    <div class="status-badge status-ready">Ready</div>
+                </div>
+                <h3 class="module-name">Employee Accountability</h3>
+                <p class="module-desc">Understand the principles of workplace responsibility, taking ownership of actions, and building a reliable professional reputation.</p>
+                <div class="card-footer">
+                    <span class="launch-cta">Launch Module <span class="arrow-icon">→</span></span>
+                </div>
+            </a>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 SPOKES. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
