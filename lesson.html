@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPOKES Goal Setting Lesson</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <header class="site-header">
+    <img class="brand-logo" src="NCSPOKES.Logo.jpg" alt="NCSPOKES logo">
+    <nav class="site-nav" aria-label="Primary">
+      <a href="/">Account</a>
+      <a href="#missionControl">Mission Control</a>
+      <a href="/teacher">Teacher</a>
+    </nav>
+  </header>
+
+  <main class="scroll-track" id="scrollTrack">
+    <section class="sticky-stage">
+      <div class="canvas-shell">
+        <canvas
+          id="sequenceCanvas"
+          role="img"
+          aria-label="SPOKES goal setting animation"
+          aria-describedby="scrollExperienceSummary scrollActNarration"
+        >
+          Your browser does not support canvas. This experience has three scroll acts: Plan and Prepare, Move Into Action, and Pack and Launch, showing a notepad-to-briefcase progression.
+        </canvas>
+        <p id="scrollExperienceSummary" class="sr-only">
+          Scroll down to move through goal setting phases in one continuous story. The visual sequence progresses from a notepad setup to a briefcase handoff while moving through Act One Plan and Prepare, Act Two Move Into Action, and Act Three Pack and Launch.
+        </p>
+        <div id="scrollActNarration" class="sr-only" role="status" aria-live="polite" aria-atomic="true">
+          Act I: Plan and Prepare.
+        </div>
+
+        <div class="cards" id="cardsLayer">
+          <article class="feature-card one" id="prompt-bhag" data-prompt-key="bhag" data-level="1" data-start="0.02" data-end="0.22">
+            <span class="level-badge">L1</span>
+            <h3>Level 1: Big, Hairy, Audacious Goal (BHAG)</h3>
+            <p class="goal-prompt">What is your ultimate, long-term career or life goal?</p>
+            <label class="goal-label" for="bhag">Your BHAG</label>
+            <textarea id="bhag" class="goal-input" data-goal-key="bhag" data-goal-label="BHAG" rows="3" placeholder="Example: Get a job as a Junior Web Developer within 6 months."></textarea>
+            <button type="button" class="mc-p level-up-btn" data-target="bhag">Lock In & Level Up</button>
+          </article>
+          
+          <article class="feature-card two locked" id="prompt-monthly" data-prompt-key="monthly" data-level="2" data-start="0.2" data-end="0.4">
+            <span class="level-badge">L2</span>
+            <h3>Level 2: Monthly Goal</h3>
+            <p class="goal-prompt">What will you accomplish this month to take a step toward your BHAG?</p>
+            <label class="goal-label" for="monthly">Monthly Goal</label>
+            <textarea id="monthly" class="goal-input" data-goal-key="monthly" data-goal-label="Monthly Goal" rows="3" placeholder="Example: Complete my certification and build one portfolio project."></textarea>
+            <button type="button" class="mc-p level-up-btn" data-target="monthly">Lock In & Level Up</button>
+          </article>
+          
+          <article class="feature-card three locked" id="prompt-weekly" data-prompt-key="weekly" data-level="3" data-start="0.38" data-end="0.58">
+            <span class="level-badge">L3</span>
+            <h3>Level 3: Weekly Goal</h3>
+            <p class="goal-prompt">What will you accomplish this week to ensure you hit your Monthly Goal?</p>
+            <label class="goal-label" for="weekly">Weekly Goal</label>
+            <textarea id="weekly" class="goal-input" data-goal-key="weekly" data-goal-label="Weekly Goal" rows="3" placeholder="Example: Finish three learning modules and pass the midpoint quiz."></textarea>
+            <button type="button" class="mc-p level-up-btn" data-target="weekly">Lock In & Level Up</button>
+          </article>
+          
+          <article class="feature-card four locked" id="prompt-daily" data-prompt-key="daily" data-level="4" data-start="0.56" data-end="0.8">
+            <span class="level-badge">L4</span>
+            <h3>Level 4: Daily Goal</h3>
+            <p class="goal-prompt">What is the most important thing you must accomplish today?</p>
+            <label class="goal-label" for="daily">Daily Goal</label>
+            <textarea id="daily" class="goal-input" data-goal-key="daily" data-goal-label="Daily Goal" rows="3" placeholder="Example: Read chapter 4 and write a summary."></textarea>
+            <button type="button" class="mc-p level-up-btn" data-target="daily">Lock In & Level Up</button>
+          </article>
+          
+          <article class="feature-card five locked" id="prompt-tasks" data-prompt-key="tasks" data-level="5" data-start="0.74" data-end="0.98">
+            <span class="level-badge">L5</span>
+            <h3>Level 5: Action Tasks</h3>
+            <p class="goal-prompt">List the specific tasks you need to do right now to achieve today's goal.</p>
+            <label class="goal-label" for="tasks">To-Do List</label>
+            <textarea id="tasks" class="goal-input" data-goal-key="tasks" data-goal-label="Tasks" rows="3" placeholder="1. Open textbook&#10;2. Read pages 40-55&#10;3. Submit summary on canvas"></textarea>
+            <button type="button" class="mc-p level-up-btn" data-target="tasks">Complete Interview</button>
+          </article>
+        </div>
+
+        <aside class="goal-panel" id="goalPanel" aria-label="Goal form summary panel">
+          <h3>Your Goal Form</h3>
+          <p>As prompts appear, add your responses. Your work syncs to your account as you type.</p>
+          <section class="goal-completion" id="goalCompletionPanel" aria-label="Lesson completion progress">
+            <div class="goal-progress-head">
+              <strong id="goalCompletionText">0/5 core prompts complete</strong>
+              <span id="goalCompletionPercent">0%</span>
+            </div>
+            <div class="goal-progress-track" role="progressbar" aria-label="Goal completion progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="goalCompletionTrack">
+              <div class="goal-progress-bar" id="goalCompletionBar"></div>
+            </div>
+            <ul class="goal-checkpoints" id="goalCheckpointList">
+              <li>Foundation checkpoint pending</li>
+              <li>Strategy checkpoint pending</li>
+              <li>Launch checkpoint pending</li>
+            </ul>
+            <div class="goal-level-head">
+              <strong id="goalLevelBadge">Level 1 - BHAG</strong>
+              <span id="goalXpText">0 XP / 200</span>
+            </div>
+            <div class="goal-progress-track xp" role="progressbar" aria-label="Experience progress to next level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="goalXpTrack">
+              <div class="goal-progress-bar xp" id="goalXpBar"></div>
+            </div>
+            <button type="button" class="student-auth-button" id="goalCertificateButton" disabled>Export Completion Certificate</button>
+            <p class="goal-cert-note">Unlock at Level 5 after core prompts, one SMART-ready goal, and one completed daily entry.</p>
+          </section>
+          <section class="goal-auth" aria-label="Student sync session">
+            <p class="student-auth-banner" id="studentAuthBanner">Checking session...</p>
+            <div class="student-auth-actions">
+              <button type="button" class="student-auth-button secondary" id="studentSignOutButton">Sign Out</button>
+            </div>
+            <p class="auth-message" id="authMessage">Authenticated access required for this lesson.</p>
+            <p class="sync-status" id="syncStatus">Syncing saved draft...</p>
+          </section>
+          <div class="goal-summary-list" id="goalSummaryList"></div>
+          <div class="goal-saved-at" id="goalSavedAt">No saved responses yet.</div>
+        </aside>
+
+        <div class="loader" id="loader">
+          <div class="loader-card">
+            <p>Preparing initial frame chunk...</p>
+            <div
+              class="loader-progress"
+              id="loaderProgress"
+              role="progressbar"
+              aria-label="Initial frame loading progress"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+              aria-valuetext="0 percent loaded"
+            >
+              <div class="loader-fill" id="loaderFill"></div>
+            </div>
+            <div class="loader-count" id="loaderCount" aria-live="polite" aria-atomic="true">0 / 30</div>
+          </div>
+        </div>
+
+        <div class="scroll-note">Scroll: notepad -> briefcase -> launch</div>
+      </div>
+    </section>
+  </main>
+  <div id="levelUpOverlay" class="level-up-overlay hidden" role="status" aria-live="polite" aria-atomic="true">
+    <div class="level-up-overlay-card">
+      <h3 id="levelUpTitle">Level Up</h3>
+      <p id="levelUpText">Progress saved.</p>
+      <p id="levelUpXp">+0 XP</p>
+      <p id="levelUpUnlocks"></p>
+    </div>
+  </div>
+
+  <section class="details" id="details" style="max-width:100vw; padding:3rem 0; display:flex; justify-content:center; background:linear-gradient(180deg, #f8fbff 0%, #f6f8fc 100%); border-top:1px solid rgba(17,24,39,0.08);">
+    <img src="SPOKES-Goal-Tracker-Infographic.png"
+         alt="The SPOKES Goal Setting Framework — mapping the journey from enrollment to workforce readiness"
+         style="width:98vw; max-width:2000px; border-radius:14px; box-shadow:0 8px 40px rgba(0,40,113,0.18); display:block;">
+  </section>
+
+  <section class="mission-shell-section" id="missionControl" aria-label="Mission Control Workspace">
+    <div class="mc-shell">
+      <header class="mc-card mc-top">
+        <div class="mc-brand">
+          <img src="NCSPOKES.Logo.jpg" alt="SPOKES logo">
+          <div>
+            <h2>Mission Control Workspace</h2>
+            <p>Daily Momentum + SMART Goals + Vision Board in one lesson app</p>
+          </div>
+        </div>
+        <div class="mc-btns">
+          <span class="mc-sync" id="mcSyncState" data-tone="local">Local mode</span>
+          <button id="mcDemo" class="mc-s" type="button">Load Demo</button>
+          <button id="mcExport" class="mc-g" type="button">Export Snapshot</button>
+          <button id="mcReset" class="mc-g" type="button">Reset</button>
+        </div>
+      </header>
+
+      <section class="mc-card mc-hero">
+        <h3>Track work like a professional, not a worksheet.</h3>
+        <p>Students can capture daily execution, strengthen SMART quality, and build a visual board that reflects their job-ready path.</p>
+        <div class="mc-plan-actions">
+          <button id="mcGeneratePlan" class="mc-g" type="button">Generate Plan From Lesson Answers</button>
+          <p id="mcPlanHint" class="mc-plan-hint">Use this after students complete their lesson prompts to auto-build SMART + daily plan entries.</p>
+        </div>
+        <div class="mc-stats">
+          <div class="mc-stat"><small>Level</small><b id="mcLevel">1</b></div>
+          <div class="mc-stat"><small>XP</small><b id="mcXP">0</b></div>
+          <div class="mc-stat"><small>Streak</small><b id="mcStreak">0</b></div>
+          <div class="mc-stat"><small>SMART Ready</small><b id="mcSmartReady">0</b></div>
+        </div>
+      </section>
+
+      <nav class="mc-card mc-tabs" role="tablist" aria-label="Mission sections">
+        <button class="mc-tab" aria-selected="true" data-tab="daily" type="button">Daily Momentum</button>
+        <button class="mc-tab" aria-selected="false" data-tab="archive" type="button">Archive</button>
+        <button class="mc-tab" aria-selected="false" data-tab="smart" type="button">SMART Goals</button>
+        <button class="mc-tab locked-tab" aria-selected="false" data-tab="growth" type="button">Growth</button>
+        <button class="mc-tab" aria-selected="false" data-tab="vision" type="button">Vision Board</button>
+      </nav>
+
+      <section class="mc-panel active" data-panel="daily">
+        <section class="mc-card mc-panel-card">
+          <h3>Daily Momentum</h3>
+          <p class="mc-sub">Quick start-of-class check-in and end-of-class status update.</p>
+          <div class="mc-grid">
+            <article class="mc-surface">
+              <h4>Quick Daily Check-In</h4>
+              <form id="mcDailyForm" novalidate>
+                <label for="mcDDate">Date</label>
+                <input id="mcDDate" type="date" required>
+                <label for="mcDTop">Top 1 Priority</label>
+                <input id="mcDTop" type="text" required placeholder="Most important task today">
+                <div class="mc-row2">
+                  <div>
+                    <label for="mcDStatus">Status</label>
+                    <select id="mcDStatus">
+                      <option>Done</option>
+                      <option>Partial</option>
+                      <option>Blocked</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="mcDMin">Minutes</label>
+                    <input id="mcDMin" type="number" min="0" value="0">
+                  </div>
+                </div>
+                <label for="mcDComment">Comment</label>
+                <input id="mcDComment" type="text" placeholder="Win, barrier, or next step">
+                <div class="mc-submit-row">
+                  <button class="mc-p" type="submit">Save Daily Entry</button>
+                </div>
+              </form>
+            </article>
+            <article class="mc-surface">
+              <h4>Recent Daily Entries</h4>
+              <ul id="mcDailyList" class="mc-list"></ul>
+            </article>
+          </div>
+          <div class="mc-lanes">
+            <article class="mc-surface mc-lane"><h4>To-Do</h4><div id="mcTodo"></div></article>
+            <article class="mc-surface mc-lane"><h4>In-Progress</h4><div id="mcProgress"></div></article>
+            <article class="mc-surface mc-lane"><h4>Done</h4><div id="mcDone"></div></article>
+          </div>
+        </section>
+      </section>
+
+      <section class="mc-panel" data-panel="smart">
+        <section class="mc-card mc-panel-card">
+          <h3>SMART Goal Coach</h3>
+          <p class="mc-sub">Score each goal on Specific, Measurable, Achievable, Relevant, and Time-Bound criteria.</p>
+          <div class="mc-grid">
+            <article class="mc-surface">
+              <h4>Add SMART Goal</h4>
+              <form id="mcSmartForm" novalidate>
+                <div class="mc-row2">
+                  <div>
+                    <label for="mcSMonth">Month</label>
+                    <input id="mcSMonth" type="text" required placeholder="March 2026">
+                  </div>
+                  <div>
+                    <label for="mcSGoal">Main Goal</label>
+                    <input id="mcSGoal" type="text" required>
+                  </div>
+                </div>
+                <label for="mcSWhy">Why it matters</label>
+                <input id="mcSWhy" type="text" required>
+                <label for="mcSProof">Evidence / Proof</label>
+                <input id="mcSProof" type="text" placeholder="What proves success?">
+                <div class="mc-row5">
+                  <div><label for="mcSS">Specific</label><select id="mcSS"><option>Yes</option><option>Needs Work</option></select></div>
+                  <div><label for="mcSM">Measurable</label><select id="mcSM"><option>Yes</option><option>Needs Work</option></select></div>
+                  <div><label for="mcSA">Achievable</label><select id="mcSA"><option>Yes</option><option>Needs Work</option></select></div>
+                  <div><label for="mcSR">Relevant</label><select id="mcSR"><option>Yes</option><option>Needs Work</option></select></div>
+                  <div><label for="mcST">Time-Bound</label><select id="mcST"><option>Yes</option><option>Needs Work</option></select></div>
+                </div>
+                <div class="mc-submit-row">
+                  <button class="mc-p" type="submit">Add SMART Goal</button>
+                </div>
+              </form>
+            </article>
+            <article class="mc-surface">
+              <h4>SMART Goal List</h4>
+              <ul id="mcSmartList" class="mc-list"></ul>
+            </article>
+          </div>
+        </section>
+      </section>
+
+      <section class="mc-panel" data-panel="archive">
+        <section class="mc-card mc-panel-card">
+          <h3>Archive</h3>
+          <p class="mc-sub">Review completed wins archived from the Done lane.</p>
+          <div id="mcArchiveList" class="mc-archive-list"></div>
+        </section>
+      </section>
+
+      <section class="mc-panel" data-panel="growth">
+        <section class="mc-card mc-panel-card">
+          <h3>Growth Prompts</h3>
+          <p class="mc-sub">Unlock deeper coaching prompts as students level up.</p>
+          <div id="mcGrowthPrompts" class="mc-growth-grid"></div>
+        </section>
+      </section>
+
+      <section class="mc-panel" data-panel="vision">
+        <section class="mc-card mc-panel-card">
+          <h3>Vision Board</h3>
+          <p class="mc-sub">Create a free-form collage with draggable goal notes and resizable image notes.</p>
+          <div class="mc-vision-tools">
+            <div>
+              <label for="mcVisionGoalSelect">Vision Board Month</label>
+              <select id="mcVisionGoalSelect"></select>
+              <p class="mc-vision-tip">Switch between current and previous months. Images are automatically resized/compressed before save.</p>
+            </div>
+            <button id="mcAddGoalNote" class="mc-p" type="button">Add Goal Note</button>
+            <button id="mcAddImageNote" class="mc-s" type="button">Add Image Note</button>
+          </div>
+          <input id="mcVisionImageInput" type="file" accept="image/*" hidden>
+          <div class="mc-vision-wrap">
+            <div id="mcVisionBoard" class="mc-vision-board"></div>
+          </div>
+        </section>
+      </section>
+    </div>
+    <div id="mcToast" class="mc-toast" role="status" aria-live="polite" aria-atomic="true"></div>
+  </section>
+  <dialog id="mcReviewModal" class="mc-review-modal">
+    <form method="dialog">
+      <h3 id="mcReviewTitle">Weekly Review</h3>
+      <p id="mcReviewPrompt">What changed this week and how should your plan adjust?</p>
+      <label for="mcReviewAnswer">Reflection</label>
+      <textarea id="mcReviewAnswer" rows="5" placeholder="Write what worked, what did not, and the next adjustment."></textarea>
+      <menu>
+        <button id="mcReviewDismiss" value="cancel" type="button">Dismiss</button>
+        <button id="mcReviewComplete" value="default" type="button" class="mc-p">Complete Review</button>
+      </menu>
+    </form>
+  </dialog>
+  <dialog id="mcDeleteModal" class="mc-review-modal mc-confirm-modal">
+    <form method="dialog">
+      <h3>Delete Task?</h3>
+      <p id="mcDeletePrompt">This tile will be deleted permanently. Continue?</p>
+      <menu>
+        <button id="mcDeleteNo" value="cancel" type="button">N</button>
+        <button id="mcDeleteYes" value="default" type="button" class="mc-p">Y</button>
+      </menu>
+    </form>
+  </dialog>
+  <dialog id="mcGoalNoteModal" class="mc-review-modal mc-goal-note-modal">
+    <form method="dialog">
+      <h3>Edit Goal Note</h3>
+      <p>Adjust this note before adding it to the vision board.</p>
+      <label for="mcGoalNoteTitle">Title</label>
+      <input id="mcGoalNoteTitle" type="text" maxlength="120" placeholder="Goal note title">
+      <label for="mcGoalNoteText">Note Text</label>
+      <textarea id="mcGoalNoteText" rows="5" maxlength="600" placeholder="Write what this goal means and how you will execute it."></textarea>
+      <menu>
+        <button id="mcGoalNoteCancel" value="cancel" type="button">Cancel</button>
+        <button id="mcGoalNotePost" value="default" type="button" class="mc-p">Add to Board</button>
+      </menu>
+    </form>
+  </dialog>
+
+  <footer class="site-footer" id="footer">
+    <div class="footer-wrap">
+      <div class="footer-brand">
+        <img class="footer-logo" src="NCSPOKES.Logo.jpg" alt="NCSPOKES logo">
+        <p>SPOKES Goal Setting Activity</p>
+      </div>
+      <div class="footer-links">
+        <a href="#scrollTrack">Top</a>
+        <a href="#missionControl">Mission Control</a>
+        <a href="/teacher">Teacher</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/node_modules/jspdf/dist/jspdf.umd.min.js"></script>
+  <script src="/node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.min.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

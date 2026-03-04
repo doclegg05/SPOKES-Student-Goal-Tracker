@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPOKES Teacher Mission Board</title>
+  <link rel="stylesheet" href="teacher.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="top card">
+      <div class="brand">
+        <img src="NCSPOKES.Logo.jpg" alt="NCSPOKES logo">
+        <div>
+          <h1>Teacher Mission Board</h1>
+          <p>Cross-student completion overview for the integrated lesson + mission control app.</p>
+        </div>
+      </div>
+      <div class="actions">
+        <a class="ghost" href="/lesson">Back to Lesson</a>
+      </div>
+    </header>
+
+    <section class="card access" aria-label="Instructor access key">
+      <h2>Instructor Access</h2>
+      <p>Enter the instructor key configured on the server (`SPOKES_TEACHER_KEY`).</p>
+      <div class="row">
+        <label for="teacherKey">Instructor Key</label>
+        <input id="teacherKey" type="password" autocomplete="off" placeholder="Enter instructor key">
+      </div>
+      <div class="buttons">
+        <button id="loadReport" class="primary" type="button">Load Report</button>
+        <button id="exportCsv" class="secondary" type="button">Export CSV</button>
+        <button id="printReport" class="ghost" type="button">Print / Save PDF</button>
+      </div>
+      <p id="status" class="status" data-tone="neutral">Report not loaded yet.</p>
+    </section>
+
+    <section class="card summary" aria-label="Class summary">
+      <div class="stat"><small>Students</small><strong id="studentsCount">0</strong></div>
+      <div class="stat"><small>Avg Level</small><strong id="avgLevel">0</strong></div>
+      <div class="stat"><small>Active Streaks</small><strong id="activeStreaks">0</strong></div>
+      <div class="stat"><small>Checkpoint Complete</small><strong id="checkpointCount">0</strong></div>
+    </section>
+
+    <section class="card table-wrap" aria-label="Student progress table">
+      <div class="table-head">
+        <h2>Student Progress</h2>
+        <p id="generatedAt">Not generated</p>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Level</th>
+              <th>XP</th>
+              <th>Streak</th>
+              <th>Core Prompts</th>
+              <th>Growth</th>
+              <th>Daily Done</th>
+              <th>Updated</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <tr><td colspan="8">Load report to view students.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="teacher.js"></script>
+</body>
+</html>
