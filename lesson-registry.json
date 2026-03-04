@@ -1,0 +1,106 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-03-01",
+  "rules": {
+    "allowedVariants": [
+      "variant-classic",
+      "variant-modern",
+      "variant-bold",
+      "variant-elegant"
+    ],
+    "statusValues": [
+      "blocked",
+      "complete",
+      "in-progress",
+      "planned",
+      "qa",
+      "ready"
+    ]
+  },
+  "lessons": [
+    {
+      "id": "lesson-time-management",
+      "title": "Time Management",
+      "path": "lesson-time-management/index.html",
+      "status": "complete",
+      "variant": null,
+      "fontPair": {
+        "heading": null,
+        "body": null,
+        "approved": false
+      },
+      "colorSchema": {
+        "approved": false,
+        "approvalRef": null
+      },
+      "interactions": {
+        "minimumRequired": 3,
+        "implemented": 3
+      },
+      "qualityGates": {
+        "accessibility": "pass",
+        "multimodal": "pass",
+        "wippea": "pass",
+        "brand": "pass",
+        "engagement": "pass"
+      },
+      "notes": "Release-approved 2026-03-01; see manual-runtime-qa-evidence-2026-03-01.md, ship-readiness-audit-2026-03-01.md, and release-closeout-addendum-2026-03-01.md."
+    },
+    {
+      "id": "lesson-interview-skills",
+      "title": "Interview Skills",
+      "path": "Interview-Skills/index.html",
+      "status": "complete",
+      "variant": null,
+      "fontPair": {
+        "heading": null,
+        "body": null,
+        "approved": false
+      },
+      "colorSchema": {
+        "approved": false,
+        "approvalRef": null
+      },
+      "interactions": {
+        "minimumRequired": 3,
+        "implemented": 3
+      },
+      "qualityGates": {
+        "accessibility": "pass",
+        "multimodal": "pass",
+        "wippea": "pass",
+        "brand": "pass",
+        "engagement": "pass"
+      },
+      "notes": "Release-approved 2026-03-01; see manual-runtime-qa-evidence-2026-03-01.md, ship-readiness-audit-2026-03-01.md, and release-closeout-addendum-2026-03-01.md."
+    },
+    {
+      "id": "lesson-employee-accountability",
+      "title": "Employee Accountability",
+      "path": "lesson-employee-accountability/index.html",
+      "status": "complete",
+      "variant": null,
+      "fontPair": {
+        "heading": null,
+        "body": null,
+        "approved": false
+      },
+      "colorSchema": {
+        "approved": false,
+        "approvalRef": null
+      },
+      "interactions": {
+        "minimumRequired": 3,
+        "implemented": 3
+      },
+      "qualityGates": {
+        "accessibility": "pass",
+        "multimodal": "pass",
+        "wippea": "pass",
+        "brand": "pass",
+        "engagement": "pass"
+      },
+      "notes": "Release-approved 2026-03-01; see manual-runtime-qa-evidence-2026-03-01.md, ship-readiness-audit-2026-03-01.md, and release-closeout-addendum-2026-03-01.md."
+    }
+  ]
+}

@@ -1,0 +1,3601 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Interview Skills for Employment Success — SPOKES</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- SPOKES Theme Override: Professional/Corporate for Interview Skills -->
+    <style id="theme-override">
+      :root {
+        --primary: #004071; /* Deep Navy Blue */
+        --accent: #007baf;  /* Standard Corporate Blue */
+        --dark: #004071;
+      }
+      
+      body {
+        font-family: 'Inter', sans-serif;
+      }
+      
+      .slide-title h1,
+      .slide h2,
+      .slide h3,
+      .card h4,
+      .smart-content h4,
+      .matrix-action {
+        font-family: 'Playfair Display', serif;
+      }
+    </style>
+    <style>
+      /* ================================================================
+       SPOKES DESIGN SYSTEM — REDESIGNED v2
+       New Palette: --royal, --mauve, --offwhite, --gold, --teal, --green
+       Navigation engine CSS preserved verbatim from template.
+       ================================================================ */
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --royal: #00133f;
+        --mauve: #a7253f;
+        --offwhite: #d1d3d4;
+        --gold: #ad8806;
+        --teal: #007baf;
+        --green: #37b550;
+        --light: #ffffff;
+        --gray: #60636b;
+        --muted: #edf3f7;
+      }
+
+      html {
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: "Outfit", sans-serif;
+        background: var(--royal);
+        color: var(--royal);
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 100vh;
+      }
+
+      /* Layout */
+      .container {
+        display: flex;
+        height: 100vh;
+      }
+
+      /* Sidebar */
+      .sidebar {
+        width: 280px;
+        background: var(--royal);
+        padding: 2rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        transition:
+          margin-left 0.3s ease,
+          opacity 0.3s ease;
+        flex-shrink: 0;
+      }
+
+      .sidebar.collapsed {
+        margin-left: -280px;
+      }
+
+      .sidebar-toggle {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        z-index: 300;
+        background: var(--royal);
+        color: var(--light);
+        border: none;
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1.1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+          background 0.2s ease,
+          transform 0.2s ease;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .sidebar-toggle:hover {
+        background: var(--mauve);
+        transform: scale(1.05);
+      }
+
+      .sidebar-toggle:active {
+        transform: scale(0.95);
+      }
+
+      .sidebar-title {
+        color: var(--gold);
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 2rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .chapter-list {
+        list-style: none;
+        flex: 1;
+      }
+
+      .chapter-item {
+        margin-bottom: 0.25rem;
+      }
+
+      .chapter-header {
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        cursor: pointer;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .chapter-header:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--light);
+      }
+
+      .chapter-item.active > .chapter-header {
+        background: rgba(167, 37, 63, 0.25);
+        color: var(--light);
+        border-left-color: var(--gold);
+      }
+
+      .chapter-arrow {
+        font-size: 0.7rem;
+        transition: transform 0.3s ease;
+      }
+
+      .chapter-item.expanded .chapter-arrow {
+        transform: rotate(90deg);
+      }
+
+      .wippea-badge {
+        display: inline-block;
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        padding: 0.15rem 0.4rem;
+        border-radius: 4px;
+        text-transform: uppercase;
+        flex-shrink: 0;
+      }
+
+      .wippea-badge.w {
+        background: var(--gold);
+        color: var(--royal);
+      }
+      .wippea-badge.i {
+        background: var(--teal);
+        color: var(--light);
+      }
+      .wippea-badge.p {
+        background: var(--mauve);
+        color: var(--light);
+      }
+      .wippea-badge.e {
+        background: #a7253f;
+        color: var(--light);
+      }
+      .wippea-badge.a {
+        background: var(--royal);
+        color: var(--gold);
+        border: 1px solid var(--gold);
+      }
+
+      .slide-list {
+        list-style: none;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        padding-left: 1rem;
+      }
+
+      .chapter-item.expanded .slide-list {
+        max-height: 500px;
+      }
+
+      .slide-item {
+        padding: 0.5rem 1rem;
+        cursor: pointer;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.85rem;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        white-space: normal;
+        word-wrap: break-word;
+      }
+
+      .slide-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .slide-item.active {
+        background: rgba(173, 136, 6, 0.3);
+        color: var(--light);
+      }
+
+      .slide-counter {
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.875rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      /* Resources Section */
+      .resources-section {
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .resources-title {
+        color: var(--gold);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 0.75rem;
+      }
+
+      .resource-link {
+        display: block;
+        padding: 0.5rem 0.75rem;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 0.8rem;
+        text-decoration: none;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        margin-bottom: 0.25rem;
+      }
+
+      .resource-link:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--light);
+      }
+
+      .resource-link:active {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(0.97);
+      }
+
+      .resource-link::before {
+        content: "\2193 ";
+        opacity: 0.6;
+      }
+
+      /* Download Button */
+      .download-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background: var(--green);
+        color: var(--light);
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        margin-top: 1.5rem;
+        cursor: pointer;
+      }
+
+      .download-btn:hover {
+        background: #37b550;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(55, 181, 80, 0.4);
+      }
+
+      .download-btn:active {
+        transform: translateY(0px) scale(0.97);
+        box-shadow: none;
+      }
+
+      .download-btn::before {
+        content: "\2193";
+        font-size: 1.2rem;
+      }
+
+      /* Download Resource Container */
+      .download-resource {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 2rem;
+        padding: 1rem 1.5rem;
+        background: rgba(0, 19, 63, 0.06);
+        border-radius: 12px;
+        border: 1px solid rgba(0, 19, 63, 0.15);
+        align-self: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .download-prompt {
+        font-size: 0.9rem;
+        color: var(--gray);
+        font-style: italic;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .download-resource .download-btn {
+        margin-top: 0;
+        font-size: 0.95rem;
+        padding: 0.6rem 1.2rem;
+      }
+
+      /* Main Content */
+      .main {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--muted);
+        position: relative;
+      }
+
+      /* Progress Bar */
+      .progress-bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 10px;
+        background: linear-gradient(90deg, var(--mauve) 0%, var(--gold) 100%);
+        transition: width 0.3s ease;
+        z-index: 200;
+        box-shadow: 0 2px 8px rgba(167, 37, 63, 0.5);
+      }
+
+      /* Branding Logo */
+      .branding-logo {
+        position: absolute;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        max-width: 80px;
+        height: auto;
+        opacity: 1;
+        z-index: 100;
+        padding: 0.5rem;
+        border-radius: 6px;
+        background: var(--light);
+      }
+
+      /* Slides */
+      .slide {
+        display: none;
+        width: 100%;
+        height: 100%;
+        padding: 4rem 5rem;
+        animation: slideIn 0.5s ease-out;
+      }
+
+      .slide.active {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        overflow-y: auto;
+      }
+
+      .slide.active::before,
+      .slide.active::after {
+        content: "";
+        flex: 1 0 0px;
+        min-height: 1rem;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* Staggered content animations */
+      .slide.active h2 {
+        animation: fadeUp 0.5s ease-out both;
+      }
+
+      .slide.active .card,
+      .slide.active .takeaway-item,
+      .slide.active .smart-row,
+      .slide.active .principle-item,
+      .slide.active .area-card,
+      .slide.active .matrix-cell,
+      .slide.active .danger-card,
+      .slide.active .icon-row,
+      .slide.active .elegant-item,
+      .slide.active .accordion-row,
+      .slide.active .panel-col,
+      .slide.active .star-block {
+        animation: fadeUp 0.5s ease-out both;
+      }
+
+      .slide.active .card:nth-child(1),
+      .slide.active .takeaway-item:nth-child(1),
+      .slide.active .smart-row:nth-child(1),
+      .slide.active .danger-card:nth-child(1),
+      .slide.active .matrix-cell:nth-child(1),
+      .slide.active .area-card:nth-child(1),
+      .slide.active .icon-row:nth-child(1),
+      .slide.active .elegant-item:nth-child(1),
+      .slide.active .accordion-row:nth-child(1),
+      .slide.active .panel-col:nth-child(1),
+      .slide.active .star-block:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+
+      .slide.active .card:nth-child(2),
+      .slide.active .takeaway-item:nth-child(2),
+      .slide.active .smart-row:nth-child(2),
+      .slide.active .danger-card:nth-child(2),
+      .slide.active .matrix-cell:nth-child(2),
+      .slide.active .area-card:nth-child(2),
+      .slide.active .icon-row:nth-child(2),
+      .slide.active .elegant-item:nth-child(2),
+      .slide.active .accordion-row:nth-child(2),
+      .slide.active .panel-col:nth-child(2),
+      .slide.active .star-block:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .slide.active .card:nth-child(3),
+      .slide.active .takeaway-item:nth-child(3),
+      .slide.active .smart-row:nth-child(3),
+      .slide.active .danger-card:nth-child(3),
+      .slide.active .matrix-cell:nth-child(3),
+      .slide.active .area-card:nth-child(3),
+      .slide.active .icon-row:nth-child(3),
+      .slide.active .elegant-item:nth-child(3),
+      .slide.active .accordion-row:nth-child(3),
+      .slide.active .panel-col:nth-child(3),
+      .slide.active .star-block:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+
+      .slide.active .card:nth-child(4),
+      .slide.active .takeaway-item:nth-child(4),
+      .slide.active .smart-row:nth-child(4),
+      .slide.active .danger-card:nth-child(4),
+      .slide.active .matrix-cell:nth-child(4),
+      .slide.active .icon-row:nth-child(4),
+      .slide.active .elegant-item:nth-child(4),
+      .slide.active .accordion-row:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+
+      .slide.active .card:nth-child(5),
+      .slide.active .elegant-item:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+
+      .slide.active .takeaway-item:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Card hover effects */
+      .card,
+      .area-card,
+      .danger-card,
+      .matrix-cell {
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .card:hover,
+      .area-card:hover,
+      .danger-card:hover,
+      .matrix-cell:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      }
+
+      /* ================================================================
+       TITLE SLIDE
+       Layout: Hero with diagonal color block
+       ================================================================ */
+      .slide-title {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: var(--royal);
+        overflow: hidden;
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+        position: relative;
+      }
+
+      .slide-title::before {
+        content: "";
+        position: absolute;
+        top: -10%;
+        right: -5%;
+        width: 45%;
+        height: 120%;
+        background: var(--mauve);
+        clip-path: polygon(20% 0%, 100% 0%, 100% 100%, 0% 100%);
+        opacity: 0.85;
+        z-index: 0;
+      }
+
+      .slide-title > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .slide-title.active::before {
+        flex: 0.7;
+      }
+      .slide-title.active::after {
+        flex: 1;
+      }
+
+      .slide-title.active .logo {
+        animation: dropIn 0.8s ease-out both;
+      }
+      .slide-title.active h1 {
+        animation: zoomIn 0.8s ease-out 0.3s both;
+      }
+      .slide-title.active .divider {
+        animation: expandWidth 0.6s ease-out 0.7s both;
+      }
+      .slide-title.active .subtitle {
+        animation: fadeUp 0.8s ease-out 1s both;
+      }
+
+      @keyframes dropIn {
+        from {
+          opacity: 0;
+          transform: translateY(-100px) scale(0.5);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes zoomIn {
+        from {
+          opacity: 0;
+          transform: scale(0.5);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes expandWidth {
+        from {
+          width: 0;
+          opacity: 0;
+        }
+        to {
+          width: 120px;
+          opacity: 1;
+        }
+      }
+
+      .slide-title h1 {
+        font-family: "DM Serif Display", serif;
+        font-size: 5rem;
+        color: var(--light);
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+      }
+
+      .slide-title .subtitle {
+        font-size: 2rem;
+        color: var(--gold);
+        margin-bottom: 3rem;
+      }
+
+      .slide-title .divider {
+        width: 120px;
+        height: 5px;
+        background: var(--gold);
+        margin-bottom: 2rem;
+      }
+
+      .slide-title .logo {
+        max-width: 280px;
+        height: auto;
+        margin-bottom: 2rem;
+        background: var(--light);
+        padding: 1rem;
+        border-radius: 8px;
+      }
+
+      .slide-title .copyright {
+        font-size: 0.85rem;
+        color: rgba(255, 255, 255, 0.5);
+        margin-top: 1rem;
+      }
+
+      /* Hide corner branding on title and closing slides */
+      .slide-title.active ~ .branding-logo,
+      .slide-closing.active ~ .branding-logo {
+        display: none;
+      }
+
+      /* ================================================================
+       CONTENT SLIDES — Base Typography
+       ================================================================ */
+      .slide h2 {
+        font-family: "DM Serif Display", serif;
+        font-size: 2.6rem;
+        color: var(--royal);
+        margin-bottom: 2rem;
+        font-weight: 400;
+      }
+
+      .slide h3 {
+        font-family: "DM Serif Display", serif;
+        font-size: 2rem;
+        color: var(--royal);
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+      }
+
+      .slide p {
+        font-size: 1.35rem;
+        line-height: 1.6;
+        color: var(--gray);
+      }
+
+      .slide .highlight {
+        color: var(--teal);
+        font-weight: 700;
+      }
+
+      .slide .accent {
+        color: var(--green);
+        font-weight: 700;
+      }
+
+      .slide .gold {
+        color: var(--gold);
+        font-weight: 700;
+      }
+
+      .slide .mauve {
+        color: var(--mauve);
+        font-weight: 700;
+      }
+
+      /* Default content slide background */
+      .slide:not(.slide-title):not(.slide-section):not(.slide-closing):not(
+          .quote-statement
+        ):not(.slide-video) {
+        background: var(--offwhite);
+      }
+
+      /* ================================================================
+       SECTION DIVIDER SLIDES — Each unique
+       ================================================================ */
+      .slide-section {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        overflow: hidden;
+        padding-top: 2rem;
+        padding-bottom: 1rem;
+        position: relative;
+      }
+
+      .slide-section.active::before {
+        flex: 0;
+        min-height: 0;
+      }
+
+      .slide-section.active {
+        animation: sectionSlideIn 0.6s ease-out;
+      }
+      .slide-section.active .chapter-label {
+        animation: fadeDown 0.5s ease-out 0.2s both;
+      }
+      .slide-section.active h2 {
+        animation: scaleIn 0.6s ease-out 0.4s both;
+      }
+      .slide-section.active .divider {
+        animation: expandWidth 0.5s ease-out 0.7s both;
+      }
+
+      @keyframes sectionSlideIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes fadeDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .slide-section .chapter-label {
+        font-family: "Outfit", sans-serif;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+        position: relative;
+        z-index: 2;
+      }
+
+      .slide-section h2 {
+        font-family: "DM Serif Display", serif;
+        font-size: 4.5rem;
+        font-weight: 400;
+        position: relative;
+        z-index: 2;
+        margin-bottom: 0;
+      }
+
+      .slide-section .divider {
+        width: 100px;
+        height: 5px;
+        margin-top: 2rem;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Giant watermark letter */
+      .slide-section::after {
+        content: attr(data-chapter-num);
+        position: absolute;
+        font-family: "DM Serif Display", serif;
+        font-size: 28rem;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.05);
+        right: 5%;
+        top: 50%;
+        transform: translateY(-50%);
+        line-height: 1;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* W — Warm-Up: full royal, gold horizontal stripe */
+      .slide-section[data-chapter-num="W"] {
+        background: var(--royal);
+      }
+      .slide-section[data-chapter-num="W"] .chapter-label {
+        color: var(--gold);
+      }
+      .slide-section[data-chapter-num="W"] h2 {
+        color: var(--light);
+      }
+      .slide-section[data-chapter-num="W"] .divider {
+        background: var(--gold);
+      }
+      .slide-section[data-chapter-num="W"]::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 42%;
+        height: 6px;
+        background: var(--gold);
+        opacity: 0.35;
+        z-index: 1;
+      }
+
+      /* I — Introduction: mauve split diagonal */
+      .slide-section[data-chapter-num="I"] {
+        background: linear-gradient(
+          135deg,
+          var(--mauve) 0%,
+          var(--mauve) 55%,
+          #a7253f 55%
+        );
+      }
+      .slide-section[data-chapter-num="I"] .chapter-label {
+        color: rgba(255, 255, 255, 0.7);
+      }
+      .slide-section[data-chapter-num="I"] h2 {
+        color: var(--light);
+      }
+      .slide-section[data-chapter-num="I"] .divider {
+        background: rgba(255, 255, 255, 0.6);
+      }
+
+      /* P1 — diagonal two-tone: royal upper-left / offwhite lower-right */
+      .slide-section[data-chapter-num="P1"] {
+        background: var(--royal);
+      }
+      .slide-section[data-chapter-num="P1"]::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 55%;
+        height: 100%;
+        background: #d1d3d4;
+        clip-path: polygon(30% 0%, 100% 0%, 100% 100%, 0% 100%);
+        z-index: 0;
+        opacity: 1;
+      }
+      .slide-section[data-chapter-num="P1"] .chapter-label {
+        color: var(--gold);
+      }
+      .slide-section[data-chapter-num="P1"] h2 {
+        color: var(--light);
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+      }
+      .slide-section[data-chapter-num="P1"] .divider {
+        background: var(--gold);
+      }
+
+      /* P2 — full mauve with off-white geometric square */
+      .slide-section[data-chapter-num="P2"] {
+        background: var(--mauve);
+      }
+      .slide-section[data-chapter-num="P2"]::before {
+        content: "";
+        position: absolute;
+        top: 10%;
+        left: 5%;
+        width: 200px;
+        height: 200px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 3px solid rgba(255, 255, 255, 0.2);
+        transform: rotate(20deg);
+        z-index: 0;
+      }
+      .slide-section[data-chapter-num="P2"] .chapter-label {
+        color: rgba(255, 255, 255, 0.75);
+      }
+      .slide-section[data-chapter-num="P2"] h2 {
+        color: var(--light);
+      }
+      .slide-section[data-chapter-num="P2"] .divider {
+        background: rgba(255, 255, 255, 0.5);
+      }
+
+      /* P3 — offwhite bg with thick mauve left border stripe */
+      .slide-section[data-chapter-num="P3"] {
+        background: #d1d3d4;
+        border-left: 18px solid var(--mauve);
+        text-align: left;
+        padding-left: 5rem;
+      }
+      .slide-section[data-chapter-num="P3"]::before {
+        display: none;
+      }
+      .slide-section[data-chapter-num="P3"] .chapter-label {
+        color: var(--mauve);
+      }
+      .slide-section[data-chapter-num="P3"] h2 {
+        color: var(--royal);
+      }
+      .slide-section[data-chapter-num="P3"] .divider {
+        background: var(--mauve);
+        margin-left: 0;
+      }
+      .slide-section[data-chapter-num="P3"]::after {
+        color: rgba(0, 19, 63, 0.04);
+      }
+
+      /* E — Evaluation: offwhite bg, royal text, mauve left border */
+      .slide-section[data-chapter-num="E"] {
+        background: #d1d3d4;
+        border-left: 18px solid var(--royal);
+        text-align: left;
+        padding-left: 5rem;
+      }
+      .slide-section[data-chapter-num="E"]::before {
+        display: none;
+      }
+      .slide-section[data-chapter-num="E"] .chapter-label {
+        color: var(--royal);
+      }
+      .slide-section[data-chapter-num="E"] h2 {
+        color: var(--mauve);
+      }
+      .slide-section[data-chapter-num="E"] .divider {
+        background: var(--royal);
+        margin-left: 0;
+      }
+      .slide-section[data-chapter-num="E"]::after {
+        color: rgba(0, 19, 63, 0.04);
+      }
+
+      /* A — Application: dark royal with scattered gold accents */
+      .slide-section[data-chapter-num="A"] {
+        background: radial-gradient(
+          ellipse at 30% 50%,
+          #00133f 0%,
+          var(--royal) 70%
+        );
+      }
+      .slide-section[data-chapter-num="A"] .chapter-label {
+        color: var(--gold);
+      }
+      .slide-section[data-chapter-num="A"] h2 {
+        color: var(--light);
+      }
+      .slide-section[data-chapter-num="A"] .divider {
+        background: var(--gold);
+      }
+      .slide-section[data-chapter-num="A"]::before {
+        content: "★ ★ ★";
+        position: absolute;
+        font-size: 3rem;
+        color: var(--gold);
+        opacity: 0.2;
+        bottom: 15%;
+        left: 50%;
+        transform: translateX(-50%);
+        letter-spacing: 2rem;
+        z-index: 0;
+      }
+
+      /* ================================================================
+       VIDEO SLIDES
+       ================================================================ */
+      .slide-video {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: var(--royal);
+        padding: 2rem 3rem;
+      }
+
+      .slide-video h2 {
+        font-family: "DM Serif Display", serif;
+        font-size: 2rem;
+        color: var(--gold);
+        margin-bottom: 1.5rem;
+        font-weight: 400;
+      }
+
+      .video-container {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        aspect-ratio: 16 / 9;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+        border: 3px solid var(--mauve);
+      }
+
+      .video-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      .slide-video.active .video-container {
+        animation: fadeUp 0.6s ease-out 0.3s both;
+      }
+
+      /* ================================================================
+       QUOTE / STATEMENT SLIDES — Layout 4: Full-bleed dark
+       ================================================================ */
+      .quote-statement {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: var(--royal);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .quote-statement::before {
+        content: "\201C";
+        position: absolute;
+        font-family: "DM Serif Display", serif;
+        font-size: 30rem;
+        color: rgba(255, 255, 255, 0.03);
+        top: -8rem;
+        left: 2rem;
+        line-height: 1;
+      }
+
+      .quote-statement .quote-inner {
+        max-width: 900px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .quote-statement h2 {
+        font-family: "DM Serif Display", serif;
+        font-size: 3.5rem;
+        font-weight: 400;
+        line-height: 1.35;
+        color: var(--light);
+      }
+
+      .quote-statement .quote-rule {
+        width: 80px;
+        height: 4px;
+        background: var(--gold);
+        margin: 2.5rem auto;
+      }
+
+      /* Offwhite variant */
+      .quote-statement.light-quote {
+        background: #d1d3d4;
+      }
+
+      .quote-statement.light-quote::before {
+        color: rgba(0, 19, 63, 0.04);
+      }
+
+      .quote-statement.light-quote h2 {
+        color: var(--royal);
+      }
+
+      /* ================================================================
+       LAYOUT 1 — ICON ROW
+       ================================================================ */
+      .icon-rows {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        flex: 1;
+        justify-content: center;
+      }
+
+      .icon-row {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+        background: var(--light);
+        border-radius: 12px;
+        padding: 1rem 1.5rem;
+        border-left: 6px solid var(--mauve);
+        transition: transform 0.2s ease;
+      }
+
+      .icon-row:nth-child(even) {
+        border-left-color: var(--teal);
+      }
+
+      .icon-row:hover {
+        transform: translateX(6px);
+      }
+
+      .icon-row-circle {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background: var(--mauve);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.75rem;
+        flex-shrink: 0;
+        color: var(--light);
+      }
+
+      .icon-row:nth-child(even) .icon-row-circle {
+        background: var(--teal);
+      }
+
+      .icon-row-label {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.35rem;
+        color: var(--royal);
+        font-weight: 400;
+        min-width: 200px;
+      }
+
+      .icon-row-desc {
+        font-size: 1.15rem;
+        color: var(--gray);
+        line-height: 1.4;
+        flex: 1;
+      }
+
+      /* ================================================================
+       LAYOUT 3 — TIMELINE / PROCESS STEPS
+       ================================================================ */
+      .timeline {
+        display: flex;
+        align-items: flex-start;
+        gap: 0;
+        flex: 1;
+        position: relative;
+      }
+
+      .timeline-step {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        padding: 0 1rem;
+      }
+
+      .timeline-step:not(:last-child)::after {
+        content: "";
+        position: absolute;
+        top: 28px;
+        left: calc(50% + 28px);
+        right: calc(-50% + 28px);
+        height: 3px;
+        background: linear-gradient(90deg, var(--mauve), var(--teal));
+        z-index: 0;
+      }
+
+      .timeline-num {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: var(--mauve);
+        color: var(--light);
+        font-family: "DM Serif Display", serif;
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        z-index: 1;
+        margin-bottom: 1.25rem;
+        flex-shrink: 0;
+        box-shadow: 0 4px 16px rgba(167, 37, 63, 0.3);
+      }
+
+      .timeline-step:nth-child(odd) .timeline-num {
+        background: var(--royal);
+        box-shadow: 0 4px 16px rgba(0, 19, 63, 0.3);
+      }
+
+      .timeline-body {
+        text-align: center;
+      }
+
+      .timeline-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.2rem;
+        color: var(--royal);
+        margin-bottom: 0.5rem;
+        font-weight: 400;
+      }
+
+      .timeline-desc {
+        font-size: 1rem;
+        color: var(--gray);
+        line-height: 1.4;
+      }
+
+      /* ================================================================
+       LAYOUT 5 — TWO-COLUMN EDITORIAL
+       ================================================================ */
+      .editorial-layout {
+        display: flex;
+        gap: 3rem;
+        flex: 1;
+        align-items: stretch;
+      }
+
+      .editorial-main {
+        flex: 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .editorial-accent {
+        flex: 0 0 220px;
+        background: var(--mauve);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem 1.5rem;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .editorial-accent::before {
+        content: "";
+        position: absolute;
+        top: -30px;
+        right: -30px;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .editorial-accent-text {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.6rem;
+        color: var(--light);
+        line-height: 1.3;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .editorial-accent-icon {
+        font-size: 4rem;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      .checklist-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.1rem;
+      }
+
+      .check-mark {
+        color: var(--green);
+        font-size: 1.4rem;
+        font-weight: 700;
+        flex-shrink: 0;
+        margin-top: 0.1rem;
+      }
+
+      .checklist-item p {
+        font-size: 1.25rem;
+        color: var(--gray);
+        line-height: 1.4;
+      }
+
+      /* ================================================================
+       LAYOUT 6 — NUMBERED ELEGANT LIST
+       ================================================================ */
+      .elegant-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        flex: 1;
+        justify-content: center;
+      }
+
+      .elegant-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid rgba(0, 19, 63, 0.12);
+      }
+
+      .elegant-item:last-child {
+        border-bottom: none;
+      }
+
+      .elegant-num {
+        font-family: "DM Serif Display", serif;
+        font-size: 5rem;
+        line-height: 1;
+        color: var(--mauve);
+        opacity: 0.35;
+        flex-shrink: 0;
+        width: 70px;
+        text-align: right;
+      }
+
+      .elegant-num.star-item {
+        font-size: 3rem;
+        opacity: 1;
+        color: var(--gold);
+      }
+
+      .elegant-body {
+        flex: 1;
+        padding-top: 0.75rem;
+      }
+
+      .elegant-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.4rem;
+        color: var(--royal);
+        margin-bottom: 0.3rem;
+        font-weight: 400;
+      }
+
+      .elegant-desc {
+        font-size: 1.1rem;
+        color: var(--gray);
+        line-height: 1.4;
+      }
+
+      .elegant-item.gold-highlight {
+        background: rgba(173, 136, 6, 0.08);
+        border-radius: 10px;
+        padding: 0.75rem 1rem;
+        border-left: 4px solid var(--gold);
+        border-bottom: none;
+      }
+
+      /* Compact variant used for long question-list slide so all content fits without vertical scrolling */
+      .slide-questions-compact .slide-subtitle {
+        margin-bottom: 0.6rem;
+      }
+
+      .slide-questions-compact .elegant-list {
+        gap: 0.55rem;
+        justify-content: flex-start;
+        flex: 0 0 auto;
+      }
+
+      .slide-questions-compact .elegant-item {
+        gap: 1rem;
+        padding-bottom: 0.55rem;
+      }
+
+      .slide-questions-compact .elegant-num {
+        font-size: 3.8rem;
+        width: 56px;
+      }
+
+      .slide-questions-compact .elegant-body {
+        padding-top: 0.35rem;
+      }
+
+      .slide-questions-compact .elegant-title {
+        font-size: 1.16rem;
+        line-height: 1.25;
+      }
+
+      /* ================================================================
+       LAYOUT 7 — ACCORDION STACK
+       ================================================================ */
+      .accordion-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+        flex: 1;
+        justify-content: center;
+      }
+
+      .accordion-row {
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        background: var(--light);
+        border-radius: 12px;
+        padding: 1.1rem 1.5rem;
+        border-left: 5px solid var(--mauve);
+      }
+
+      .accordion-row:nth-child(even) {
+        border-left-color: var(--gold);
+      }
+
+      .accordion-letter {
+        width: 54px;
+        height: 54px;
+        border-radius: 50%;
+        background: var(--mauve);
+        color: var(--light);
+        font-family: "DM Serif Display", serif;
+        font-size: 1.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .accordion-row:nth-child(even) .accordion-letter {
+        background: var(--gold);
+        color: var(--royal);
+      }
+
+      .accordion-content {
+        flex: 1;
+      }
+
+      .accordion-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.4rem;
+        color: var(--royal);
+        font-weight: 400;
+        margin-bottom: 0.2rem;
+      }
+
+      .accordion-desc {
+        font-size: 1.05rem;
+        color: var(--gray);
+        line-height: 1.4;
+      }
+
+      /* ================================================================
+       LAYOUT 8 — ACTIVITY BLOCK
+       ================================================================ */
+      .activity-slide-heading {
+        font-family: "DM Serif Display", serif;
+        font-size: 2.6rem;
+        color: var(--royal);
+        margin-bottom: 0.5rem;
+      }
+
+      .activity-slide-sub {
+        font-size: 1.2rem;
+        color: var(--mauve);
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+      }
+
+      .activity-steps {
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .activity-step {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        background: var(--light);
+        border-radius: 10px;
+        padding: 0.75rem 1.25rem;
+      }
+
+      .activity-step-num {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        background: var(--mauve);
+        color: var(--light);
+        font-size: 1rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .activity-step p {
+        font-size: 1.15rem;
+        color: var(--gray);
+      }
+
+      /* Activity callout box */
+      .activity-box {
+        background: rgba(173, 136, 6, 0.1);
+        border: 2px solid var(--gold);
+        border-radius: 12px;
+        padding: 1.25rem 1.75rem;
+        margin-top: 1rem;
+        align-self: stretch;
+      }
+
+      .activity-label {
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: var(--gold);
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .activity-box p {
+        font-size: 1.2rem;
+        color: var(--royal);
+      }
+
+      /* ================================================================
+       LAYOUT 9 — 3-PANEL HORIZONTAL
+       ================================================================ */
+      .three-panel {
+        display: flex;
+        gap: 0;
+        flex: 0 0 auto;
+        border-radius: 16px;
+        overflow: hidden;
+      }
+
+      .panel-col {
+        flex: 1;
+        padding: 2rem 1.75rem;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .panel-col.panel-royal {
+        background: var(--royal);
+        color: var(--light);
+      }
+      .panel-col.panel-teal {
+        background: var(--teal);
+        color: var(--light);
+      }
+      .panel-col.panel-mauve {
+        background: var(--mauve);
+        color: var(--light);
+      }
+      .panel-col.panel-gold {
+        background: var(--gold);
+        color: var(--royal);
+      }
+      .panel-col.panel-light {
+        background: var(--light);
+        color: var(--royal);
+      }
+
+      .panel-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .panel-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+        line-height: 1.2;
+      }
+
+      .panel-col.panel-royal .panel-title {
+        color: var(--gold);
+      }
+      .panel-col.panel-teal .panel-title {
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .panel-col.panel-mauve .panel-title {
+        color: rgba(255, 255, 255, 0.9);
+      }
+      .panel-col.panel-gold .panel-title {
+        color: var(--royal);
+      }
+      .panel-col.panel-light .panel-title {
+        color: var(--mauve);
+      }
+
+      .panel-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .panel-list li {
+        font-size: 1.1rem;
+        line-height: 1.4;
+        padding-left: 1.2rem;
+        position: relative;
+        opacity: 0.9;
+      }
+
+      .panel-list li::before {
+        content: "›";
+        position: absolute;
+        left: 0;
+        font-weight: 700;
+      }
+
+      /* ================================================================
+       LAYOUT 10 — SPOTLIGHT CARD
+       ================================================================ */
+      .spotlight-layout {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 1.5rem;
+      }
+
+      .spotlight-hero {
+        background: var(--royal);
+        border-radius: 14px;
+        padding: 2.5rem 3rem;
+        text-align: center;
+        flex: 0 0 auto;
+      }
+
+      .spotlight-hero p {
+        font-family: "DM Serif Display", serif;
+        font-size: 2.4rem;
+        font-style: italic;
+        font-weight: 400;
+        color: var(--light);
+        line-height: 1.35;
+      }
+
+      .spotlight-hero span.mauve-word {
+        color: #d1d3d4;
+      }
+
+      .spotlight-strip {
+        display: flex;
+        gap: 1rem;
+        flex: 1;
+      }
+
+      .spotlight-chip {
+        flex: 1;
+        background: var(--light);
+        border-radius: 12px;
+        padding: 1.25rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        border-top: 5px solid var(--mauve);
+      }
+
+      .spotlight-chip:nth-child(2) {
+        border-top-color: var(--teal);
+      }
+      .spotlight-chip:nth-child(3) {
+        border-top-color: var(--royal);
+      }
+
+      .spotlight-chip-icon {
+        font-size: 1.75rem;
+      }
+
+      .spotlight-chip-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.2rem;
+        color: var(--royal);
+        font-weight: 400;
+      }
+
+      .spotlight-chip p {
+        font-size: 1.05rem;
+        color: var(--gray);
+        line-height: 1.4;
+      }
+
+      /* ================================================================
+       LAYOUT 11 — CONVERSATION / STAR SCENARIO
+       ================================================================ */
+      .scenario-layout {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        gap: 1.25rem;
+      }
+
+      .question-bubble {
+        background: var(--mauve);
+        border-radius: 16px 16px 16px 4px;
+        padding: 1.25rem 1.75rem;
+        position: relative;
+      }
+
+      .question-bubble::before {
+        content: "?";
+        position: absolute;
+        right: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: "DM Serif Display", serif;
+        font-size: 6rem;
+        color: rgba(255, 255, 255, 0.08);
+        line-height: 1;
+      }
+
+      .question-bubble .interviewer-label {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        color: rgba(255, 255, 255, 0.65);
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+
+      .question-bubble p {
+        font-size: 1.25rem;
+        color: var(--light);
+        font-style: italic;
+        line-height: 1.4;
+      }
+
+      .star-blocks {
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+        flex: 1;
+      }
+
+      .star-block {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        background: var(--light);
+        border-radius: 10px;
+        padding: 0.85rem 1.25rem;
+      }
+
+      .star-label {
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        background: var(--royal);
+        color: var(--gold);
+        font-family: "DM Serif Display", serif;
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-weight: 400;
+      }
+
+      .star-block:nth-child(2) .star-label {
+        background: var(--mauve);
+        color: var(--light);
+      }
+      .star-block:nth-child(3) .star-label {
+        background: var(--gold);
+        color: var(--royal);
+      }
+
+      .star-block p {
+        font-size: 1.1rem;
+        color: var(--gray);
+        line-height: 1.4;
+        padding-top: 0.5rem;
+      }
+
+      /* ================================================================
+       CARDS GRID (2x2) — Standard, max 3 uses
+       ================================================================ */
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.75rem;
+        flex: 1;
+      }
+
+      .card {
+        background: var(--light);
+        padding: 1.75rem 2rem;
+        border-radius: 12px;
+        border-left: 6px solid var(--mauve);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .card.royal-border {
+        border-left-color: var(--royal);
+      }
+      .card.teal-border {
+        border-left-color: var(--teal);
+      }
+      .card.gold-border {
+        border-left-color: var(--gold);
+      }
+
+      .card h4 {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.5rem;
+        color: var(--royal);
+        margin-bottom: 0.75rem;
+        font-weight: 400;
+      }
+
+      .card p {
+        font-size: 1.2rem;
+        color: var(--gray);
+      }
+
+      /* Asymmetric exit ticket layout (1 wide + 2 below) */
+      .exit-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 1.5rem;
+        flex: 1;
+      }
+
+      .exit-card {
+        background: var(--light);
+        padding: 1.75rem 2rem;
+        border-radius: 12px;
+        border-top: 5px solid var(--royal);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+
+      .exit-card.full-width {
+        grid-column: 1 / -1;
+        border-top-color: var(--mauve);
+      }
+
+      .exit-card-num {
+        font-family: "DM Serif Display", serif;
+        font-size: 2.5rem;
+        color: var(--mauve);
+        opacity: 0.4;
+        line-height: 1;
+        margin-bottom: 0.5rem;
+      }
+
+      .exit-card h4 {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.35rem;
+        color: var(--royal);
+        font-weight: 400;
+        line-height: 1.3;
+      }
+
+      /* ================================================================
+       CLOSING SLIDE
+       ================================================================ */
+      .slide-closing {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: radial-gradient(
+          ellipse at 40% 40%,
+          #00133f 0%,
+          var(--royal) 70%
+        );
+        overflow: hidden;
+        position: relative;
+      }
+
+      .slide-closing.active .closing-box {
+        animation: celebrateIn 0.8s ease-out both;
+      }
+
+      @keyframes celebrateIn {
+        from {
+          opacity: 0;
+          transform: scale(0.5) rotate(-5deg);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) rotate(0deg);
+        }
+      }
+
+      .confetti-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .confetti {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        top: -10px;
+        animation: confettiFall 4s ease-in-out forwards;
+      }
+
+      @keyframes confettiFall {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) rotate(720deg);
+          opacity: 0;
+        }
+      }
+
+      .closing-box {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 4rem 5rem;
+        border-radius: 20px;
+        max-width: 850px;
+        position: relative;
+        z-index: 10;
+      }
+
+      .closing-box p {
+        font-size: 1.6rem;
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.6;
+        font-style: italic;
+        margin-bottom: 2rem;
+      }
+
+      .closing-box .divider {
+        width: 80px;
+        height: 4px;
+        background: var(--gold);
+        margin: 0 auto 2rem;
+      }
+
+      .closing-box h2 {
+        font-family: "DM Serif Display", serif;
+        font-size: 3.5rem;
+        color: var(--light);
+        font-weight: 400;
+      }
+
+      /* ================================================================
+       NAVIGATION HINT
+       ================================================================ */
+      .nav-hint {
+        position: absolute;
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: var(--gray);
+        font-size: 0.8rem;
+        background: rgba(255, 255, 255, 0.9);
+        padding: 0.5rem 1rem;
+        border-radius: 8px;
+      }
+
+      .key-icon {
+        background: var(--muted);
+        padding: 0.5rem 0.75rem;
+        border-radius: 6px;
+        font-family: monospace;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        user-select: none;
+        border: none;
+        line-height: 1;
+      }
+
+      .key-icon:hover {
+        background: var(--mauve);
+        color: var(--light);
+      }
+
+      .key-icon:active {
+        transform: scale(0.95);
+      }
+
+      .key-icon:focus-visible {
+        outline: 2px solid var(--teal);
+        outline-offset: 2px;
+      }
+
+      /* ================================================================
+       SLIDE SUBTITLE (used on a few slides)
+       ================================================================ */
+      .slide-subtitle {
+        font-size: 1.15rem;
+        color: var(--mauve);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 1.75rem;
+        margin-top: -1.25rem;
+      }
+
+      /* ================================================================
+       MOBILE RESPONSIVENESS
+       ================================================================ */
+      @media (max-width: 768px) {
+        .sidebar {
+          margin-left: -280px;
+        }
+        .sidebar-toggle {
+          display: flex;
+        }
+        .slide {
+          padding: 2rem 1.5rem;
+        }
+        .slide h1 {
+          font-size: 2.5rem;
+        }
+        .slide h2 {
+          font-size: 1.8rem;
+        }
+        .cards-grid {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+        .three-panel {
+          flex-direction: column;
+        }
+        .editorial-layout {
+          flex-direction: column;
+        }
+        .editorial-accent {
+          flex: 0 0 auto;
+        }
+        .accordion-row {
+          flex-wrap: wrap;
+        }
+        .spotlight-strip {
+          flex-direction: column;
+        }
+        .scenario-layout {
+          gap: 0.75rem;
+        }
+        .timeline {
+          flex-direction: column;
+        }
+        .timeline-step::after {
+          display: none;
+        }
+        .elegant-num {
+          font-size: 3rem;
+          width: 50px;
+        }
+        .branding-logo {
+          max-width: 50px;
+          bottom: 0.75rem;
+          right: 0.75rem;
+        }
+        .nav-hint {
+          bottom: 1rem;
+          font-size: 0.8rem;
+        }
+        .slide-title h1 {
+          font-size: 3rem;
+        }
+        .logo {
+          max-width: 150px;
+        }
+        .exit-grid {
+          grid-template-columns: 1fr;
+        }
+        .exit-card.full-width {
+          grid-column: 1;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .slide {
+          padding: 1.5rem 1rem;
+        }
+        .slide h1 {
+          font-size: 2rem;
+        }
+        .slide h2 {
+          font-size: 1.4rem;
+        }
+        .slide-title h1 {
+          font-size: 2.2rem;
+        }
+        .quote-statement h2 {
+          font-size: 2rem;
+        }
+        .branding-logo {
+          max-width: 40px;
+          bottom: 0.5rem;
+          right: 0.5rem;
+        }
+        .icon-row {
+          flex-wrap: wrap;
+        }
+        .icon-row-label {
+          min-width: unset;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="sidebar">
+        <div class="sidebar-title">WIPPEA Lesson</div>
+        <ul class="chapter-list" id="chapterList"></ul>
+
+        <div class="resources-section">
+          <div class="resources-title">Resources</div>
+          <a
+            href="Handouts/STAR_Interview_Worksheet.docx"
+            target="_blank" rel="noopener noreferrer"
+            class="resource-link"
+            >STAR Interview Worksheet</a
+          >
+          <a
+            href="Handouts/ChatGPT_Interview_Practice.docx"
+            target="_blank" rel="noopener noreferrer"
+            class="resource-link"
+            >ChatGPT Practice Prompt</a
+          >
+          <a
+            href="Handouts/Interviews_Rubric.docx"
+            target="_blank" rel="noopener noreferrer"
+            class="resource-link"
+            >Interview Rubric</a
+          >
+        </div>
+
+        <div class="slide-counter">
+          Slide <span id="currentSlide">1</span> of
+          <span id="totalSlides">0</span>
+        </div>
+      </nav>
+
+      <main class="main">
+        <button
+          class="sidebar-toggle"
+          id="sidebarToggle"
+          onclick="toggleSidebar()"
+          title="Toggle sidebar"
+        >
+          &#171;
+        </button>
+
+        <!-- ============================================================
+           CHAPTER 1 — WARM-UP
+           ============================================================ -->
+
+        <!-- Slide 1 — Title (Hero with diagonal color block) -->
+        <section class="slide slide-title active" data-chapter="1">
+          <img src="SPOKES-Logo.png" alt="SPOKES" class="logo" />
+          <h1>Interview Skills for Employment Success</h1>
+          <div class="divider"></div>
+          <p class="subtitle">
+            Mastering Key Techniques to Secure Your Dream Job
+          </p>
+          <p class="copyright">
+            Copyright &copy; 2026 WV Adult Basic Education
+          </p>
+        </section>
+
+        <!-- Slide 2 — Warm-Up Activity (Activity Block) -->
+        <section class="slide" data-chapter="1">
+          <div class="activity-slide-heading">Warm-Up: Sell an Object!</div>
+          <div class="activity-slide-sub">
+            Think fast — just like in an interview!
+          </div>
+          <div class="activity-steps">
+            <div class="activity-step">
+              <div class="activity-step-num">1</div>
+              <p>Choose any object in the classroom.</p>
+            </div>
+            <div class="activity-step">
+              <div class="activity-step-num">2</div>
+              <p>
+                Brainstorm creative selling points — what makes it unique or
+                valuable?
+              </p>
+            </div>
+            <div class="activity-step">
+              <div class="activity-step-num">3</div>
+              <p>
+                Prepare a 60-second pitch and present your object to the class.
+              </p>
+            </div>
+          </div>
+          <div class="activity-box">
+            <div class="activity-label">Group Discussion</div>
+            <p>
+              After your pitch: How is selling an object similar to
+              <strong>selling yourself</strong> in a job interview?
+            </p>
+          </div>
+        </section>
+
+        <!-- ============================================================
+           CHAPTER 2 — INTRODUCTION
+           ============================================================ -->
+
+        <!-- Slide 3 — Section Divider -->
+        <section
+          class="slide slide-section"
+          data-chapter="2"
+          data-chapter-num="I"
+        >
+          <p class="chapter-label">Introduction</p>
+          <h2>Understanding Interviews</h2>
+          <div class="divider"></div>
+        </section>
+
+        <!-- Slide 4 — What is an Interview? (Icon Row) -->
+        <section class="slide" data-chapter="2">
+          <h2>What is an Interview?</h2>
+          <div class="icon-rows">
+            <div class="icon-row">
+              <div class="icon-row-circle">&#129309;</div>
+              <div class="icon-row-label">Definition &amp; Purpose</div>
+              <div class="icon-row-desc">
+                A structured conversation to assess mutual fit, skills, and
+                readiness for a job role.
+              </div>
+            </div>
+            <div class="icon-row">
+              <div class="icon-row-circle">&#128188;</div>
+              <div class="icon-row-label">Employer Perspective</div>
+              <div class="icon-row-desc">
+                Employers evaluate whether candidates align with company culture
+                and job requirements.
+              </div>
+            </div>
+            <div class="icon-row">
+              <div class="icon-row-circle">&#127919;</div>
+              <div class="icon-row-label">Candidate Perspective</div>
+              <div class="icon-row-desc">
+                Candidates showcase qualifications and assess whether the
+                organization fits their career goals.
+              </div>
+            </div>
+            <div class="icon-row">
+              <div class="icon-row-circle">&#128241;</div>
+              <div class="icon-row-label">Interview Formats</div>
+              <div class="icon-row-desc">
+                Interviews can be conducted in-person, by phone, video, or in
+                panel formats.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 5 — Interviewing is a Skill (2x2 Cards — use #1 of 3 allowed) -->
+        <section class="slide" data-chapter="2">
+          <h2>Interviewing is a Skill</h2>
+          <div class="cards-grid">
+            <div class="card">
+              <h4>Practice Enhances Skill</h4>
+              <p>
+                Skills improve with mock interviews and self-reflection,
+                building confidence and effectiveness.
+              </p>
+            </div>
+            <div class="card royal-border">
+              <h4>Preparation Reduces Anxiety</h4>
+              <p>
+                Proper preparation significantly reduces the natural nervousness
+                of high-stakes interviews.
+              </p>
+            </div>
+            <div class="card teal-border">
+              <h4>Learning from Feedback</h4>
+              <p>
+                Using rubrics and peer reviews helps candidates refine their
+                approach and meet expectations.
+              </p>
+            </div>
+            <div class="card gold-border">
+              <h4>Simulating Real Scenarios</h4>
+              <p>
+                Simulated interview environments build competence and readiness
+                for actual job interviews.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 6 — The Interview Process (Timeline) -->
+        <section class="slide" data-chapter="2">
+          <h2>The Interview Process</h2>
+          <p class="slide-subtitle">
+            Five key phases of a successful interview
+          </p>
+          <div class="timeline">
+            <div class="timeline-step">
+              <div class="timeline-num">1</div>
+              <div class="timeline-body">
+                <div class="timeline-title">Preparation Phase</div>
+                <div class="timeline-desc">
+                  Research the employer, review the job description, and
+                  practice responses.
+                </div>
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-num">2</div>
+              <div class="timeline-body">
+                <div class="timeline-title">Beginning of Interview</div>
+                <div class="timeline-desc">
+                  Start with greetings and introductions to set a positive tone.
+                </div>
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-num">3</div>
+              <div class="timeline-body">
+                <div class="timeline-title">Core Discussion</div>
+                <div class="timeline-desc">
+                  Engage in the main conversation: questions asked and detailed
+                  answers given.
+                </div>
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-num">4</div>
+              <div class="timeline-body">
+                <div class="timeline-title">Closing</div>
+                <div class="timeline-desc">
+                  Wrap up with final questions and a strong expression of
+                  interest.
+                </div>
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-num">5</div>
+              <div class="timeline-body">
+                <div class="timeline-title">Follow-Up</div>
+                <div class="timeline-desc">
+                  Send a thank-you note and reflect on the experience.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 7 — Big Statement (Quote/Statement — light variant) -->
+        <section class="slide quote-statement light-quote" data-chapter="2">
+          <div class="quote-inner">
+            <h2>
+              "Every interview is a chance to grow. The more you
+              <span style="color: var(--mauve)">practice</span>, the more
+              <span style="color: var(--teal)">confident</span> you become."
+            </h2>
+            <div class="quote-rule"></div>
+          </div>
+        </section>
+
+        <!-- ============================================================
+           CHAPTER 3 — PREPARING FOR INTERVIEWS
+           ============================================================ -->
+
+        <!-- Slide 8 — Section Divider (diagonal two-tone) -->
+        <section
+          class="slide slide-section"
+          data-chapter="3"
+          data-chapter-num="P1"
+        >
+          <p class="chapter-label">Presentation</p>
+          <h2>Preparing for the Interview</h2>
+          <div class="divider"></div>
+        </section>
+
+        <!-- Slide 9 — Preparation Tips (Numbered Elegant List) -->
+        <section class="slide" data-chapter="3">
+          <h2>Preparation Tips</h2>
+          <div class="elegant-list">
+            <div class="elegant-item">
+              <div class="elegant-num">1</div>
+              <div class="elegant-body">
+                <div class="elegant-title">Research the Employer</div>
+                <div class="elegant-desc">
+                  Learn the company's mission, culture, and recent news to show
+                  genuine interest.
+                </div>
+              </div>
+            </div>
+            <div class="elegant-item">
+              <div class="elegant-num">2</div>
+              <div class="elegant-body">
+                <div class="elegant-title">Review the Job Description</div>
+                <div class="elegant-desc">
+                  Study requirements carefully to align your skills and tailor
+                  responses.
+                </div>
+              </div>
+            </div>
+            <div class="elegant-item">
+              <div class="elegant-num">3</div>
+              <div class="elegant-body">
+                <div class="elegant-title">Practice Interview Questions</div>
+                <div class="elegant-desc">
+                  Rehearsing common questions improves confidence and
+                  communication.
+                </div>
+              </div>
+            </div>
+            <div class="elegant-item">
+              <div class="elegant-num">4</div>
+              <div class="elegant-body">
+                <div class="elegant-title">Plan Attire &amp; Arrival</div>
+                <div class="elegant-desc">
+                  Choosing professional clothing and arriving early demonstrate
+                  professionalism.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 10 — Researching the Employer (3-Panel Horizontal) -->
+        <section class="slide" data-chapter="3">
+          <h2>Researching the Employer</h2>
+          <div class="three-panel">
+            <div class="panel-col panel-royal">
+              <div class="panel-icon">&#127970;</div>
+              <div class="panel-title">Understand the Company</div>
+              <ul class="panel-list">
+                <li>
+                  Learn the company's purpose, goals, products, and services.
+                </li>
+                <li>
+                  Review their website, mission statement, and recent news.
+                </li>
+                <li>Know who they serve and what makes them unique.</li>
+              </ul>
+            </div>
+            <div class="panel-col panel-teal">
+              <div class="panel-icon">&#127760;</div>
+              <div class="panel-title">Learn Company Culture</div>
+              <ul class="panel-list">
+                <li>
+                  Familiarize yourself with values to align responses during the
+                  interview.
+                </li>
+                <li>Look at employee reviews and social media presence.</li>
+                <li>Understand team structure and workplace expectations.</li>
+              </ul>
+            </div>
+            <div class="panel-col panel-mauve">
+              <div class="panel-icon">&#11088;</div>
+              <div class="panel-title">Demonstrate Initiative</div>
+              <ul class="panel-list">
+                <li>
+                  Employers are impressed by candidates who show genuine
+                  interest through research.
+                </li>
+                <li>
+                  Reference specific company achievements or news in your
+                  answers.
+                </li>
+                <li>Ask informed questions that show you did your homework.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 11 — Big Statement (dark quote slide) -->
+        <section class="slide quote-statement" data-chapter="3">
+          <div class="quote-inner">
+            <h2>
+              Walk in
+              <span style="color: var(--gold)">prepared</span>.<br />Walk out
+              <span style="color: #d1d3d4">confident</span>.
+            </h2>
+            <div class="quote-rule"></div>
+          </div>
+        </section>
+
+        <!-- ============================================================
+           CHAPTER 4 — PROFESSIONAL PRESENTATION
+           ============================================================ -->
+
+        <!-- Slide 12 — Section Divider (full mauve, geometric accent) -->
+        <section
+          class="slide slide-section"
+          data-chapter="4"
+          data-chapter-num="P2"
+        >
+          <p class="chapter-label">Presentation</p>
+          <h2>Professional Presentation</h2>
+          <div class="divider"></div>
+        </section>
+
+        <!-- Slide 13 — Dress for Success (Two-Column Editorial) -->
+        <section class="slide" data-chapter="4">
+          <h2>Dress for Success</h2>
+          <div class="editorial-layout">
+            <div class="editorial-main">
+              <div class="checklist-item">
+                <span class="check-mark">&#10003;</span>
+                <p>
+                  Appropriate attire shows professionalism and respect for the
+                  opportunity.
+                </p>
+              </div>
+              <div class="checklist-item">
+                <span class="check-mark">&#10003;</span>
+                <p>
+                  Match company culture and industry expectations when choosing
+                  your outfit.
+                </p>
+              </div>
+              <div class="checklist-item">
+                <span class="check-mark">&#10003;</span>
+                <p>
+                  Clean grooming and minimal accessories create a polished
+                  appearance.
+                </p>
+              </div>
+              <div class="checklist-item">
+                <span class="check-mark">&#10003;</span>
+                <p>
+                  Review a dress checklist beforehand to make informed outfit
+                  choices.
+                </p>
+              </div>
+            </div>
+            <div class="editorial-accent">
+              <div>
+                <div class="editorial-accent-icon">&#128084;</div>
+                <div class="editorial-accent-text">
+                  Dress for the job you <em>want</em>, not the job you have.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 14 — Video: Dress for Success -->
+        <section class="slide slide-video" data-chapter="4">
+          <h2>Watch: What Should I Wear to a Job Interview?</h2>
+          <div class="video-container">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/YzqFqzpUm6M"
+              title="What Should I Wear to a Job Interview?"
+              frameborder="0"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            >
+            </iframe>
+          </div>
+        </section>
+
+        <!-- Slide 15 — Body Language Matters (Spotlight Card) -->
+        <section class="slide" data-chapter="4">
+          <h2>Body Language Matters</h2>
+          <div class="spotlight-layout">
+            <div class="spotlight-hero">
+              <p>
+                "Your body <span class="mauve-word">speaks</span> before you say
+                a word."
+              </p>
+            </div>
+            <div class="spotlight-strip">
+              <div class="spotlight-chip">
+                <div class="spotlight-chip-icon">&#128522;</div>
+                <div class="spotlight-chip-title">Positive Signals</div>
+                <p>
+                  Smile, eye contact, open gestures, genuine enthusiasm
+                  throughout.
+                </p>
+              </div>
+              <div class="spotlight-chip">
+                <div class="spotlight-chip-icon">&#9650;</div>
+                <div class="spotlight-chip-title">Posture &amp; Engagement</div>
+                <p>
+                  Sit upright, lean slightly forward, nod to show you are
+                  listening.
+                </p>
+              </div>
+              <div class="spotlight-chip">
+                <div class="spotlight-chip-icon">&#128683;</div>
+                <div class="spotlight-chip-title">Avoid These</div>
+                <p>
+                  Fidgeting, checking your phone, crossing arms, or slouching.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 16 — Video: Body Language -->
+        <section class="slide slide-video" data-chapter="4">
+          <h2>Watch: 7 Body Language Tips to Impress at Your Next Interview</h2>
+          <div class="video-container">
+            <iframe
+              src="https://www.youtube-nocookie.com/embed/PCWVi5pAa30"
+              title="7 Body Language Tips to Impress at Your Next Interview"
+              frameborder="0"
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            >
+            </iframe>
+          </div>
+        </section>
+
+        <!-- Slide 17 — Basic Interview Tips (Icon Row) -->
+        <section class="slide" data-chapter="4">
+          <h2>Basic Interview Tips</h2>
+          <div class="icon-rows">
+            <div class="icon-row">
+              <div class="icon-row-circle">&#128336;</div>
+              <div class="icon-row-label">Timeliness &amp; Politeness</div>
+              <div class="icon-row-desc">
+                Arrive early and be courteous to everyone — first impressions
+                start at the door.
+              </div>
+            </div>
+            <div class="icon-row">
+              <div class="icon-row-circle">&#129309;</div>
+              <div class="icon-row-label">Confident Introduction</div>
+              <div class="icon-row-desc">
+                Greet with a firm handshake and introduce yourself with energy
+                and warmth.
+              </div>
+            </div>
+            <div class="icon-row">
+              <div class="icon-row-circle">&#128203;</div>
+              <div class="icon-row-label">Come Prepared</div>
+              <div class="icon-row-desc">
+                Bring multiple copies of your resume, a notepad, and a pen.
+              </div>
+            </div>
+            <div class="icon-row">
+              <div class="icon-row-circle">&#128064;</div>
+              <div class="icon-row-label">Assertive Body Language</div>
+              <div class="icon-row-desc">
+                Maintain eye contact and show enthusiasm throughout the
+                conversation.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================================
+           CHAPTER 5 — INTERVIEW TECHNIQUES
+           ============================================================ -->
+
+        <!-- Slide 18 — Section Divider (offwhite bg, thick mauve left border) -->
+        <section
+          class="slide slide-section"
+          data-chapter="5"
+          data-chapter-num="P3"
+        >
+          <p class="chapter-label">Presentation</p>
+          <h2>Interview Techniques &amp; Follow-Up</h2>
+          <div class="divider"></div>
+        </section>
+
+        <!-- Slide 19 — STAR Method (Accordion Stack) -->
+        <section class="slide" data-chapter="5">
+          <h2>Answering Questions: The STAR Method</h2>
+          <p class="slide-subtitle">
+            A structured approach for behavioral interview questions
+          </p>
+          <div class="accordion-stack">
+            <div class="accordion-row">
+              <div class="accordion-letter">S</div>
+              <div class="accordion-content">
+                <div class="accordion-title">Situation</div>
+                <div class="accordion-desc">
+                  Describe the specific situation you faced. Give enough detail
+                  for context.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-row">
+              <div class="accordion-letter">T</div>
+              <div class="accordion-content">
+                <div class="accordion-title">Task</div>
+                <div class="accordion-desc">
+                  Explain what you needed to accomplish and your specific role
+                  in that situation.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-row">
+              <div class="accordion-letter">A</div>
+              <div class="accordion-content">
+                <div class="accordion-title">Action</div>
+                <div class="accordion-desc">
+                  Describe what YOU did. Use past tense — tell what you did, not
+                  what you would do.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-row">
+              <div class="accordion-letter">R</div>
+              <div class="accordion-content">
+                <div class="accordion-title">Result</div>
+                <div class="accordion-desc">
+                  Share the outcome. What happened? What did you accomplish?
+                  What did you learn?
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 20 — STAR Example 1 (Conversation/Quote Scenario) -->
+        <section class="slide" data-chapter="5">
+          <h2>STAR in Action: Handling Stress</h2>
+          <div class="scenario-layout">
+            <div class="question-bubble">
+              <div class="interviewer-label">Interviewer Question</div>
+              <p>
+                "Tell me about a time you faced a stressful situation that
+                demonstrated your coping ability."
+              </p>
+            </div>
+            <div class="star-blocks">
+              <div class="star-block">
+                <div class="star-label">S-T</div>
+                <p>
+                  I had worked five 12-hour shifts in a row and was asked to
+                  stay when we were slammed with urgent exam requests.
+                </p>
+              </div>
+              <div class="star-block">
+                <div class="star-label">A</div>
+                <p>
+                  I agreed to stay and we worked as a team, prioritizing the
+                  most critical exams first.
+                </p>
+              </div>
+              <div class="star-block">
+                <div class="star-label">R</div>
+                <p>
+                  We turned a stressful situation into a manageable one —
+                  patients were well cared for and pleased with our service.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 21 — STAR Example 2 (Conversation/Quote Scenario) -->
+        <section class="slide" data-chapter="5">
+          <h2>STAR in Action: Upset Customer</h2>
+          <div class="scenario-layout">
+            <div class="question-bubble">
+              <div class="interviewer-label">Interviewer Question</div>
+              <p>
+                "Tell me about a situation in which you had to deal with a very
+                upset customer or co-worker."
+              </p>
+            </div>
+            <div class="star-blocks">
+              <div class="star-block">
+                <div class="star-label">S-T</div>
+                <p>
+                  I was working in a nursing home when a patient's very upset
+                  family member told me the room hadn't been cleaned in 2 days.
+                </p>
+              </div>
+              <div class="star-block">
+                <div class="star-label">A</div>
+                <p>
+                  I reassured the family member it would be handled, reported to
+                  my supervisor, and a housekeeper was assigned immediately.
+                </p>
+              </div>
+              <div class="star-block">
+                <div class="star-label">R</div>
+                <p>
+                  The family was pleased with our quick response and the patient
+                  was well taken care of.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 22 — STAR Practice Activity (Activity Block) -->
+        <section class="slide" data-chapter="5">
+          <div class="activity-slide-heading">STAR Method Practice</div>
+          <div class="activity-slide-sub">
+            Use the "Shine Bright with STAR Interviews!" worksheet
+          </div>
+          <div class="activity-steps">
+            <div class="activity-step">
+              <div class="activity-step-num">1</div>
+              <p>
+                Describe a time you successfully handled a challenging or upset
+                customer.
+              </p>
+            </div>
+            <div class="activity-step">
+              <div class="activity-step-num">2</div>
+              <p>
+                Tell us about a conflict with a coworker and how you resolved
+                it.
+              </p>
+            </div>
+            <div class="activity-step">
+              <div class="activity-step-num">3</div>
+              <p>
+                What's one decision you wish you'd made differently — and what
+                did you learn?
+              </p>
+            </div>
+            <div class="activity-step">
+              <div class="activity-step-num">4</div>
+              <p>
+                Describe a situation where a colleague made a mistake or broke
+                policy. How did you respond?
+              </p>
+            </div>
+          </div>
+          <div class="download-resource">
+            <span class="download-prompt">Instructor Resource Available</span>
+            <a
+              href="Handouts/STAR_Interview_Worksheet.docx"
+              target="_blank" rel="noopener noreferrer"
+              class="download-btn"
+              >STAR Interview Worksheet</a
+            >
+          </div>
+        </section>
+
+        <!-- Slide 24 — Questions to Ask (Numbered Elegant List) -->
+        <section class="slide slide-questions-compact" data-chapter="5">
+          <h2>Questions to Ask the Interviewer</h2>
+          <p class="slide-subtitle">
+            Always come prepared with thoughtful questions — it shows genuine
+            interest.
+          </p>
+          <div class="elegant-list">
+            <div class="elegant-item">
+              <div class="elegant-num">1</div>
+              <div class="elegant-body">
+                <div class="elegant-title">
+                  Will you describe the characteristics of the person best
+                  suited for this job?
+                </div>
+              </div>
+            </div>
+            <div class="elegant-item">
+              <div class="elegant-num">2</div>
+              <div class="elegant-body">
+                <div class="elegant-title">
+                  What advancement opportunities are available with your
+                  company?
+                </div>
+              </div>
+            </div>
+            <div class="elegant-item">
+              <div class="elegant-num">3</div>
+              <div class="elegant-body">
+                <div class="elegant-title">
+                  What type of people tend to do well in this position — and who
+                  does not?
+                </div>
+              </div>
+            </div>
+            <div class="elegant-item">
+              <div class="elegant-num">4</div>
+              <div class="elegant-body">
+                <div class="elegant-title">
+                  Are there any reservations about my fit for this position I
+                  could try to address?
+                </div>
+              </div>
+            </div>
+            <div class="elegant-item gold-highlight">
+              <div class="elegant-num star-item">&#9733;</div>
+              <div class="elegant-body">
+                <div class="elegant-title" style="color: var(--gold)">
+                  Must Ask: When will you be making a decision and how will I be
+                  notified?
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 25 — During & Closing (3-Panel Horizontal) -->
+        <section class="slide" data-chapter="5">
+          <h2>During &amp; Closing the Interview</h2>
+          <div class="three-panel">
+            <div class="panel-col panel-teal">
+              <div class="panel-icon">&#9749;</div>
+              <div class="panel-title">While You're There</div>
+              <ul class="panel-list">
+                <li>Maintain good posture and stay positive throughout.</li>
+                <li>Organize thoughts before answering each question.</li>
+                <li>Refer to your resume or portfolio when appropriate.</li>
+                <li>Express willingness to learn and grow.</li>
+              </ul>
+            </div>
+            <div class="panel-col panel-gold">
+              <div class="panel-icon">&#128077;</div>
+              <div class="panel-title">Wrapping Up</div>
+              <ul class="panel-list">
+                <li>Ask your prepared questions.</li>
+                <li>Thank the interviewer sincerely.</li>
+                <li>Smile and shake hands confidently.</li>
+                <li>Express continued interest in the role.</li>
+              </ul>
+            </div>
+            <div class="panel-col panel-royal">
+              <div class="panel-icon">&#128221;</div>
+              <div class="panel-title">Follow-Up Etiquette</div>
+              <ul class="panel-list">
+                <li>Send a thank-you note within 24 hours.</li>
+                <li>Reflect on strengths and areas to improve.</li>
+                <li>Follow up politely after one week if no response.</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 26 — ChatGPT Interview Practice (Activity Block) -->
+        <section class="slide" data-chapter="5">
+          <div class="activity-slide-heading">ChatGPT Interview Practice</div>
+          <div class="activity-slide-sub">
+            Use AI to practice your interview skills anytime, anywhere.
+          </div>
+          <div class="activity-steps">
+            <div class="activity-step">
+              <div class="activity-step-num">1</div>
+              <p>Choose a job you are interested in applying for.</p>
+            </div>
+            <div class="activity-step">
+              <div class="activity-step-num">2</div>
+              <p>
+                Open ChatGPT and paste the practice prompt from your handout.
+              </p>
+            </div>
+            <div class="activity-step">
+              <div class="activity-step-num">3</div>
+              <p>
+                Answer each interview question as if it were a real interview.
+              </p>
+            </div>
+            <div class="activity-step">
+              <div class="activity-step-num">4</div>
+              <p>Ask ChatGPT for feedback on your answers.</p>
+            </div>
+            <div class="activity-step">
+              <div class="activity-step-num">5</div>
+              <p>Identify your strengths and one area to improve.</p>
+            </div>
+          </div>
+          <div class="download-resource">
+            <span class="download-prompt">Instructor Resource Available</span>
+            <a
+              href="Handouts/ChatGPT_Interview_Practice.docx"
+              target="_blank" rel="noopener noreferrer"
+              class="download-btn"
+              >ChatGPT Practice Prompt</a
+            >
+          </div>
+        </section>
+
+        <!-- ============================================================
+           CHAPTER 6 — EVALUATION
+           ============================================================ -->
+
+        <!-- Slide 27 — Section Divider -->
+        <section
+          class="slide slide-section"
+          data-chapter="6"
+          data-chapter-num="E"
+        >
+          <p class="chapter-label">Evaluation</p>
+          <h2>Check Your Knowledge</h2>
+          <div class="divider"></div>
+        </section>
+
+        <!-- Slide 28 — Exit Ticket (Asymmetric cards — use #2 of 3 allowed) -->
+        <section class="slide" data-chapter="6">
+          <h2>Exit Ticket</h2>
+          <p class="slide-subtitle">Reflect on what you've learned today.</p>
+          <div class="exit-grid">
+            <div class="exit-card full-width">
+              <div class="exit-card-num">1</div>
+              <h4>
+                Name two things you will do before your next job interview to
+                prepare.
+              </h4>
+            </div>
+            <div class="exit-card">
+              <div class="exit-card-num">2</div>
+              <h4>
+                Describe how you would use the STAR method to answer a
+                behavioral interview question.
+              </h4>
+            </div>
+            <div class="exit-card">
+              <div class="exit-card-num">3</div>
+              <h4>
+                What is one question you plan to ask an employer — and why did
+                you choose it?
+              </h4>
+            </div>
+          </div>
+          <div class="download-resource">
+            <span class="download-prompt">Instructor Resource Available</span>
+            <a
+              href="Handouts/Interviews_Rubric.docx"
+              target="_blank" rel="noopener noreferrer"
+              class="download-btn"
+              >Interview Rubric</a
+            >
+          </div>
+        </section>
+
+        <!-- ============================================================
+           CHAPTER 7 — APPLICATION
+           ============================================================ -->
+
+        <!-- Slide 29 — Section Divider (celebration, dark royal + stars) -->
+        <section
+          class="slide slide-section"
+          data-chapter="7"
+          data-chapter-num="A"
+        >
+          <p class="chapter-label">Application</p>
+          <h2>Put It Into Practice</h2>
+          <div class="divider"></div>
+        </section>
+
+        <!-- Slide 30 — Mock Interview Round Robin (Activity Block) -->
+        <section class="slide" data-chapter="7">
+          <div class="activity-slide-heading">Mock Interview Round Robin</div>
+          <div class="activity-slide-sub">
+            Partner up and take turns as interviewer and candidate.
+          </div>
+          <div class="activity-steps">
+            <div class="activity-step">
+              <div class="activity-step-num">1</div>
+              <p>
+                Tell me about yourself and why you are interested in this
+                position.
+              </p>
+            </div>
+            <div class="activity-step">
+              <div class="activity-step-num">2</div>
+              <p>
+                Describe a time you solved a difficult problem at work or
+                school.
+              </p>
+            </div>
+            <div class="activity-step">
+              <div class="activity-step-num">3</div>
+              <p>
+                What are your greatest strengths — and one area you are actively
+                working to improve?
+              </p>
+            </div>
+            <div class="activity-step">
+              <div class="activity-step-num">4</div>
+              <p>Where do you see yourself in five years?</p>
+            </div>
+          </div>
+          <div class="activity-box">
+            <div class="activity-label">Peer Feedback</div>
+            <p>
+              After each mock interview, share <strong>2 positives</strong> and
+              <strong>1 suggestion</strong>. Use the Interview Rubric to guide
+              your feedback.
+            </p>
+          </div>
+        </section>
+
+        <!-- Slide 31 — Follow-Up Etiquette (Timeline) -->
+        <section class="slide" data-chapter="7">
+          <h2>Follow-Up Etiquette</h2>
+          <p class="slide-subtitle">What to do after you leave the room</p>
+          <div class="timeline">
+            <div class="timeline-step">
+              <div class="timeline-num">1</div>
+              <div class="timeline-body">
+                <div class="timeline-title">Within 24 Hours</div>
+                <div class="timeline-desc">
+                  Send a personalized thank-you note expressing gratitude and
+                  reinforcing your interest.
+                </div>
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-num">2</div>
+              <div class="timeline-body">
+                <div class="timeline-title">Reflect</div>
+                <div class="timeline-desc">
+                  Review the interview to identify strengths and areas for
+                  improvement for future opportunities.
+                </div>
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="timeline-num">3</div>
+              <div class="timeline-body">
+                <div class="timeline-title">After One Week</div>
+                <div class="timeline-desc">
+                  If no response, make a courteous follow-up call to inquire
+                  about the hiring decision.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 32 — Closing (Celebration) -->
+        <section class="slide slide-closing" data-chapter="7" id="closingSlide">
+          <div class="confetti-container" id="confettiContainer"></div>
+          <div class="closing-box">
+            <h3
+              style="
+                color: var(--gold);
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+              "
+            >
+              Congratulations, you have completed this lesson!
+            </h3>
+            <p>
+              "The secret of getting ahead is getting started. Every interview
+              brings you one step closer to your dream job."
+            </p>
+            <div class="divider"></div>
+            <h2>Go get that job &mdash; you've got this!</h2>
+          </div>
+        </section>
+
+        <!-- Navigation Hint -->
+        <div class="nav-hint">
+          <button type="button" class="key-icon" id="prevBtn" onclick="prevSlide()" aria-label="Previous slide">&#8592;</button>
+          <span>to navigate</span>
+          <button type="button" class="key-icon" id="nextBtn" onclick="nextSlide()" aria-label="Next slide">&#8594;</button>
+        </div>
+
+        <!-- Branding Logo -->
+        <img src="SPOKES-Logo.png" alt="SPOKES" class="branding-logo" />
+
+        <!-- Progress Bar -->
+        <div class="progress-bar" id="progressBar"></div>
+      </main>
+    </div>
+
+    <script>
+      /* ================================================================
+       SPOKES NAVIGATION ENGINE — DO NOT MODIFY THIS JAVASCRIPT
+       This entire <script> block is the SPOKES standard.
+       Copy it verbatim into every new lesson.
+       The ONLY thing you change is the chapterNames object below.
+       ================================================================ */
+
+      // Slide Navigation
+      const slides = document.querySelectorAll(".slide");
+      const chapterListEl = document.getElementById("chapterList");
+      const currentSlideEl = document.getElementById("currentSlide");
+      const totalSlidesEl = document.getElementById("totalSlides");
+      const progressBar = document.getElementById("progressBar");
+
+      let currentIndex = 0;
+      let sidebarCollapsed = false;
+      const sidebarEl = document.querySelector(".sidebar");
+      const sidebarToggleBtn = document.getElementById("sidebarToggle");
+      totalSlidesEl.textContent = slides.length;
+
+      function toggleSidebar() {
+        sidebarCollapsed = !sidebarCollapsed;
+        sidebarEl.classList.toggle("collapsed", sidebarCollapsed);
+        sidebarToggleBtn.innerHTML = sidebarCollapsed ? "&#187;" : "&#171;";
+      }
+
+      // Sound effects
+      const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+      function playClickSound() {
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        oscillator.connect(gainNode);
+        gainNode.connect(audioCtx.destination);
+        oscillator.frequency.value = 800;
+        oscillator.type = "sine";
+        gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+        gainNode.gain.exponentialRampToValueAtTime(
+          0.01,
+          audioCtx.currentTime + 0.1,
+        );
+        oscillator.start(audioCtx.currentTime);
+        oscillator.stop(audioCtx.currentTime + 0.1);
+      }
+
+      function playSuccessSound() {
+        const notes = [523, 659, 784];
+        notes.forEach((freq, i) => {
+          setTimeout(() => {
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+            oscillator.frequency.value = freq;
+            oscillator.type = "sine";
+            gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(
+              0.01,
+              audioCtx.currentTime + 0.3,
+            );
+            oscillator.start(audioCtx.currentTime);
+            oscillator.stop(audioCtx.currentTime + 0.3);
+          }, i * 150);
+        });
+      }
+
+      /* ================================================================
+       TEMPLATE: Update the chapter names below for your lesson.
+       - Keys 1-7 correspond to data-chapter="1" through data-chapter="7"
+       - badge values: w=Warm-Up, i=Introduction, p=Presentation, e=Evaluation, a=Application
+       ================================================================ */
+      const chapterNames = {
+        1: { name: "Warm-Up", badge: "w" },
+        2: { name: "Introduction", badge: "i" },
+        3: { name: "Preparing for Interviews", badge: "p" },
+        4: { name: "Professional Presentation", badge: "p" },
+        5: { name: "Interview Techniques", badge: "p" },
+        6: { name: "Evaluation", badge: "e" },
+        7: { name: "Application", badge: "a" },
+      };
+
+      const wippeaLabels = { w: "W", i: "I", p: "P", e: "E", a: "A" };
+
+      function buildSidebar() {
+        const chapters = {};
+
+        slides.forEach((slide, index) => {
+          const chapter = slide.dataset.chapter;
+          if (!chapters[chapter]) chapters[chapter] = [];
+          const h1 = slide.querySelector("h1");
+          const h2 = slide.querySelector("h2");
+          const activityHeading = slide.querySelector(".activity-slide-heading");
+          let title = h1
+            ? h1.textContent
+            : h2
+              ? h2.textContent
+              : activityHeading
+                ? activityHeading.textContent
+                : "Slide " + (index + 1);
+          title = title.replace(/\s+/g, " ").trim();
+          chapters[chapter].push({ index, title });
+        });
+
+        let html = "";
+        Object.keys(chapters).forEach((chapterNum) => {
+          const chapterSlides = chapters[chapterNum];
+          const info = chapterNames[chapterNum] || {
+            name: "Chapter " + chapterNum,
+            badge: "p",
+          };
+          const badgeLetter = wippeaLabels[info.badge] || "P";
+
+          html +=
+            '<li class="chapter-item" data-chapter="' +
+            chapterNum +
+            '">' +
+            '<div class="chapter-header">' +
+            '<span class="chapter-arrow">&#9654;</span>' +
+            '<span class="wippea-badge ' +
+            info.badge +
+            '">' +
+            badgeLetter +
+            "</span>" +
+            "<span>" +
+            info.name +
+            "</span>" +
+            "</div>" +
+            '<ul class="slide-list">';
+
+          chapterSlides.forEach((s) => {
+            html +=
+              '<li class="slide-item" data-slide="' +
+              s.index +
+              '">' +
+              s.title +
+              "</li>";
+          });
+
+          html += "</ul></li>";
+        });
+
+        chapterListEl.innerHTML = html;
+
+        document.querySelectorAll(".chapter-header").forEach((header) => {
+          header.addEventListener("click", () => {
+            const chapterItem = header.parentElement;
+            const wasExpanded = chapterItem.classList.contains("expanded");
+            document
+              .querySelectorAll(".chapter-item")
+              .forEach((item) => item.classList.remove("expanded"));
+            if (!wasExpanded) chapterItem.classList.add("expanded");
+            const chapter = chapterItem.dataset.chapter;
+            const targetIndex = Array.from(slides).findIndex(
+              (slide) => slide.dataset.chapter === chapter,
+            );
+            if (targetIndex !== -1) showSlide(targetIndex);
+          });
+        });
+
+        document.querySelectorAll(".slide-item").forEach((item) => {
+          item.addEventListener("click", (e) => {
+            e.stopPropagation();
+            showSlide(parseInt(item.dataset.slide));
+          });
+        });
+      }
+
+      function showSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= slides.length) index = slides.length - 1;
+        currentIndex = index;
+
+        slides.forEach((slide, i) =>
+          slide.classList.toggle("active", i === index),
+        );
+
+        const currentChapter = slides[index].dataset.chapter;
+        document.querySelectorAll(".chapter-item").forEach((item) => {
+          const isActive = item.dataset.chapter === currentChapter;
+          item.classList.toggle("active", isActive);
+          if (isActive) item.classList.add("expanded");
+        });
+
+        document.querySelectorAll(".slide-item").forEach((item) => {
+          item.classList.toggle(
+            "active",
+            parseInt(item.dataset.slide) === index,
+          );
+        });
+
+        currentSlideEl.textContent = index + 1;
+        progressBar.style.width = ((index + 1) / slides.length) * 100 + "%";
+
+        // Handle branding logo visibility
+        const brandingLogo = document.querySelector(".branding-logo");
+        if (
+          slides[index].classList.contains("slide-title") ||
+          slides[index].classList.contains("slide-closing")
+        ) {
+          brandingLogo.style.display = "none";
+        } else {
+          brandingLogo.style.display = "block";
+        }
+
+        if (slides[index].classList.contains("slide-closing")) {
+          triggerConfetti();
+          playSuccessSound();
+        }
+      }
+
+      function triggerConfetti() {
+        const container = document.getElementById("confettiContainer");
+        container.innerHTML = "";
+        const colors = ["#37b550", "#007baf", "#ad8806", "#a7253f", "#FFFFFF"];
+        for (let i = 0; i < 100; i++) {
+          const confetti = document.createElement("div");
+          confetti.className = "confetti";
+          confetti.style.left = Math.random() * 100 + "%";
+          confetti.style.backgroundColor =
+            colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.animationDelay = Math.random() * 2 + "s";
+          confetti.style.animationDuration = Math.random() * 2 + 3 + "s";
+          const size = Math.random() * 10 + 5;
+          confetti.style.width = size + "px";
+          confetti.style.height = size + "px";
+          confetti.style.borderRadius = Math.random() > 0.5 ? "50%" : "0";
+          container.appendChild(confetti);
+        }
+      }
+
+      function nextSlide() {
+        showSlide(currentIndex + 1);
+      }
+      function prevSlide() {
+        showSlide(currentIndex - 1);
+      }
+
+      function isFormField(target) {
+        if (!target) return false;
+        return Boolean(target.closest("input, textarea, select, [contenteditable='true']"));
+      }
+
+      function isInteractiveTarget(target) {
+        if (!target) return false;
+        return Boolean(target.closest("button, a, input, textarea, select, summary, [role='button'], [role='tab'], [role='checkbox'], [role='radio']"));
+      }
+
+      // Keyboard navigation
+      document.addEventListener("keydown", (e) => {
+        if (isFormField(e.target)) return;
+        if (e.key === "ArrowRight") {
+          e.preventDefault();
+          nextSlide();
+        } else if (e.key === "ArrowLeft") {
+          e.preventDefault();
+          prevSlide();
+        } else if ((e.key === " " || e.key === "Spacebar") && !isInteractiveTarget(e.target)) {
+          e.preventDefault();
+          nextSlide();
+        }
+      });
+
+      // Touch/swipe support
+      let touchStartX = 0;
+      document.addEventListener("touchstart", (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      });
+      document.addEventListener("touchend", (e) => {
+        const diff = touchStartX - e.changedTouches[0].screenX;
+        if (Math.abs(diff) > 50) {
+          diff > 0 ? nextSlide() : prevSlide();
+        }
+      });
+
+      // Auto-collapse sidebar on small screens
+      function initSidebarState() {
+        if (window.innerWidth <= 768) {
+          sidebarCollapsed = true;
+          sidebarEl.classList.add("collapsed");
+          sidebarToggleBtn.innerHTML = "&#187;";
+        }
+      }
+
+      // Initialize
+      buildSidebar();
+      initSidebarState();
+      showSlide(0);
+    </script>
+  
+  <!-- QA Interactive Pack: tabs + accordion + checkpoint quiz -->
+  <section id="qa-interactive-pack" aria-label="Interactive Practice Pack" style="max-width:1100px;margin:2rem auto;padding:1rem;border:2px solid var(--primary);border-radius:12px;background:var(--muted);">
+    <h2 style="color:var(--primary);margin:.25rem 0 1rem;">Interactive Practice Pack</h2>
+
+    <div class="qa-card" style="margin-top:1rem;padding:.75rem;background:var(--light);border-radius:8px;border:1px solid var(--offwhite);" aria-label="Tabs interaction">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.75rem;flex-wrap:wrap;">
+        <h3 style="margin:0;color:var(--primary);font-size:1.05rem;">Tabs Interaction</h3>
+        <button type="button" class="qa-prompt-toggle" data-target="qa-prompt-tabs" aria-expanded="false" style="padding:.35rem .6rem;border:1px solid var(--primary);background:var(--muted);color:var(--primary);border-radius:6px;">View Prompt</button>
+      </div>
+      <div id="qa-prompt-tabs" class="qa-prompt-panel" hidden style="margin-top:.55rem;padding:.65rem .75rem;background:var(--muted);border-left:4px solid var(--primary);border-radius:6px;">
+        <p style="margin:.2rem 0;"><strong>Prompt:</strong> Which tab best matches your current challenge and why?</p>
+        <p style="margin:.2rem 0;"><strong>Discussion:</strong> Compare how different choices change outcomes.</p>
+        <p style="margin:.2rem 0;"><strong>Debrief:</strong> Name one action you will apply this week.</p>
+      </div>
+      <div role="tablist" aria-label="Practice tabs" style="display:flex;gap:.5rem;flex-wrap:wrap;margin:.75rem 0;">
+        <button type="button" class="qa-tab" id="qa-tab-btn-1" role="tab" aria-controls="qa-tab-1" aria-selected="true" tabindex="0" data-target="qa-tab-1" style="padding:.5rem .75rem;border:1px solid var(--primary);background:var(--light);color:var(--primary);border-radius:8px;">Key Idea</button>
+        <button type="button" class="qa-tab" id="qa-tab-btn-2" role="tab" aria-controls="qa-tab-2" aria-selected="false" tabindex="-1" data-target="qa-tab-2" style="padding:.5rem .75rem;border:1px solid var(--primary);background:var(--light);color:var(--primary);border-radius:8px;">Example</button>
+        <button type="button" class="qa-tab" id="qa-tab-btn-3" role="tab" aria-controls="qa-tab-3" aria-selected="false" tabindex="-1" data-target="qa-tab-3" style="padding:.5rem .75rem;border:1px solid var(--primary);background:var(--light);color:var(--primary);border-radius:8px;">Action</button>
+      </div>
+      <div id="qa-tab-1" class="qa-tab-panel" role="tabpanel" aria-labelledby="qa-tab-btn-1" style="display:block;padding:.75rem;background:var(--light);border-radius:8px;">Use the framework to make intentional decisions.</div>
+      <div id="qa-tab-2" class="qa-tab-panel" role="tabpanel" aria-labelledby="qa-tab-btn-2" style="display:none;padding:.75rem;background:var(--light);border-radius:8px;">Apply this to one real scenario from your week.</div>
+      <div id="qa-tab-3" class="qa-tab-panel" role="tabpanel" aria-labelledby="qa-tab-btn-3" style="display:none;padding:.75rem;background:var(--light);border-radius:8px;">Write one behavior change you will complete today.</div>
+    </div>
+
+    <div class="qa-card" style="margin-top:1rem;padding:.75rem;background:var(--light);border-radius:8px;border:1px solid var(--offwhite);" aria-label="Accordion interaction">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.75rem;flex-wrap:wrap;">
+        <h3 style="margin:0;color:var(--primary);font-size:1.05rem;">Accordion Interaction</h3>
+        <button type="button" class="qa-prompt-toggle" data-target="qa-prompt-accordion" aria-expanded="false" style="padding:.35rem .6rem;border:1px solid var(--primary);background:var(--muted);color:var(--primary);border-radius:6px;">View Prompt</button>
+      </div>
+      <div id="qa-prompt-accordion" class="qa-prompt-panel" hidden style="margin-top:.55rem;padding:.65rem .75rem;background:var(--muted);border-left:4px solid var(--primary);border-radius:6px;">
+        <p style="margin:.2rem 0;"><strong>Prompt:</strong> Open one reflection and explain your choice to a partner.</p>
+        <p style="margin:.2rem 0;"><strong>Discussion:</strong> Highlight patterns students notice across responses.</p>
+        <p style="margin:.2rem 0;"><strong>Debrief:</strong> Capture one behavior each student can practice next.</p>
+      </div>
+      <button type="button" class="qa-acc-btn" aria-expanded="false" data-target="qa-acc-1" style="width:100%;text-align:left;padding:.6rem .75rem;border:1px solid var(--primary);background:var(--light);color:var(--primary);border-radius:8px;margin-top:.75rem;">Open Reflection Prompt 1</button>
+      <div id="qa-acc-1" class="qa-acc-panel" hidden style="padding:.65rem .75rem;">What choice would improve your outcome this week?</div>
+      <button type="button" class="qa-acc-btn" aria-expanded="false" data-target="qa-acc-2" style="width:100%;text-align:left;padding:.6rem .75rem;border:1px solid var(--primary);background:var(--light);color:var(--primary);border-radius:8px;margin-top:.5rem;">Open Reflection Prompt 2</button>
+      <div id="qa-acc-2" class="qa-acc-panel" hidden style="padding:.65rem .75rem;">Which habit should you reduce to reclaim time?</div>
+    </div>
+
+    <div class="qa-card" style="margin-top:1rem;padding:.75rem;background:var(--light);border-radius:8px;border:1px solid var(--offwhite);" aria-label="Checkpoint quiz interaction">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.75rem;flex-wrap:wrap;">
+        <h3 style="margin:0;color:var(--primary);font-size:1.05rem;">Checkpoint Prompt</h3>
+        <button type="button" class="qa-prompt-toggle" data-target="qa-prompt-checkpoint" aria-expanded="false" style="padding:.35rem .6rem;border:1px solid var(--primary);background:var(--muted);color:var(--primary);border-radius:6px;">View Prompt</button>
+      </div>
+      <div id="qa-prompt-checkpoint" class="qa-prompt-panel" hidden style="margin-top:.55rem;padding:.65rem .75rem;background:var(--muted);border-left:4px solid var(--primary);border-radius:6px;">
+        <p style="margin:.2rem 0;"><strong>Prompt:</strong> Vote, then defend your choice with evidence from the lesson.</p>
+        <p style="margin:.2rem 0;"><strong>Discussion:</strong> Invite one alternate perspective before revealing feedback.</p>
+        <p style="margin:.2rem 0;"><strong>Debrief:</strong> Reinforce ownership + action as the target behavior.</p>
+      </div>
+      <p style="margin-top:.75rem;"><strong>Checkpoint:</strong> Which option best reflects the lesson goal?</p>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <button type="button" class="qa-quiz" data-correct="false" style="padding:.45rem .7rem;border:1px solid var(--primary);background:var(--offwhite);color:var(--primary);border-radius:8px;">Avoid responsibility</button>
+        <button type="button" class="qa-quiz" data-correct="true" style="padding:.45rem .7rem;border:1px solid var(--primary);background:var(--offwhite);color:var(--primary);border-radius:8px;">Take ownership and apply the framework</button>
+        <button type="button" class="qa-quiz" data-correct="false" style="padding:.45rem .7rem;border:1px solid var(--primary);background:var(--offwhite);color:var(--primary);border-radius:8px;">Wait for someone else to decide</button>
+      </div>
+      <p id="qa-quiz-result" style="margin:.6rem 0 0;color:var(--primary);" aria-live="polite"></p>
+    </div>
+  </section>
+
+<script id="qa-interactive-pack-js">
+(function(){
+  const root=document.getElementById('qa-interactive-pack');
+  if(!root) return;
+  const tabs=[...root.querySelectorAll('.qa-tab')];
+  const panels=[...root.querySelectorAll('.qa-tab-panel')];
+  const activateTab=(btn)=>{
+    const id=btn.getAttribute('data-target');
+    tabs.forEach(t=>{
+      const active=t===btn;
+      t.setAttribute('aria-selected', String(active));
+      t.setAttribute('tabindex', active ? '0' : '-1');
+    });
+    panels.forEach(p=>p.style.display = (p.id===id?'block':'none'));
+  };
+  tabs.forEach((btn,index)=>{
+    btn.addEventListener('click',()=>activateTab(btn));
+    btn.addEventListener('keydown',(e)=>{
+      if(e.key!=='ArrowRight' && e.key!=='ArrowLeft') return;
+      e.preventDefault();
+      const nextIndex = e.key==='ArrowRight'
+        ? (index+1)%tabs.length
+        : (index-1+tabs.length)%tabs.length;
+      activateTab(tabs[nextIndex]);
+      tabs[nextIndex].focus();
+    });
+  });
+  root.querySelectorAll('.qa-prompt-toggle').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const panel=root.querySelector('#'+btn.getAttribute('data-target'));
+      const expanded=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.textContent = expanded ? 'View Prompt' : 'Hide Prompt';
+      if(panel) panel.hidden=expanded;
+    });
+  });
+  root.querySelectorAll('.qa-acc-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const panel=root.querySelector('#'+btn.getAttribute('data-target'));
+      const expanded=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      if(panel) panel.hidden=expanded;
+    });
+  });
+  const result=root.querySelector('#qa-quiz-result');
+  root.querySelectorAll('.qa-quiz').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const ok=btn.getAttribute('data-correct')==='true';
+      if(result) result.textContent = ok ? 'Correct — ownership + action is the target behavior.' : 'Not quite — choose the option focused on ownership and action.';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

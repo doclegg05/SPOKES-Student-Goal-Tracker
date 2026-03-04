@@ -1,0 +1,12 @@
+# Temp files
+~$*
+*.tmp
+*.bak
+
+# Claude config
+.claude/
+
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini

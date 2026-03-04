@@ -1,0 +1,7 @@
+~$*
+*.tmp
+*.bak
+.claude/
+Thumbs.db
+.DS_Store
+desktop.ini

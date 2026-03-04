@@ -1,0 +1,2294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Time Management — SPOKES</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #007baf;
+      --accent: #37b550;
+      --dark: #004071;
+      --light: #FFFFFF;
+      --muted: #EDF3F7;
+      --gray: #60636b;
+      --gold: #d3b257;
+      --offwhite: #d1d3d4;
+    }
+
+    html {
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--dark);
+      color: var(--dark);
+      overflow-x: hidden;
+      overflow-y: auto;
+      height: 100vh;
+    }
+
+    /* Layout */
+    .container {
+      display: flex;
+      height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 280px;
+      background: var(--dark);
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+      transition: margin-left 0.3s ease, opacity 0.3s ease;
+      flex-shrink: 0;
+    }
+
+    .sidebar.collapsed {
+      margin-left: -280px;
+    }
+
+    .sidebar-toggle {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 300;
+      background: var(--dark);
+      color: var(--light);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s ease, transform 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .sidebar-toggle:hover {
+      background: var(--primary);
+      transform: scale(1.05);
+    }
+
+    .sidebar-toggle:active {
+      transform: scale(0.95);
+    }
+
+    .sidebar-title {
+      color: var(--gold);
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid rgba(255,255,255,0.1);
+    }
+
+    .chapter-list {
+      list-style: none;
+      flex: 1;
+    }
+
+    .chapter-item {
+      margin-bottom: 0.25rem;
+    }
+
+    .chapter-header {
+      padding: 0.75rem 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      color: rgba(255,255,255,0.7);
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .chapter-header:hover {
+      background: rgba(255,255,255,0.1);
+      color: var(--light);
+    }
+
+    .chapter-item.active > .chapter-header {
+      background: rgba(0,123,175,0.25);
+      color: var(--light);
+      border-left-color: var(--gold);
+    }
+
+    .chapter-arrow {
+      font-size: 0.7rem;
+      transition: transform 0.3s ease;
+    }
+
+    .chapter-item.expanded .chapter-arrow {
+      transform: rotate(90deg);
+    }
+
+    .wippea-badge {
+      display: inline-block;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .wippea-badge.w { background: var(--gold); color: var(--dark); }
+    .wippea-badge.i { background: var(--primary); color: var(--light); }
+    .wippea-badge.p { background: var(--accent); color: var(--light); }
+    .wippea-badge.e { background: #a7253f; color: var(--light); }
+    .wippea-badge.a { background: var(--dark); color: var(--gold); border: 1px solid var(--gold); }
+
+    .slide-list {
+      list-style: none;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding-left: 1rem;
+    }
+
+    .chapter-item.expanded .slide-list {
+      max-height: 500px;
+    }
+
+    .slide-item {
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.85rem;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      white-space: normal;
+      word-wrap: break-word;
+    }
+
+    .slide-item:hover {
+      background: rgba(255,255,255,0.1);
+      color: rgba(255,255,255,0.8);
+    }
+
+    .slide-item.active {
+      background: rgba(211,178,87,0.3);
+      color: var(--light);
+    }
+
+    .slide-counter {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.875rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Resources Section */
+    .resources-section {
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .resources-title {
+      color: var(--gold);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 0.75rem;
+    }
+
+    .resource-link {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.8rem;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+      margin-bottom: 0.25rem;
+    }
+
+    .resource-link:hover {
+      background: rgba(255,255,255,0.1);
+      color: var(--light);
+    }
+
+    .resource-link:active {
+      background: rgba(255,255,255,0.2);
+      transform: scale(0.97);
+    }
+
+    .resource-link::before {
+      content: "↓ ";
+      opacity: 0.6;
+    }
+
+    /* Download Button */
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--accent);
+      color: var(--light);
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-top: 1.5rem;
+      cursor: pointer;
+    }
+
+    .download-btn:hover {
+      background: #37b550;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(55, 181, 80, 0.4);
+    }
+
+    .download-btn:active {
+      transform: translateY(0px) scale(0.97);
+      box-shadow: none;
+    }
+
+    .download-btn::before {
+      content: "↓";
+      font-size: 1.2rem;
+    }
+
+    /* Video Button */
+    .video-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--gold);
+      color: var(--dark);
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      margin-top: 1.5rem;
+      cursor: pointer;
+    }
+
+    .video-btn:hover {
+      background: #d3b257;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(211, 178, 87, 0.4);
+    }
+
+    .video-btn:active {
+      transform: translateY(0px) scale(0.97);
+      box-shadow: none;
+    }
+
+    .video-btn::before {
+      content: "▶";
+      font-size: 1rem;
+    }
+
+    /* Download Resource Container */
+    .download-resource {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding: 1rem 1.5rem;
+      background: rgba(0, 123, 175, 0.06);
+      border-radius: 12px;
+      border: 1px solid rgba(0, 123, 175, 0.1);
+      align-self: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .download-prompt {
+      font-size: 0.9rem;
+      color: var(--gray);
+      font-style: italic;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .download-resource .download-btn,
+    .download-resource .video-btn {
+      margin-top: 0;
+      font-size: 0.95rem;
+      padding: 0.6rem 1.2rem;
+    }
+
+    /* Main Content */
+    .main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--light);
+      position: relative;
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 10px;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--gold) 100%);
+      transition: width 0.3s ease;
+      z-index: 200;
+      box-shadow: 0 2px 8px rgba(0, 123, 175, 0.5);
+    }
+
+    /* Branding Logo */
+    .branding-logo {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      max-width: 80px;
+      height: auto;
+      opacity: 1;
+      z-index: 100;
+      padding: 0.5rem;
+      border-radius: 6px;
+      background: var(--light);
+    }
+
+    /* Slides */
+    .slide {
+      display: none;
+      width: 100%;
+      height: 100%;
+      padding: 4rem 5rem;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    .slide.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow-y: auto;
+    }
+
+    /* When content overflows, start from top instead of centering */
+    .slide.active::before,
+    .slide.active::after {
+      content: '';
+      flex: 1 0 0px;
+      min-height: 1rem;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* Staggered content animations */
+    .slide.active h2 { animation: fadeUp 0.5s ease-out both; }
+
+    .slide.active .card,
+    .slide.active .takeaway-item,
+    .slide.active .smart-row,
+    .slide.active .principle-item,
+    .slide.active .area-card,
+    .slide.active .matrix-cell,
+    .slide.active .danger-card { animation: fadeUp 0.5s ease-out both; }
+
+    .slide.active .card:nth-child(1),
+    .slide.active .takeaway-item:nth-child(1),
+    .slide.active .smart-row:nth-child(1),
+    .slide.active .danger-card:nth-child(1),
+    .slide.active .matrix-cell:nth-child(1),
+    .slide.active .area-card:nth-child(1) { animation-delay: 0.1s; }
+
+    .slide.active .card:nth-child(2),
+    .slide.active .takeaway-item:nth-child(2),
+    .slide.active .smart-row:nth-child(2),
+    .slide.active .danger-card:nth-child(2),
+    .slide.active .matrix-cell:nth-child(2),
+    .slide.active .area-card:nth-child(2) { animation-delay: 0.2s; }
+
+    .slide.active .card:nth-child(3),
+    .slide.active .takeaway-item:nth-child(3),
+    .slide.active .smart-row:nth-child(3),
+    .slide.active .danger-card:nth-child(3),
+    .slide.active .matrix-cell:nth-child(3),
+    .slide.active .area-card:nth-child(3) { animation-delay: 0.3s; }
+
+    .slide.active .card:nth-child(4),
+    .slide.active .takeaway-item:nth-child(4),
+    .slide.active .smart-row:nth-child(4),
+    .slide.active .danger-card:nth-child(4),
+    .slide.active .matrix-cell:nth-child(4) { animation-delay: 0.4s; }
+
+    .slide.active .card:nth-child(5),
+    .slide.active .takeaway-item:nth-child(5),
+    .slide.active .smart-row:nth-child(5),
+    .slide.active .danger-card:nth-child(5) { animation-delay: 0.5s; }
+
+    .slide.active .takeaway-item:nth-child(6) { animation-delay: 0.6s; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Card hover effects */
+    .card,
+    .area-card,
+    .danger-card,
+    .matrix-cell { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+
+    .card:hover,
+    .area-card:hover,
+    .danger-card:hover,
+    .matrix-cell:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .matrix-cell.do-first:hover,
+    .matrix-cell.schedule:hover,
+    .matrix-cell.delegate:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+      filter: brightness(1.12);
+    }
+
+    /* Title Slide */
+    .slide-title {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+      overflow: hidden;
+      padding-top: 2rem;
+      padding-bottom: 1rem;
+    }
+    .slide-title.active::before { flex: 0.7; }
+    .slide-title.active::after { flex: 1; }
+
+    .slide-title.active .logo { animation: dropIn 0.8s ease-out both; }
+    .slide-title.active h1 { animation: zoomIn 0.8s ease-out 0.3s both; }
+    .slide-title.active .divider { animation: expandWidth 0.6s ease-out 0.7s both; }
+    .slide-title.active .subtitle { animation: fadeUp 0.8s ease-out 1s both; }
+
+    @keyframes dropIn {
+      from { opacity: 0; transform: translateY(-100px) scale(0.5); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes zoomIn {
+      from { opacity: 0; transform: scale(0.5); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes expandWidth {
+      from { width: 0; opacity: 0; }
+      to { width: 120px; opacity: 1; }
+    }
+
+    .slide-title h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 5rem;
+      color: var(--light);
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .slide-title .subtitle {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 3rem;
+    }
+
+    .slide-title .divider {
+      width: 120px;
+      height: 5px;
+      background: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .slide-title .logo {
+      max-width: 280px;
+      height: auto;
+      margin-bottom: 2rem;
+      background: var(--light);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    .slide-title .copyright {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 1rem;
+    }
+
+    /* Hide corner branding on title and closing slides */
+    .slide-title.active ~ .branding-logo,
+    .slide-closing.active ~ .branding-logo {
+      display: none;
+    }
+
+    /* Content Slides */
+    .slide h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 2.5rem;
+      font-weight: 400;
+    }
+
+    .slide h3 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2.5rem;
+      color: var(--dark);
+      margin-bottom: 2rem;
+      font-weight: 400;
+    }
+
+    .slide p {
+      font-size: 2rem;
+      line-height: 1.6;
+      color: var(--gray);
+    }
+
+    .slide .highlight {
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .slide .accent {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .slide .gold {
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      flex: 1;
+    }
+
+    .card {
+      background: var(--muted);
+      padding: 2rem 2.5rem;
+      border-radius: 12px;
+      border-left: 6px solid var(--accent);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .card.gold-border { border-left-color: var(--gold); }
+
+    .card h4 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.75rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .card p {
+      font-size: 1.5rem;
+      color: var(--gray);
+    }
+
+    /* Takeaways / Numbered Items */
+    .takeaways {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .takeaway-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .takeaway-num {
+      width: 40px;
+      height: 40px;
+      background: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--light);
+      flex-shrink: 0;
+      transform: scale(0);
+      transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+
+    .slide.active .takeaway-num { transform: scale(1); }
+    .slide.active .takeaway-item:nth-child(1) .takeaway-num { transition-delay: 0.2s; }
+    .slide.active .takeaway-item:nth-child(2) .takeaway-num { transition-delay: 0.4s; }
+    .slide.active .takeaway-item:nth-child(3) .takeaway-num { transition-delay: 0.6s; }
+    .slide.active .takeaway-item:nth-child(4) .takeaway-num { transition-delay: 0.8s; }
+    .slide.active .takeaway-item:nth-child(5) .takeaway-num { transition-delay: 1.0s; }
+    .slide.active .takeaway-item:nth-child(6) .takeaway-num { transition-delay: 1.2s; }
+
+    .takeaway-num.alt { background: var(--gold); color: var(--dark); }
+
+    .takeaway-item p { font-size: 1.35rem; }
+
+    /* SMART Goals */
+    .smart-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      flex: 1;
+      justify-content: center;
+    }
+
+    .smart-row {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .smart-letter {
+      width: 44px;
+      height: 44px;
+      background: var(--primary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--light);
+      flex-shrink: 0;
+    }
+
+    .smart-letter.alt { background: var(--gold); color: var(--dark); }
+
+    .smart-content {
+      flex: 1;
+      background: var(--muted);
+      padding: 0.5rem 1.25rem;
+      border-radius: 8px;
+    }
+
+    .smart-content h4 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      color: var(--primary);
+      margin-bottom: 0;
+      font-weight: 400;
+    }
+
+    .smart-content p { font-size: 0.95rem; }
+
+    /* Eisenhower Matrix */
+    .matrix-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      flex: 1;
+    }
+
+    .matrix-cell {
+      padding: 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .matrix-cell.do-first {
+      background: var(--primary);
+      color: var(--light);
+    }
+
+    .matrix-cell.schedule {
+      background: var(--accent);
+      color: var(--light);
+    }
+
+    .matrix-cell.delegate {
+      background: var(--gold);
+      color: var(--dark);
+    }
+
+    .matrix-cell.eliminate {
+      background: var(--muted);
+      color: var(--gray);
+      border: 2px solid #d1d3d4;
+    }
+
+    .matrix-cell .matrix-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0.8;
+    }
+
+    .matrix-cell .matrix-action {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      font-weight: 400;
+    }
+
+    .matrix-cell .matrix-desc {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* Danger Cards (flip) */
+    .dangers-grid {
+      display: flex;
+      gap: 1.5rem;
+      flex: 1;
+      align-items: center;
+    }
+
+    .danger-card {
+      flex: 1;
+      perspective: 1000px;
+      cursor: pointer;
+      height: 200px;
+      min-width: 110px;
+    }
+
+    .danger-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+
+    .danger-card:hover .danger-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .danger-card-front, .danger-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      padding: 1.25rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .danger-card-front {
+      background: var(--dark);
+      color: var(--light);
+    }
+
+    .danger-card-back {
+      background: var(--gold);
+      color: var(--dark);
+      transform: rotateY(180deg);
+    }
+
+    .danger-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .danger-card-front h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .danger-card-back p {
+      font-size: 0.85rem;
+      line-height: 1.4;
+    }
+
+    .danger-card-back h4 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    /* Area Cards (3 column) */
+    .areas-grid {
+      display: flex;
+      gap: 2rem;
+      flex: 1;
+    }
+
+    .area-card {
+      flex: 1;
+      background: var(--primary);
+      border-radius: 16px;
+      padding: 2rem;
+      color: var(--light);
+    }
+
+    .area-card.gold-card { background: var(--gold); color: var(--dark); }
+
+    .area-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .area-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--accent);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin: 0 auto 1rem;
+    }
+
+    .area-card.gold-card .area-icon { background: var(--dark); color: var(--gold); }
+
+    .area-card h4 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+    }
+
+    .area-card ul { list-style: none; }
+
+    .area-card li {
+      font-size: 1.25rem;
+      padding: 0.5rem 0;
+      color: rgba(255,255,255,0.85);
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .area-card.gold-card li { color: var(--dark); }
+
+    .area-card li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    .area-card.gold-card li::before { color: var(--dark); }
+
+    /* Big Statement */
+    .big-statement {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: radial-gradient(ellipse at 50% 40%, var(--muted) 0%, #FFFFFF 60%);
+    }
+
+    .big-statement h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 4.5rem;
+      font-weight: 400;
+      line-height: 1.3;
+      max-width: 900px;
+    }
+
+    .big-statement p {
+      max-width: 700px;
+    }
+
+    /* Video Embed Slides */
+    .slide-video {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(170deg, #edf3f7 0%, #FFFFFF 50%, #edf3f7 100%);
+    }
+
+    .slide-video {
+      padding: 2rem 3rem;
+    }
+    .slide-video h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-weight: 400;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      max-width: 1200px;
+      aspect-ratio: 16 / 9;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .slide-video.active .video-container {
+      animation: fadeUp 0.6s ease-out 0.3s both;
+    }
+
+    /* Activity Callout */
+    .activity-box {
+      background: rgba(211, 178, 87, 0.1);
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      margin-top: 2rem;
+      align-self: stretch;
+    }
+
+    .activity-label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .activity-box p {
+      font-size: 1.25rem;
+      color: var(--dark);
+    }
+
+    /* Content with side visual */
+    .split-layout {
+      display: flex;
+      gap: 4rem;
+      flex: 1;
+      align-items: center;
+    }
+
+    .split-text { flex: 1; }
+    .split-visual {
+      flex: 0 0 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .visual-circle {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--dark));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light);
+      font-size: 5rem;
+    }
+
+    /* Content list */
+    .content-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .content-list li {
+      font-size: 1.5rem;
+      padding: 0.6rem 0;
+      padding-left: 2rem;
+      position: relative;
+      color: var(--gray);
+    }
+
+    .content-list li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    .content-list.danger li::before {
+      content: "⚠";
+      color: var(--gold);
+    }
+
+    /* Background Variation */
+    .slide:not(.slide-title):not(.slide-section):not(.slide-closing):not(.big-statement) {
+      background: linear-gradient(170deg, #edf3f7 0%, #FFFFFF 50%, #edf3f7 100%);
+    }
+
+    /* Key Takeaways */
+    .takeaway-item p { font-size: 1.35rem; }
+
+    /* Section Slide */
+    .slide-section {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: var(--primary);
+      overflow: hidden;
+      padding-top: 2rem;
+      padding-bottom: 1rem;
+    }
+    .slide-section.active::before { flex: 0; min-height: 0; }
+
+    .slide-section.active { animation: sectionSlideIn 0.6s ease-out; }
+    .slide-section.active .chapter-label { animation: fadeDown 0.5s ease-out 0.2s both; }
+    .slide-section.active h2 { animation: scaleIn 0.6s ease-out 0.4s both; }
+    .slide-section.active .divider { animation: expandWidth 0.5s ease-out 0.7s both; }
+
+    @keyframes sectionSlideIn {
+      from { opacity: 0; background: var(--dark); }
+      to { opacity: 1; background: var(--primary); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .slide-section .chapter-label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    .slide-section h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 4rem;
+      color: var(--light);
+      font-weight: 400;
+      position: relative;
+      z-index: 2;
+    }
+
+    .slide-section .divider {
+      width: 100px;
+      height: 5px;
+      background: var(--gold);
+      margin-top: 2rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .slide-section::after {
+      content: attr(data-chapter-num);
+      position: absolute;
+      font-family: 'DM Serif Display', serif;
+      font-size: 28rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.04);
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      line-height: 1;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .slide-section[data-chapter-num="W"] { background: linear-gradient(135deg, #004071 0%, #00133f 100%); }
+    .slide-section[data-chapter-num="I"] { background: linear-gradient(225deg, #007baf 0%, #004071 100%); }
+    .slide-section[data-chapter-num="P1"] { background: linear-gradient(160deg, #007baf 0%, #004071 100%); }
+    .slide-section[data-chapter-num="P2"] { background: linear-gradient(200deg, #007baf 0%, #004071 100%); }
+    .slide-section[data-chapter-num="P3"] { background: linear-gradient(145deg, #007baf 0%, #004071 100%); }
+    .slide-section[data-chapter-num="E"] { background: linear-gradient(190deg, #004071 0%, #00133f 100%); }
+    .slide-section[data-chapter-num="A"] { background: linear-gradient(170deg, #007baf 0%, #004071 100%); }
+
+    /* Closing Slide */
+    .slide-closing {
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .slide-closing.active .closing-box { animation: celebrateIn 0.8s ease-out both; }
+
+    @keyframes celebrateIn {
+      from { opacity: 0; transform: scale(0.5) rotate(-5deg); }
+      to { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+
+    .confetti-container {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px; height: 10px;
+      top: -10px;
+      animation: confettiFall 4s ease-in-out forwards;
+    }
+
+    @keyframes confettiFall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+    }
+
+    .closing-box {
+      background: rgba(255,255,255,0.1);
+      padding: 4rem 5rem;
+      border-radius: 20px;
+      max-width: 800px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .closing-box p {
+      font-size: 1.75rem;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.6;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    .closing-box .divider {
+      width: 80px;
+      height: 4px;
+      background: var(--gold);
+      margin: 0 auto 2rem;
+    }
+
+    .closing-box h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 3.5rem;
+      color: var(--light);
+      font-weight: 400;
+    }
+
+    /* Navigation Hint */
+    .nav-hint {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--gray);
+      font-size: 0.8rem;
+      background: rgba(255,255,255,0.9);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+    }
+
+    .key-icon {
+      background: var(--muted);
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      font-family: monospace;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+      border: none;
+      line-height: 1;
+    }
+
+    .key-icon:hover {
+      background: var(--primary);
+      color: var(--light);
+    }
+
+    .key-icon:active { transform: scale(0.95); }
+
+    .key-icon:focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    /* ===== Mobile Responsiveness ===== */
+    @media (max-width: 768px) {
+      .sidebar { margin-left: -280px; }
+      .sidebar-toggle { display: flex; }
+      .slide { padding: 2rem 1.5rem; }
+      .slide h1 { font-size: 2.5rem; }
+      .slide h2 { font-size: 1.8rem; }
+      .cards-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .matrix-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .dangers-grid { flex-wrap: wrap; gap: 1rem; }
+      .danger-card { min-width: 120px; height: 180px; }
+      .split-layout { flex-direction: column; gap: 1.5rem; }
+      .split-visual { flex: 0 0 auto; }
+      .visual-circle { width: 150px; height: 150px; font-size: 3rem; }
+      .areas-grid { flex-direction: column; }
+      .branding-logo { max-width: 50px; bottom: 0.75rem; right: 0.75rem; }
+      .nav-hint { bottom: 1rem; font-size: 0.8rem; }
+      .slide-title h1 { font-size: 3rem; }
+      .logo { max-width: 150px; }
+      .download-resource { flex-direction: column; align-items: flex-start; }
+      .slide-video h2 { font-size: 1.6rem; margin-bottom: 1.5rem; }
+      .video-container { max-width: 100%; }
+    }
+
+    @media (max-width: 480px) {
+      .slide { padding: 1.5rem 1rem; }
+      .slide h1 { font-size: 2rem; }
+      .slide h2 { font-size: 1.4rem; }
+      .slide-title h1 { font-size: 2.2rem; }
+      .dangers-grid { flex-direction: column; }
+      .danger-card { height: 160px; }
+      .big-statement h2 { font-size: 2rem; }
+      .branding-logo { max-width: 40px; bottom: 0.5rem; right: 0.5rem; }
+      .slide-video h2 { font-size: 1.3rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <div class="sidebar-title">WIPPEA Lesson</div>
+      <ul class="chapter-list" id="chapterList">
+        <!-- Dynamically populated -->
+      </ul>
+      <div class="resources-section">
+        <div class="resources-title">Resources</div>
+        <a href="Handouts/SPOKES_Module_Template_2026_Time_Management.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">Lesson Plan</a>
+        <a href="Teacher-Resources/Teachers Guide.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">Teacher's Guide</a>
+        <a href="Handouts/SPOKES_Time_Management_Self_Assessment.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">Self-Assessment</a>
+        <a href="Handouts/Big_Rocks_of_Time_Worksheet.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">Big Rocks Worksheet</a>
+        <a href="Handouts/GET_YOUR_PRIORITIES_STRAIGHT_FOR_THE_DAY_1.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">Priorities Flow Chart</a>
+        <a href="Handouts/Daily_Planner_2.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">Daily Planner</a>
+        <a href="Handouts/Weekly_Planner_Template_linked_To_Daily_Planner_1.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">Weekly Planner</a>
+        <a href="Handouts/SPOKES_Time_Management_Pre_and_Post_Test.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">Pre/Post Test</a>
+        <a href="Handouts/SPOKES_Time_Management_Rubric.pdf" target="_blank" rel="noopener noreferrer" class="resource-link">Rubric</a>
+      </div>
+      <div class="slide-counter">
+        Slide <span id="currentSlide">1</span> of <span id="totalSlides">26</span>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main">
+      <!-- Sidebar Toggle -->
+      <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()" title="Toggle sidebar">&#171;</button>
+
+      <!-- ======================== -->
+      <!-- W — WARM-UP             -->
+      <!-- ======================== -->
+
+      <!-- Slide 1: Title -->
+      <section class="slide slide-title active" data-chapter="1">
+        <img src="SPOKES-Logo.png" alt="SPOKES — Strategic Planning in Occupational Knowledge for Employment and Success — Skills for Life" class="logo">
+        <h1>Time Management</h1>
+        <div class="divider"></div>
+        <p class="subtitle">Maximizing Productivity &amp; Achieving Goals</p>
+        <p class="copyright">Copyright &copy; 2026 WV Adult Basic Education</p>
+      </section>
+
+      <!-- Slide 2: Self-Reflection -->
+      <section class="slide" data-chapter="1">
+        <h2>Self-Reflection</h2>
+        <p style="font-size: 1.5rem; color: var(--gray); margin-top: -1.5rem; margin-bottom: 2rem;">How good is your time management?</p>
+        <div class="takeaways">
+          <div class="takeaway-item">
+            <div class="takeaway-num alt">1</div>
+            <p>Complete the <strong>Time Management Self-Assessment</strong> worksheet</p>
+          </div>
+          <div class="takeaway-item">
+            <div class="takeaway-num alt">2</div>
+            <p>Identify your <strong>strengths</strong> and <strong>weaknesses</strong></p>
+          </div>
+          <div class="takeaway-item">
+            <div class="takeaway-num alt">3</div>
+            <p>Be honest — this is for <span class="accent">your</span> growth</p>
+          </div>
+        </div>
+        <div class="download-resource">
+          <span class="download-prompt">Instructor Resource Available</span>
+          <a href="Handouts/SPOKES_Time_Management_Self_Assessment.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">Self-Assessment Worksheet</a>
+        </div>
+      </section>
+
+      <!-- ======================== -->
+      <!-- I — INTRODUCTION        -->
+      <!-- ======================== -->
+
+      <!-- Slide 3: Section Divider -->
+      <section class="slide slide-section" data-chapter="2" data-chapter-num="I">
+        <p class="chapter-label">Introduction</p>
+        <h2>Module Objective</h2>
+        <div class="divider"></div>
+      </section>
+
+      <!-- Slide 4: Objective -->
+      <section class="slide" data-chapter="2">
+        <h2>We All Have 24 Hours</h2>
+        <p style="font-size: 1.4rem; color: var(--gray); margin-top: -1.5rem; margin-bottom: 2rem;">But we each have different...</p>
+        <div class="cards-grid">
+          <div class="card">
+            <h4>Responsibilities</h4>
+            <p>Work, school, home, community</p>
+          </div>
+          <div class="card gold-border">
+            <h4>Financial Obligations</h4>
+            <p>Bills, savings, goals</p>
+          </div>
+          <div class="card gold-border">
+            <h4>Family Sizes</h4>
+            <p>Dependents, relationships, caregiving</p>
+          </div>
+          <div class="card">
+            <h4>Levels of Support</h4>
+            <p>Resources, networks, access</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 5: Goal Statement -->
+      <section class="slide big-statement" data-chapter="2">
+        <h2>The goal of effective time management is to <span class="accent">maximize productivity</span> and <span class="gold">achieve your goals</span></h2>
+      </section>
+
+      <!-- ======================== -->
+      <!-- P — SETTING PRIORITIES   -->
+      <!-- ======================== -->
+
+      <!-- Slide 6: Section Divider -->
+      <section class="slide slide-section" data-chapter="3" data-chapter-num="P1">
+        <p class="chapter-label">Presentation</p>
+        <h2>Setting Priorities</h2>
+        <div class="divider"></div>
+      </section>
+
+      <!-- Slide 7: What Are Priorities -->
+      <section class="slide" data-chapter="3">
+        <h2>What Are Priorities?</h2>
+        <div class="split-layout">
+          <div class="split-text">
+            <p style="font-size: 1.6rem; margin-bottom: 1.5rem;">Priorities are things that are <span class="highlight">more important than others</span> and need to be dealt with first.</p>
+            <p style="font-size: 1.6rem;">They establish the <span class="accent">sequence</span> in which things should be done.</p>
+          </div>
+          <div class="split-visual">
+            <div class="visual-circle">&#9733;</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 8: Big Rocks -->
+      <section class="slide" data-chapter="3">
+        <h2>The Big Rocks of Time</h2>
+        <div class="split-layout">
+          <div class="split-text">
+            <p style="font-size: 1.4rem; margin-bottom: 1rem;">If you fill your jar with sand first, there's no room for the big rocks.</p>
+            <p style="font-size: 1.4rem;"><strong>Put the big rocks in first</strong> — your most important priorities — then let the smaller things fill in around them.</p>
+            <a href="Handouts/Big_Rocks_of_Time_Worksheet.pdf" target="_blank" rel="noopener noreferrer" class="download-btn" style="margin-top: 1rem;">Big Rocks Worksheet</a>
+          </div>
+          <div class="split-visual">
+            <div class="visual-circle" style="background: linear-gradient(135deg, var(--gold), #d3b257); font-size: 3.5rem;">&#9878;</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video: The Big Rocks of Time -->
+      <section class="slide slide-video" data-chapter="3">
+        <h2>Watch: The Big Rocks of Time</h2>
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/AtoVhZOWQZU"
+            title="The Big Rocks of Time"
+            frameborder="0"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </section>
+
+      <!-- Slide 9: Now What -->
+      <section class="slide big-statement" data-chapter="3">
+        <h2>You've identified your priorities...<br><span class="accent">Now what?</span></h2>
+        <p style="font-size: 1.5rem; margin-top: 2rem;">Never fear — we've got the <span class="gold">tools</span> to help!</p>
+      </section>
+
+      <!-- ======================== -->
+      <!-- P — TOOLS & STRATEGIES  -->
+      <!-- ======================== -->
+
+      <!-- Slide 10: Section Divider -->
+      <section class="slide slide-section" data-chapter="4" data-chapter-num="P2">
+        <p class="chapter-label">Presentation</p>
+        <h2>Tools &amp; Strategies</h2>
+        <div class="divider"></div>
+      </section>
+
+      <!-- Slide 11: SMART Goals -->
+      <section class="slide" data-chapter="4">
+        <h2>Set SMART Goals</h2>
+        <p style="font-size: 1.1rem; color: var(--gray); margin-top: -1.5rem; margin-bottom: 0.75rem;">Writing down your goals increases your chances of achieving them</p>
+        <div class="smart-stack">
+          <div class="smart-row">
+            <div class="smart-letter">S</div>
+            <div class="smart-content">
+              <h4>Specific</h4>
+              <p>What exactly will I accomplish?</p>
+            </div>
+          </div>
+          <div class="smart-row">
+            <div class="smart-letter alt">M</div>
+            <div class="smart-content">
+              <h4>Measurable</h4>
+              <p>How will I track my progress?</p>
+            </div>
+          </div>
+          <div class="smart-row">
+            <div class="smart-letter">A</div>
+            <div class="smart-content">
+              <h4>Achievable</h4>
+              <p>Is this realistic for me right now?</p>
+            </div>
+          </div>
+          <div class="smart-row">
+            <div class="smart-letter alt">R</div>
+            <div class="smart-content">
+              <h4>Relevant</h4>
+              <p>Why is this important to me?</p>
+            </div>
+          </div>
+          <div class="smart-row">
+            <div class="smart-letter">T</div>
+            <div class="smart-content">
+              <h4>Time-bound</h4>
+              <p>What is my deadline?</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 12: Flow Chart -->
+      <section class="slide" data-chapter="4">
+        <h2>Utilize a Flow Chart</h2>
+        <div class="split-layout">
+          <div class="split-text">
+            <p style="font-size: 1.4rem; margin-bottom: 1rem;">A flow chart can be used on a <span class="highlight">daily or weekly basis</span> to ensure that your most important tasks get completed.</p>
+            <p style="font-size: 1.4rem;">It helps you make quick decisions about what to tackle next based on <span class="accent">urgency</span> and <span class="gold">importance</span>.</p>
+            <a href="Handouts/GET_YOUR_PRIORITIES_STRAIGHT_FOR_THE_DAY_1.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">Priorities Flow Chart</a>
+          </div>
+          <div class="split-visual">
+            <div class="visual-circle" style="background: linear-gradient(135deg, var(--accent), #37b550); font-size: 3rem;">&#8645;</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 13: Eisenhower Matrix -->
+      <section class="slide" data-chapter="4">
+        <h2>The Eisenhower Matrix</h2>
+        <p style="font-size: 1.1rem; color: var(--gray); margin-top: -1.5rem; margin-bottom: 1.5rem;">Prioritize tasks by urgency and importance</p>
+        <div class="matrix-grid">
+          <div class="matrix-cell do-first">
+            <span class="matrix-label">Urgent + Important</span>
+            <span class="matrix-action">Do First</span>
+            <span class="matrix-desc">Crisis, deadlines, emergencies</span>
+          </div>
+          <div class="matrix-cell schedule">
+            <span class="matrix-label">Not Urgent + Important</span>
+            <span class="matrix-action">Schedule</span>
+            <span class="matrix-desc">Goals, planning, self-care</span>
+          </div>
+          <div class="matrix-cell delegate">
+            <span class="matrix-label">Urgent + Not Important</span>
+            <span class="matrix-action">Delegate</span>
+            <span class="matrix-desc">Interruptions, some meetings</span>
+          </div>
+          <div class="matrix-cell eliminate">
+            <span class="matrix-label">Not Urgent + Not Important</span>
+            <span class="matrix-action">Eliminate</span>
+            <span class="matrix-desc">Time wasters, distractions</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 14: Planners -->
+      <section class="slide" data-chapter="4">
+        <h2>Daily &amp; Weekly Planners</h2>
+        <div class="split-layout">
+          <div class="split-text">
+            <p style="font-size: 1.4rem; margin-bottom: 1rem;">Keeping the day's and week's activities in view can help ensure that <span class="highlight">priority tasks get accomplished</span>.</p>
+            <p style="font-size: 1.4rem;">It can also help you find <span class="accent">free time</span> you didn't know you had!</p>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <a href="Handouts/Daily_Planner_2.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">Daily Planner</a>
+              <a href="Handouts/Weekly_Planner_Template_linked_To_Daily_Planner_1.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">Weekly Planner</a>
+            </div>
+          </div>
+          <div class="split-visual">
+            <div class="visual-circle" style="background: linear-gradient(135deg, var(--primary), var(--accent)); font-size: 3.5rem;">&#128197;</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 15: Delegation -->
+      <section class="slide" data-chapter="4">
+        <h2>Family To-Do Lists &amp; Delegation</h2>
+        <p style="font-size: 1.2rem; color: var(--gray); margin-top: -1.5rem; margin-bottom: 2rem;">It is important for the whole family to help with chores because it...</p>
+        <div class="areas-grid">
+          <div class="area-card">
+            <div class="area-header">
+              <div class="area-icon">&#9829;</div>
+              <h4>Builds Self-Esteem</h4>
+            </div>
+            <ul>
+              <li>Children feel valued</li>
+              <li>Sense of accomplishment</li>
+              <li>Confidence in abilities</li>
+            </ul>
+          </div>
+          <div class="area-card gold-card">
+            <div class="area-header">
+              <div class="area-icon">&#9881;</div>
+              <h4>Teaches Life Skills</h4>
+            </div>
+            <ul>
+              <li>Responsibility</li>
+              <li>Time management</li>
+              <li>Work ethic</li>
+            </ul>
+          </div>
+          <div class="area-card">
+            <div class="area-header">
+              <div class="area-icon">&#9734;</div>
+              <h4>Fosters Teamwork</h4>
+            </div>
+            <ul>
+              <li>Sense of belonging</li>
+              <li>Shared commitment</li>
+              <li>More quality time</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================== -->
+      <!-- P — COMMON CHALLENGES   -->
+      <!-- ======================== -->
+
+      <!-- Slide 16: Section Divider -->
+      <section class="slide slide-section" data-chapter="5" data-chapter-num="P3">
+        <p class="chapter-label">Presentation</p>
+        <h2>Common Challenges</h2>
+        <div class="divider"></div>
+      </section>
+
+      <!-- Slide 17: Dangers Overview (Flip Cards) -->
+      <section class="slide" data-chapter="5">
+        <h2>Time Management Dangers</h2>
+        <p style="font-size: 1rem; color: var(--gray); margin-top: -1.5rem; margin-bottom: 1.5rem;">Hover over each card to learn more</p>
+        <div class="dangers-grid">
+          <div class="danger-card">
+            <div class="danger-card-inner">
+              <div class="danger-card-front">
+                <div class="danger-icon">&#128241;</div>
+                <h4>Distractions</h4>
+              </div>
+              <div class="danger-card-back">
+                <h4>Distractions</h4>
+                <p>Phones, social media, and notifications pull your attention away from what matters most.</p>
+              </div>
+            </div>
+          </div>
+          <div class="danger-card">
+            <div class="danger-card-inner">
+              <div class="danger-card-front">
+                <div class="danger-icon">&#9203;</div>
+                <h4>Procrastination</h4>
+              </div>
+              <div class="danger-card-back">
+                <h4>Procrastination</h4>
+                <p>Putting things off until later is a habit that can be broken with awareness and practice.</p>
+              </div>
+            </div>
+          </div>
+          <div class="danger-card">
+            <div class="danger-card-inner">
+              <div class="danger-card-front">
+                <div class="danger-icon">&#128260;</div>
+                <h4>Multitasking</h4>
+              </div>
+              <div class="danger-card-back">
+                <h4>Multitasking</h4>
+                <p>Doing many things at once actually slows you down and leads to more mistakes.</p>
+              </div>
+            </div>
+          </div>
+          <div class="danger-card">
+            <div class="danger-card-inner">
+              <div class="danger-card-front">
+                <div class="danger-icon">&#128587;</div>
+                <h4>Over-Commitment</h4>
+              </div>
+              <div class="danger-card-back">
+                <h4>Over-Commitment</h4>
+                <p>Not saying "no" leads to burnout and prevents focus on your real priorities.</p>
+              </div>
+            </div>
+          </div>
+          <div class="danger-card">
+            <div class="danger-card-inner">
+              <div class="danger-card-front">
+                <div class="danger-icon">&#128736;</div>
+                <h4>No Structure</h4>
+              </div>
+              <div class="danger-card-back">
+                <h4>No Structure</h4>
+                <p>Without routines and systems, days become chaotic and goals slip away.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 18: Technology Distractions -->
+      <section class="slide" data-chapter="5">
+        <h2>Technology Distractions</h2>
+        <div class="split-layout">
+          <div class="split-text">
+            <p style="font-size: 1.4rem; margin-bottom: 1.5rem;"><strong>Self-Reflection:</strong> What strategies do you use (or plan to use) to stay focused?</p>
+            <div class="activity-box">
+              <div class="activity-label">Group Activity</div>
+              <p>Count the notifications you have received on your phone today. On iPhone, swipe down from the top left of your screen.</p>
+            </div>
+          </div>
+          <div class="split-visual">
+            <div class="visual-circle" style="background: linear-gradient(135deg, var(--dark), var(--gray)); font-size: 4rem;">&#128242;</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video: Technology Distractions -->
+      <section class="slide slide-video" data-chapter="5">
+        <h2>Watch: Technology Distractions</h2>
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/4TMPXK9tw5U"
+            title="Technology Distractions"
+            frameborder="0"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </section>
+
+      <!-- Slide 19: Procrastination -->
+      <section class="slide" data-chapter="5">
+        <h2>Procrastination</h2>
+        <div class="split-layout">
+          <div class="split-text">
+            <p style="font-size: 1.6rem; margin-bottom: 1.5rem;">Procrastination is the act of <span class="highlight">putting off something until a later time</span>.</p>
+            <p style="font-size: 1.6rem;">The good news? Procrastination is a <span class="accent">habit that can be broken</span>.</p>
+          </div>
+          <div class="split-visual">
+            <div class="visual-circle" style="background: linear-gradient(135deg, var(--gold), #d3b257); font-size: 4rem;">&#9203;</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video: Procrastination -->
+      <section class="slide slide-video" data-chapter="5">
+        <h2>Watch: Procrastination</h2>
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/3XBVG-yLYBU"
+            title="Procrastination"
+            frameborder="0"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </section>
+
+      <!-- Slide 20: Multitasking -->
+      <section class="slide" data-chapter="5">
+        <h2>Multitasking</h2>
+        <p style="font-size: 1.2rem; color: var(--gray); margin-top: -1.5rem; margin-bottom: 1.5rem;">Many see multitasking as a strength, but it can lead to...</p>
+        <div class="cards-grid">
+          <div class="card">
+            <h4>Inefficiency</h4>
+            <p>Switching between tasks wastes time and mental energy</p>
+          </div>
+          <div class="card gold-border">
+            <h4>More Mistakes</h4>
+            <p>Divided attention leads to errors and lower quality work</p>
+          </div>
+          <div class="card gold-border">
+            <h4>Reduced Creativity</h4>
+            <p>Deep thinking requires focused, uninterrupted time</p>
+          </div>
+          <div class="card">
+            <h4>Stress &amp; Burnout</h4>
+            <p>Chronic multitasking increases stress and drains energy</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video: Multitasking -->
+      <section class="slide slide-video" data-chapter="5">
+        <h2>Watch: Multitasking</h2>
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/VUk6LXRZMMk"
+            title="Multitasking"
+            frameborder="0"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </section>
+
+      <!-- Slide 21: Over-Commitment -->
+      <section class="slide" data-chapter="5">
+        <h2>Over-Commitment</h2>
+        <div class="split-layout">
+          <div class="split-text">
+            <p style="font-size: 1.5rem; margin-bottom: 1.5rem;">The inability to say <span class="highlight">"No"</span> leads to spreading yourself too thin.</p>
+            <p style="font-size: 1.3rem; margin-bottom: 1.5rem;">Learning to set boundaries is a <span class="accent">skill</span>, not selfishness.</p>
+            <div class="activity-box">
+              <div class="activity-label">Discussion</div>
+              <p>Identify situations where you struggle with saying no or over-committing yourself. What are polite, yet effective, ways to say "No"?</p>
+            </div>
+          </div>
+          <div class="split-visual">
+            <div class="visual-circle" style="background: linear-gradient(135deg, #a7253f, #a7253f); font-size: 3.5rem; color: var(--light);">&#9888;</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slide 22: Lack of Structure -->
+      <section class="slide" data-chapter="5">
+        <h2>Lack of Structure &amp; Routine</h2>
+        <div class="split-layout">
+          <div class="split-text">
+            <p style="font-size: 1.5rem; margin-bottom: 1.5rem;">Without daily structure, it's easy to let time slip away on things that <span class="highlight">don't move you forward</span>.</p>
+            <p style="font-size: 1.3rem;">Small, consistent habits compound into <span class="accent">big results</span> over time.</p>
+          </div>
+          <div class="split-visual">
+            <div class="visual-circle" style="background: linear-gradient(135deg, var(--accent), var(--primary)); font-size: 3.5rem;">&#128736;</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video: Atomic Habits -->
+      <section class="slide slide-video" data-chapter="5">
+        <h2>Watch: Atomic Habits</h2>
+        <div class="video-container">
+          <iframe
+            src="https://www.youtube.com/embed/AtoVhZOWQZU"
+            title="Atomic Habits"
+            frameborder="0"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </section>
+
+      <!-- ======================== -->
+      <!-- E — EVALUATION          -->
+      <!-- ======================== -->
+
+      <!-- Slide 23: Section Divider -->
+      <section class="slide slide-section" data-chapter="6" data-chapter-num="E">
+        <p class="chapter-label">Evaluation</p>
+        <h2>Check Your Knowledge</h2>
+        <div class="divider"></div>
+      </section>
+
+      <!-- Slide 24: Exit Ticket -->
+      <section class="slide" data-chapter="6">
+        <h2>Exit Ticket</h2>
+        <div class="takeaways">
+          <div class="takeaway-item">
+            <div class="takeaway-num">1</div>
+            <p>What did you <strong>learn</strong> today?</p>
+          </div>
+          <div class="takeaway-item">
+            <div class="takeaway-num alt">2</div>
+            <p>What tips do you plan to use to better <strong>manage your time</strong>?</p>
+          </div>
+          <div class="takeaway-item">
+            <div class="takeaway-num">3</div>
+            <p>What is one thing you will <strong>change</strong> starting today?</p>
+          </div>
+        </div>
+        <div class="download-resource">
+          <span class="download-prompt">Instructor Resource Available</span>
+          <a href="Handouts/SPOKES_Time_Management_Pre_and_Post_Test.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">Pre/Post Test</a>
+          <a href="Handouts/SPOKES_Time_Management_Rubric.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">Rubric</a>
+        </div>
+      </section>
+
+      <!-- ======================== -->
+      <!-- A — APPLICATION         -->
+      <!-- ======================== -->
+
+      <!-- Slide 25: Section Divider -->
+      <section class="slide slide-section" data-chapter="7" data-chapter-num="A">
+        <p class="chapter-label">Application</p>
+        <h2>Put It Into Practice</h2>
+        <div class="divider"></div>
+      </section>
+
+      <!-- Slide 26: Stand & Deliver -->
+      <section class="slide" data-chapter="7">
+        <h2>How Will You Put Your TIME to Use?</h2>
+        <p style="font-size: 1.1rem; color: var(--gray); margin-top: -1.5rem; margin-bottom: 1.5rem;">Round Robin: discuss these questions with your group</p>
+        <div class="takeaways">
+          <div class="takeaway-item">
+            <div class="takeaway-num">1</div>
+            <p>What are the most important concepts you learned?</p>
+          </div>
+          <div class="takeaway-item">
+            <div class="takeaway-num alt">2</div>
+            <p>How will you use this information?</p>
+          </div>
+          <div class="takeaway-item">
+            <div class="takeaway-num">3</div>
+            <p>What steps can you take to learn more?</p>
+          </div>
+          <div class="takeaway-item">
+            <div class="takeaway-num alt">4</div>
+            <p>Who can you share what you've learned with?</p>
+          </div>
+          <div class="takeaway-item">
+            <div class="takeaway-num">5</div>
+            <p>What is one question you still have?</p>
+          </div>
+        </div>
+        <div class="download-resource">
+          <span class="download-prompt">Instructor Resource Available</span>
+          <a href="Handouts/Daily_Planner_2.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">Daily Planner</a>
+          <a href="Handouts/Weekly_Planner_Template_linked_To_Daily_Planner_1.pdf" target="_blank" rel="noopener noreferrer" class="download-btn">Weekly Planner</a>
+        </div>
+      </section>
+
+      <!-- Slide 27: Closing -->
+      <section class="slide slide-closing" data-chapter="7" id="closingSlide">
+        <div class="confetti-container" id="confettiContainer"></div>
+        <div class="closing-box">
+          <h3 style="color: var(--gold); font-size: 1.5rem; margin-bottom: 1.5rem;">Congratulations, you have completed this lesson!</h3>
+          <p>"Time is what we want most, but what we use worst."</p>
+          <div class="divider"></div>
+          <h2>Own Your Time</h2>
+        </div>
+      </section>
+
+      <!-- Navigation Hint -->
+      <div class="nav-hint">
+        <button type="button" class="key-icon" id="prevBtn" onclick="prevSlide()" aria-label="Previous slide">&#8592;</button>
+        <span>to navigate</span>
+        <button type="button" class="key-icon" id="nextBtn" onclick="nextSlide()" aria-label="Next slide">&#8594;</button>
+      </div>
+
+      <!-- Branding Logo -->
+      <img src="SPOKES-Logo.png" alt="SPOKES" class="branding-logo">
+
+      <!-- Progress Bar -->
+      <div class="progress-bar" id="progressBar"></div>
+
+    </main>
+  </div>
+
+  <script>
+    // Slide Navigation
+    const slides = document.querySelectorAll('.slide');
+    const chapterListEl = document.getElementById('chapterList');
+    const currentSlideEl = document.getElementById('currentSlide');
+    const totalSlidesEl = document.getElementById('totalSlides');
+    const progressBar = document.getElementById('progressBar');
+
+    let currentIndex = 0;
+    let sidebarCollapsed = false;
+    const sidebarEl = document.querySelector('.sidebar');
+    const sidebarToggleBtn = document.getElementById('sidebarToggle');
+    totalSlidesEl.textContent = slides.length;
+
+    function toggleSidebar() {
+      sidebarCollapsed = !sidebarCollapsed;
+      sidebarEl.classList.toggle('collapsed', sidebarCollapsed);
+      sidebarToggleBtn.innerHTML = sidebarCollapsed ? '&#187;' : '&#171;';
+    }
+
+    // Sound effects
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+    function playClickSound() {
+      const oscillator = audioCtx.createOscillator();
+      const gainNode = audioCtx.createGain();
+      oscillator.connect(gainNode);
+      gainNode.connect(audioCtx.destination);
+      oscillator.frequency.value = 800;
+      oscillator.type = 'sine';
+      gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+      gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
+      oscillator.start(audioCtx.currentTime);
+      oscillator.stop(audioCtx.currentTime + 0.1);
+    }
+
+    function playSuccessSound() {
+      const notes = [523, 659, 784];
+      notes.forEach((freq, i) => {
+        setTimeout(() => {
+          const oscillator = audioCtx.createOscillator();
+          const gainNode = audioCtx.createGain();
+          oscillator.connect(gainNode);
+          gainNode.connect(audioCtx.destination);
+          oscillator.frequency.value = freq;
+          oscillator.type = 'sine';
+          gainNode.gain.setValueAtTime(0.1, audioCtx.currentTime);
+          gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+          oscillator.start(audioCtx.currentTime);
+          oscillator.stop(audioCtx.currentTime + 0.3);
+        }, i * 150);
+      });
+    }
+
+    // Chapter names with WIPPEA badges
+    const chapterNames = {
+      '1': { name: 'Warm-Up', badge: 'w' },
+      '2': { name: 'Introduction', badge: 'i' },
+      '3': { name: 'Setting Priorities', badge: 'p' },
+      '4': { name: 'Tools & Strategies', badge: 'p' },
+      '5': { name: 'Common Challenges', badge: 'p' },
+      '6': { name: 'Evaluation', badge: 'e' },
+      '7': { name: 'Application', badge: 'a' }
+    };
+
+    const wippeaLabels = { w: 'W', i: 'I', p: 'P', e: 'E', a: 'A' };
+
+    function buildSidebar() {
+      const chapters = {};
+
+      slides.forEach((slide, index) => {
+        const chapter = slide.dataset.chapter;
+        if (!chapters[chapter]) chapters[chapter] = [];
+        const h1 = slide.querySelector('h1');
+        const h2 = slide.querySelector('h2');
+        let title = h1 ? h1.textContent : (h2 ? h2.textContent : 'Slide ' + (index + 1));
+        title = title.replace(/\s+/g, ' ').trim();
+        chapters[chapter].push({ index, title });
+      });
+
+      let html = '';
+      Object.keys(chapters).forEach(chapterNum => {
+        const chapterSlides = chapters[chapterNum];
+        const info = chapterNames[chapterNum] || { name: 'Chapter ' + chapterNum, badge: 'p' };
+        const badgeLetter = wippeaLabels[info.badge] || 'P';
+
+        html += '<li class="chapter-item" data-chapter="' + chapterNum + '">' +
+          '<div class="chapter-header">' +
+            '<span class="chapter-arrow">&#9654;</span>' +
+            '<span class="wippea-badge ' + info.badge + '">' + badgeLetter + '</span>' +
+            '<span>' + info.name + '</span>' +
+          '</div>' +
+          '<ul class="slide-list">';
+
+        chapterSlides.forEach(s => {
+          html += '<li class="slide-item" data-slide="' + s.index + '">' + s.title + '</li>';
+        });
+
+        html += '</ul></li>';
+      });
+
+      chapterListEl.innerHTML = html;
+
+      document.querySelectorAll('.chapter-header').forEach(header => {
+        header.addEventListener('click', () => {
+          const chapterItem = header.parentElement;
+          const wasExpanded = chapterItem.classList.contains('expanded');
+          document.querySelectorAll('.chapter-item').forEach(item => item.classList.remove('expanded'));
+          if (!wasExpanded) chapterItem.classList.add('expanded');
+          const chapter = chapterItem.dataset.chapter;
+          const targetIndex = Array.from(slides).findIndex(slide => slide.dataset.chapter === chapter);
+          if (targetIndex !== -1) showSlide(targetIndex);
+        });
+      });
+
+      document.querySelectorAll('.slide-item').forEach(item => {
+        item.addEventListener('click', (e) => {
+          e.stopPropagation();
+          showSlide(parseInt(item.dataset.slide));
+        });
+      });
+    }
+
+    function showSlide(index) {
+      if (index < 0) index = 0;
+      if (index >= slides.length) index = slides.length - 1;
+      currentIndex = index;
+
+      slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+
+      const currentChapter = slides[index].dataset.chapter;
+      document.querySelectorAll('.chapter-item').forEach(item => {
+        const isActive = item.dataset.chapter === currentChapter;
+        item.classList.toggle('active', isActive);
+        if (isActive) item.classList.add('expanded');
+      });
+
+      document.querySelectorAll('.slide-item').forEach(item => {
+        item.classList.toggle('active', parseInt(item.dataset.slide) === index);
+      });
+
+      currentSlideEl.textContent = index + 1;
+      progressBar.style.width = ((index + 1) / slides.length) * 100 + '%';
+
+      // Handle branding logo visibility
+      const brandingLogo = document.querySelector('.branding-logo');
+      if (slides[index].classList.contains('slide-title') || slides[index].classList.contains('slide-closing')) {
+        brandingLogo.style.display = 'none';
+      } else {
+        brandingLogo.style.display = 'block';
+      }
+
+      if (slides[index].classList.contains('slide-closing')) {
+        triggerConfetti();
+        playSuccessSound();
+      }
+    }
+
+    function triggerConfetti() {
+      const container = document.getElementById('confettiContainer');
+      container.innerHTML = '';
+      const colors = ['#37b550', '#007baf', '#d3b257', '#a7253f', '#FFFFFF'];
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + '%';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDelay = Math.random() * 2 + 's';
+        confetti.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        const size = Math.random() * 10 + 5;
+        confetti.style.width = size + 'px';
+        confetti.style.height = size + 'px';
+        confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+        container.appendChild(confetti);
+      }
+    }
+
+    function nextSlide() { showSlide(currentIndex + 1); }
+    function prevSlide() { showSlide(currentIndex - 1); }
+
+    function isFormField(target) {
+      if (!target) return false;
+      return Boolean(target.closest("input, textarea, select, [contenteditable='true']"));
+    }
+
+    function isInteractiveTarget(target) {
+      if (!target) return false;
+      return Boolean(target.closest("button, a, input, textarea, select, summary, [role='button'], [role='tab'], [role='checkbox'], [role='radio']"));
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (isFormField(e.target)) return;
+      if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        nextSlide();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prevSlide();
+      } else if ((e.key === ' ' || e.key === 'Spacebar') && !isInteractiveTarget(e.target)) {
+        e.preventDefault();
+        nextSlide();
+      }
+    });
+
+    // Touch/swipe support
+    let touchStartX = 0;
+    document.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].screenX; });
+    document.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 50) { diff > 0 ? nextSlide() : prevSlide(); }
+    });
+
+    // Auto-collapse sidebar on small screens
+    function initSidebarState() {
+      if (window.innerWidth <= 768) {
+        sidebarCollapsed = true;
+        sidebarEl.classList.add('collapsed');
+        sidebarToggleBtn.innerHTML = '&#187;';
+      }
+    }
+
+    // Initialize
+    buildSidebar();
+    initSidebarState();
+    showSlide(0);
+  </script>
+
+  <!-- QA Interactive Pack: tabs + accordion + checkpoint quiz -->
+  <section id="qa-interactive-pack" aria-label="Interactive Practice Pack" style="max-width:1100px;margin:2rem auto;padding:1rem;border:2px solid var(--primary);border-radius:12px;background:var(--muted);">
+    <h2 style="color:var(--dark);margin:.25rem 0 1rem;">Interactive Practice Pack</h2>
+
+    <div class="qa-card" style="margin-top:1rem;padding:.75rem;background:var(--light);border-radius:8px;border:1px solid var(--offwhite);" aria-label="Tabs interaction">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.75rem;flex-wrap:wrap;">
+        <h3 style="margin:0;color:var(--dark);font-size:1.05rem;">Tabs Interaction</h3>
+        <button type="button" class="qa-prompt-toggle" data-target="qa-prompt-tabs" aria-expanded="false" style="padding:.35rem .6rem;border:1px solid var(--dark);background:var(--muted);color:var(--dark);border-radius:6px;">View Prompt</button>
+      </div>
+      <div id="qa-prompt-tabs" class="qa-prompt-panel" hidden style="margin-top:.55rem;padding:.65rem .75rem;background:var(--muted);border-left:4px solid var(--primary);border-radius:6px;">
+        <p style="margin:.2rem 0;"><strong>Prompt:</strong> Which tab best matches your current challenge and why?</p>
+        <p style="margin:.2rem 0;"><strong>Discussion:</strong> Compare how different choices change outcomes.</p>
+        <p style="margin:.2rem 0;"><strong>Debrief:</strong> Name one action you will apply this week.</p>
+      </div>
+      <div role="tablist" aria-label="Practice tabs" style="display:flex;gap:.5rem;flex-wrap:wrap;margin:.75rem 0;">
+        <button type="button" class="qa-tab" id="qa-tab-btn-1" role="tab" aria-controls="qa-tab-1" aria-selected="true" tabindex="0" data-target="qa-tab-1" style="padding:.5rem .75rem;border:1px solid var(--dark);background:var(--light);color:var(--dark);border-radius:8px;">Key Idea</button>
+        <button type="button" class="qa-tab" id="qa-tab-btn-2" role="tab" aria-controls="qa-tab-2" aria-selected="false" tabindex="-1" data-target="qa-tab-2" style="padding:.5rem .75rem;border:1px solid var(--dark);background:var(--light);color:var(--dark);border-radius:8px;">Example</button>
+        <button type="button" class="qa-tab" id="qa-tab-btn-3" role="tab" aria-controls="qa-tab-3" aria-selected="false" tabindex="-1" data-target="qa-tab-3" style="padding:.5rem .75rem;border:1px solid var(--dark);background:var(--light);color:var(--dark);border-radius:8px;">Action</button>
+      </div>
+      <div id="qa-tab-1" class="qa-tab-panel" role="tabpanel" aria-labelledby="qa-tab-btn-1" style="display:block;padding:.75rem;background:var(--light);border-radius:8px;">Use the framework to make intentional decisions.</div>
+      <div id="qa-tab-2" class="qa-tab-panel" role="tabpanel" aria-labelledby="qa-tab-btn-2" style="display:none;padding:.75rem;background:var(--light);border-radius:8px;">Apply this to one real scenario from your week.</div>
+      <div id="qa-tab-3" class="qa-tab-panel" role="tabpanel" aria-labelledby="qa-tab-btn-3" style="display:none;padding:.75rem;background:var(--light);border-radius:8px;">Write one behavior change you will complete today.</div>
+    </div>
+
+    <div class="qa-card" style="margin-top:1rem;padding:.75rem;background:var(--light);border-radius:8px;border:1px solid var(--offwhite);" aria-label="Accordion interaction">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.75rem;flex-wrap:wrap;">
+        <h3 style="margin:0;color:var(--dark);font-size:1.05rem;">Accordion Interaction</h3>
+        <button type="button" class="qa-prompt-toggle" data-target="qa-prompt-accordion" aria-expanded="false" style="padding:.35rem .6rem;border:1px solid var(--dark);background:var(--muted);color:var(--dark);border-radius:6px;">View Prompt</button>
+      </div>
+      <div id="qa-prompt-accordion" class="qa-prompt-panel" hidden style="margin-top:.55rem;padding:.65rem .75rem;background:var(--muted);border-left:4px solid var(--primary);border-radius:6px;">
+        <p style="margin:.2rem 0;"><strong>Prompt:</strong> Open one reflection and explain your choice to a partner.</p>
+        <p style="margin:.2rem 0;"><strong>Discussion:</strong> Highlight patterns students notice across responses.</p>
+        <p style="margin:.2rem 0;"><strong>Debrief:</strong> Capture one behavior each student can practice next.</p>
+      </div>
+      <button type="button" class="qa-acc-btn" aria-expanded="false" data-target="qa-acc-1" style="width:100%;text-align:left;padding:.6rem .75rem;border:1px solid var(--dark);background:var(--light);color:var(--dark);border-radius:8px;margin-top:.75rem;">Open Reflection Prompt 1</button>
+      <div id="qa-acc-1" class="qa-acc-panel" hidden style="padding:.65rem .75rem;">What choice would improve your outcome this week?</div>
+      <button type="button" class="qa-acc-btn" aria-expanded="false" data-target="qa-acc-2" style="width:100%;text-align:left;padding:.6rem .75rem;border:1px solid var(--dark);background:var(--light);color:var(--dark);border-radius:8px;margin-top:.5rem;">Open Reflection Prompt 2</button>
+      <div id="qa-acc-2" class="qa-acc-panel" hidden style="padding:.65rem .75rem;">Which habit should you reduce to reclaim time?</div>
+    </div>
+
+    <div class="qa-card" style="margin-top:1rem;padding:.75rem;background:var(--light);border-radius:8px;border:1px solid var(--offwhite);" aria-label="Checkpoint quiz interaction">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:.75rem;flex-wrap:wrap;">
+        <h3 style="margin:0;color:var(--dark);font-size:1.05rem;">Checkpoint Prompt</h3>
+        <button type="button" class="qa-prompt-toggle" data-target="qa-prompt-checkpoint" aria-expanded="false" style="padding:.35rem .6rem;border:1px solid var(--dark);background:var(--muted);color:var(--dark);border-radius:6px;">View Prompt</button>
+      </div>
+      <div id="qa-prompt-checkpoint" class="qa-prompt-panel" hidden style="margin-top:.55rem;padding:.65rem .75rem;background:var(--muted);border-left:4px solid var(--primary);border-radius:6px;">
+        <p style="margin:.2rem 0;"><strong>Prompt:</strong> Vote, then defend your choice with evidence from the lesson.</p>
+        <p style="margin:.2rem 0;"><strong>Discussion:</strong> Invite one alternate perspective before revealing feedback.</p>
+        <p style="margin:.2rem 0;"><strong>Debrief:</strong> Reinforce ownership + action as the target behavior.</p>
+      </div>
+      <p style="margin-top:.75rem;"><strong>Checkpoint:</strong> Which option best reflects the lesson goal?</p>
+      <div style="display:flex;gap:.5rem;flex-wrap:wrap;">
+        <button type="button" class="qa-quiz" data-correct="false" style="padding:.45rem .7rem;border:1px solid var(--dark);background:var(--offwhite);color:var(--dark);border-radius:8px;">Avoid responsibility</button>
+        <button type="button" class="qa-quiz" data-correct="true" style="padding:.45rem .7rem;border:1px solid var(--dark);background:var(--offwhite);color:var(--dark);border-radius:8px;">Take ownership and apply the framework</button>
+        <button type="button" class="qa-quiz" data-correct="false" style="padding:.45rem .7rem;border:1px solid var(--dark);background:var(--offwhite);color:var(--dark);border-radius:8px;">Wait for someone else to decide</button>
+      </div>
+      <p id="qa-quiz-result" style="margin:.6rem 0 0;color:var(--dark);" aria-live="polite"></p>
+    </div>
+  </section>
+
+<script id="qa-interactive-pack-js">
+(function(){
+  const root=document.getElementById('qa-interactive-pack');
+  if(!root) return;
+  const tabs=[...root.querySelectorAll('.qa-tab')];
+  const panels=[...root.querySelectorAll('.qa-tab-panel')];
+  const activateTab=(btn)=>{
+    const id=btn.getAttribute('data-target');
+    tabs.forEach(t=>{
+      const active=t===btn;
+      t.setAttribute('aria-selected', String(active));
+      t.setAttribute('tabindex', active ? '0' : '-1');
+    });
+    panels.forEach(p=>p.style.display = (p.id===id?'block':'none'));
+  };
+  tabs.forEach((btn,index)=>{
+    btn.addEventListener('click',()=>activateTab(btn));
+    btn.addEventListener('keydown',(e)=>{
+      if(e.key!=='ArrowRight' && e.key!=='ArrowLeft') return;
+      e.preventDefault();
+      const nextIndex = e.key==='ArrowRight'
+        ? (index+1)%tabs.length
+        : (index-1+tabs.length)%tabs.length;
+      activateTab(tabs[nextIndex]);
+      tabs[nextIndex].focus();
+    });
+  });
+  root.querySelectorAll('.qa-prompt-toggle').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const panel=root.querySelector('#'+btn.getAttribute('data-target'));
+      const expanded=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      btn.textContent = expanded ? 'View Prompt' : 'Hide Prompt';
+      if(panel) panel.hidden=expanded;
+    });
+  });
+  root.querySelectorAll('.qa-acc-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const panel=root.querySelector('#'+btn.getAttribute('data-target'));
+      const expanded=btn.getAttribute('aria-expanded')==='true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      if(panel) panel.hidden=expanded;
+    });
+  });
+  const result=root.querySelector('#qa-quiz-result');
+  root.querySelectorAll('.qa-quiz').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const ok=btn.getAttribute('data-correct')==='true';
+      if(result) result.textContent = ok ? 'Correct — ownership + action is the target behavior.' : 'Not quite — choose the option focused on ownership and action.';
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
