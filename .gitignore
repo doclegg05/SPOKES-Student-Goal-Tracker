@@ -1,5 +1,5 @@
+.env
 node_modules/
-frames/
 test-results/
 playwright-report/
 Don't use/

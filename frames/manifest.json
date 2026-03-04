@@ -1,0 +1,19 @@
+{
+  "frameCount": 386,
+  "generatedAt": "2026-03-02T12:15:54.9166267-05:00",
+  "pattern": "frame_%04d.webp",
+  "sources": [
+    {
+      "sourceVideo": "C:\\Users\\Instructor\\Dev\\SPOKES Goal Setting Project\\Video.Notepad.mp4",
+      "frameCount": 193,
+      "startFrame": 1,
+      "endFrame": 193
+    },
+    {
+      "sourceVideo": "C:\\Users\\Instructor\\Dev\\SPOKES Goal Setting Project\\ElevenLabs_video_kling-3-0_Cinematic, p..._2026-03-02T17_01_45.mp4",
+      "frameCount": 193,
+      "startFrame": 194,
+      "endFrame": 386
+    }
+  ]
+}
