@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Redirecting to SPOKES Lesson</title>
+  <meta http-equiv="refresh" content="0; url=/lesson?panel=mission">
+  <style>
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      color: #143247;
+      background: linear-gradient(120deg, #f8f6ef, #eef4f7);
+    }
+    .card {
+      width: min(520px, calc(100% - 2rem));
+      padding: 1rem 1.1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(20, 50, 71, 0.16);
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 12px 30px rgba(12, 36, 54, 0.12);
+      text-align: center;
+    }
+    a { color: #0f4c81; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <article class="card">
+    <h1>Mission Control Moved</h1>
+    <p>Mission Control is now integrated into the main lesson app.</p>
+    <p><a href="/lesson?panel=mission">Open integrated Mission Control</a></p>
+  </article>
+  <script>
+    window.location.replace('/lesson?panel=mission');
+  </script>
+</body>
+</html>

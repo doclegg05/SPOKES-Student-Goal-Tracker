@@ -1,0 +1,23 @@
+{
+  "name": "spokes-goal-setting-project",
+  "version": "1.0.0",
+  "description": "- `/` -> cover/auth page (Sign Up, Sign In, optional Google OAuth) - `/lesson` -> authenticated goal-setting lesson experience - API + static assets are served by the same Node process",
+  "main": "app.js",
+  "scripts": {
+    "start": "node server.js",
+    "test:e2e": "playwright test",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:debug": "playwright test --debug"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.58.2"
+  },
+  "dependencies": {
+    "jspdf": "^4.2.0",
+    "jspdf-autotable": "^5.0.7"
+  }
+}

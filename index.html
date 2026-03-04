@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPOKES Goal Setting Access</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body class="auth-body">
+  <main class="auth-shell">
+    <section class="auth-intro">
+      <img class="auth-logo" src="NCSPOKES.Logo.jpg" alt="NCSPOKES logo">
+      <p class="auth-kicker">SPOKES Goal Setting Journey</p>
+      <h1>Create Your Account, Then Launch the Lesson</h1>
+      <p class="auth-copy">
+        New students should register once. Returning students sign in to load their saved goal work from any classroom device.
+      </p>
+      <ul class="auth-points">
+        <li>Cross-device draft sync</li>
+        <li>Autosave while you work</li>
+        <li>One account per student</li>
+      </ul>
+    </section>
+
+    <section class="auth-card" aria-label="Student account access">
+      <div class="auth-header">
+        <button class="auth-mode active" type="button" data-mode="register" id="registerModeButton">New Student</button>
+        <button class="auth-mode" type="button" data-mode="login" id="loginModeButton">Returning Student</button>
+      </div>
+
+      <form class="auth-form" id="registerForm" novalidate>
+        <h2>Create Account</h2>
+        <label for="registerStudentId">Student ID</label>
+        <input id="registerStudentId" name="student_id" type="text" minlength="3" maxlength="64" autocomplete="username" placeholder="example: jsmith27" required>
+
+        <label for="registerDisplayName">Display Name</label>
+        <input id="registerDisplayName" name="display_name" type="text" maxlength="80" autocomplete="name" placeholder="Example: Jordan Smith">
+
+        <label for="registerPasscode">Passcode</label>
+        <input id="registerPasscode" name="passcode" type="password" minlength="6" autocomplete="new-password" placeholder="At least 6 characters" required>
+
+        <label for="registerPasscodeConfirm">Confirm Passcode</label>
+        <input id="registerPasscodeConfirm" name="passcode_confirm" type="password" minlength="6" autocomplete="new-password" placeholder="Re-enter passcode" required>
+
+        <button class="auth-submit" type="submit">Register + Enter Lesson</button>
+      </form>
+
+      <form class="auth-form hidden" id="loginForm" novalidate>
+        <h2>Sign In</h2>
+        <label for="loginStudentId">Student ID</label>
+        <input id="loginStudentId" name="student_id" type="text" minlength="3" maxlength="64" autocomplete="username" placeholder="example: jsmith27" required>
+
+        <label for="loginPasscode">Passcode</label>
+        <input id="loginPasscode" name="passcode" type="password" minlength="6" autocomplete="current-password" placeholder="Enter your passcode" required>
+
+        <button class="auth-submit" type="submit">Sign In + Continue</button>
+      </form>
+
+      <div class="oauth-section">
+        <p>or</p>
+        <button type="button" class="oauth-button" id="googleOAuthButton">
+          Continue with Google
+        </button>
+      </div>
+
+      <section class="continue-panel hidden" id="continuePanel" aria-live="polite">
+        <p class="continue-text" id="continueText">Session found.</p>
+        <div class="continue-actions">
+          <button type="button" class="auth-submit" id="continueButton">Continue to Lesson</button>
+          <button type="button" class="auth-link-button" id="signOutButton">Sign Out</button>
+        </div>
+      </section>
+
+      <p class="auth-status" id="authStatus" data-tone="neutral">
+        Register or sign in to access your saved goal journey.
+      </p>
+    </section>
+  </main>
+
+  <script type="module" src="auth.js"></script>
+</body>
+</html>
