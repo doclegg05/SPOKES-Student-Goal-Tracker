@@ -77,7 +77,14 @@ export function initMissionWorkspace(doc = document) {
     goalNoteTitleInput: doc.getElementById("mcGoalNoteTitle"),
     goalNoteTextInput: doc.getElementById("mcGoalNoteText"),
     goalNoteCancel: doc.getElementById("mcGoalNoteCancel"),
-    goalNotePost: doc.getElementById("mcGoalNotePost")
+    goalNotePost: doc.getElementById("mcGoalNotePost"),
+    howToPlayModal: doc.getElementById("howToPlayModal"),
+    howToPlayClose: doc.getElementById("howToPlayClose"),
+    howToPlayBtn: doc.getElementById("howToPlayBtn"),
+    howToPlayBtnSidebar: doc.getElementById("howToPlayBtnSidebar"),
+    badgeCount: doc.getElementById("mcBadgeCount"),
+    badges: doc.getElementById("mcBadges"),
+    mcXpFloatAnchor: doc.getElementById("mcXpFloatAnchor")
   };
 
   const forms = {
@@ -136,6 +143,7 @@ export function initMissionWorkspace(doc = document) {
     bindReviewEvents();
     bindDeleteModalEvents();
     bindGoalNoteEvents();
+    bindHowToPlayEvents();
     setDefaultDate();
     configureSyncFromSession();
     migrateLegacyLocalState();
@@ -259,6 +267,34 @@ export function initMissionWorkspace(doc = document) {
         clearGoalNoteDraft();
       });
     }
+  }
+
+  function bindHowToPlayEvents() {
+    function openHelp() {
+      if (ui.howToPlayModal && typeof ui.howToPlayModal.showModal === "function") {
+        ui.howToPlayModal.showModal();
+      }
+    }
+    if (ui.howToPlayBtn) {
+      ui.howToPlayBtn.addEventListener("click", openHelp);
+    }
+    if (ui.howToPlayBtnSidebar) {
+      ui.howToPlayBtnSidebar.addEventListener("click", openHelp);
+    }
+    if (ui.howToPlayClose) {
+      ui.howToPlayClose.addEventListener("click", () => {
+        if (ui.howToPlayModal) { ui.howToPlayModal.close(); }
+      });
+    }
+  }
+
+  function showMcFloatingXp(amount) {
+    if (!ui.mcXpFloatAnchor || !amount) { return; }
+    const el = doc.createElement("span");
+    el.className = "xp-float";
+    el.textContent = `+${amount} XP`;
+    ui.mcXpFloatAnchor.appendChild(el);
+    el.addEventListener("animationend", () => { el.remove(); }, { once: true });
   }
 
   function bindKanbanEvents() {
@@ -555,7 +591,7 @@ export function initMissionWorkspace(doc = document) {
     st.daily.unshift(entry);
     st.daily = st.daily.slice(0, 200);
 
-    let progressionUpdate = { levelChanged: false, newUnlocks: [], streakMilestone: null };
+    let progressionUpdate = { levelChanged: false, newUnlocks: [], streakMilestone: null, xpGained: 0 };
     let taskXp = 0;
     if (flags.progress) {
       progressionUpdate = progression.recordDailyCheckIn(date);
@@ -563,6 +599,10 @@ export function initMissionWorkspace(doc = document) {
         taskXp = progression.recordTaskCompletion().xpGained;
       }
       syncProgressionState();
+      const totalXp = (progressionUpdate.xpGained || 0) + taskXp;
+      if (totalXp > 0) {
+        showMcFloatingXp(totalXp);
+      }
     }
 
     if (doc.getElementById("mcDTop")) { doc.getElementById("mcDTop").value = ""; }
@@ -660,6 +700,20 @@ export function initMissionWorkspace(doc = document) {
     ui.points.textContent = String(p.xp || 0);
     ui.smartReady.textContent = String(smartReady);
     ui.streak.textContent = String(p.currentStreak || 0);
+    if (ui.badgeCount) {
+      ui.badgeCount.textContent = String((p.achievements || []).length);
+    }
+    if (ui.badges) {
+      const earned = p.achievements || [];
+      if (earned.length === 0) {
+        ui.badges.innerHTML = '<span class="mc-badge-empty">No badges yet</span>';
+      } else {
+        ui.badges.innerHTML = earned.map((key) => {
+          const label = key.replace(/^(xp:|streak:|level:)/, "").replace(/_/g, " ");
+          return '<span class="mc-badge">' + escapeHtml(label) + '</span>';
+        }).join("");
+      }
+    }
     applyDashboardGating();
     renderGrowthPrompts();
   }
