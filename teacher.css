@@ -267,6 +267,20 @@ tbody td {
   .shell { width: 100%; margin: 0; }
 }
 
+.reset-section h2 { margin: 0 0 0.2rem; font-size: 1rem; }
+.reset-section p { margin: 0 0 0.6rem; font-size: 0.82rem; color: #475569; }
+.reset-row {
+  display: flex; gap: 0.6rem; align-items: flex-end; flex-wrap: wrap;
+}
+.reset-row > div { flex: 1; min-width: 140px; }
+.reset-row label { display: block; font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: #475569; margin-bottom: 0.2rem; }
+.reset-row input {
+  width: 100%; padding: 0.44rem 0.6rem; border-radius: 8px; border: 1px solid rgba(0, 64, 113, 0.22);
+  font-size: 0.82rem; background: #fff; color: #0f172a;
+}
+.reset-row input:focus { outline: none; border-color: #007baf; box-shadow: 0 0 0 2px rgba(0, 123, 175, 0.18); }
+.reset-row button { white-space: nowrap; }
+
 @media (max-width: 860px) {
   .summary {
     grid-template-columns: repeat(2, minmax(0, 1fr));

@@ -36,6 +36,23 @@
       <p id="status" class="status" data-tone="neutral">Report not loaded yet.</p>
     </section>
 
+    <section class="card reset-section" aria-label="Reset student password">
+      <h2>Reset Student Password</h2>
+      <p>Enter a student ID and a new passcode to reset their access.</p>
+      <div class="reset-row">
+        <div>
+          <label for="resetStudentId">Student ID</label>
+          <input id="resetStudentId" type="text" autocomplete="off" placeholder="e.g. jsmith27">
+        </div>
+        <div>
+          <label for="resetNewPasscode">New Passcode</label>
+          <input id="resetNewPasscode" type="text" autocomplete="off" placeholder="At least 6 characters">
+        </div>
+        <button id="resetPasswordBtn" class="primary" type="button">Reset Passcode</button>
+      </div>
+      <p id="resetStatus" class="status" data-tone="neutral"></p>
+    </section>
+
     <section class="card summary" aria-label="Class summary">
       <div class="stat"><small>Students</small><strong id="studentsCount">0</strong></div>
       <div class="stat"><small>Avg Level</small><strong id="avgLevel">0</strong></div>

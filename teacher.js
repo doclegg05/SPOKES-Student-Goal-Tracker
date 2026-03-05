@@ -12,6 +12,10 @@ const ui = {
   avgLevel: document.getElementById("avgLevel"),
   activeStreaks: document.getElementById("activeStreaks"),
   checkpointCount: document.getElementById("checkpointCount"),
+  resetStudentId: document.getElementById("resetStudentId"),
+  resetNewPasscode: document.getElementById("resetNewPasscode"),
+  resetPasswordBtn: document.getElementById("resetPasswordBtn"),
+  resetStatus: document.getElementById("resetStatus"),
 };
 
 init();
@@ -32,6 +36,10 @@ function init() {
 
   ui.printButton?.addEventListener("click", () => {
     window.print();
+  });
+
+  ui.resetPasswordBtn?.addEventListener("click", () => {
+    resetStudentPassword();
   });
 
   if (saved) {
@@ -130,6 +138,61 @@ async function exportCsv() {
     console.error(error);
     setStatus(error.message || "Could not export CSV.", "error");
   }
+}
+
+async function resetStudentPassword() {
+  const key = currentTeacherKey();
+  if (!key) {
+    setResetStatus("Enter instructor key first.", "error");
+    return;
+  }
+
+  const studentId = String(ui.resetStudentId?.value || "").trim().toLowerCase().replace(/\s+/g, "");
+  const newPasscode = String(ui.resetNewPasscode?.value || "").trim();
+
+  if (!studentId || studentId.length < 3) {
+    setResetStatus("Enter a valid student ID (at least 3 characters).", "error");
+    return;
+  }
+
+  if (newPasscode.length < 6) {
+    setResetStatus("New passcode must be at least 6 characters.", "error");
+    return;
+  }
+
+  setResetStatus("Resetting passcode...", "neutral");
+
+  try {
+    const response = await fetch(`/api/teacher/students/${encodeURIComponent(studentId)}/reset-password`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-teacher-key": key
+      },
+      body: JSON.stringify({ newPasscode })
+    });
+
+    const payload = await response.json();
+    if (!response.ok) {
+      throw new Error(payload?.error || `Reset failed (${response.status})`);
+    }
+
+    setResetStatus(`Passcode reset for ${escapeHtml(payload.displayName || studentId)}. Student can now sign in with the new passcode.`, "ok");
+    if (ui.resetNewPasscode) {
+      ui.resetNewPasscode.value = "";
+    }
+  } catch (error) {
+    console.error(error);
+    setResetStatus(error.message || "Could not reset passcode.", "error");
+  }
+}
+
+function setResetStatus(message, tone = "neutral") {
+  if (!ui.resetStatus) {
+    return;
+  }
+  ui.resetStatus.textContent = message;
+  ui.resetStatus.dataset.tone = tone;
 }
 
 function renderOverview(payload) {

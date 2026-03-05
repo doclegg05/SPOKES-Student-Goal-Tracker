@@ -270,6 +270,14 @@
   color: var(--auth-ink-soft);
 }
 
+.auth-forgot {
+  margin: 0.5rem 0 0;
+  font-size: 0.76rem;
+  color: var(--auth-ink-soft);
+  text-align: center;
+  font-style: italic;
+}
+
 @media (max-width: 960px) {
   .auth-shell {
     grid-template-columns: 1fr;

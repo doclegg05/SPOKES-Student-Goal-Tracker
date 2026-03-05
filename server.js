@@ -1164,6 +1164,57 @@ async function handleApi(req, res, pathname, searchParams) {
     return;
   }
 
+  const teacherResetMatch = pathname.match(/^\/api\/teacher\/students\/([^/]+)\/reset-password$/);
+  if (req.method === "POST" && teacherResetMatch) {
+    if (!requireTeacherAccess(req, res, searchParams)) {
+      return;
+    }
+
+    let body;
+    try {
+      body = await readJsonBody(req);
+    } catch (error) {
+      sendError(res, 400, error.message);
+      return;
+    }
+
+    const studentId = normalizeStudentId(decodeURIComponent(teacherResetMatch[1] || ""));
+    if (!studentId) {
+      sendError(res, 400, "Invalid student identifier.");
+      return;
+    }
+
+    const student = store.students[studentId];
+    if (!student) {
+      sendError(res, 404, "Student not found.");
+      return;
+    }
+
+    if (!student.passHash || !student.salt) {
+      sendError(res, 400, "This account uses Google sign-in and cannot have its passcode reset.");
+      return;
+    }
+
+    const newPasscode = String(body?.newPasscode ?? "").trim();
+    if (newPasscode.length < 6) {
+      sendError(res, 400, "New passcode must be at least 6 characters.");
+      return;
+    }
+
+    const salt = crypto.randomBytes(16).toString("hex");
+    student.salt = salt;
+    student.passHash = hashPasscode(newPasscode, salt);
+    store.students[studentId] = student;
+    await persistStore();
+
+    sendJson(res, 200, {
+      ok: true,
+      studentId,
+      displayName: student.displayName
+    });
+    return;
+  }
+
   if (req.method === "GET" && pathname === "/api/auth/providers") {
     sendJson(res, 200, {
       providers: {
