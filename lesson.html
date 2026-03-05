@@ -14,6 +14,7 @@
       <a href="/">Account</a>
       <a href="#missionControl">Mission Control</a>
       <a href="/teacher">Teacher</a>
+      <button type="button" id="howToPlayBtn" class="site-nav-help" aria-label="How to Play">How to Play</button>
     </nav>
   </header>
 
@@ -85,6 +86,7 @@
         <aside class="goal-panel" id="goalPanel" aria-label="Goal form summary panel">
           <h3>Your Goal Form</h3>
           <p>As prompts appear, add your responses. Your work syncs to your account as you type.</p>
+          <button type="button" id="howToPlayBtnSidebar" class="help-link-btn" aria-label="How to Play instructions">How does this work?</button>
           <section class="goal-completion" id="goalCompletionPanel" aria-label="Lesson completion progress">
             <div class="goal-progress-head">
               <strong id="goalCompletionText">0/5 core prompts complete</strong>
@@ -105,6 +107,17 @@
             <div class="goal-progress-track xp" role="progressbar" aria-label="Experience progress to next level" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="goalXpTrack">
               <div class="goal-progress-bar xp" id="goalXpBar"></div>
             </div>
+            <div class="goal-streak-display" id="goalStreakDisplay">
+              <span class="streak-label">Streak</span>
+              <span class="streak-count" id="goalStreakCount">0 days</span>
+            </div>
+            <div class="level-roadmap" id="levelRoadmap" aria-label="Level progress roadmap">
+              <div class="roadmap-step" data-roadmap-level="1"><span class="roadmap-dot"></span><span class="roadmap-name">L1 BHAG</span></div>
+              <div class="roadmap-step" data-roadmap-level="2"><span class="roadmap-dot"></span><span class="roadmap-name">L2 Monthly</span></div>
+              <div class="roadmap-step" data-roadmap-level="3"><span class="roadmap-dot"></span><span class="roadmap-name">L3 Weekly</span></div>
+              <div class="roadmap-step" data-roadmap-level="4"><span class="roadmap-dot"></span><span class="roadmap-name">L4 Daily</span></div>
+              <div class="roadmap-step" data-roadmap-level="5"><span class="roadmap-dot"></span><span class="roadmap-name">L5 Tasks</span></div>
+            </div>
             <button type="button" class="student-auth-button" id="goalCertificateButton" disabled>Export Completion Certificate</button>
             <p class="goal-cert-note">Unlock at Level 5 after core prompts, one SMART-ready goal, and one completed daily entry.</p>
           </section>
@@ -118,6 +131,7 @@
           </section>
           <div class="goal-summary-list" id="goalSummaryList"></div>
           <div class="goal-saved-at" id="goalSavedAt">No saved responses yet.</div>
+          <div class="xp-float-anchor" id="xpFloatAnchor" aria-hidden="true"></div>
         </aside>
 
         <div class="loader" id="loader">
@@ -188,7 +202,10 @@
           <div class="mc-stat"><small>XP</small><b id="mcXP">0</b></div>
           <div class="mc-stat"><small>Streak</small><b id="mcStreak">0</b></div>
           <div class="mc-stat"><small>SMART Ready</small><b id="mcSmartReady">0</b></div>
+          <div class="mc-stat"><small>Badges</small><b id="mcBadgeCount">0</b></div>
         </div>
+        <div class="mc-badges" id="mcBadges" aria-label="Earned badges"></div>
+        <div class="xp-float-anchor" id="mcXpFloatAnchor" aria-hidden="true"></div>
       </section>
 
       <nav class="mc-card mc-tabs" role="tablist" aria-label="Mission sections">
@@ -358,6 +375,66 @@
       <menu>
         <button id="mcGoalNoteCancel" value="cancel" type="button">Cancel</button>
         <button id="mcGoalNotePost" value="default" type="button" class="mc-p">Add to Board</button>
+      </menu>
+    </form>
+  </dialog>
+  <dialog id="howToPlayModal" class="mc-review-modal mc-how-to-play-modal">
+    <form method="dialog">
+      <h3>How to Play: SPOKES Goal Tracker</h3>
+      <section class="htp-section">
+        <h4>The 5 Levels</h4>
+        <p>Progress through five goal-setting levels. Each level unlocks a new prompt card as you scroll.</p>
+        <ol class="htp-levels">
+          <li><strong>Level 1 - BHAG:</strong> Set your Big, Hairy, Audacious Goal. Available from the start.</li>
+          <li><strong>Level 2 - Monthly:</strong> Define a monthly goal. Unlocks when you lock in your BHAG.</li>
+          <li><strong>Level 3 - Weekly:</strong> Plan weekly actions. Unlocks after Monthly + 5 daily check-ins.</li>
+          <li><strong>Level 4 - Daily:</strong> Set daily priorities. Unlocks after Weekly + 1 weekly review.</li>
+          <li><strong>Level 5 - Tasks:</strong> Create action tasks. Unlocks after completing your Daily goal.</li>
+        </ol>
+      </section>
+      <section class="htp-section">
+        <h4>Earning XP</h4>
+        <p>Everything you do earns Experience Points. Accumulate XP to show your engagement.</p>
+        <table class="htp-table">
+          <thead><tr><th>Action</th><th>XP</th></tr></thead>
+          <tbody>
+            <tr><td>Lock in a prompt</td><td>+50</td></tr>
+            <tr><td>Monthly review</td><td>+60</td></tr>
+            <tr><td>Weekly review</td><td>+40</td></tr>
+            <tr><td>First growth prompt response</td><td>+30</td></tr>
+            <tr><td>SMART goal ready (5/5)</td><td>+20</td></tr>
+            <tr><td>Daily check-in</td><td>+15</td></tr>
+            <tr><td>Complete a task</td><td>+10</td></tr>
+            <tr><td>Vision board note</td><td>+5</td></tr>
+          </tbody>
+        </table>
+      </section>
+      <section class="htp-section">
+        <h4>Streak Bonuses</h4>
+        <p>Check in on consecutive days to earn one-time streak milestone bonuses.</p>
+        <ul class="htp-streaks">
+          <li><strong>3-day streak:</strong> +25 XP</li>
+          <li><strong>7-day streak:</strong> +75 XP</li>
+          <li><strong>14-day streak:</strong> +150 XP</li>
+          <li><strong>30-day streak:</strong> +300 XP</li>
+        </ul>
+      </section>
+      <section class="htp-section">
+        <h4>Mission Control</h4>
+        <p>As you level up, new Mission Control sections unlock:</p>
+        <ul>
+          <li><strong>Level 1-2:</strong> Daily Momentum + Archive</li>
+          <li><strong>Level 3:</strong> SMART Goals, Growth Prompts, Plan Generation</li>
+          <li><strong>Level 4:</strong> Kanban board editing</li>
+          <li><strong>Level 5:</strong> Vision Board + full access</li>
+        </ul>
+      </section>
+      <section class="htp-section">
+        <h4>Completion Certificate</h4>
+        <p>To unlock the certificate, reach Level 5, complete all 5 core prompts, have at least one SMART-ready goal (5/5 score), and one completed daily entry.</p>
+      </section>
+      <menu>
+        <button id="howToPlayClose" value="cancel" type="button" class="mc-p">Got It</button>
       </menu>
     </form>
   </dialog>

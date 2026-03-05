@@ -36,6 +36,25 @@ const STREAK_BONUS = {
   30: 300
 };
 
+const ACHIEVEMENT_DEFS = {
+  "xp:prompt_lockin":    { label: "Locked In",        desc: "Locked in a prompt response" },
+  "xp:daily_checkin":    { label: "Daily Warrior",     desc: "Completed a daily check-in" },
+  "xp:task_complete":    { label: "Task Crusher",      desc: "Completed a task" },
+  "xp:phase2_prompt":    { label: "Deep Thinker",      desc: "Answered a growth prompt" },
+  "xp:weekly_review":    { label: "Weekly Reflector",   desc: "Completed a weekly review" },
+  "xp:monthly_review":   { label: "Monthly Strategist", desc: "Completed a monthly review" },
+  "xp:smart_ready":      { label: "SMART Ready",       desc: "Got a SMART goal to 5/5" },
+  "xp:vision_note":      { label: "Visionary",         desc: "Added a vision board note" },
+  "streak:3":            { label: "3-Day Streak",      desc: "Checked in 3 days in a row" },
+  "streak:7":            { label: "Week Warrior",      desc: "7-day check-in streak" },
+  "streak:14":           { label: "Fortnight Focus",   desc: "14-day check-in streak" },
+  "streak:30":           { label: "Monthly Machine",   desc: "30-day check-in streak" },
+  "level:2":             { label: "Horizon Set",       desc: "Reached Level 2" },
+  "level:3":             { label: "Strategist",        desc: "Reached Level 3" },
+  "level:4":             { label: "Executor",          desc: "Reached Level 4" },
+  "level:5":             { label: "Mission Complete",   desc: "Reached Level 5" }
+};
+
 function isoNow() {
   return new Date().toISOString();
 }
@@ -602,6 +621,11 @@ export class ProgressionEngine {
     }
     this.state.level = Math.max(1, Math.min(5, unlockedLevel));
 
+    if (this.state.level >= 2) { this.addAchievementIfMissing("level:2"); }
+    if (this.state.level >= 3) { this.addAchievementIfMissing("level:3"); }
+    if (this.state.level >= 4) { this.addAchievementIfMissing("level:4"); }
+    if (this.state.level >= 5) { this.addAchievementIfMissing("level:5"); }
+
     this.state.unlockedPrompts = [...new Set(this.state.unlockedPrompts)].sort((a, b) => {
       const aIdx = coreOrderIndex(a);
       const bIdx = coreOrderIndex(b);
@@ -621,4 +645,13 @@ export class ProgressionEngine {
     }
     this.state.unlockedPrompts.push(key);
   }
+
+  getAchievementsWithDefs() {
+    return this.state.achievements.map((key) => ({
+      key,
+      ...(ACHIEVEMENT_DEFS[key] || { label: key, desc: "" })
+    }));
+  }
 }
+
+export { ACHIEVEMENT_DEFS };

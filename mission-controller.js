@@ -122,8 +122,8 @@ export class MissionController {
     this.win.location.assign("/?loggedOut=1");
   }
 
-  handleCertificateExport() {
-    const result = this.view.exportCompletionCertificate({
+  async handleCertificateExport() {
+    const result = await this.view.exportCompletionCertificate({
       session: this.model.getSessionSnapshot(),
       snapshot: this.model.getGoalDraftSnapshot()
     });
@@ -133,7 +133,7 @@ export class MissionController {
       return;
     }
 
-    this.view.setAuthMessage("Certificate opened. Use Print to save PDF.", "success");
+    this.view.setAuthMessage("Certificate PDF downloaded.", "success");
   }
 
   async loadBestDraftFromCurrentSource() {
@@ -210,6 +210,9 @@ export class MissionController {
 
     this.persistProgressionState();
     this.applyProgressionToView();
+    if (result.xpGained > 0) {
+      this.view.showFloatingXp(result.xpGained);
+    }
     this.view.renderGoalSummary(this.model.getGoalDraftSnapshot());
 
     if (result.levelChanged || result.newUnlocks.length) {
@@ -434,7 +437,8 @@ export class MissionController {
       levelName: this.progression.getLevelName(),
       xp: state.xp,
       xpRatio: xpMeta.ratio,
-      nextTarget: xpMeta.nextTarget
+      nextTarget: xpMeta.nextTarget,
+      streak: state.currentStreak
     });
 
     this.trackMetrics = this.view.getTrackMetrics(this.win);

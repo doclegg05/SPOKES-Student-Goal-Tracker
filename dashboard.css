@@ -1032,7 +1032,7 @@
 .mc-stats {
   margin-top: 0.72rem;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 0.44rem;
 }
 
@@ -1975,3 +1975,101 @@
   background: linear-gradient(128deg, var(--spokes-primary-dark-blue) 0%, var(--spokes-secondary-royal) 100%);
   border-top-color: rgba(55, 181, 80, 0.45);
 }
+
+/* --- How to Play button in header nav --- */
+.site-nav-help {
+  text-decoration: none;
+  color: rgba(247, 250, 255, 0.96);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  padding: 0.42rem 0.62rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(15, 23, 42, 0.28);
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease, opacity 0.18s ease;
+  opacity: 0.78;
+}
+.site-nav-help:hover {
+  background: rgba(15, 23, 42, 0.4);
+  border-color: rgba(255, 255, 255, 0.48);
+  opacity: 0.95;
+}
+
+/* --- Help link in goal panel sidebar --- */
+.help-link-btn {
+  display: inline-block;
+  margin-top: 0.32rem;
+  padding: 0;
+  border: none;
+  background: none;
+  color: #007baf;
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.help-link-btn:hover { color: #004071; }
+
+/* --- How to Play modal --- */
+.mc-how-to-play-modal { width: min(620px, calc(100% - 1rem)); max-height: 85vh; }
+.mc-how-to-play-modal form { overflow-y: auto; max-height: calc(85vh - 2rem); }
+.htp-section { margin-top: 0.68rem; padding-top: 0.52rem; border-top: 1px solid rgba(0, 64, 113, 0.12); }
+.htp-section h4 { margin: 0; font-size: 0.82rem; color: #004071; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 800; }
+.htp-section p { margin: 0.3rem 0 0; font-size: 0.82rem; line-height: 1.42; color: #475569; }
+.htp-section ul, .htp-section ol { margin: 0.4rem 0 0; padding-left: 1.2rem; font-size: 0.8rem; line-height: 1.42; color: #475569; }
+.htp-section li + li { margin-top: 0.2rem; }
+.htp-table { margin-top: 0.4rem; width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+.htp-table th { text-align: left; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.04em; color: #004071; padding: 0.32rem 0.4rem; border-bottom: 1px solid rgba(0, 64, 113, 0.18); }
+.htp-table td { padding: 0.28rem 0.4rem; border-bottom: 1px solid rgba(0, 64, 113, 0.08); color: #475569; }
+.htp-table td:last-child { font-weight: 800; color: #004071; text-align: right; white-space: nowrap; }
+
+/* --- Badge strip --- */
+.mc-badges { margin-top: 0.52rem; display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.mc-badge {
+  display: inline-block; padding: 0.22rem 0.52rem; border-radius: 999px;
+  font-size: 0.62rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase;
+  border: 1px solid rgba(211, 178, 87, 0.5); background: rgba(211, 178, 87, 0.18); color: #f3f6f9; cursor: default;
+}
+.mc-badge-empty { font-size: 0.72rem; color: rgba(243, 246, 249, 0.6); font-style: italic; }
+
+/* --- Floating XP animation --- */
+.xp-float-anchor { position: relative; height: 0; overflow: visible; pointer-events: none; }
+.xp-float {
+  position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
+  font-size: 0.82rem; font-weight: 800; color: #d3b257; text-transform: uppercase;
+  letter-spacing: 0.04em; white-space: nowrap; pointer-events: none;
+  animation: xp-rise 1.2s ease-out forwards;
+}
+@keyframes xp-rise {
+  0%   { opacity: 1; transform: translateX(-50%) translateY(0); }
+  70%  { opacity: 1; }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-48px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .xp-float { animation: none; opacity: 0; }
+}
+
+/* --- Streak display --- */
+.goal-streak-display { margin-top: 0.44rem; display: flex; align-items: center; gap: 0.42rem; font-size: 0.72rem; color: #475569; }
+.goal-streak-display.active-streak .streak-count { color: #d3b257; font-weight: 800; }
+.streak-label { text-transform: uppercase; letter-spacing: 0.05em; font-weight: 800; font-size: 0.68rem; }
+
+/* --- Level roadmap --- */
+.level-roadmap { margin-top: 0.52rem; display: flex; gap: 0.1rem; align-items: center; }
+.roadmap-step { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 0.18rem; }
+.roadmap-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  border: 2px solid rgba(0, 64, 113, 0.28); background: rgba(255, 255, 255, 0.8);
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.roadmap-name { font-size: 0.56rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: #475569; text-align: center; }
+.roadmap-step.completed .roadmap-dot { background: #16a34a; border-color: #16a34a; }
+.roadmap-step.current .roadmap-dot { background: #007baf; border-color: #007baf; box-shadow: 0 0 0 3px rgba(0, 123, 175, 0.22); }
+.roadmap-step.current .roadmap-name { color: #007baf; font-weight: 800; }
+.roadmap-step.locked .roadmap-dot { opacity: 0.45; }
+.roadmap-step.locked .roadmap-name { opacity: 0.45; }
