@@ -551,7 +551,7 @@ export class MissionView {
     if (!this.scrollTrack) {
       return;
     }
-    const safe = Math.max(280, Math.min(1300, Number(heightVh) || 300));
+    const safe = Math.max(280, Math.min(1400, Number(heightVh) || 400));
     this.scrollTrack.style.height = `${safe}vh`;
     this.scrollTrack.style.minHeight = `${safe}vh`;
   }
