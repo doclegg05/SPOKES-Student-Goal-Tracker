@@ -1,7 +1,7 @@
 import { clamp } from "./mission-utils.js";
 
 const DEFAULT_CONFIG = {
-  totalFrames: 386,
+  totalFrames: 193,
   chunkSize: 30,
   initialChunks: 1,
   chunkWorkers: 6,
