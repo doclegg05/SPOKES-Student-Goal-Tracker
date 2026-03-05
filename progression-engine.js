@@ -5,11 +5,11 @@ import {
 } from "./goal-response-adapter.js";
 
 const CORE_LEVELS = [
-  { level: 1, name: "BHAG", key: "bhag", scrollCap: 0.22, trackVh: 400 },
-  { level: 2, name: "Monthly", key: "monthly", scrollCap: 0.42, trackVh: 580 },
-  { level: 3, name: "Weekly", key: "weekly", scrollCap: 0.62, trackVh: 760 },
-  { level: 4, name: "Daily", key: "daily", scrollCap: 0.82, trackVh: 940 },
-  { level: 5, name: "Tasks", key: "tasks", scrollCap: 1.0, trackVh: 1200 }
+  { level: 1, name: "BHAG", key: "bhag", scrollCap: 0.24, trackVh: 400 },
+  { level: 2, name: "Monthly", key: "monthly", scrollCap: 0.44, trackVh: 580 },
+  { level: 3, name: "Weekly", key: "weekly", scrollCap: 0.64, trackVh: 760 },
+  { level: 4, name: "Daily", key: "daily", scrollCap: 0.84, trackVh: 940 },
+  { level: 5, name: "Tasks", key: "tasks", scrollCap: 0.98, trackVh: 1100 }
 ];
 
 const PHASE2_UNLOCK_LEVEL = {

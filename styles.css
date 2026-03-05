@@ -28,6 +28,11 @@
       --goal-panel-width: min(26vw, 420px);
     }
 
+    *:focus-visible {
+      outline: 3px solid var(--accent, #d3b257);
+      outline-offset: 3px;
+    }
+
     * {
       box-sizing: border-box;
     }
@@ -38,7 +43,7 @@
       min-height: 100%;
       background: var(--site-bg);
       color: var(--ink);
-      font-family: "Avenir Next", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-family: "Avenir Next", "Segoe UI", Roboto, "Noto Sans", Tahoma, Geneva, Verdana, sans-serif;
       scroll-behavior: smooth;
     }
 
@@ -175,4 +180,15 @@
       height: 100%;
       display: block;
       background: var(--site-bg);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      html, body {
+        scroll-behavior: auto !important;
+      }
     }

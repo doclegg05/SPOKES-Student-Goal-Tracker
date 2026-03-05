@@ -1196,7 +1196,10 @@ export function initMissionWorkspace(doc = document) {
     const p = progression.getState();
     const now = Date.now();
 
+    const dayOfWeek = new Date(now).getDay();
+    const isThursdayOrFriday = dayOfWeek === 4 || dayOfWeek === 5;
     if (
+      isThursdayOrFriday &&
       progression.isPromptCompleted("weekly") &&
       (!p.lastWeeklyReviewAt || daysSince(p.lastWeeklyReviewAt, now) >= 7)
     ) {

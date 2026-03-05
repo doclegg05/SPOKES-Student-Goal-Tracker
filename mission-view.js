@@ -28,7 +28,7 @@ export class MissionView {
     this.goalCompletionTrack = this.document.getElementById("goalCompletionTrack");
     this.goalCompletionBar = this.document.getElementById("goalCompletionBar");
     this.goalCheckpointList = this.document.getElementById("goalCheckpointList");
-    this.goalCertificateButton = this.document.getElementById("goalCertificateButton");
+    this.goalCertificateButton = null;
     this.goalLevelBadge = this.document.getElementById("goalLevelBadge");
     this.goalXpText = this.document.getElementById("goalXpText");
     this.goalXpTrack = this.document.getElementById("goalXpTrack");
@@ -176,7 +176,9 @@ export class MissionView {
         node.dataset.baseTabindex = node.getAttribute("tabindex") ?? "";
       }
 
-      if (isVisible) {
+      const shouldDisable = !isVisible || isLocked;
+
+      if (isVisible && !isLocked) {
         if (node.dataset.baseTabindex === "") {
           node.removeAttribute("tabindex");
         } else {
@@ -184,6 +186,10 @@ export class MissionView {
         }
       } else {
         node.setAttribute("tabindex", "-1");
+      }
+
+      if ("disabled" in node) {
+        node.disabled = shouldDisable;
       }
     }
   }
@@ -286,17 +292,6 @@ export class MissionView {
     this.studentSignOutButton.addEventListener("click", (event) => {
       event.preventDefault();
       onSignOut();
-    });
-  }
-
-  bindCertificateExport(onExport) {
-    if (!this.goalCertificateButton) {
-      return;
-    }
-
-    this.goalCertificateButton.addEventListener("click", (event) => {
-      event.preventDefault();
-      onExport();
     });
   }
 
@@ -458,12 +453,6 @@ export class MissionView {
       }).join("");
     }
 
-    if (this.goalCertificateButton) {
-      this.goalCertificateButton.disabled = !status.certificateEligible;
-      this.goalCertificateButton.textContent = status.certificateEligible
-        ? "Export Completion Certificate"
-        : "Complete Checkpoints to Unlock Certificate";
-    }
   }
 
   setCardLocks(unlockedKeys = [], completedKeys = []) {
@@ -486,6 +475,17 @@ export class MissionView {
       const button = card.querySelector(".level-up-btn[data-target]");
       if (button) {
         button.disabled = !isUnlocked || isCompleted;
+      }
+
+      const fields = card.querySelectorAll("input, textarea, select, button");
+      for (const field of fields) {
+        if (!isUnlocked) {
+          field.disabled = true;
+          field.setAttribute("tabindex", "-1");
+        } else if (field !== button) {
+          field.disabled = false;
+          field.removeAttribute("tabindex");
+        }
       }
     }
   }
@@ -637,8 +637,7 @@ export class MissionView {
       dailyDoneCount,
       level: progression.level,
       xp: progression.xp,
-      currentStreak: progression.currentStreak,
-      certificateEligible: promptRatio === 1 && smartReadyCount > 0 && dailyDoneCount > 0 && progression.level >= 5
+      currentStreak: progression.currentStreak
     };
   }
 
@@ -709,242 +708,6 @@ export class MissionView {
     } catch (_error) {
       return fallback;
     }
-  }
-
-  async exportCompletionCertificate({ session, snapshot }) {
-    const status = this.getCompletionStatus(snapshot);
-    if (!status.certificateEligible) {
-      return {
-        ok: false,
-        message: "Reach Level 5, finish core prompts, and complete SMART + daily evidence before exporting."
-      };
-    }
-
-    const JsPdf = window.jspdf?.jsPDF || window.jsPDF || null;
-    if (!JsPdf) {
-      return { ok: false, message: "PDF library not available. Try refreshing the page." };
-    }
-
-    const responses = {
-      ...(snapshot?.responses || {}),
-      ...readCorePromptResponses(snapshot?.responses || {})
-    };
-    const name = session?.displayName || session?.studentId || "Student";
-    const studentId = session?.studentId || "unknown";
-    const issueDate = new Date().toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" });
-    const goal = typeof responses.monthly === "string" && responses.monthly.trim()
-      ? responses.monthly.trim()
-      : "Completed SMART goal journey";
-
-    const pdf = new JsPdf({ orientation: "landscape", unit: "pt", format: "letter" });
-    const W = pdf.internal.pageSize.getWidth();
-    const H = pdf.internal.pageSize.getHeight();
-    const cx = W / 2;
-
-    const navy = [15, 76, 129];
-    const gold = [211, 178, 87];
-    const darkText = [15, 23, 42];
-    const gray = [71, 85, 105];
-    const white = [255, 255, 255];
-    const lightBg = [241, 245, 249];
-
-    // --- Decorative outer border ---
-    pdf.setDrawColor(...gold);
-    pdf.setLineWidth(3);
-    pdf.rect(18, 18, W - 36, H - 36);
-    pdf.setLineWidth(1);
-    pdf.rect(24, 24, W - 48, H - 48);
-
-    // --- Header band ---
-    pdf.setFillColor(...navy);
-    pdf.rect(32, 32, W - 64, 72, "F");
-    pdf.setDrawColor(...gold);
-    pdf.setLineWidth(1.5);
-    pdf.line(32, 104, W - 32, 104);
-
-    // --- Logo ---
-    try {
-      const logoResponse = await fetch("/NCSPOKES.Logo.jpg", { cache: "force-cache" });
-      const logoBlob = await logoResponse.blob();
-      const logoUrl = await new Promise((resolve) => {
-        const reader = new FileReader();
-        reader.onload = () => resolve(String(reader.result || ""));
-        reader.readAsDataURL(logoBlob);
-      });
-      if (logoUrl) {
-        pdf.addImage(logoUrl, "JPEG", cx - 57, 40, 114, 55, undefined, "FAST");
-      }
-    } catch (_e) {
-      pdf.setFont("helvetica", "bold");
-      pdf.setFontSize(16);
-      pdf.setTextColor(...white);
-      pdf.text("NCSPOKES", cx, 72, { align: "center" });
-    }
-
-    // --- Title ---
-    let y = 128;
-    pdf.setFont("helvetica", "bold");
-    pdf.setFontSize(32);
-    pdf.setTextColor(...navy);
-    pdf.text("CERTIFICATE OF COMPLETION", cx, y, { align: "center" });
-
-    // --- Gold divider ---
-    y += 12;
-    pdf.setDrawColor(...gold);
-    pdf.setLineWidth(2);
-    pdf.line(cx - 140, y, cx + 140, y);
-
-    // --- Subtitle ---
-    y += 22;
-    pdf.setFont("helvetica", "normal");
-    pdf.setFontSize(14);
-    pdf.setTextColor(...gray);
-    pdf.text("SPOKES Goal Setting Lesson", cx, y, { align: "center" });
-
-    // --- "This certifies that" ---
-    y += 30;
-    pdf.setFontSize(11);
-    pdf.setTextColor(...gray);
-    pdf.text("This certifies that", cx, y, { align: "center" });
-
-    // --- Student Name ---
-    y += 28;
-    pdf.setFont("helvetica", "bold");
-    pdf.setFontSize(26);
-    pdf.setTextColor(...darkText);
-    pdf.text(name, cx, y, { align: "center" });
-
-    // --- Underline under name ---
-    const nameWidth = pdf.getTextWidth(name);
-    pdf.setDrawColor(...gold);
-    pdf.setLineWidth(1);
-    pdf.line(cx - nameWidth / 2 - 20, y + 6, cx + nameWidth / 2 + 20, y + 6);
-
-    // --- Achievement statement ---
-    y += 28;
-    pdf.setFont("helvetica", "normal");
-    pdf.setFontSize(11);
-    pdf.setTextColor(...gray);
-    pdf.text(
-      "has successfully completed all required checkpoints in the integrated",
-      cx, y, { align: "center" }
-    );
-    y += 16;
-    pdf.text(
-      "goal journey and mission control experience.",
-      cx, y, { align: "center" }
-    );
-
-    // --- Goal quote block ---
-    y += 24;
-    const goalBoxW = 420;
-    const goalBoxX = cx - goalBoxW / 2;
-    pdf.setFillColor(...lightBg);
-    pdf.setDrawColor(200, 210, 220);
-    pdf.setLineWidth(0.5);
-    const goalLines = pdf.splitTextToSize(goal, goalBoxW - 24);
-    const goalBoxH = Math.max(36, goalLines.length * 14 + 20);
-    pdf.roundedRect(goalBoxX, y, goalBoxW, goalBoxH, 6, 6, "FD");
-
-    pdf.setFont("helvetica", "bold");
-    pdf.setFontSize(7);
-    pdf.setTextColor(...navy);
-    pdf.text("FINAL SMART GOAL", goalBoxX + 12, y + 12);
-    pdf.setFont("helvetica", "normal");
-    pdf.setFontSize(10);
-    pdf.setTextColor(...darkText);
-    pdf.text(goalLines, goalBoxX + 12, y + 24);
-    y += goalBoxH + 14;
-
-    // --- Stats row ---
-    const stats = [
-      { label: "LEVEL", value: `${status.level}` },
-      { label: "XP", value: `${status.xp}` },
-      { label: "SMART GOALS", value: `${status.smartReadyCount}` },
-      { label: "DAILY DONE", value: `${status.dailyDoneCount}` },
-      { label: "STREAK", value: `${status.currentStreak}d` }
-    ];
-    const statW = 90;
-    const statsStartX = cx - (stats.length * statW) / 2;
-    for (let i = 0; i < stats.length; i++) {
-      const sx = statsStartX + i * statW + statW / 2;
-      pdf.setFont("helvetica", "bold");
-      pdf.setFontSize(18);
-      pdf.setTextColor(...navy);
-      pdf.text(stats[i].value, sx, y, { align: "center" });
-      pdf.setFont("helvetica", "normal");
-      pdf.setFontSize(7);
-      pdf.setTextColor(...gray);
-      pdf.text(stats[i].label, sx, y + 12, { align: "center" });
-    }
-
-    // --- Official seal (right side) ---
-    const sealX = W - 110;
-    const sealY = H - 110;
-    const sealR = 36;
-    pdf.setDrawColor(...gold);
-    pdf.setLineWidth(2.5);
-    pdf.circle(sealX, sealY, sealR);
-    pdf.setLineWidth(1);
-    pdf.circle(sealX, sealY, sealR - 5);
-
-    // Star points inside seal
-    pdf.setFillColor(...gold);
-    const starPoints = 8;
-    for (let i = 0; i < starPoints; i++) {
-      const angle = (i / starPoints) * Math.PI * 2 - Math.PI / 2;
-      const innerR = 8;
-      const outerR = 16;
-      const midAngle = angle + Math.PI / starPoints;
-      const x1 = sealX + Math.cos(angle) * outerR;
-      const y1 = sealY + Math.sin(angle) * outerR;
-      const x2 = sealX + Math.cos(midAngle) * innerR;
-      const y2 = sealY + Math.sin(midAngle) * innerR;
-      pdf.line(sealX, sealY, x1, y1);
-      pdf.circle(x1, y1, 1.2, "F");
-    }
-
-    pdf.setFont("helvetica", "bold");
-    pdf.setFontSize(7);
-    pdf.setTextColor(...gold);
-    pdf.text("CERTIFIED", sealX, sealY - 22, { align: "center" });
-    pdf.setFontSize(5.5);
-    pdf.text("SPOKES", sealX, sealY + 28, { align: "center" });
-
-    // --- Issue date ---
-    const bottomY = H - 68;
-    pdf.setFont("helvetica", "normal");
-    pdf.setFontSize(9);
-    pdf.setTextColor(...gray);
-    pdf.text(`Issued: ${issueDate}`, cx, bottomY - 16, { align: "center" });
-    pdf.setFontSize(7);
-    pdf.text(`Student ID: ${studentId}`, cx, bottomY - 4, { align: "center" });
-
-    // --- Signature lines ---
-    const sigLineW = 160;
-    const sigY = H - 56;
-    const sigLeftX = 100;
-    const sigRightX = W - 260;
-
-    pdf.setDrawColor(...darkText);
-    pdf.setLineWidth(0.5);
-    pdf.line(sigLeftX, sigY, sigLeftX + sigLineW, sigY);
-    pdf.line(sigRightX, sigY, sigRightX + sigLineW, sigY);
-
-    pdf.setFont("helvetica", "normal");
-    pdf.setFontSize(8);
-    pdf.setTextColor(...gray);
-    pdf.text("Student Signature", sigLeftX + sigLineW / 2, sigY + 12, { align: "center" });
-    pdf.text("Instructor Signature", sigRightX + sigLineW / 2, sigY + 12, { align: "center" });
-
-    // --- Bottom gold accent line ---
-    pdf.setDrawColor(...gold);
-    pdf.setLineWidth(1.5);
-    pdf.line(32, H - 32, W - 32, H - 32);
-
-    const dateSlug = new Date().toISOString().slice(0, 10);
-    pdf.save(`spokes-certificate-${dateSlug}.pdf`);
-    return { ok: true };
   }
 
   formatTimestamp(isoTimestamp) {
