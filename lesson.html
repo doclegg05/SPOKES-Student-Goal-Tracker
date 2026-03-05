@@ -11,7 +11,6 @@
   <header class="site-header">
     <img class="brand-logo" src="NCSPOKES.Logo.jpg" alt="NCSPOKES logo">
     <nav class="site-nav" aria-label="Primary">
-      <a href="/">Account</a>
       <a href="#missionControl">Mission Control</a>
       <a href="/teacher">Teacher</a>
       <button type="button" id="howToPlayBtn" class="site-nav-help" aria-label="How to Play">How to Play</button>
@@ -37,7 +36,7 @@
         </div>
 
         <div class="cards" id="cardsLayer">
-          <article class="feature-card one" id="prompt-bhag" data-prompt-key="bhag" data-level="1" data-start="0.00" data-end="0.22">
+          <article class="feature-card one" id="prompt-bhag" data-prompt-key="bhag" data-level="1" data-start="0.00" data-end="0.24">
             <span class="level-badge">L1</span>
             <h3>Level 1: Big, Hairy, Audacious Goal (BHAG)</h3>
             <p class="goal-prompt">What is your ultimate, long-term career or life goal?</p>
@@ -45,8 +44,8 @@
             <textarea id="bhag" class="goal-input" data-goal-key="bhag" data-goal-label="BHAG" rows="3" placeholder="Example: Get a job as a Junior Web Developer within 6 months."></textarea>
             <button type="button" class="mc-p level-up-btn" data-target="bhag">Lock In & Level Up</button>
           </article>
-          
-          <article class="feature-card two locked" id="prompt-monthly" data-prompt-key="monthly" data-level="2" data-start="0.18" data-end="0.42">
+
+          <article class="feature-card two locked" id="prompt-monthly" data-prompt-key="monthly" data-level="2" data-start="0.20" data-end="0.44">
             <span class="level-badge">L2</span>
             <h3>Level 2: Monthly Goal</h3>
             <p class="goal-prompt">What will you accomplish this month to take a step toward your BHAG?</p>
@@ -54,8 +53,8 @@
             <textarea id="monthly" class="goal-input" data-goal-key="monthly" data-goal-label="Monthly Goal" rows="3" placeholder="Example: Complete my certification and build one portfolio project."></textarea>
             <button type="button" class="mc-p level-up-btn" data-target="monthly">Lock In & Level Up</button>
           </article>
-          
-          <article class="feature-card three locked" id="prompt-weekly" data-prompt-key="weekly" data-level="3" data-start="0.38" data-end="0.62">
+
+          <article class="feature-card three locked" id="prompt-weekly" data-prompt-key="weekly" data-level="3" data-start="0.40" data-end="0.64">
             <span class="level-badge">L3</span>
             <h3>Level 3: Weekly Goal</h3>
             <p class="goal-prompt">What will you accomplish this week to ensure you hit your Monthly Goal?</p>
@@ -63,8 +62,8 @@
             <textarea id="weekly" class="goal-input" data-goal-key="weekly" data-goal-label="Weekly Goal" rows="3" placeholder="Example: Finish three learning modules and pass the midpoint quiz."></textarea>
             <button type="button" class="mc-p level-up-btn" data-target="weekly">Lock In & Level Up</button>
           </article>
-          
-          <article class="feature-card four locked" id="prompt-daily" data-prompt-key="daily" data-level="4" data-start="0.58" data-end="0.82">
+
+          <article class="feature-card four locked" id="prompt-daily" data-prompt-key="daily" data-level="4" data-start="0.60" data-end="0.84">
             <span class="level-badge">L4</span>
             <h3>Level 4: Daily Goal</h3>
             <p class="goal-prompt">What is the most important thing you must accomplish today?</p>
@@ -72,8 +71,8 @@
             <textarea id="daily" class="goal-input" data-goal-key="daily" data-goal-label="Daily Goal" rows="3" placeholder="Example: Read chapter 4 and write a summary."></textarea>
             <button type="button" class="mc-p level-up-btn" data-target="daily">Lock In & Level Up</button>
           </article>
-          
-          <article class="feature-card five locked" id="prompt-tasks" data-prompt-key="tasks" data-level="5" data-start="0.78" data-end="1.0">
+
+          <article class="feature-card five locked" id="prompt-tasks" data-prompt-key="tasks" data-level="5" data-start="0.80" data-end="0.98">
             <span class="level-badge">L5</span>
             <h3>Level 5: Action Tasks</h3>
             <p class="goal-prompt">List the specific tasks you need to do right now to achieve today's goal.</p>
@@ -110,6 +109,7 @@
             <div class="goal-streak-display" id="goalStreakDisplay">
               <span class="streak-label">Streak</span>
               <span class="streak-count" id="goalStreakCount">0 days</span>
+              <span class="streak-hint">Check in daily to build your streak</span>
             </div>
             <div class="level-roadmap" id="levelRoadmap" aria-label="Level progress roadmap">
               <div class="roadmap-step" data-roadmap-level="1"><span class="roadmap-dot"></span><span class="roadmap-name">L1 BHAG</span></div>
@@ -118,8 +118,6 @@
               <div class="roadmap-step" data-roadmap-level="4"><span class="roadmap-dot"></span><span class="roadmap-name">L4 Daily</span></div>
               <div class="roadmap-step" data-roadmap-level="5"><span class="roadmap-dot"></span><span class="roadmap-name">L5 Tasks</span></div>
             </div>
-            <button type="button" class="student-auth-button" id="goalCertificateButton" disabled>Export Completion Certificate</button>
-            <p class="goal-cert-note">Unlock at Level 5 after core prompts, one SMART-ready goal, and one completed daily entry.</p>
           </section>
           <section class="goal-auth" aria-label="Student sync session">
             <p class="student-auth-banner" id="studentAuthBanner">Checking session...</p>
@@ -153,7 +151,7 @@
           </div>
         </div>
 
-        <div class="scroll-note">Scroll: notepad -> briefcase -> launch</div>
+        <div class="scroll-note">Scroll down to begin your goal-setting journey</div>
       </div>
     </section>
   </main>
@@ -166,10 +164,10 @@
     </div>
   </div>
 
-  <section class="details" id="details" style="max-width:100vw; padding:3rem 0; display:flex; justify-content:center; background:linear-gradient(180deg, #f8fbff 0%, #f6f8fc 100%); border-top:1px solid rgba(17,24,39,0.08);">
+  <section class="details" id="details">
     <img src="SPOKES-Goal-Tracker-Infographic.png"
          alt="The SPOKES Goal Setting Framework — mapping the journey from enrollment to workforce readiness"
-         style="width:98vw; max-width:2000px; border-radius:14px; box-shadow:0 8px 40px rgba(0,40,113,0.18); display:block;">
+         class="details-infographic">
   </section>
 
   <section class="mission-shell-section" id="missionControl" aria-label="Mission Control Workspace">
@@ -359,8 +357,8 @@
       <h3>Delete Task?</h3>
       <p id="mcDeletePrompt">This tile will be deleted permanently. Continue?</p>
       <menu>
-        <button id="mcDeleteNo" value="cancel" type="button">N</button>
-        <button id="mcDeleteYes" value="default" type="button" class="mc-p">Y</button>
+        <button id="mcDeleteNo" value="cancel" type="button">Cancel</button>
+        <button id="mcDeleteYes" value="default" type="button" class="mc-p">Delete</button>
       </menu>
     </form>
   </dialog>
@@ -380,6 +378,7 @@
   </dialog>
   <dialog id="howToPlayModal" class="mc-review-modal mc-how-to-play-modal">
     <form method="dialog">
+      <button type="button" class="modal-close-x" aria-label="Close" onclick="document.getElementById('howToPlayModal').close()">&times;</button>
       <h3>How to Play: SPOKES Goal Tracker</h3>
       <section class="htp-section">
         <h4>The 5 Levels</h4>
@@ -428,10 +427,6 @@
           <li><strong>Level 4:</strong> Kanban board editing</li>
           <li><strong>Level 5:</strong> Vision Board + full access</li>
         </ul>
-      </section>
-      <section class="htp-section">
-        <h4>Completion Certificate</h4>
-        <p>To unlock the certificate, reach Level 5, complete all 5 core prompts, have at least one SMART-ready goal (5/5 score), and one completed daily entry.</p>
       </section>
       <menu>
         <button id="howToPlayClose" value="cancel" type="button" class="mc-p">Got It</button>

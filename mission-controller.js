@@ -61,9 +61,6 @@ export class MissionController {
     this.view.bindSignOut(() => {
       this.handleSignOut();
     });
-    this.view.bindCertificateExport(() => {
-      this.handleCertificateExport();
-    });
     this.view.bindLevelUpButtons(({ key }) => {
       if (this.progressionEnabled) {
         this.handleLevelUp(key);
@@ -120,20 +117,6 @@ export class MissionController {
     this.view.setSyncStatus("Signed out.", "local");
     this.view.applyGoalDraftSnapshot(this.model.getGoalDraftSnapshot());
     this.win.location.assign("/?loggedOut=1");
-  }
-
-  async handleCertificateExport() {
-    const result = await this.view.exportCompletionCertificate({
-      session: this.model.getSessionSnapshot(),
-      snapshot: this.model.getGoalDraftSnapshot()
-    });
-
-    if (!result?.ok) {
-      this.view.setAuthMessage(result?.message || "Certificate export is not ready.", "error");
-      return;
-    }
-
-    this.view.setAuthMessage("Certificate PDF downloaded.", "success");
   }
 
   async loadBestDraftFromCurrentSource() {
@@ -323,10 +306,10 @@ export class MissionController {
 
   renderFrame({ forceRedraw = false } = {}) {
     const scrollProgress = this.computeScrollProgress();
-    const cappedProgress = Math.min(scrollProgress, this.model.getMaxScrollProgress());
-    const targetFrameIndex = this.model.frameIndexFromScrollProgress(scrollProgress, {
-      respectCap: false
-    });
+    const scrollCap = this.model.getMaxScrollProgress();
+    const cappedProgress = Math.min(scrollProgress, scrollCap);
+    const frameProgress = scrollCap > 0 ? Math.min(cappedProgress / scrollCap, 1) : 0;
+    const targetFrameIndex = Math.round(frameProgress * (this.model.totalFrames - 1));
 
     this.view.setScrollLabel(this.model.scrollLabelForProgress(scrollProgress));
     this.view.announceScrollAct(this.model.scrollNarrationForProgress(scrollProgress));

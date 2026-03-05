@@ -2,7 +2,7 @@ import { MissionModel } from "./mission-model.js";
 import { MissionView } from "./mission-view.js";
 import { MissionController } from "./mission-controller.js";
 
-const FALLBACK_TOTAL_FRAMES = 386;
+const FALLBACK_TOTAL_FRAMES = 193;
 const DEFAULT_LESSON_ID = "spokes-goal-journey-v1";
 
 async function resolveModelConfig() {
