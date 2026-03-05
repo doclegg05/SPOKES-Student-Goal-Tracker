@@ -710,7 +710,8 @@ export function initMissionWorkspace(doc = document) {
       } else {
         ui.badges.innerHTML = earned.map((key) => {
           const label = key.replace(/^(xp:|streak:|level:)/, "").replace(/_/g, " ");
-          return '<span class="mc-badge">' + escapeHtml(label) + '</span>';
+          const cat = key.startsWith("streak:") ? "badge-streak" : key.startsWith("level:") ? "badge-level" : "badge-xp";
+          return '<span class="mc-badge ' + cat + '">' + escapeHtml(label) + '</span>';
         }).join("");
       }
     }
