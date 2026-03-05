@@ -36,9 +36,7 @@ function handleRouteIntent() {
   const progressionSeed = ProgressionEngine.parse(responses.progression_state) || null;
   const engine = new ProgressionEngine(progressionSeed, responses);
 
-  if (!engine.shouldShowLessonScroll()) {
-    scrollToMissionControl();
-  }
+  // Students click the Mission Control nav link to scroll down manually.
 }
 
 function scrollToMissionControl() {
