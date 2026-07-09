@@ -720,7 +720,7 @@ export class MissionModel {
   }
 
   cardOpacityForProgress(scrollProgress, start, end) {
-    if (scrollProgress <= start || scrollProgress >= end) {
+    if (scrollProgress < start || scrollProgress >= end) {
       return 0;
     }
 

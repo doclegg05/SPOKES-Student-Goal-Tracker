@@ -1142,8 +1142,8 @@ export function initMissionWorkspace(doc = document) {
           planGeneration: true
         };
     const unlocks = {
-      daily: true,
-      archive: true,
+      daily: features.dailyTab !== false,
+      archive: features.archiveTab !== false,
       smart: features.smartTab,
       growth: features.growthTab && flags.growth,
       vision: features.visionTab

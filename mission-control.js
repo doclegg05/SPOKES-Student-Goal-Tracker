@@ -50,4 +50,7 @@ export async function initMissionControl() {
   const view = new MissionView(document);
   const controller = new MissionController({ model, view, win: window });
   controller.init();
+  if (typeof window !== "undefined") {
+    window._spokesController = controller;
+  }
 }

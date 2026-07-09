@@ -1,4 +1,5 @@
 const SESSION_STORAGE_KEY = "spokes-goal-session-v1";
+const REMEMBERED_ID_KEY = "spokes-remembered-student-id";
 const LESSON_PATH = "/lesson";
 
 const registerModeButton = document.getElementById("registerModeButton");
@@ -89,6 +90,30 @@ function clearSessionStorage() {
     localStorage.removeItem(SESSION_STORAGE_KEY);
   } catch (error) {
     console.warn("Could not clear session storage.", error);
+  }
+}
+
+function saveRememberedStudentId(studentId) {
+  try {
+    localStorage.setItem(REMEMBERED_ID_KEY, studentId);
+  } catch (error) {
+    // Silent — not critical
+  }
+}
+
+function readRememberedStudentId() {
+  try {
+    return localStorage.getItem(REMEMBERED_ID_KEY) || "";
+  } catch (error) {
+    return "";
+  }
+}
+
+function clearRememberedStudentId() {
+  try {
+    localStorage.removeItem(REMEMBERED_ID_KEY);
+  } catch (error) {
+    // Silent — not critical
   }
 }
 
@@ -246,6 +271,7 @@ async function handleRegisterSubmit(event) {
 
     const session = buildSessionFromAuthPayload(payload);
     saveSession(session);
+    saveRememberedStudentId(studentId);
     setStatus("Account created. Entering lesson...", "success");
     window.location.assign(LESSON_PATH);
   } catch (error) {
@@ -263,6 +289,8 @@ async function handleLoginSubmit(event) {
 
   const studentId = loginForm.querySelector("#loginStudentId")?.value || "";
   const passcode = loginForm.querySelector("#loginPasscode")?.value || "";
+  const rememberCheckbox = document.getElementById("rememberStudentId");
+  const shouldRemember = rememberCheckbox ? rememberCheckbox.checked : false;
 
   setAuthBusy(true);
   setStatus("Signing in...", "neutral");
@@ -278,6 +306,13 @@ async function handleLoginSubmit(event) {
 
     const session = buildSessionFromAuthPayload(payload);
     saveSession(session);
+
+    if (shouldRemember) {
+      saveRememberedStudentId(studentId);
+    } else {
+      clearRememberedStudentId();
+    }
+
     setStatus("Signed in. Entering lesson...", "success");
     window.location.assign(LESSON_PATH);
   } catch (error) {
@@ -357,9 +392,38 @@ function bindEvents() {
 
   signOutButton?.addEventListener("click", () => {
     clearSessionStorage();
+    clearRememberedStudentId();
     hideContinueSession();
     setStatus("Signed out. You can register a new user or sign back in.", "neutral");
   });
+}
+
+function prefillRememberedStudentId() {
+  const remembered = readRememberedStudentId();
+  if (!remembered) {
+    return false;
+  }
+
+  const loginIdInput = document.getElementById("loginStudentId");
+  if (loginIdInput) {
+    loginIdInput.value = remembered;
+  }
+
+  const rememberCheckbox = document.getElementById("rememberStudentId");
+  if (rememberCheckbox) {
+    rememberCheckbox.checked = true;
+  }
+
+  // Switch to login tab and focus the passcode field
+  switchMode("login");
+  setStatus("Welcome back! Enter your passcode to continue.", "neutral");
+
+  const passcodeInput = document.getElementById("loginPasscode");
+  if (passcodeInput) {
+    requestAnimationFrame(() => passcodeInput.focus());
+  }
+
+  return true;
 }
 
 async function initAuthPage() {
@@ -378,7 +442,11 @@ async function initAuthPage() {
   if (session) {
     setStatus("Session restored. Continue to resume your goal draft.", "success");
   } else {
-    setStatus("Register or sign in to access your saved goal journey.", "neutral");
+    // Pre-fill remembered Student ID if available
+    const prefilled = prefillRememberedStudentId();
+    if (!prefilled) {
+      setStatus("Register or sign in to access your saved goal journey.", "neutral");
+    }
   }
 }
 

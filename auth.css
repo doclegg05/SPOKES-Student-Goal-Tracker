@@ -270,6 +270,30 @@
   color: var(--auth-ink-soft);
 }
 
+.remember-row {
+  display: flex;
+  align-items: center;
+  gap: 0.42rem;
+  margin-top: 0.24rem;
+}
+
+.remember-row input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+  accent-color: var(--auth-primary);
+  cursor: pointer;
+}
+
+.remember-label {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--auth-ink-soft);
+  text-transform: none;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
 .auth-forgot {
   margin: 0.5rem 0 0;
   font-size: 0.76rem;

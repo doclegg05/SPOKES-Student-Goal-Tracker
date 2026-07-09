@@ -80,6 +80,564 @@
       "passHash": "f1f7bba690bd6e5d33498e3cfb875ee7e8e752de288ee564a28d46d7a7e959a7",
       "createdAt": "2026-03-03T19:13:48.360Z",
       "lastLoginAt": "2026-03-03T19:13:48.360Z"
+    },
+    "gate-mmknljd1-j4w0u": {
+      "studentId": "gate-mmknljd1-j4w0u",
+      "displayName": "E2E gate-mmknljd1-j4w0u",
+      "authProvider": "local",
+      "salt": "3c1ea97e5d7ed79c7505922eb3fd45e1",
+      "passHash": "e5e254b06e4ad025f59ca7f7054144488578b7e1dc6ecf0d67a8f4f260941abd",
+      "createdAt": "2026-03-10T13:36:21.106Z",
+      "lastLoginAt": "2026-03-10T13:36:21.106Z"
+    },
+    "kanban-mmknnlx0-7x6e2": {
+      "studentId": "kanban-mmknnlx0-7x6e2",
+      "displayName": "E2E kanban-mmknnlx0-7x6e2",
+      "authProvider": "local",
+      "salt": "25ee7b8c3520397c4f2e72a7697162c6",
+      "passHash": "28aa5767db8461ceeff4e621f9aeff139cfc0ef5613b024edfec0179821b18ad",
+      "createdAt": "2026-03-10T13:37:57.758Z",
+      "lastLoginAt": "2026-03-10T13:37:57.758Z"
+    },
+    "export-mmknnnx2-ish8d": {
+      "studentId": "export-mmknnnx2-ish8d",
+      "displayName": "E2E export-mmknnnx2-ish8d",
+      "authProvider": "local",
+      "salt": "b8ee737f3fe9c28c1bf1aaf9a22b6510",
+      "passHash": "7330e9f3a85e1f647bfbf5d9c22f0951281666eb9806872c066b981b4200beeb",
+      "createdAt": "2026-03-10T13:38:00.347Z",
+      "lastLoginAt": "2026-03-10T13:38:00.347Z"
+    },
+    "gate-mmknoddx-u0142": {
+      "studentId": "gate-mmknoddx-u0142",
+      "displayName": "E2E gate-mmknoddx-u0142",
+      "authProvider": "local",
+      "salt": "322720fe5683e0cdc266408e9d7dc707",
+      "passHash": "5b82e782fc9027813fede4720442aff172a7fa0ea871112ac075f1ca5e250df0",
+      "createdAt": "2026-03-10T13:38:33.338Z",
+      "lastLoginAt": "2026-03-10T13:38:33.338Z"
+    },
+    "kanban-mmknqi8w-wjvks": {
+      "studentId": "kanban-mmknqi8w-wjvks",
+      "displayName": "E2E kanban-mmknqi8w-wjvks",
+      "authProvider": "local",
+      "salt": "6059a35e9f944609c2a6d5694150ecce",
+      "passHash": "1b973b3c7647541d162ff1cd56270792ed3979fb6bf9bae54f5d7660f10bebb0",
+      "createdAt": "2026-03-10T13:40:12.960Z",
+      "lastLoginAt": "2026-03-10T13:40:12.960Z"
+    },
+    "export-mmknqlk3-wm8ax": {
+      "studentId": "export-mmknqlk3-wm8ax",
+      "displayName": "E2E export-mmknqlk3-wm8ax",
+      "authProvider": "local",
+      "salt": "82c263a096b7dbe49be75a982e5ea457",
+      "passHash": "83a0bdd32f74b46126aa0a77217ec08e4f9710359394cfb9bb0c8b50afdd3e4f",
+      "createdAt": "2026-03-10T13:40:17.250Z",
+      "lastLoginAt": "2026-03-10T13:40:17.250Z"
+    },
+    "gate-mmknqw4r-sbmoj": {
+      "studentId": "gate-mmknqw4r-sbmoj",
+      "displayName": "E2E gate-mmknqw4r-sbmoj",
+      "authProvider": "local",
+      "salt": "6c228d24e77c155fec1051ac53726100",
+      "passHash": "3c67745c17facf02f01fb5f14fb2055c198c92f5e961bef3fb5b6a8cdfbd5ac2",
+      "createdAt": "2026-03-10T13:40:30.938Z",
+      "lastLoginAt": "2026-03-10T13:40:30.938Z"
+    },
+    "kanban-mmknt114-flcte": {
+      "studentId": "kanban-mmknt114-flcte",
+      "displayName": "E2E kanban-mmknt114-flcte",
+      "authProvider": "local",
+      "salt": "c02b212f711cf7a3ded8f52c0e7055b6",
+      "passHash": "3e2a3ba01386fa4b35e0400ab861f19448a27f0b87fa1d3d8bab240f505161d4",
+      "createdAt": "2026-03-10T13:42:10.602Z",
+      "lastLoginAt": "2026-03-10T13:42:10.602Z"
+    },
+    "export-mmknt2sv-t092o": {
+      "studentId": "export-mmknt2sv-t092o",
+      "displayName": "E2E export-mmknt2sv-t092o",
+      "authProvider": "local",
+      "salt": "78c01a067bcf4c9608c2f47e484fa9b2",
+      "passHash": "d2a1cd9054129636b809095d779c92e08bbd473a67d60a18959d2bcc51cf364d",
+      "createdAt": "2026-03-10T13:42:12.902Z",
+      "lastLoginAt": "2026-03-10T13:42:12.902Z"
+    },
+    "gate-mmknz8at-4gsvi": {
+      "studentId": "gate-mmknz8at-4gsvi",
+      "displayName": "E2E gate-mmknz8at-4gsvi",
+      "authProvider": "local",
+      "salt": "be079dc147757df531d2526c79939d37",
+      "passHash": "3e8ee8fab80151c3bc108523fa924491af25814912b5cdfcc1269062158e2c83",
+      "createdAt": "2026-03-10T13:46:59.956Z",
+      "lastLoginAt": "2026-03-10T13:46:59.956Z"
+    },
+    "kanban-mmko1dj2-791ay": {
+      "studentId": "kanban-mmko1dj2-791ay",
+      "displayName": "E2E kanban-mmko1dj2-791ay",
+      "authProvider": "local",
+      "salt": "e41ba77e550a86d149eeaf7370ae9924",
+      "passHash": "8f3ac394e1890050bc7143885f8ccea8f9ddd044b07b5733c1f08fd82c42ceee",
+      "createdAt": "2026-03-10T13:48:40.070Z",
+      "lastLoginAt": "2026-03-10T13:48:40.070Z"
+    },
+    "export-mmko1evm-brmv2": {
+      "studentId": "export-mmko1evm-brmv2",
+      "displayName": "E2E export-mmko1evm-brmv2",
+      "authProvider": "local",
+      "salt": "ee1b9eae637cd9f692c15542364b4969",
+      "passHash": "0d0047abf9903f52357091f25cdcaa2cf81ee0e6b267b47cd1b5b21dde0993a9",
+      "createdAt": "2026-03-10T13:48:41.813Z",
+      "lastLoginAt": "2026-03-10T13:48:41.813Z"
+    },
+    "gate-mmkq9vpu-pykuz": {
+      "studentId": "gate-mmkq9vpu-pykuz",
+      "displayName": "E2E gate-mmkq9vpu-pykuz",
+      "authProvider": "local",
+      "salt": "66f973e7a531458e7e742c69c0c04da6",
+      "passHash": "42fe1463185ea6738142a65b84265d708fd39b382c09043c98bb8932b7c10e81",
+      "createdAt": "2026-03-10T14:51:16.091Z",
+      "lastLoginAt": "2026-03-10T14:51:16.091Z"
+    },
+    "kanban-mmkqc0sa-n91n4": {
+      "studentId": "kanban-mmkqc0sa-n91n4",
+      "displayName": "E2E kanban-mmkqc0sa-n91n4",
+      "authProvider": "local",
+      "salt": "ed8a8c68a7945711dc947d7622cb6da3",
+      "passHash": "2128c95d7da49a486343ffb40f2e66722ee3a757a862c9210a959ebc7d7fc011",
+      "createdAt": "2026-03-10T14:52:55.990Z",
+      "lastLoginAt": "2026-03-10T14:52:55.990Z"
+    },
+    "export-mmkqc463-1hcm5": {
+      "studentId": "export-mmkqc463-1hcm5",
+      "displayName": "E2E export-mmkqc463-1hcm5",
+      "authProvider": "local",
+      "salt": "77b9543dfba48a7d288a3b780e0a4d4d",
+      "passHash": "3a289faae9592e2e116fde0f1a53dd8ed7a7761782b2eaf55dbfa167f0b89766",
+      "createdAt": "2026-03-10T14:53:00.375Z",
+      "lastLoginAt": "2026-03-10T14:53:00.375Z"
+    },
+    "gate-mmkrg16r-wyq7j": {
+      "studentId": "gate-mmkrg16r-wyq7j",
+      "displayName": "E2E gate-mmkrg16r-wyq7j",
+      "authProvider": "local",
+      "salt": "d3b6d3dcd03e83d8003428ef8734adcb",
+      "passHash": "1dfa8b3799e01675a74178262a1783b101986573938dc85c67fa6dfe712853a4",
+      "createdAt": "2026-03-10T15:24:02.746Z",
+      "lastLoginAt": "2026-03-10T15:24:02.746Z"
+    },
+    "gate-mmkro73e-2odij": {
+      "studentId": "gate-mmkro73e-2odij",
+      "displayName": "E2E gate-mmkro73e-2odij",
+      "authProvider": "local",
+      "salt": "7096d9b70cc9301d8d99d688ecd70efb",
+      "passHash": "b8ca0f0a87e8769e4498e619793c94618ffb3d2371f44f26758b27968a980c3a",
+      "createdAt": "2026-03-10T15:30:23.638Z",
+      "lastLoginAt": "2026-03-10T15:30:23.638Z"
+    },
+    "kanban-mmkrqci3-86rfh": {
+      "studentId": "kanban-mmkrqci3-86rfh",
+      "displayName": "E2E kanban-mmkrqci3-86rfh",
+      "authProvider": "local",
+      "salt": "6614496ca7426025743d03d60046ad67",
+      "passHash": "9987cf8fe4c4df05618c607a318bfdee57586ccf34ca3ceeffebed49a9819b51",
+      "createdAt": "2026-03-10T15:32:03.971Z",
+      "lastLoginAt": "2026-03-10T15:32:03.971Z"
+    },
+    "export-mmkrqedu-52p31": {
+      "studentId": "export-mmkrqedu-52p31",
+      "displayName": "E2E export-mmkrqedu-52p31",
+      "authProvider": "local",
+      "salt": "000dd809c1911addc0ed5e25a1bffa67",
+      "passHash": "41a66ac14b5a0859723da2d5e64f9bdf437af6aa1e10a9467ea20e003fd59afa",
+      "createdAt": "2026-03-10T15:32:06.409Z",
+      "lastLoginAt": "2026-03-10T15:32:06.409Z"
+    },
+    "gate-mmkt16he-s5f42": {
+      "studentId": "gate-mmkt16he-s5f42",
+      "displayName": "E2E gate-mmkt16he-s5f42",
+      "authProvider": "local",
+      "salt": "a1ac3a399052ecb076d2fb8bcce0601d",
+      "passHash": "5a7afe11e1bf41737da53cf4a4cfb57c3fa1382f085deeeff440757a5f8151e7",
+      "createdAt": "2026-03-10T16:08:28.990Z",
+      "lastLoginAt": "2026-03-10T16:08:28.990Z"
+    },
+    "kanban-mmkt3bou-cmap8": {
+      "studentId": "kanban-mmkt3bou-cmap8",
+      "displayName": "E2E kanban-mmkt3bou-cmap8",
+      "authProvider": "local",
+      "salt": "823fda3ac9c89601228e2b894f54d70a",
+      "passHash": "cc866312bdae405177a9d64a3c5a2564345756c7f925fe712767546e3933bd52",
+      "createdAt": "2026-03-10T16:10:09.075Z",
+      "lastLoginAt": "2026-03-10T16:10:09.075Z"
+    },
+    "export-mmkt3dk9-jhhi1": {
+      "studentId": "export-mmkt3dk9-jhhi1",
+      "displayName": "E2E export-mmkt3dk9-jhhi1",
+      "authProvider": "local",
+      "salt": "3c271d2dda37c642358dfc1539747544",
+      "passHash": "f8b559ef154a406aaf07d0c0bc82db6eecae0833f9651089ef5a19c3badfc84a",
+      "createdAt": "2026-03-10T16:10:11.496Z",
+      "lastLoginAt": "2026-03-10T16:10:11.496Z"
+    },
+    "gate-mmkt3naj-5rvdo": {
+      "studentId": "gate-mmkt3naj-5rvdo",
+      "displayName": "E2E gate-mmkt3naj-5rvdo",
+      "authProvider": "local",
+      "salt": "909c1be177d3e79285fc28f453dc77d7",
+      "passHash": "9a76b082006e127f328e848643a605a570cfdd4a00ef881a941442f79a5ee14e",
+      "createdAt": "2026-03-10T16:10:24.091Z",
+      "lastLoginAt": "2026-03-10T16:10:24.091Z"
+    },
+    "gate-mmkt4jqx-qj6ru": {
+      "studentId": "gate-mmkt4jqx-qj6ru",
+      "displayName": "E2E gate-mmkt4jqx-qj6ru",
+      "authProvider": "local",
+      "salt": "cfbe0dd2059b30c91110d774aee7eacd",
+      "passHash": "fd46ce601d499d4cc9997cb60a16342155220afa60215bbf0264d975a11d6244",
+      "createdAt": "2026-03-10T16:11:06.150Z",
+      "lastLoginAt": "2026-03-10T16:11:06.150Z"
+    },
+    "gate-mmkt87wv-za9j7": {
+      "studentId": "gate-mmkt87wv-za9j7",
+      "displayName": "E2E gate-mmkt87wv-za9j7",
+      "authProvider": "local",
+      "salt": "ee51ad59d34ef7ad0822e416b8787612",
+      "passHash": "70bd1b0c51edd64608286d52fb1240ee1a18cd94f125c7f70831153cb7975009",
+      "createdAt": "2026-03-10T16:13:57.433Z",
+      "lastLoginAt": "2026-03-10T16:13:57.433Z"
+    },
+    "gate-mmktb33t-1vibn": {
+      "studentId": "gate-mmktb33t-1vibn",
+      "displayName": "E2E gate-mmktb33t-1vibn",
+      "authProvider": "local",
+      "salt": "8f4cb4086bf6db3de3692a363df60866",
+      "passHash": "95f92635b790e82471f197779a1154cd3f6a0981a4d39c1c84214b42288b9ca5",
+      "createdAt": "2026-03-10T16:16:11.182Z",
+      "lastLoginAt": "2026-03-10T16:16:11.182Z"
+    },
+    "gate-mmktdgs7-c5lwb": {
+      "studentId": "gate-mmktdgs7-c5lwb",
+      "displayName": "E2E gate-mmktdgs7-c5lwb",
+      "authProvider": "local",
+      "salt": "53f2fd18c423ffa49c3ba2312190479f",
+      "passHash": "010cf1bf655301aaf218024ddc94c5b95d901301fb556bde57699ff60c15d609",
+      "createdAt": "2026-03-10T16:18:02.222Z",
+      "lastLoginAt": "2026-03-10T16:18:02.222Z"
+    },
+    "gate-mmktj7j0-goeo0": {
+      "studentId": "gate-mmktj7j0-goeo0",
+      "displayName": "E2E gate-mmktj7j0-goeo0",
+      "authProvider": "local",
+      "salt": "c9f4fb43f6116cc38cfe241e20356e1b",
+      "passHash": "9943dc8050fb7f0b7e7969f7349e4b19313d3833cf4dce3dcef916372fa08bc9",
+      "createdAt": "2026-03-10T16:22:30.152Z",
+      "lastLoginAt": "2026-03-10T16:22:30.152Z"
+    },
+    "gate-mmktmtlm-e14pw": {
+      "studentId": "gate-mmktmtlm-e14pw",
+      "displayName": "E2E gate-mmktmtlm-e14pw",
+      "authProvider": "local",
+      "salt": "1628522e73ace71ef82432e3a58ad792",
+      "passHash": "46f5d9fd5cc3d635bfacdc211d97400835b842e2ae9fc39104ea8470b5a084af",
+      "createdAt": "2026-03-10T16:25:18.728Z",
+      "lastLoginAt": "2026-03-10T16:25:18.728Z"
+    },
+    "gate-mmktrvfi-e67yg": {
+      "studentId": "gate-mmktrvfi-e67yg",
+      "displayName": "E2E gate-mmktrvfi-e67yg",
+      "authProvider": "local",
+      "salt": "e807f3c1f391023f7efb77f30e352314",
+      "passHash": "e8f53d16db8e3681f4082aa3d37c6f77656380cf85e5ce31f42178f912714672",
+      "createdAt": "2026-03-10T16:29:14.403Z",
+      "lastLoginAt": "2026-03-10T16:29:14.403Z"
+    },
+    "gate-mmktum9k-icc7t": {
+      "studentId": "gate-mmktum9k-icc7t",
+      "displayName": "E2E gate-mmktum9k-icc7t",
+      "authProvider": "local",
+      "salt": "e49cdca2a4d7719e7a20f7ccf23133ef",
+      "passHash": "93495ab556a4004af989b03c5cc938e1e46e4a92b83d947c7676290760e9ad25",
+      "createdAt": "2026-03-10T16:31:22.470Z",
+      "lastLoginAt": "2026-03-10T16:31:22.470Z"
+    },
+    "gate-mmku275b-p4r6t": {
+      "studentId": "gate-mmku275b-p4r6t",
+      "displayName": "E2E gate-mmku275b-p4r6t",
+      "authProvider": "local",
+      "salt": "f5276fa149b43a93b8fb269997fbec72",
+      "passHash": "583d397a172d1826948b5adf4ded0f162359d73439e67a0ff24c5e0d83f14e5e",
+      "createdAt": "2026-03-10T16:37:16.124Z",
+      "lastLoginAt": "2026-03-10T16:37:16.124Z"
+    },
+    "gate-mmkuf8fs-ed03l": {
+      "studentId": "gate-mmkuf8fs-ed03l",
+      "displayName": "E2E gate-mmkuf8fs-ed03l",
+      "authProvider": "local",
+      "salt": "41a9436aa911a3b2b3c040ab1f7fccb4",
+      "passHash": "b242a1aeb8ea06d00e16154e9e072b8d3490e554bb43580bec0744cf1167f477",
+      "createdAt": "2026-03-10T16:47:24.354Z",
+      "lastLoginAt": "2026-03-10T16:47:24.354Z"
+    },
+    "kanban-mmkuhcoc-zj0wq": {
+      "studentId": "kanban-mmkuhcoc-zj0wq",
+      "displayName": "E2E kanban-mmkuhcoc-zj0wq",
+      "authProvider": "local",
+      "salt": "919ae449c7a18c33ab1891b4f82609b1",
+      "passHash": "a0e685ac912c30fbdfea036ccf1c5e01b5319160986c6d66c8fc0f8ee002a459",
+      "createdAt": "2026-03-10T16:49:03.148Z",
+      "lastLoginAt": "2026-03-10T16:49:03.148Z"
+    },
+    "export-mmkuhesd-b6ipk": {
+      "studentId": "export-mmkuhesd-b6ipk",
+      "displayName": "E2E export-mmkuhesd-b6ipk",
+      "authProvider": "local",
+      "salt": "39433d3821c2f661b5298543775c685c",
+      "passHash": "c36eb689d4cbfd4b383411cde64775c2876c51052e4308551142edad59c63a2d",
+      "createdAt": "2026-03-10T16:49:05.874Z",
+      "lastLoginAt": "2026-03-10T16:49:05.874Z"
+    },
+    "gate-mmkujdq5-e579s": {
+      "studentId": "gate-mmkujdq5-e579s",
+      "displayName": "E2E gate-mmkujdq5-e579s",
+      "authProvider": "local",
+      "salt": "a506e91c883abeeab05f4c6ddd8e914b",
+      "passHash": "c3a36a0cacd0d312ba0ec0d1af2ff3558d3f4f995b547f017c599d4a01d148dd",
+      "createdAt": "2026-03-10T16:50:37.829Z",
+      "lastLoginAt": "2026-03-10T16:50:37.829Z"
+    },
+    "kanban-mmkujt4q-1igua": {
+      "studentId": "kanban-mmkujt4q-1igua",
+      "displayName": "E2E kanban-mmkujt4q-1igua",
+      "authProvider": "local",
+      "salt": "3d7cab58566f77ec8c90d08715e7fbe0",
+      "passHash": "5e358406faed59b17db60736bce1ae735cf309c2ce15ac622bd18a677e1ce0c4",
+      "createdAt": "2026-03-10T16:50:57.787Z",
+      "lastLoginAt": "2026-03-10T16:50:57.787Z"
+    },
+    "export-mmkujvbs-uxq31": {
+      "studentId": "export-mmkujvbs-uxq31",
+      "displayName": "E2E export-mmkujvbs-uxq31",
+      "authProvider": "local",
+      "salt": "dede27c106ca79f26cb32550a68aaa0b",
+      "passHash": "f2cf8f41234dac7250adceb74d14c2724af1ac49ce6ad08019d53f54a2f2901f",
+      "createdAt": "2026-03-10T16:51:00.621Z",
+      "lastLoginAt": "2026-03-10T16:51:00.621Z"
+    },
+    "gate-mmkupqju-dz0y1": {
+      "studentId": "gate-mmkupqju-dz0y1",
+      "displayName": "E2E gate-mmkupqju-dz0y1",
+      "authProvider": "local",
+      "salt": "006f9b83e2baca74acf3e2c2a78653ef",
+      "passHash": "0c337f18bd8b735eba24fb1f291e18da1a7597e2df3d3141dd48951bcf25ac68",
+      "createdAt": "2026-03-10T16:55:34.368Z",
+      "lastLoginAt": "2026-03-10T16:55:34.368Z"
+    },
+    "kanban-mmkuq53r-amjkv": {
+      "studentId": "kanban-mmkuq53r-amjkv",
+      "displayName": "E2E kanban-mmkuq53r-amjkv",
+      "authProvider": "local",
+      "salt": "665e89a4f31135ef2ee366ed8debaed9",
+      "passHash": "b18fc51a7e67863b7a89f55bab74bbe94adedda142cba55438f2cdc05f404d73",
+      "createdAt": "2026-03-10T16:55:53.218Z",
+      "lastLoginAt": "2026-03-10T16:55:53.218Z"
+    },
+    "export-mmkuq6uw-sdg6s": {
+      "studentId": "export-mmkuq6uw-sdg6s",
+      "displayName": "E2E export-mmkuq6uw-sdg6s",
+      "authProvider": "local",
+      "salt": "933d7eb5bcc30971ed0136b8566951b6",
+      "passHash": "aad4573f339ee2f83cdb107c89ddddd433e1c64c8eefffe235a7b1ed5597a97e",
+      "createdAt": "2026-03-10T16:55:55.484Z",
+      "lastLoginAt": "2026-03-10T16:55:55.484Z"
+    },
+    "gate-mmkut7id-e6oyy": {
+      "studentId": "gate-mmkut7id-e6oyy",
+      "displayName": "E2E gate-mmkut7id-e6oyy",
+      "authProvider": "local",
+      "salt": "d3d564f9ba816ccfd1ccda6f52226365",
+      "passHash": "6eade8df6be00256f44dd807eb3d8b791ee8f6da2b93ea9dc9a2f76298677135",
+      "createdAt": "2026-03-10T16:58:16.330Z",
+      "lastLoginAt": "2026-03-10T16:58:16.330Z"
+    },
+    "kanban-mmkutjrt-vl0j7": {
+      "studentId": "kanban-mmkutjrt-vl0j7",
+      "displayName": "E2E kanban-mmkutjrt-vl0j7",
+      "authProvider": "local",
+      "salt": "1dee1a2d8ce71f20e19232b4e3204c66",
+      "passHash": "66240e8eba4538d18a9b0556bdb6c84efed46c096c8aebf4759ea462067d36eb",
+      "createdAt": "2026-03-10T16:58:32.223Z",
+      "lastLoginAt": "2026-03-10T16:58:32.223Z"
+    },
+    "export-mmkutn7g-fqeu6": {
+      "studentId": "export-mmkutn7g-fqeu6",
+      "displayName": "E2E export-mmkutn7g-fqeu6",
+      "authProvider": "local",
+      "salt": "ddf1288bc189ace0ce006c299ee25611",
+      "passHash": "c2938e7c520ea070e1b65dfe794a82caed607f91c3c2684a5b785abac9a538dd",
+      "createdAt": "2026-03-10T16:58:36.661Z",
+      "lastLoginAt": "2026-03-10T16:58:36.661Z"
+    },
+    "gate-mmkv4h5a-ynuh1": {
+      "studentId": "gate-mmkv4h5a-ynuh1",
+      "displayName": "E2E gate-mmkv4h5a-ynuh1",
+      "authProvider": "local",
+      "salt": "254bddfc50c3939da13a721ba317025c",
+      "passHash": "02ab36c06ca04fd5f07e0c95a6f2e1a58024f150f3787cd4d7618f82b320aaf6",
+      "createdAt": "2026-03-10T17:07:02.040Z",
+      "lastLoginAt": "2026-03-10T17:07:02.040Z"
+    },
+    "kanban-mmkv4t8s-zsuco": {
+      "studentId": "kanban-mmkv4t8s-zsuco",
+      "displayName": "E2E kanban-mmkv4t8s-zsuco",
+      "authProvider": "local",
+      "salt": "37a8cce65ff83f21e8d15b07712fc4b4",
+      "passHash": "37d88284a70c11442d74bf0726e785b53dc11c086f6a98d505632d4ca9b61418",
+      "createdAt": "2026-03-10T17:07:17.707Z",
+      "lastLoginAt": "2026-03-10T17:07:17.707Z"
+    },
+    "export-mmkv4vdr-0vt3d": {
+      "studentId": "export-mmkv4vdr-0vt3d",
+      "displayName": "E2E export-mmkv4vdr-0vt3d",
+      "authProvider": "local",
+      "salt": "3b055b10668c4397da763f82a2a03139",
+      "passHash": "a9af29ef16c868830e5dd58562bbd3c6d8be35eafbf8563121b7124abf9106f7",
+      "createdAt": "2026-03-10T17:07:20.467Z",
+      "lastLoginAt": "2026-03-10T17:07:20.467Z"
+    },
+    "gate-mmkv87kd-fkyca": {
+      "studentId": "gate-mmkv87kd-fkyca",
+      "displayName": "E2E gate-mmkv87kd-fkyca",
+      "authProvider": "local",
+      "salt": "3eb527b4c6f1af37765379e4ac0e4c5f",
+      "passHash": "a4171ad15afedecece08cac8266feba013bea182866345bf35782cc9c1f9145a",
+      "createdAt": "2026-03-10T17:09:56.242Z",
+      "lastLoginAt": "2026-03-10T17:09:56.242Z"
+    },
+    "kanban-mmkv8jix-tv6gw": {
+      "studentId": "kanban-mmkv8jix-tv6gw",
+      "displayName": "E2E kanban-mmkv8jix-tv6gw",
+      "authProvider": "local",
+      "salt": "01eedf4f62f50150d958e65c33a21718",
+      "passHash": "5b4435ad03be6c3348051617377c1173f256f82c6a639bc693f4da55d1fe5774",
+      "createdAt": "2026-03-10T17:10:11.739Z",
+      "lastLoginAt": "2026-03-10T17:10:11.739Z"
+    },
+    "export-mmkv8lpe-hn131": {
+      "studentId": "export-mmkv8lpe-hn131",
+      "displayName": "E2E export-mmkv8lpe-hn131",
+      "authProvider": "local",
+      "salt": "d3d99d2a113c4dde74139c8c7dee1f3d",
+      "passHash": "4aa3ba135f684fb8abd4c4bf5a6859c6711ce4e424df9b77813352ecee988d52",
+      "createdAt": "2026-03-10T17:10:14.560Z",
+      "lastLoginAt": "2026-03-10T17:10:14.560Z"
+    },
+    "gate-mmkvafcx-72sne": {
+      "studentId": "gate-mmkvafcx-72sne",
+      "displayName": "E2E gate-mmkvafcx-72sne",
+      "authProvider": "local",
+      "salt": "a6c7e5ae5343540c6644535d08e5f44d",
+      "passHash": "08228f71df2781ab7483d0e580ea837e6c81b972d6c3e068f07e2c595cd7f2fc",
+      "createdAt": "2026-03-10T17:11:39.632Z",
+      "lastLoginAt": "2026-03-10T17:11:39.632Z"
+    },
+    "kanban-mmkvaga2-j50mk": {
+      "studentId": "kanban-mmkvaga2-j50mk",
+      "displayName": "E2E kanban-mmkvaga2-j50mk",
+      "authProvider": "local",
+      "salt": "96990301f7bbbd7031bf9283dfdeb763",
+      "passHash": "cef9eb0d7a365f795af6459031616e70329f1a9c86c07b7bbf429f8ad20b976c",
+      "createdAt": "2026-03-10T17:11:40.813Z",
+      "lastLoginAt": "2026-03-10T17:11:40.813Z"
+    },
+    "export-mmkvai48-wwlt8": {
+      "studentId": "export-mmkvai48-wwlt8",
+      "displayName": "E2E export-mmkvai48-wwlt8",
+      "authProvider": "local",
+      "salt": "654df9462300494f7f39ad5404455d04",
+      "passHash": "5d7ca5e6e70e8e9eb0b957256de3e40070bf08a652cf0a1620089d213d609b36",
+      "createdAt": "2026-03-10T17:11:43.197Z",
+      "lastLoginAt": "2026-03-10T17:11:43.197Z"
+    },
+    "gate-mmkvfvzr-g2esc": {
+      "studentId": "gate-mmkvfvzr-g2esc",
+      "displayName": "E2E gate-mmkvfvzr-g2esc",
+      "authProvider": "local",
+      "salt": "8c2ffb395fe4730873a50835a7cfea76",
+      "passHash": "d48da469151f80a11804475f7cb67581a4c71efb06e666c7b685debab618d1e0",
+      "createdAt": "2026-03-10T17:15:54.470Z",
+      "lastLoginAt": "2026-03-10T17:15:54.470Z"
+    },
+    "kanban-mmkvfwu3-h8nu8": {
+      "studentId": "kanban-mmkvfwu3-h8nu8",
+      "displayName": "E2E kanban-mmkvfwu3-h8nu8",
+      "authProvider": "local",
+      "salt": "e2a2d9f19b50b6215936f413b6390dfc",
+      "passHash": "bb3c8de30003bdfa850f5c68f21b17a91738ff3433cecf75d200aff8be2cde2b",
+      "createdAt": "2026-03-10T17:15:55.550Z",
+      "lastLoginAt": "2026-03-10T17:15:55.550Z"
+    },
+    "export-mmkvfzvd-s67fu": {
+      "studentId": "export-mmkvfzvd-s67fu",
+      "displayName": "E2E export-mmkvfzvd-s67fu",
+      "authProvider": "local",
+      "salt": "6c257afe97ddb4444a06ca3cdc53e876",
+      "passHash": "dfe82461ab8a0de4da83843f15eb31989c9c0d02425675629d3fb87df98c74d8",
+      "createdAt": "2026-03-10T17:15:59.483Z",
+      "lastLoginAt": "2026-03-10T17:15:59.483Z"
+    },
+    "gate-mmkvilgb-1mu8r": {
+      "studentId": "gate-mmkvilgb-1mu8r",
+      "displayName": "E2E gate-mmkvilgb-1mu8r",
+      "authProvider": "local",
+      "salt": "3a0618487bed274ec974a2cb1e926509",
+      "passHash": "1a87cc82334a888c9f0c2f2c99efa0f3cee256c9f94017fbaa4ab2d2c46681bd",
+      "createdAt": "2026-03-10T17:18:00.778Z",
+      "lastLoginAt": "2026-03-10T17:18:00.778Z"
+    },
+    "kanban-mmkvimdk-l2sji": {
+      "studentId": "kanban-mmkvimdk-l2sji",
+      "displayName": "E2E kanban-mmkvimdk-l2sji",
+      "authProvider": "local",
+      "salt": "d8c810f798a9934032c85b9eba4a37bc",
+      "passHash": "79d793bb638756e48efd0ac8727c81f464c2e9cfefebcf95c83adfb364e17482",
+      "createdAt": "2026-03-10T17:18:01.963Z",
+      "lastLoginAt": "2026-03-10T17:18:01.963Z"
+    },
+    "export-mmkvio6c-y8xsw": {
+      "studentId": "export-mmkvio6c-y8xsw",
+      "displayName": "E2E export-mmkvio6c-y8xsw",
+      "authProvider": "local",
+      "salt": "d058db347331e8fab5452bdcff234d81",
+      "passHash": "8609f3894d8ea167531751dbed56a10bd25bcc0e69465537f9ffda66bc0731bf",
+      "createdAt": "2026-03-10T17:18:04.295Z",
+      "lastLoginAt": "2026-03-10T17:18:04.295Z"
+    },
+    "gate-mmkxq56l-xpkot": {
+      "studentId": "gate-mmkxq56l-xpkot",
+      "displayName": "E2E gate-mmkxq56l-xpkot",
+      "authProvider": "local",
+      "salt": "42a4fbd80f7da7ed0eae16393cb9ca31",
+      "passHash": "025a52819022c78cbceab391f191e31cbe1a87f1b4487b2e27cd4044abfeab2a",
+      "createdAt": "2026-03-10T18:19:52.191Z",
+      "lastLoginAt": "2026-03-10T18:19:52.191Z"
+    },
+    "kanban-mmkxq6ga-vwvl0": {
+      "studentId": "kanban-mmkxq6ga-vwvl0",
+      "displayName": "E2E kanban-mmkxq6ga-vwvl0",
+      "authProvider": "local",
+      "salt": "ba7bb5577b3f57ea8a31068f68d24199",
+      "passHash": "26f3a3e70b0fa20debc90e823be104ae718d55aa5a0352e377e770d14c8fd8e0",
+      "createdAt": "2026-03-10T18:19:53.826Z",
+      "lastLoginAt": "2026-03-10T18:19:53.826Z"
+    },
+    "export-mmkxq8h5-dazrt": {
+      "studentId": "export-mmkxq8h5-dazrt",
+      "displayName": "E2E export-mmkxq8h5-dazrt",
+      "authProvider": "local",
+      "salt": "cd50541589cb0d14208a42ca32665cfa",
+      "passHash": "410fe4bf5870c26b2cf3bf89484f345035c5f47a2fbf023357038603f70e101a",
+      "createdAt": "2026-03-10T18:19:56.441Z",
+      "lastLoginAt": "2026-03-10T18:19:56.441Z"
     }
   },
   "drafts": {
@@ -184,6 +742,342 @@
       },
       "createdAt": "2026-03-03T19:13:45.888Z",
       "updatedAt": "2026-03-03T19:13:45.898Z"
+    },
+    "kanban-mmknnlx0-7x6e2::spokes-goal-journey-v1": {
+      "studentId": "kanban-mmknnlx0-7x6e2",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "bhag": "Become employed in IT support.",
+        "monthly": "Finish interview prep and submit applications.",
+        "weekly": "Complete interview practice sessions this week.",
+        "progression_state": "{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T13:37:57.789Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]}",
+        "__mc_schema": "spokesMissionControlV2",
+        "__mc_encoding": "chunked-json-v1",
+        "__mc_chunkCount": "1",
+        "__mc_updatedAt": "2026-03-10T13:37:57.789Z",
+        "__mc_chunk_0": "{\"monthly\":[],\"daily\":[],\"barriers\":[],\"portfolio\":[],\"vision\":{\"items\":[],\"nextId\":1,\"maxZ\":0},\"progression\":{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T13:37:57.789Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]},\"meta\":{\"updatedAt\":\"2026-03-10T13:37:57.789Z\"}}"
+      },
+      "createdAt": "2026-03-10T13:37:57.777Z",
+      "updatedAt": "2026-03-10T13:37:57.790Z"
+    },
+    "kanban-mmknqi8w-wjvks::spokes-goal-journey-v1": {
+      "studentId": "kanban-mmknqi8w-wjvks",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "bhag": "Become employed in IT support.",
+        "monthly": "Finish interview prep and submit applications.",
+        "weekly": "Complete interview practice sessions this week.",
+        "progression_state": "{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T13:40:12.987Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"},{\"by\":\"teacher\",\"at\":\"2026-03-10T13:40:12.987Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]}",
+        "__mc_schema": "spokesMissionControlV2",
+        "__mc_encoding": "chunked-json-v1",
+        "__mc_chunkCount": "1",
+        "__mc_updatedAt": "2026-03-10T13:40:14.613Z",
+        "__mc_chunk_0": "{\"monthly\":[],\"daily\":[{\"id\":\"d-1blvmbs-mmknqjkl\",\"date\":\"2026-03-10\",\"top\":\"New task\",\"status\":\"Blocked\",\"minutes\":0,\"comment\":\"\",\"goalRef\":\"\",\"createdAt\":\"2026-03-10T13:40:14.613Z\"}],\"archive\":[],\"barriers\":[],\"portfolio\":[],\"vision\":{\"items\":[],\"nextId\":1,\"maxZ\":0},\"visionMonthBoards\":{\"2026-03\":{\"items\":[],\"nextId\":1,\"maxZ\":0}},\"visionSelectedMonth\":\"2026-03\",\"progression\":{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T13:40:12.987Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"},{\"by\":\"teacher\",\"at\":\"2026-03-10T13:40:12.987Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]},\"meta\":{\"updatedAt\":\"2026-03-10T13:40:14.613Z\"}}"
+      },
+      "createdAt": "2026-03-10T13:40:12.978Z",
+      "updatedAt": "2026-03-10T13:40:15.472Z"
+    },
+    "kanban-mmknt114-flcte::spokes-goal-journey-v1": {
+      "studentId": "kanban-mmknt114-flcte",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "progression_state": "{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T13:42:10.630Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]}",
+        "__mc_schema": "spokesMissionControlV2",
+        "__mc_encoding": "chunked-json-v1",
+        "__mc_chunkCount": "1",
+        "__mc_updatedAt": "2026-03-10T13:42:10.630Z",
+        "__mc_chunk_0": "{\"monthly\":[],\"daily\":[],\"archive\":[],\"barriers\":[],\"portfolio\":[],\"vision\":{\"items\":[],\"nextId\":1,\"maxZ\":0},\"visionMonthBoards\":{\"2026-03\":{\"items\":[],\"nextId\":1,\"maxZ\":0}},\"visionSelectedMonth\":\"2026-03\",\"progression\":{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T13:42:10.630Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]},\"meta\":{\"updatedAt\":\"2026-03-10T13:42:10.630Z\"}}"
+      },
+      "createdAt": "2026-03-10T13:42:10.619Z",
+      "updatedAt": "2026-03-10T13:42:10.841Z"
+    },
+    "kanban-mmko1dj2-791ay::spokes-goal-journey-v1": {
+      "studentId": "kanban-mmko1dj2-791ay",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "progression_state": "{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T13:48:40.100Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]}",
+        "__mc_schema": "spokesMissionControlV2",
+        "__mc_encoding": "chunked-json-v1",
+        "__mc_chunkCount": "1",
+        "__mc_updatedAt": "2026-03-10T13:48:40.100Z",
+        "__mc_chunk_0": "{\"monthly\":[],\"daily\":[],\"archive\":[],\"barriers\":[],\"portfolio\":[],\"vision\":{\"items\":[],\"nextId\":1,\"maxZ\":0},\"visionMonthBoards\":{\"2026-03\":{\"items\":[],\"nextId\":1,\"maxZ\":0}},\"visionSelectedMonth\":\"2026-03\",\"progression\":{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T13:48:40.100Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]},\"meta\":{\"updatedAt\":\"2026-03-10T13:48:40.100Z\"}}"
+      },
+      "createdAt": "2026-03-10T13:48:40.087Z",
+      "updatedAt": "2026-03-10T13:48:40.381Z"
+    },
+    "kanban-mmkqc0sa-n91n4::spokes-goal-journey-v1": {
+      "studentId": "kanban-mmkqc0sa-n91n4",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "bhag": "Become employed in IT support.",
+        "monthly": "Finish interview prep and submit applications.",
+        "weekly": "Complete interview practice sessions this week.",
+        "progression_state": "{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T14:52:56.018Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"},{\"by\":\"teacher\",\"at\":\"2026-03-10T14:52:56.018Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]}",
+        "__mc_schema": "spokesMissionControlV2",
+        "__mc_encoding": "chunked-json-v1",
+        "__mc_chunkCount": "1",
+        "__mc_updatedAt": "2026-03-10T14:52:57.742Z",
+        "__mc_chunk_0": "{\"monthly\":[],\"daily\":[{\"id\":\"d-vyih474-mmkqc26m\",\"date\":\"2026-03-10\",\"top\":\"New task\",\"status\":\"Blocked\",\"minutes\":0,\"comment\":\"\",\"goalRef\":\"\",\"createdAt\":\"2026-03-10T14:52:57.742Z\"}],\"archive\":[],\"barriers\":[],\"portfolio\":[],\"vision\":{\"items\":[],\"nextId\":1,\"maxZ\":0},\"visionMonthBoards\":{\"2026-03\":{\"items\":[],\"nextId\":1,\"maxZ\":0}},\"visionSelectedMonth\":\"2026-03\",\"progression\":{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T14:52:56.018Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"},{\"by\":\"teacher\",\"at\":\"2026-03-10T14:52:56.018Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]},\"meta\":{\"updatedAt\":\"2026-03-10T14:52:57.742Z\"}}"
+      },
+      "createdAt": "2026-03-10T14:52:56.007Z",
+      "updatedAt": "2026-03-10T14:52:58.597Z"
+    },
+    "kanban-mmkrqci3-86rfh::spokes-goal-journey-v1": {
+      "studentId": "kanban-mmkrqci3-86rfh",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "bhag": "Become employed in IT support.",
+        "monthly": "Finish interview prep and submit applications.",
+        "weekly": "Complete interview practice sessions this week.",
+        "progression_state": "{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T15:32:03.990Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]}",
+        "__mc_schema": "spokesMissionControlV2",
+        "__mc_encoding": "chunked-json-v1",
+        "__mc_chunkCount": "1",
+        "__mc_updatedAt": "2026-03-10T15:32:03.990Z",
+        "__mc_chunk_0": "{\"monthly\":[],\"daily\":[],\"barriers\":[],\"portfolio\":[],\"vision\":{\"items\":[],\"nextId\":1,\"maxZ\":0},\"progression\":{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T15:32:03.990Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]},\"meta\":{\"updatedAt\":\"2026-03-10T15:32:03.990Z\"}}"
+      },
+      "createdAt": "2026-03-10T15:32:03.983Z",
+      "updatedAt": "2026-03-10T15:32:03.991Z"
+    },
+    "kanban-mmkt3bou-cmap8::spokes-goal-journey-v1": {
+      "studentId": "kanban-mmkt3bou-cmap8",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "progression_state": "{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T16:10:09.103Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]}",
+        "__mc_schema": "spokesMissionControlV2",
+        "__mc_encoding": "chunked-json-v1",
+        "__mc_chunkCount": "1",
+        "__mc_updatedAt": "2026-03-10T16:10:09.103Z",
+        "__mc_chunk_0": "{\"monthly\":[],\"daily\":[],\"archive\":[],\"barriers\":[],\"portfolio\":[],\"vision\":{\"items\":[],\"nextId\":1,\"maxZ\":0},\"visionMonthBoards\":{\"2026-03\":{\"items\":[],\"nextId\":1,\"maxZ\":0}},\"visionSelectedMonth\":\"2026-03\",\"progression\":{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T16:10:09.103Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]},\"meta\":{\"updatedAt\":\"2026-03-10T16:10:09.103Z\"}}"
+      },
+      "createdAt": "2026-03-10T16:10:09.091Z",
+      "updatedAt": "2026-03-10T16:10:09.318Z"
+    },
+    "gate-mmktmtlm-e14pw::spokes-goal-journey-v1": {
+      "studentId": "gate-mmktmtlm-e14pw",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "progression_state": "{\"level\":2,\"xp\":50,\"unlockedPrompts\":[\"bhag\",\"monthly\"],\"completedPrompts\":[\"bhag\"],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"xp:prompt_lockin\",\"level:2\"],\"levelUpHistory\":[{\"level\":2,\"at\":\"2026-03-10T16:25:20.257Z\",\"reason\":\"lock_in:bhag\"}],\"overrideAudit\":[]}",
+        "bhag": "Secure a full-time entry-level job in software support this year."
+      },
+      "createdAt": "2026-03-10T16:25:21.164Z",
+      "updatedAt": "2026-03-10T16:25:21.164Z"
+    },
+    "gate-mmktrvfi-e67yg::spokes-goal-journey-v1": {
+      "studentId": "gate-mmktrvfi-e67yg",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "progression_state": "{\"level\":2,\"xp\":50,\"unlockedPrompts\":[\"bhag\",\"monthly\"],\"completedPrompts\":[\"bhag\"],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"xp:prompt_lockin\",\"level:2\"],\"levelUpHistory\":[{\"level\":2,\"at\":\"2026-03-10T16:29:16.282Z\",\"reason\":\"lock_in:bhag\"}],\"overrideAudit\":[]}",
+        "bhag": "Secure a full-time entry-level job in software support this year.",
+        "monthly": "Submit 10 targeted applications and complete 2 mock interviews."
+      },
+      "createdAt": "2026-03-10T16:29:17.201Z",
+      "updatedAt": "2026-03-10T16:29:18.502Z"
+    },
+    "gate-mmktum9k-icc7t::spokes-goal-journey-v1": {
+      "studentId": "gate-mmktum9k-icc7t",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "progression_state": "{\"level\":2,\"xp\":50,\"unlockedPrompts\":[\"bhag\",\"monthly\"],\"completedPrompts\":[\"bhag\"],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"xp:prompt_lockin\",\"level:2\"],\"levelUpHistory\":[{\"level\":2,\"at\":\"2026-03-10T16:31:23.963Z\",\"reason\":\"lock_in:bhag\"}],\"overrideAudit\":[]}",
+        "bhag": "Secure a full-time entry-level job in software support this year."
+      },
+      "createdAt": "2026-03-10T16:31:24.875Z",
+      "updatedAt": "2026-03-10T16:31:24.875Z"
+    },
+    "gate-mmku275b-p4r6t::spokes-goal-journey-v1": {
+      "studentId": "gate-mmku275b-p4r6t",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "progression_state": "{\"level\":2,\"xp\":50,\"unlockedPrompts\":[\"bhag\",\"monthly\"],\"completedPrompts\":[\"bhag\"],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"xp:prompt_lockin\",\"level:2\"],\"levelUpHistory\":[{\"level\":2,\"at\":\"2026-03-10T16:37:17.591Z\",\"reason\":\"lock_in:bhag\"}],\"overrideAudit\":[]}",
+        "bhag": "Secure a full-time entry-level job in software support this year."
+      },
+      "createdAt": "2026-03-10T16:37:18.500Z",
+      "updatedAt": "2026-03-10T16:37:18.500Z"
+    },
+    "kanban-mmkuhcoc-zj0wq::spokes-goal-journey-v1": {
+      "studentId": "kanban-mmkuhcoc-zj0wq",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "bhag": "Become employed in IT support.",
+        "monthly": "Finish interview prep and submit applications.",
+        "weekly": "Complete interview practice sessions this week.",
+        "progression_state": "{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T16:49:03.174Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]}",
+        "__mc_schema": "spokesMissionControlV2",
+        "__mc_encoding": "chunked-json-v1",
+        "__mc_chunkCount": "1",
+        "__mc_updatedAt": "2026-03-10T16:49:03.175Z",
+        "__mc_chunk_0": "{\"monthly\":[],\"daily\":[],\"barriers\":[],\"portfolio\":[],\"vision\":{\"items\":[],\"nextId\":1,\"maxZ\":0},\"progression\":{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T16:49:03.174Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]},\"meta\":{\"updatedAt\":\"2026-03-10T16:49:03.174Z\"}}"
+      },
+      "createdAt": "2026-03-10T16:49:03.165Z",
+      "updatedAt": "2026-03-10T16:49:03.175Z"
+    },
+    "kanban-mmkujt4q-1igua::spokes-goal-journey-v1": {
+      "studentId": "kanban-mmkujt4q-1igua",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "bhag": "Become employed in IT support.",
+        "monthly": "Finish interview prep and submit applications.",
+        "weekly": "Complete interview practice sessions this week.",
+        "progression_state": "{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T16:50:57.814Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]}",
+        "__mc_schema": "spokesMissionControlV2",
+        "__mc_encoding": "chunked-json-v1",
+        "__mc_chunkCount": "1",
+        "__mc_updatedAt": "2026-03-10T16:50:57.815Z",
+        "__mc_chunk_0": "{\"monthly\":[],\"daily\":[],\"barriers\":[],\"portfolio\":[],\"vision\":{\"items\":[],\"nextId\":1,\"maxZ\":0},\"progression\":{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T16:50:57.814Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]},\"meta\":{\"updatedAt\":\"2026-03-10T16:50:57.814Z\"}}"
+      },
+      "createdAt": "2026-03-10T16:50:57.805Z",
+      "updatedAt": "2026-03-10T16:50:57.815Z"
+    },
+    "kanban-mmkuq53r-amjkv::spokes-goal-journey-v1": {
+      "studentId": "kanban-mmkuq53r-amjkv",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "progression_state": "{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T16:55:53.237Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]}",
+        "__mc_schema": "spokesMissionControlV2",
+        "__mc_encoding": "chunked-json-v1",
+        "__mc_chunkCount": "1",
+        "__mc_updatedAt": "2026-03-10T16:55:53.237Z",
+        "__mc_chunk_0": "{\"monthly\":[],\"daily\":[],\"archive\":[],\"barriers\":[],\"portfolio\":[],\"vision\":{\"items\":[],\"nextId\":1,\"maxZ\":0},\"visionMonthBoards\":{\"2026-03\":{\"items\":[],\"nextId\":1,\"maxZ\":0}},\"visionSelectedMonth\":\"2026-03\",\"progression\":{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T16:55:53.237Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]},\"meta\":{\"updatedAt\":\"2026-03-10T16:55:53.237Z\"}}"
+      },
+      "createdAt": "2026-03-10T16:55:53.231Z",
+      "updatedAt": "2026-03-10T16:55:53.452Z"
+    },
+    "gate-mmkut7id-e6oyy::spokes-goal-journey-v1": {
+      "studentId": "gate-mmkut7id-e6oyy",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "progression_state": "{\"level\":1,\"xp\":0,\"unlockedPrompts\":[\"bhag\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[],\"levelUpHistory\":[],\"overrideAudit\":[]}",
+        "bhag": "Secure a full-time entry-level job in software support this year."
+      },
+      "createdAt": "2026-03-10T16:58:17.979Z",
+      "updatedAt": "2026-03-10T16:58:17.979Z"
+    },
+    "kanban-mmkutjrt-vl0j7::spokes-goal-journey-v1": {
+      "studentId": "kanban-mmkutjrt-vl0j7",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "bhag": "Become employed in IT support.",
+        "monthly": "Finish interview prep and submit applications.",
+        "weekly": "Complete interview practice sessions this week.",
+        "progression_state": "{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T16:58:32.257Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"},{\"by\":\"teacher\",\"at\":\"2026-03-10T16:58:32.257Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]}",
+        "__mc_schema": "spokesMissionControlV2",
+        "__mc_encoding": "chunked-json-v1",
+        "__mc_chunkCount": "1",
+        "__mc_updatedAt": "2026-03-10T16:58:33.562Z",
+        "__mc_chunk_0": "{\"monthly\":[],\"daily\":[{\"id\":\"d-cbasq13-mmkutkux\",\"date\":\"2026-03-10\",\"top\":\"New task\",\"status\":\"Blocked\",\"minutes\":0,\"comment\":\"\",\"goalRef\":\"Weekly: Complete interview practice sessions this week.\",\"createdAt\":\"2026-03-10T16:58:33.562Z\"}],\"archive\":[],\"barriers\":[],\"portfolio\":[],\"vision\":{\"items\":[],\"nextId\":1,\"maxZ\":0},\"visionMonthBoards\":{\"2026-03\":{\"items\":[],\"nextId\":1,\"maxZ\":0}},\"visionSelectedMonth\":\"2026-03\",\"progression\":{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T16:58:32.257Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"},{\"by\":\"teacher\",\"at\":\"2026-03-10T16:58:32.257Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]},\"meta\":{\"updatedAt\":\"2026-03-10T16:58:33.562Z\"}}"
+      },
+      "createdAt": "2026-03-10T16:58:32.241Z",
+      "updatedAt": "2026-03-10T16:58:34.419Z"
+    },
+    "gate-mmkv4h5a-ynuh1::spokes-goal-journey-v1": {
+      "studentId": "gate-mmkv4h5a-ynuh1",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "progression_state": "{\"level\":1,\"xp\":0,\"unlockedPrompts\":[\"bhag\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[],\"levelUpHistory\":[],\"overrideAudit\":[]}",
+        "bhag": "Secure a full-time entry-level job in software support this year."
+      },
+      "createdAt": "2026-03-10T17:07:03.761Z",
+      "updatedAt": "2026-03-10T17:07:03.761Z"
+    },
+    "kanban-mmkv4t8s-zsuco::spokes-goal-journey-v1": {
+      "studentId": "kanban-mmkv4t8s-zsuco",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "progression_state": "{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T17:07:17.734Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]}",
+        "__mc_schema": "spokesMissionControlV2",
+        "__mc_encoding": "chunked-json-v1",
+        "__mc_chunkCount": "1",
+        "__mc_updatedAt": "2026-03-10T17:07:17.734Z",
+        "__mc_chunk_0": "{\"monthly\":[],\"daily\":[],\"archive\":[],\"barriers\":[],\"portfolio\":[],\"vision\":{\"items\":[],\"nextId\":1,\"maxZ\":0},\"visionMonthBoards\":{\"2026-03\":{\"items\":[],\"nextId\":1,\"maxZ\":0}},\"visionSelectedMonth\":\"2026-03\",\"progression\":{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T17:07:17.734Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]},\"meta\":{\"updatedAt\":\"2026-03-10T17:07:17.734Z\"}}"
+      },
+      "createdAt": "2026-03-10T17:07:17.724Z",
+      "updatedAt": "2026-03-10T17:07:18.037Z"
+    },
+    "gate-mmkv87kd-fkyca::spokes-goal-journey-v1": {
+      "studentId": "gate-mmkv87kd-fkyca",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "progression_state": "{\"level\":1,\"xp\":0,\"unlockedPrompts\":[\"bhag\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[],\"levelUpHistory\":[],\"overrideAudit\":[]}",
+        "bhag": "Secure a full-time entry-level job in software support this year."
+      },
+      "createdAt": "2026-03-10T17:09:57.848Z",
+      "updatedAt": "2026-03-10T17:09:57.848Z"
+    },
+    "kanban-mmkv8jix-tv6gw::spokes-goal-journey-v1": {
+      "studentId": "kanban-mmkv8jix-tv6gw",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "progression_state": "{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T17:10:11.770Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]}",
+        "__mc_schema": "spokesMissionControlV2",
+        "__mc_encoding": "chunked-json-v1",
+        "__mc_chunkCount": "1",
+        "__mc_updatedAt": "2026-03-10T17:10:11.770Z",
+        "__mc_chunk_0": "{\"monthly\":[],\"daily\":[],\"archive\":[],\"barriers\":[],\"portfolio\":[],\"vision\":{\"items\":[],\"nextId\":1,\"maxZ\":0},\"visionMonthBoards\":{\"2026-03\":{\"items\":[],\"nextId\":1,\"maxZ\":0}},\"visionSelectedMonth\":\"2026-03\",\"progression\":{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T17:10:11.770Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]},\"meta\":{\"updatedAt\":\"2026-03-10T17:10:11.770Z\"}}"
+      },
+      "createdAt": "2026-03-10T17:10:11.759Z",
+      "updatedAt": "2026-03-10T17:10:12.093Z"
+    },
+    "kanban-mmkvaga2-j50mk::spokes-goal-journey-v1": {
+      "studentId": "kanban-mmkvaga2-j50mk",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "progression_state": "{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T17:11:40.827Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]}",
+        "__mc_schema": "spokesMissionControlV2",
+        "__mc_encoding": "chunked-json-v1",
+        "__mc_chunkCount": "1",
+        "__mc_updatedAt": "2026-03-10T17:11:40.827Z",
+        "__mc_chunk_0": "{\"monthly\":[],\"daily\":[],\"archive\":[],\"barriers\":[],\"portfolio\":[],\"vision\":{\"items\":[],\"nextId\":1,\"maxZ\":0},\"visionMonthBoards\":{\"2026-03\":{\"items\":[],\"nextId\":1,\"maxZ\":0}},\"visionSelectedMonth\":\"2026-03\",\"progression\":{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T17:11:40.827Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]},\"meta\":{\"updatedAt\":\"2026-03-10T17:11:40.827Z\"}}"
+      },
+      "createdAt": "2026-03-10T17:11:40.820Z",
+      "updatedAt": "2026-03-10T17:11:41.029Z"
+    },
+    "kanban-mmkvfwu3-h8nu8::spokes-goal-journey-v1": {
+      "studentId": "kanban-mmkvfwu3-h8nu8",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "bhag": "Become employed in IT support.",
+        "monthly": "Finish interview prep and submit applications.",
+        "weekly": "Complete interview practice sessions this week.",
+        "progression_state": "{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T17:15:55.562Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"},{\"by\":\"teacher\",\"at\":\"2026-03-10T17:15:55.562Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]}",
+        "__mc_schema": "spokesMissionControlV2",
+        "__mc_encoding": "chunked-json-v1",
+        "__mc_chunkCount": "1",
+        "__mc_updatedAt": "2026-03-10T17:15:57.244Z",
+        "__mc_chunk_0": "{\"monthly\":[],\"daily\":[{\"id\":\"d-0mfuwm7-mmkvfy63\",\"date\":\"2026-03-10\",\"top\":\"New task\",\"status\":\"Blocked\",\"minutes\":0,\"comment\":\"\",\"goalRef\":\"Weekly: Complete interview practice sessions this week.\",\"createdAt\":\"2026-03-10T17:15:57.244Z\"}],\"archive\":[],\"barriers\":[],\"portfolio\":[],\"vision\":{\"items\":[],\"nextId\":1,\"maxZ\":0},\"visionMonthBoards\":{\"2026-03\":{\"items\":[],\"nextId\":1,\"maxZ\":0}},\"visionSelectedMonth\":\"2026-03\",\"progression\":{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T17:15:55.562Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"},{\"by\":\"teacher\",\"at\":\"2026-03-10T17:15:55.562Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]},\"meta\":{\"updatedAt\":\"2026-03-10T17:15:57.244Z\"}}"
+      },
+      "createdAt": "2026-03-10T17:15:55.557Z",
+      "updatedAt": "2026-03-10T17:15:58.103Z"
+    },
+    "kanban-mmkvimdk-l2sji::spokes-goal-journey-v1": {
+      "studentId": "kanban-mmkvimdk-l2sji",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "progression_state": "{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T17:18:01.976Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]}",
+        "__mc_schema": "spokesMissionControlV2",
+        "__mc_encoding": "chunked-json-v1",
+        "__mc_chunkCount": "1",
+        "__mc_updatedAt": "2026-03-10T17:18:01.976Z",
+        "__mc_chunk_0": "{\"monthly\":[],\"daily\":[],\"archive\":[],\"barriers\":[],\"portfolio\":[],\"vision\":{\"items\":[],\"nextId\":1,\"maxZ\":0},\"visionMonthBoards\":{\"2026-03\":{\"items\":[],\"nextId\":1,\"maxZ\":0}},\"visionSelectedMonth\":\"2026-03\",\"progression\":{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[\"level:2\",\"level:3\",\"level:4\"],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T17:18:01.976Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]},\"meta\":{\"updatedAt\":\"2026-03-10T17:18:01.976Z\"}}"
+      },
+      "createdAt": "2026-03-10T17:18:01.970Z",
+      "updatedAt": "2026-03-10T17:18:02.170Z"
+    },
+    "kanban-mmkxq6ga-vwvl0::spokes-goal-journey-v1": {
+      "studentId": "kanban-mmkxq6ga-vwvl0",
+      "lessonId": "spokes-goal-journey-v1",
+      "responses": {
+        "bhag": "Become employed in IT support.",
+        "monthly": "Finish interview prep and submit applications.",
+        "weekly": "Complete interview practice sessions this week.",
+        "progression_state": "{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T18:19:53.843Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]}",
+        "__mc_schema": "spokesMissionControlV2",
+        "__mc_encoding": "chunked-json-v1",
+        "__mc_chunkCount": "1",
+        "__mc_updatedAt": "2026-03-10T18:19:53.843Z",
+        "__mc_chunk_0": "{\"monthly\":[],\"daily\":[],\"barriers\":[],\"portfolio\":[],\"vision\":{\"items\":[],\"nextId\":1,\"maxZ\":0},\"progression\":{\"level\":4,\"xp\":0,\"unlockedPrompts\":[\"bhag\",\"monthly\",\"weekly\",\"daily\"],\"completedPrompts\":[],\"dailyCheckinsCount\":0,\"currentStreak\":0,\"longestStreak\":0,\"streakDays\":[],\"weeklyReviewsDone\":0,\"monthlyReviewsDone\":0,\"lastWeeklyReviewAt\":null,\"lastMonthlyReviewAt\":null,\"phase2Prompts\":{},\"achievements\":[],\"levelUpHistory\":[],\"overrideAudit\":[{\"by\":\"teacher\",\"at\":\"2026-03-10T18:19:53.843Z\",\"action\":\"unlock_level\",\"reason\":\"E2E Kanban access\"}]},\"meta\":{\"updatedAt\":\"2026-03-10T18:19:53.843Z\"}}"
+      },
+      "createdAt": "2026-03-10T18:19:53.835Z",
+      "updatedAt": "2026-03-10T18:19:53.844Z"
     }
   }
 }

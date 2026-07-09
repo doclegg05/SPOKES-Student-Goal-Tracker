@@ -3,6 +3,7 @@ const path = require("path");
 const fs = require("fs");
 const fsp = require("fs/promises");
 const crypto = require("crypto");
+const { createCoachService, normalizeCoachRecord } = require("./ai/coach-service");
 
 const HOST = process.env.HOST || "0.0.0.0";
 const PORT = Number(process.env.PORT || 8787);
@@ -45,6 +46,17 @@ const GROWTH_PROMPT_KEYS = [
   "deadline"
 ];
 
+const ALLOWED_ORIGINS = String(process.env.SPOKES_ALLOWED_ORIGINS || "").trim();
+const AI_ENABLED = String(process.env.SPOKES_AI_ENABLED || "true").trim().toLowerCase() !== "false";
+const AI_PROVIDER = String(process.env.SPOKES_AI_PROVIDER || "ollama").trim().toLowerCase();
+const AI_OLLAMA_URL = String(process.env.SPOKES_AI_OLLAMA_URL || "http://127.0.0.1:11434").trim();
+const AI_MODEL = String(process.env.SPOKES_AI_MODEL || "glm-4.7-flash").trim();
+const AI_TIMEOUT_MS = Math.max(1000, Number(process.env.SPOKES_AI_TIMEOUT_MS || 12000) || 12000);
+const AI_MAX_INPUT_CHARS = Math.max(200, Number(process.env.SPOKES_AI_MAX_INPUT_CHARS || 1200) || 1200);
+const AI_MAX_HISTORY_TURNS = Math.max(1, Number(process.env.SPOKES_AI_MAX_HISTORY_TURNS || 6) || 6);
+const AI_MAX_CONCURRENT = Math.max(1, Number(process.env.SPOKES_AI_MAX_CONCURRENT || 3) || 3);
+const AI_RATE_PER_MINUTE = Math.max(1, Number(process.env.SPOKES_AI_RATE_PER_MINUTE || 12) || 12);
+
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID || "";
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET || "";
 const GOOGLE_REDIRECT_URI = process.env.GOOGLE_REDIRECT_URI || "";
@@ -70,21 +82,93 @@ const MIME_TYPES = {
 
 const EMPTY_STORE = {
   students: {},
-  drafts: {}
+  drafts: {},
+  coach: {}
 };
+
+const coachService = createCoachService({
+  enabled: AI_ENABLED,
+  provider: AI_PROVIDER,
+  ollamaUrl: AI_OLLAMA_URL,
+  model: AI_MODEL,
+  timeoutMs: AI_TIMEOUT_MS,
+  maxInputChars: AI_MAX_INPUT_CHARS,
+  maxHistoryTurns: AI_MAX_HISTORY_TURNS,
+  maxConcurrent: AI_MAX_CONCURRENT,
+  ratePerMinute: AI_RATE_PER_MINUTE
+});
 
 let store = { ...EMPTY_STORE };
 let persistChain = Promise.resolve();
 const oauthStateStore = new Map();
 
-function setCorsHeaders(res) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
+/* ── Rate limiter (sliding window, in-memory) ── */
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000;   // 15 minutes
+const RATE_LIMIT_MAX_ATTEMPTS = 10;             // per window per IP
+const rateLimitStore = new Map();
+
+function getRateLimitKey(req) {
+  const forwarded = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim();
+  return forwarded || req.socket?.remoteAddress || "unknown";
+}
+
+function checkRateLimit(req) {
+  const key = getRateLimitKey(req);
+  const now = Date.now();
+  let record = rateLimitStore.get(key);
+
+  if (!record) {
+    record = { attempts: [] };
+    rateLimitStore.set(key, record);
+  }
+
+  record.attempts = record.attempts.filter((ts) => now - ts < RATE_LIMIT_WINDOW_MS);
+
+  if (record.attempts.length >= RATE_LIMIT_MAX_ATTEMPTS) {
+    return false;
+  }
+
+  record.attempts.push(now);
+  return true;
+}
+
+function cleanupRateLimitStore() {
+  const now = Date.now();
+  for (const [key, record] of rateLimitStore.entries()) {
+    record.attempts = record.attempts.filter((ts) => now - ts < RATE_LIMIT_WINDOW_MS);
+    if (record.attempts.length === 0) {
+      rateLimitStore.delete(key);
+    }
+  }
+}
+
+setInterval(cleanupRateLimitStore, 5 * 60 * 1000).unref();
+
+function setCorsHeaders(res, req) {
+  const origin = req ? String(req.headers.origin || "").trim() : "";
+
+  if (!ALLOWED_ORIGINS) {
+    // No restriction configured — allow all (development default)
+    res.setHeader("Access-Control-Allow-Origin", "*");
+  } else {
+    const allowed = ALLOWED_ORIGINS.split(",").map((o) => o.trim().toLowerCase());
+    if (origin && allowed.includes(origin.toLowerCase())) {
+      res.setHeader("Access-Control-Allow-Origin", origin);
+      res.setHeader("Vary", "Origin");
+    } else if (!origin) {
+      // Same-origin requests (no Origin header) — allow
+      res.setHeader("Access-Control-Allow-Origin", allowed[0]);
+      res.setHeader("Vary", "Origin");
+    }
+    // Cross-origin requests from unlisted origins get no CORS header → browser blocks them
+  }
+
   res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 }
 
 function sendJson(res, statusCode, payload) {
-  setCorsHeaders(res);
+  setCorsHeaders(res, res._spokesReq);
   res.statusCode = statusCode;
   res.setHeader("Content-Type", "application/json; charset=utf-8");
   res.end(JSON.stringify(payload));
@@ -95,7 +179,7 @@ function sendError(res, statusCode, message) {
 }
 
 function sendTextHtml(res, statusCode, html) {
-  setCorsHeaders(res);
+  setCorsHeaders(res, res._spokesReq);
   res.statusCode = statusCode;
   res.setHeader("Content-Type", "text/html; charset=utf-8");
   res.end(html);
@@ -263,7 +347,8 @@ function sanitizeResponses(rawResponses) {
 function ensureStoreShape(candidate) {
   const safeStore = {
     students: {},
-    drafts: {}
+    drafts: {},
+    coach: {}
   };
 
   if (!candidate || typeof candidate !== "object") {
@@ -275,6 +360,9 @@ function ensureStoreShape(candidate) {
   }
   if (candidate.drafts && typeof candidate.drafts === "object") {
     safeStore.drafts = candidate.drafts;
+  }
+  if (candidate.coach && typeof candidate.coach === "object") {
+    safeStore.coach = candidate.coach;
   }
 
   return safeStore;
@@ -497,7 +585,7 @@ function computePromptCompletion(responses) {
   const splitLegacyItems = (value) => {
     return String(value || "")
       .replace(/\r/g, "\n")
-      .replaceAll("ΓÇó", "\n")
+      .replaceAll("•", "\n")
       .split(/\n|;|,(?=\s*[A-Za-z])/g)
       .map((item) => item.replace(/^\s*[-*\d.)]+\s*/, "").trim())
       .filter(Boolean);
@@ -547,10 +635,28 @@ function computePromptCompletion(responses) {
   return { completed, total, ratio };
 }
 
+function coachDraftKey(studentId, lessonId = SHARED_LESSON_ID) {
+  return `${normalizeStudentId(studentId)}::${normalizeLessonId(lessonId)}`;
+}
+
+function getCoachRecord(draftKey) {
+  if (!store.coach || typeof store.coach !== "object") {
+    store.coach = {};
+  }
+  return normalizeCoachRecord(store.coach[draftKey]);
+}
+
+function setCoachRecord(draftKey, record) {
+  if (!store.coach || typeof store.coach !== "object") {
+    store.coach = {};
+  }
+  store.coach[draftKey] = normalizeCoachRecord(record);
+}
+
 function buildTeacherRows() {
   const rows = [];
 
-  for (const draft of Object.values(store.drafts || {})) {
+  for (const [draftKey, draft] of Object.entries(store.drafts || {})) {
     if (!draft || draft.lessonId !== SHARED_LESSON_ID) {
       continue;
     }
@@ -580,6 +686,11 @@ function buildTeacherRows() {
     const growthPromptsCompleted = Object.values(progression.phase2Prompts || {})
       .filter((value) => String(value || "").trim().length > 0)
       .length;
+    const coach = getCoachRecord(draftKey);
+    const teacherSnapshot = coach.teacherSnapshot || {};
+    const aiRiskLevel = String(teacherSnapshot.riskLevel || "low");
+    const aiFocusArea = String(teacherSnapshot.focusArea || "");
+    const aiNeedsAttention = aiRiskLevel === "medium" || aiRiskLevel === "high";
 
     rows.push({
       studentId,
@@ -600,7 +711,11 @@ function buildTeacherRows() {
       longestStreak: progression.longestStreak,
       corePromptsCompleted: prompt.completed,
       growthPromptsCompleted,
-      checkpointsComplete
+      checkpointsComplete,
+      aiRiskLevel,
+      aiFocusArea,
+      aiNeedsAttention,
+      aiUpdatedAt: coach.updatedAt || null
     });
   }
 
@@ -975,7 +1090,7 @@ function buildOAuthErrorPage(message) {
 
 async function handleApi(req, res, pathname, searchParams) {
   if (req.method === "OPTIONS") {
-    setCorsHeaders(res);
+    setCorsHeaders(res, req);
     res.statusCode = 204;
     res.end();
     return;
@@ -984,6 +1099,99 @@ async function handleApi(req, res, pathname, searchParams) {
   if (req.method === "GET" && pathname === "/api/health") {
     sendJson(res, 200, { ok: true, now: nowIso() });
     return;
+  }
+
+  if (req.method === "POST" && pathname === "/api/ai/coach/chat") {
+    const claims = requireAuth(req, res);
+    if (!claims) {
+      return;
+    }
+    if (!AI_ENABLED) {
+      sendError(res, 503, "AI coach is disabled on this server.");
+      return;
+    }
+
+    let body;
+    try {
+      body = await readJsonBody(req);
+    } catch (error) {
+      sendError(res, 400, error.message);
+      return;
+    }
+
+    const lessonId = normalizeLessonId(body?.lessonId || SHARED_LESSON_ID) || SHARED_LESSON_ID;
+    const draftKey = coachDraftKey(claims.studentId, lessonId);
+    const currentRecord = getCoachRecord(draftKey);
+
+    try {
+      const outcome = await coachService.coachChat({
+        studentId: claims.studentId,
+        lessonId,
+        context: body?.context && typeof body.context === "object" ? body.context : {},
+        message: String(body?.message || ""),
+        history: Array.isArray(body?.history) ? body.history : [],
+        allowRewrite: body?.allowRewrite !== false,
+        record: currentRecord
+      });
+
+      setCoachRecord(draftKey, outcome.record);
+      await persistStore();
+      sendJson(res, 200, outcome.response);
+      return;
+    } catch (error) {
+      if (error?.code === "ai_rate_limited") {
+        sendError(res, 429, error.message);
+        return;
+      }
+      sendError(res, 500, error?.message || "AI chat request failed.");
+      return;
+    }
+  }
+
+  if (req.method === "POST" && pathname === "/api/ai/coach/evaluate") {
+    const claims = requireAuth(req, res);
+    if (!claims) {
+      return;
+    }
+    if (!AI_ENABLED) {
+      sendError(res, 503, "AI coach is disabled on this server.");
+      return;
+    }
+
+    let body;
+    try {
+      body = await readJsonBody(req);
+    } catch (error) {
+      sendError(res, 400, error.message);
+      return;
+    }
+
+    const lessonId = SHARED_LESSON_ID;
+    const draftKey = coachDraftKey(claims.studentId, lessonId);
+    const currentRecord = getCoachRecord(draftKey);
+
+    try {
+      const outcome = await coachService.coachEvaluate({
+        studentId: claims.studentId,
+        promptKey: String(body?.promptKey || "monthly"),
+        candidateText: String(body?.candidateText || ""),
+        parentGoals: body?.parentGoals && typeof body.parentGoals === "object" ? body.parentGoals : {},
+        allowRewrite: body?.allowRewrite !== false,
+        record: currentRecord
+      });
+
+      setCoachRecord(draftKey, outcome.record);
+      await persistStore();
+      sendJson(res, 200, outcome.response);
+      return;
+    } catch (error) {
+      if (error?.code === "ai_rate_limited") {
+        sendError(res, 429, error.message);
+        return;
+      }
+      sendError(res, 500, error?.message || "AI evaluation request failed.");
+      return;
+    }
   }
 
   if (req.method === "GET" && pathname === "/api/teacher/overview") {
@@ -1026,7 +1234,11 @@ async function handleApi(req, res, pathname, searchParams) {
       "daily_done",
       "daily_total",
       "vision_items",
-      "checkpoints_complete"
+      "checkpoints_complete",
+      "ai_risk_level",
+      "ai_focus_area",
+      "ai_needs_attention",
+      "ai_updated_at"
     ];
 
     const lines = [headers.join(",")];
@@ -1050,11 +1262,15 @@ async function handleApi(req, res, pathname, searchParams) {
         csvEscape(row.dailyDone),
         csvEscape(row.dailyTotal),
         csvEscape(row.visionItems),
-        csvEscape(row.checkpointsComplete ? "yes" : "no")
+        csvEscape(row.checkpointsComplete ? "yes" : "no"),
+        csvEscape(row.aiRiskLevel || "low"),
+        csvEscape(row.aiFocusArea || ""),
+        csvEscape(row.aiNeedsAttention ? "yes" : "no"),
+        csvEscape(row.aiUpdatedAt || "")
       ].join(","));
     }
 
-    setCorsHeaders(res);
+    setCorsHeaders(res, req);
     res.statusCode = 200;
     res.setHeader("Content-Type", "text/csv; charset=utf-8");
     res.setHeader("Content-Disposition", `attachment; filename=\"spokes-teacher-report-${new Date().toISOString().slice(0, 10)}.csv\"`);
@@ -1176,6 +1392,11 @@ async function handleApi(req, res, pathname, searchParams) {
 
   const teacherResetMatch = pathname.match(/^\/api\/teacher\/students\/([^/]+)\/reset-password$/);
   if (req.method === "POST" && teacherResetMatch) {
+    if (!checkRateLimit(req)) {
+      sendError(res, 429, "Too many attempts. Please wait a few minutes and try again.");
+      return;
+    }
+
     if (!requireTeacherAccess(req, res, searchParams)) {
       return;
     }
@@ -1225,6 +1446,27 @@ async function handleApi(req, res, pathname, searchParams) {
     return;
   }
 
+  const teacherCoachSummaryMatch = pathname.match(/^\/api\/teacher\/students\/([^/]+)\/coach-summary$/);
+  if (req.method === "GET" && teacherCoachSummaryMatch) {
+    if (!requireTeacherAccess(req, res, searchParams)) {
+      return;
+    }
+
+    const studentId = normalizeStudentId(decodeURIComponent(teacherCoachSummaryMatch[1] || ""));
+    if (!studentId) {
+      sendError(res, 400, "Invalid student identifier.");
+      return;
+    }
+
+    const draftKey = coachDraftKey(studentId, SHARED_LESSON_ID);
+    const summary = getCoachRecord(draftKey);
+    sendJson(res, 200, {
+      studentId,
+      summary
+    });
+    return;
+  }
+
   if (req.method === "GET" && pathname === "/api/auth/providers") {
     sendJson(res, 200, {
       providers: {
@@ -1237,6 +1479,11 @@ async function handleApi(req, res, pathname, searchParams) {
   }
 
   if (req.method === "POST" && pathname === "/api/auth/register") {
+    if (!checkRateLimit(req)) {
+      sendError(res, 429, "Too many attempts. Please wait a few minutes and try again.");
+      return;
+    }
+
     let body;
     try {
       body = await readJsonBody(req);
@@ -1268,6 +1515,11 @@ async function handleApi(req, res, pathname, searchParams) {
   }
 
   if (req.method === "POST" && pathname === "/api/auth/login") {
+    if (!checkRateLimit(req)) {
+      sendError(res, 429, "Too many attempts. Please wait a few minutes and try again.");
+      return;
+    }
+
     let body;
     try {
       body = await readJsonBody(req);
@@ -1339,7 +1591,7 @@ async function handleApi(req, res, pathname, searchParams) {
       prompt: "select_account"
     });
 
-    setCorsHeaders(res);
+    setCorsHeaders(res, req);
     res.statusCode = 302;
     res.setHeader("Location", `https://accounts.google.com/o/oauth2/v2/auth?${authParams.toString()}`);
     res.end();
@@ -1538,7 +1790,7 @@ async function serveStatic(req, res, pathname) {
   const extension = path.extname(resolvedPath).toLowerCase();
   const contentType = MIME_TYPES[extension] || "application/octet-stream";
 
-  setCorsHeaders(res);
+  setCorsHeaders(res, req);
   res.statusCode = 200;
   res.setHeader("Content-Type", contentType);
 
@@ -1554,6 +1806,7 @@ async function serveStatic(req, res, pathname) {
 }
 
 async function requestHandler(req, res) {
+  res._spokesReq = req;
   const requestUrl = new URL(req.url, `http://${req.headers.host || "localhost"}`);
   const pathname = requestUrl.pathname;
 
@@ -1563,7 +1816,7 @@ async function requestHandler(req, res) {
   }
 
   if (pathname === "/spokes-mission-control.html" || pathname === "/spokes-mission-control") {
-    setCorsHeaders(res);
+    setCorsHeaders(res, req);
     res.statusCode = 302;
     res.setHeader("Location", "/lesson?panel=mission");
     res.end();
@@ -1591,6 +1844,7 @@ async function startServer({ host = HOST, port = PORT } = {}) {
   console.log(`SPOKES server running at http://${host}:${port}`);
   console.log(`Data file: ${DATA_FILE}`);
   console.log(`Google OAuth enabled: ${isGoogleOAuthEnabled() ? "yes" : "no"}`);
+  console.log(`AI coach enabled: ${AI_ENABLED ? "yes" : "no"} (${AI_PROVIDER}:${AI_MODEL})`);
 
   return server;
 }

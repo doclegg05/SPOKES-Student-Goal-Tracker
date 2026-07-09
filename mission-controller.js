@@ -185,6 +185,8 @@ export class MissionController {
     if (!result.ok) {
       if (result.reason === "empty_response") {
         this.view.setAuthMessage("Type a response before locking in.", "error");
+      } else if (result.reason === "too_short") {
+        this.view.setAuthMessage("Please write a more detailed response (at least 15 characters).", "error");
       } else if (result.reason === "prompt_locked") {
         this.view.setAuthMessage("This prompt is still locked. Complete earlier steps first.", "error");
       }
@@ -205,6 +207,18 @@ export class MissionController {
         xpGained: result.xpGained,
         newUnlocks: result.newUnlocks
       });
+
+      if (result.newUnlocks.length > 0) {
+        const nextTargetId = `prompt-${result.newUnlocks[0]}`;
+        const nextTargetElement = this.view.document.getElementById(nextTargetId);
+        if (nextTargetElement) {
+          this.win.setTimeout(() => {
+            nextTargetElement.scrollIntoView({ behavior: "smooth", block: "center" });
+            const firstInput = nextTargetElement.querySelector("input, textarea");
+            if (firstInput) firstInput.focus();
+          }, 800);
+        }
+      }
     }
 
     if (this.model.hasCloudSession()) {

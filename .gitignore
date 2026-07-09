@@ -1,8 +1,18 @@
 .env
+.env.quarantined
 node_modules/
 test-results/
 playwright-report/
 Don't use/
 *.mp4
+.codex/
 # Live student data belongs in ../_student-records/ — never re-create here
 data/student-goals.json
+# Local debug / preview junk
+playwright_debug*.txt
+playwright_final.txt
+test_output.txt
+cert-preview*.png
+certificate-template.png
+data/Screenshot*.png
+*.skill

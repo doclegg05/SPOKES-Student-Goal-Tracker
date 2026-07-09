@@ -43,6 +43,7 @@
             <label class="goal-label" for="bhag">Your BHAG</label>
             <textarea id="bhag" class="goal-input" data-goal-key="bhag" data-goal-label="BHAG" rows="3" placeholder="Example: Get a job as a Junior Web Developer within 6 months."></textarea>
             <button type="button" class="mc-p level-up-btn" data-target="bhag">Lock In & Level Up</button>
+            <button type="button" class="mc-s coach-prompt-btn" data-coach-target="bhag">Coach this</button>
           </article>
 
           <article class="feature-card two locked" id="prompt-monthly" data-prompt-key="monthly" data-level="2" data-start="0.20" data-end="0.44">
@@ -52,6 +53,7 @@
             <label class="goal-label" for="monthly">Monthly Goal</label>
             <textarea id="monthly" class="goal-input" data-goal-key="monthly" data-goal-label="Monthly Goal" rows="3" placeholder="Example: Complete my certification and build one portfolio project."></textarea>
             <button type="button" class="mc-p level-up-btn" data-target="monthly">Lock In & Level Up</button>
+            <button type="button" class="mc-s coach-prompt-btn" data-coach-target="monthly">Coach this</button>
           </article>
 
           <article class="feature-card three locked" id="prompt-weekly" data-prompt-key="weekly" data-level="3" data-start="0.40" data-end="0.64">
@@ -61,6 +63,7 @@
             <label class="goal-label" for="weekly">Weekly Goal</label>
             <textarea id="weekly" class="goal-input" data-goal-key="weekly" data-goal-label="Weekly Goal" rows="3" placeholder="Example: Finish three learning modules and pass the midpoint quiz."></textarea>
             <button type="button" class="mc-p level-up-btn" data-target="weekly">Lock In & Level Up</button>
+            <button type="button" class="mc-s coach-prompt-btn" data-coach-target="weekly">Coach this</button>
           </article>
 
           <article class="feature-card four locked" id="prompt-daily" data-prompt-key="daily" data-level="4" data-start="0.60" data-end="0.84">
@@ -70,6 +73,7 @@
             <label class="goal-label" for="daily">Daily Goal</label>
             <textarea id="daily" class="goal-input" data-goal-key="daily" data-goal-label="Daily Goal" rows="3" placeholder="Example: Read chapter 4 and write a summary."></textarea>
             <button type="button" class="mc-p level-up-btn" data-target="daily">Lock In & Level Up</button>
+            <button type="button" class="mc-s coach-prompt-btn" data-coach-target="daily">Coach this</button>
           </article>
 
           <article class="feature-card five locked" id="prompt-tasks" data-prompt-key="tasks" data-level="5" data-start="0.80" data-end="0.98">
@@ -79,6 +83,7 @@
             <label class="goal-label" for="tasks">To-Do List</label>
             <textarea id="tasks" class="goal-input" data-goal-key="tasks" data-goal-label="Tasks" rows="3" placeholder="1. Open textbook&#10;2. Read pages 40-55&#10;3. Submit summary on canvas"></textarea>
             <button type="button" class="mc-p level-up-btn" data-target="tasks">Complete Interview</button>
+            <button type="button" class="mc-s coach-prompt-btn" data-coach-target="tasks">Coach this</button>
           </article>
         </div>
 
@@ -126,6 +131,22 @@
             </div>
             <p class="auth-message" id="authMessage">Authenticated access required for this lesson.</p>
             <p class="sync-status" id="syncStatus">Syncing saved draft...</p>
+          </section>
+          <section class="goal-coach" id="goalCoachPanel" aria-label="AI Goal Coach">
+            <button type="button" class="goal-coach-toggle" id="goalCoachToggle" aria-expanded="true">AI Goal Coach</button>
+            <div class="goal-coach-body" id="goalCoachBody">
+              <p class="goal-coach-context" id="goalCoachContext">Context: BHAG</p>
+              <div class="goal-coach-messages" id="goalCoachMessages" aria-live="polite">
+                <p class="goal-coach-msg assistant">Ask for focused help on your current goal. I will keep us on track.</p>
+              </div>
+              <label class="goal-coach-label" for="goalCoachInput">Ask for coaching</label>
+              <textarea id="goalCoachInput" rows="3" placeholder="Example: Is my weekly goal specific enough?"></textarea>
+              <div class="goal-coach-actions">
+                <button type="button" class="mc-p" id="goalCoachSend">Ask Coach</button>
+                <button type="button" class="mc-s" id="goalCoachUseRewrite" hidden>Use Rewrite</button>
+              </div>
+              <p class="goal-coach-signals" id="goalCoachSignals"></p>
+            </div>
           </section>
           <div class="goal-summary-list" id="goalSummaryList"></div>
           <div class="goal-saved-at" id="goalSavedAt">No saved responses yet.</div>
@@ -291,7 +312,9 @@
                 </div>
                 <div class="mc-submit-row">
                   <button class="mc-p" type="submit">Add SMART Goal</button>
+                  <button id="mcSmartCoachBtn" class="mc-s" type="button">Coach this SMART Goal</button>
                 </div>
+                <div id="mcSmartCoachResult" class="mc-smart-coach-result" aria-live="polite"></div>
               </form>
             </article>
             <article class="mc-surface">
@@ -386,8 +409,8 @@
         <ol class="htp-levels">
           <li><strong>Level 1 - BHAG:</strong> Set your Big, Hairy, Audacious Goal. Available from the start.</li>
           <li><strong>Level 2 - Monthly:</strong> Define a monthly goal. Unlocks when you lock in your BHAG.</li>
-          <li><strong>Level 3 - Weekly:</strong> Plan weekly actions. Unlocks after Monthly + 5 daily check-ins.</li>
-          <li><strong>Level 4 - Daily:</strong> Set daily priorities. Unlocks after Weekly + 1 weekly review.</li>
+          <li><strong>Level 3 - Weekly:</strong> Plan weekly actions. Unlocks after locking in Monthly.</li>
+          <li><strong>Level 4 - Daily:</strong> Set daily priorities. Unlocks after locking in Weekly.</li>
           <li><strong>Level 5 - Tasks:</strong> Create action tasks. Unlocks after completing your Daily goal.</li>
         </ol>
       </section>
@@ -422,10 +445,10 @@
         <h4>Mission Control</h4>
         <p>As you level up, new Mission Control sections unlock:</p>
         <ul>
-          <li><strong>Level 1-2:</strong> Daily Momentum + Archive</li>
-          <li><strong>Level 3:</strong> SMART Goals, Growth Prompts, Plan Generation</li>
-          <li><strong>Level 4:</strong> Kanban board editing</li>
-          <li><strong>Level 5:</strong> Vision Board + full access</li>
+          <li><strong>Level 1-2:</strong> Locked. Focus on defining your core goals first.</li>
+          <li><strong>Level 3:</strong> Daily Momentum + Archive. Start working towards your Weekly goal.</li>
+          <li><strong>Level 4:</strong> SMART Goals, Growth Prompts, Kanban editing.</li>
+          <li><strong>Level 5:</strong> Vision Board + full access.</li>
         </ul>
       </section>
       <menu>

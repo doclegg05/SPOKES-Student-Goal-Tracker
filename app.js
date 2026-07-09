@@ -1,6 +1,7 @@
 import { initMissionControl } from "./mission-control.js";
 import { initMissionWorkspace } from "./mission-workspace.js";
 import { ProgressionEngine } from "./progression-engine.js";
+import { CORE_PROMPT_KEYS, readCorePromptResponses } from "./goal-response-adapter.js";
 
 const SESSION_KEY = "spokes-goal-session-v1";
 const GOAL_STORAGE_BASE_KEY = "spokes-goal-journey";
@@ -36,7 +37,13 @@ function handleRouteIntent() {
   const progressionSeed = ProgressionEngine.parse(responses.progression_state) || null;
   const engine = new ProgressionEngine(progressionSeed, responses);
 
-  // Students click the Mission Control nav link to scroll down manually.
+  // Auto-open Mission Control if all core goal prompts are filled in
+  const coreResponses = readCorePromptResponses(responses);
+  const allCoreComplete = CORE_PROMPT_KEYS.every((key) => (coreResponses[key] || "").trim().length > 0);
+
+  if (allCoreComplete) {
+    scrollToMissionControl();
+  }
 }
 
 function scrollToMissionControl() {

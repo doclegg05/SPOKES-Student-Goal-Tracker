@@ -137,6 +137,21 @@
       cursor: not-allowed;
     }
 
+    .feature-card .coach-prompt-btn {
+      margin-top: 0.36rem;
+      margin-left: 0.18rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 32px;
+      padding: 0.42rem 0.82rem;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
     .feature-card ul {
       margin: 0.55rem 0 0;
       padding-left: 1rem;
@@ -405,6 +420,118 @@
 
     .sync-status[data-tone="local"] {
       color: #475569;
+    }
+
+    .goal-coach {
+      margin-top: 0.62rem;
+      border-radius: 12px;
+      border: 1px solid rgba(14, 165, 233, 0.24);
+      background: rgba(255, 255, 255, 0.8);
+      padding: 0.58rem;
+    }
+
+    .goal-coach-toggle {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid rgba(14, 165, 233, 0.28);
+      background: rgba(239, 246, 255, 0.72);
+      color: #0f3d66;
+      border-radius: 8px;
+      font-size: 0.72rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 800;
+      padding: 0.4rem 0.48rem;
+      cursor: pointer;
+    }
+
+    .goal-coach-body {
+      margin-top: 0.48rem;
+      display: grid;
+      gap: 0.34rem;
+    }
+
+    .goal-coach-context,
+    .goal-coach-label,
+    .goal-coach-signals {
+      margin: 0;
+      font-size: 0.7rem;
+      line-height: 1.3;
+    }
+
+    .goal-coach-context {
+      color: #0f3d66;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 800;
+    }
+
+    .goal-coach-label {
+      color: #334155;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+
+    .goal-coach-signals {
+      color: #334155;
+      min-height: 1.1em;
+    }
+
+    .goal-coach-messages {
+      max-height: 132px;
+      overflow: auto;
+      display: grid;
+      gap: 0.34rem;
+      padding-right: 0.12rem;
+    }
+
+    .goal-coach-msg {
+      margin: 0;
+      padding: 0.4rem 0.5rem;
+      border-radius: 8px;
+      font-size: 0.76rem;
+      line-height: 1.34;
+      color: #1f2937;
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      background: rgba(255, 255, 255, 0.88);
+    }
+
+    .goal-coach-msg.user {
+      border-color: rgba(14, 116, 144, 0.2);
+      background: rgba(236, 254, 255, 0.84);
+    }
+
+    .goal-coach-msg.assistant {
+      border-color: rgba(15, 23, 42, 0.08);
+      background: rgba(248, 250, 252, 0.88);
+    }
+
+    #goalCoachInput {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid rgba(15, 23, 42, 0.18);
+      background: rgba(255, 255, 255, 0.95);
+      font: inherit;
+      font-size: 0.78rem;
+      line-height: 1.35;
+      padding: 0.44rem 0.5rem;
+      resize: vertical;
+      min-height: 70px;
+    }
+
+    #goalCoachInput:focus {
+      outline: none;
+      border-color: rgba(14, 165, 233, 0.58);
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.16);
+    }
+
+    .goal-coach-actions {
+      display: flex;
+      gap: 0.36rem;
+      flex-wrap: wrap;
     }
 
     .goal-summary-list {
@@ -1952,6 +2079,42 @@
 
 .level-up-overlay-card #levelUpXp {
   color: var(--spokes-secondary-muted-gold);
+}
+
+.goal-coach-toggle,
+.goal-coach-context,
+.goal-coach-signals {
+  color: var(--spokes-primary-dark-blue);
+}
+
+.goal-coach-toggle {
+  border-color: rgba(0, 123, 175, 0.32);
+  background: rgba(209, 211, 212, 0.38);
+}
+
+.goal-coach {
+  border-color: rgba(0, 123, 175, 0.26);
+}
+
+.goal-coach-msg.user {
+  border-color: rgba(0, 123, 175, 0.26);
+  background: rgba(240, 249, 255, 0.92);
+}
+
+.goal-coach-msg.assistant {
+  border-color: rgba(0, 64, 113, 0.14);
+}
+
+.mc-smart-coach-result {
+  margin-top: 0.5rem;
+  border-radius: 10px;
+  border: 1px dashed rgba(0, 64, 113, 0.3);
+  background: rgba(255, 255, 255, 0.8);
+  padding: 0.58rem;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: #1f2937;
+  min-height: 1.8rem;
 }
 
 .site-footer {

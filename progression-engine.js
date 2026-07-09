@@ -343,8 +343,10 @@ export class ProgressionEngine {
 
   getDashboardFeatures() {
     return {
-      smartTab: this.state.level >= 3,
-      growthTab: this.state.level >= 3,
+      dailyTab: this.state.level >= 3,
+      archiveTab: this.state.level >= 3,
+      smartTab: this.state.level >= 4,
+      growthTab: this.state.level >= 4,
       visionTab: this.state.level >= 5,
       kanbanEdit: this.state.level >= 4,
       planGeneration: this.state.level >= 3
@@ -376,8 +378,12 @@ export class ProgressionEngine {
     if (!CORE_PROMPT_KEYS.includes(promptKey)) {
       return { ok: false, reason: "unknown_prompt" };
     }
-    if (!String(text || "").trim()) {
+    const trimmedText = String(text || "").trim();
+    if (!trimmedText) {
       return { ok: false, reason: "empty_response" };
+    }
+    if (trimmedText.length < 15) {
+      return { ok: false, reason: "too_short" };
     }
     if (!this.isPromptUnlocked(promptKey)) {
       return { ok: false, reason: "prompt_locked" };
@@ -589,17 +595,11 @@ export class ProgressionEngine {
       this.unlockPrompt("monthly");
     }
 
-    if (
-      this.state.completedPrompts.includes("monthly") &&
-      this.state.dailyCheckinsCount >= 5
-    ) {
+    if (this.state.completedPrompts.includes("monthly")) {
       this.unlockPrompt("weekly");
     }
 
-    if (
-      this.state.completedPrompts.includes("weekly") &&
-      this.state.weeklyReviewsDone >= 1
-    ) {
+    if (this.state.completedPrompts.includes("weekly")) {
       this.unlockPrompt("daily");
     }
 
