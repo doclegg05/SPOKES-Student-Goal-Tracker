@@ -23,8 +23,12 @@ http://localhost:8787
 4. Goal entries auto-save and sync to the server.
 
 ## Data persistence
-- Student records + drafts are stored in:
-`data/student-goals.json`
+- Live student records + drafts are stored in the FERPA quarantine:
+  `../_student-records/SPOKES Goal Setting Project/data/student-goals.json`
+- Override with `SPOKES_DATA_FILE` if needed (see `.env.example`).
+- Named student employment portfolios live under:
+  `../_student-records/SPOKES Goal Setting Project/Student Portfolios/`
+- Sample certificates and blank forms stay in-project under `Student Portfolios/`.
 
 ## Export behavior
 - `Export Snapshot` now creates a student PDF report with:
@@ -80,4 +84,4 @@ npm run test:e2e
 
 Notes:
 - E2E tests run against a separate store file: `data/student-goals.e2e.json`
-- Main classroom data file (`data/student-goals.json`) is not used by the E2E server.
+- The live quarantine store is not used by the E2E server.

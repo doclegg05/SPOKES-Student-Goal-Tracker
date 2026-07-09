@@ -8,9 +8,19 @@ const HOST = process.env.HOST || "0.0.0.0";
 const PORT = Number(process.env.PORT || 8787);
 const ROOT_DIR = __dirname;
 const DATA_DIR = path.join(ROOT_DIR, "data");
+// Live classroom data is FERPA-quarantined (2026-07-09). Override with
+// SPOKES_DATA_FILE; E2E sets that to data/student-goals.e2e.json.
+const DEFAULT_DATA_FILE = path.join(
+  ROOT_DIR,
+  "..",
+  "_student-records",
+  "SPOKES Goal Setting Project",
+  "data",
+  "student-goals.json"
+);
 const DATA_FILE = process.env.SPOKES_DATA_FILE
   ? path.resolve(process.env.SPOKES_DATA_FILE)
-  : path.join(DATA_DIR, "student-goals.json");
+  : DEFAULT_DATA_FILE;
 
 const TOKEN_SECRET = process.env.SPOKES_TOKEN_SECRET || "spokes-dev-secret-change-me";
 const TEACHER_KEY = process.env.SPOKES_TEACHER_KEY || "spokes-teacher-demo";
@@ -271,7 +281,7 @@ function ensureStoreShape(candidate) {
 }
 
 async function loadStore() {
-  await fsp.mkdir(DATA_DIR, { recursive: true });
+  await fsp.mkdir(path.dirname(DATA_FILE), { recursive: true });
 
   try {
     const raw = await fsp.readFile(DATA_FILE, "utf8");
@@ -290,7 +300,7 @@ function persistStore() {
   persistChain = persistChain.then(async () => {
     const tempFile = `${DATA_FILE}.tmp`;
     const payload = JSON.stringify(store, null, 2);
-    await fsp.mkdir(DATA_DIR, { recursive: true });
+    await fsp.mkdir(path.dirname(DATA_FILE), { recursive: true });
     await fsp.writeFile(tempFile, payload, "utf8");
     await fsp.rename(tempFile, DATA_FILE);
   }).catch((error) => {
@@ -487,7 +497,7 @@ function computePromptCompletion(responses) {
   const splitLegacyItems = (value) => {
     return String(value || "")
       .replace(/\r/g, "\n")
-      .replaceAll("•", "\n")
+      .replaceAll("ΓÇó", "\n")
       .split(/\n|;|,(?=\s*[A-Za-z])/g)
       .map((item) => item.replace(/^\s*[-*\d.)]+\s*/, "").trim())
       .filter(Boolean);
