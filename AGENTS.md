@@ -20,7 +20,7 @@ SPOKES Goal Setting Project/
 ├── Student Portfolios/        # Templates only (samples, blank forms) — no named students
 │   ├── Portfolio Blank Forms/ # Reusable employment portfolio checklists & fact sheets
 │   └── Certifications/        # Sample certificates + module descriptors per credential
-├── SPOKES Builder/            # SEPARATE PROJECT — lesson slideshow builder (has its own AGENTS.md)
+├── SPOKES Builder/            # SEPARATE PROJECT — lesson slideshow builder (has its own CLAUDE.md)
 ├── data/                      # E2E fixture only (student-goals.e2e.json); live data is quarantined
 ├── SPOKES_Goal_Tracker.xlsx   # Master goal-tracking spreadsheet
 ├── Project Launch.docx        # Original project brief
@@ -31,7 +31,7 @@ SPOKES Goal Setting Project/
 └── Student Portfolios/        # Named student folders + Student Resumes_AI (PII)
 ```
 
-> **Scope boundary:** `SPOKES Builder/` is a different project (interactive HTML lessons). When the user asks about lesson content, slides, WIPPEA, or brand colors, switch context to that folder and follow its AGENTS.md. Do **not** mix lesson-builder concerns into employment-prep work.
+> **Scope boundary:** `SPOKES Builder/` is a different project (interactive HTML lessons). When the user asks about lesson content, slides, WIPPEA, or brand colors, switch context to that folder and follow its CLAUDE.md. Do **not** mix lesson-builder concerns into employment-prep work.
 
 ## Privacy & PII (Critical)
 
