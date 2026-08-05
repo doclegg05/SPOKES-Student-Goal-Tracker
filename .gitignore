@@ -16,3 +16,4 @@ cert-preview*.png
 certificate-template.png
 data/Screenshot*.png
 *.skill
+.DS_Store
